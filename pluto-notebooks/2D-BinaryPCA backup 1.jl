@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.27
+# v0.19.25
 
 using Markdown
 using InteractiveUtils
@@ -20,11 +20,8 @@ end
 # ╔═╡ c54a1e59-e363-4567-b956-5b05ea26f172
 begin
 	using Random
-	println("Random")
 	using Plots
-	println("Plots")
 	using BenchmarkTools
-	println("Benchmark tools")
 end
 
 # ╔═╡ a5ae8b1a-2249-4266-8dd3-7e6a45e637f3
@@ -49,7 +46,6 @@ default(aspect_ratio=:equal,
 # ╔═╡ 8bf82d25-6643-4245-bee3-546c560708ef
 function initiate_grid(type::String, L::Int=8)
     # May add line to ensure that L is even.
-	#type should be ::Symbol. Symbol is :xyz
     if L%2 == 1
         L=L+1
     end
@@ -227,185 +223,52 @@ end
 
 # ╔═╡ 31d1deea-ba04-4b88-92c5-14cbe4733a6d
 function generate_next_generation3(initial_grid::Array{Int},Λ::Array{Float64})
-	initial_grid_size = size(initial_grid)	   #remove
-	one_row_size = (1,prod(initial_grid_size)) #length
-	s⃗ = reshape(initial_grid,one_row_size)	#make this a column vector using vec()
+	initial_grid_size = size(initial_grid)
+	one_row_size = (1,prod(initial_grid_size))
+	s⃗ = reshape(initial_grid,one_row_size)
 
-	#don't hardcode
-	#set vector of ones to be a variable; has to be row column
-	# Λ should be a sparse matrix; use sparse(Λ)
-	# Λ .* (ones(64) * s⃗')
-	# map function: see file from 5-31 RM
-	p = 1 .- (Λ .* (ones(64) * s⃗))
+	p = 1 .- (Λ .* (fill(1,64) * s⃗))
 
 	p⃗ = 1 .- prod(p,dims=2)
 
-	u⃗ = rand(64)
+	u⃗ = rand(64,1)
 
+	#dont know what to name this
 	rand_results = transpose(u⃗ .<= p⃗)
 
 	s⃗ᵗ⁺¹ = BitMatrix(s⃗).||rand_results
 
 	output = reshape(s⃗ᵗ⁺¹,initial_grid_size)
-	#Make it so that input and output are s⃗ and not a matrix
+
 	return output
-end
-
-# ╔═╡ 64e02837-8603-49f1-a18f-0b0391ccb430
-function simulate(seat_config, class_size, λ)
-	initial_class = initiate_grid(seat_config, class_size)
-	generations = [initial_class]
-	
-	steady_state = false
-	num_generations = 1
-	
-	while steady_state == false
-		
-			next_gen = generate_next_generation(generations[end],λ)		
-		
-		if next_gen == generations[end] 
-			#Identifying when steady state is reached should be changed for λ << 1 because there might be generations that don't change just by chance
-			steady_state = true
-			#println("steady state reached")
-			
-		else
-			push!(generations, next_gen)
-			num_generations = num_generations + 1
-			#println("generation: $(num_generations)")
-		end
-		
-	end
-
-	return generations, num_generations
-end
-
-# ╔═╡ 186b2799-ede3-46d1-825c-55e67a56f4d3
-function simulate(seat_config, class_size, λ, max_gen::Int)
-	initial_class = initiate_grid(seat_config, class_size)
-	generations = [initial_class]
-	
-	steady_state = false
-	num_generations = 1
-	
-	while num_generations < max_gen
-		
-		next_gen = generate_next_generation(generations[end],λ)
-		push!(generations, next_gen)
-		num_generations = num_generations + 1
-		
-	end
-
-	return generations, num_generations
 end
 
 # ╔═╡ 4c37d313-1a61-4352-9ae6-c91d138add70
 #main
 begin
-	class_size = 128
+	class_size = 8
+	initial_class = initiate_grid("inner_corner", class_size)
 
 	λ = Float64.( Matrix(
-	[ 	1 		1 		1;
-		1 		0 		1;
-		1 		1 		1]
+	[ 	0.5 		0.5 		0.5;
+		0.5 		0.0 		0.5;
+		0.5 		0.5 		0.5]
 ))
 
 	#Currently only works for square classrooms
-	#Λ = generate_neighbor_list(reshape(1:class_size^2,class_size,class_size),λ)
+	Λ = generate_neighbor_list(reshape(1:class_size^2,class_size,class_size),λ)
 
-	#output = generate_next_generation3(initial_class,Λ)
-
-	#Go until steady state
-	generations, num_generations = simulate("inner_corner",class_size,λ,100)
-	learned = map(x->sum(x), generations)
-
-	#Go until limit reached
-	#=
-	generations2, num_generations2 = simulate("inner_corner",class_size,λ,20)
-	learned2 = map(x->sum(x), generations2)
-	=#
-	
-	
+	output = generate_next_generation3(initial_class,Λ)
 end
 
-# ╔═╡ 8ba48ea5-dff9-4707-9230-cf0d2773fef7
-begin
-	circle_radii = 1:length(learned)
-	circle_area = 4 * (π .* circle_radii .^ 2)
-end
+# ╔═╡ 824dd823-18c2-42cb-a238-df2eade0ed5a
+generate_next_generation3(initial_class,Λ)
 
-# ╔═╡ c5b4fd60-cb59-494c-ae99-800bb6ddb893
-begin
-	default()
-	
-	hline([class_size^2], label="finite size effect cap", linestyles=:dash)
-	
-	plot!(learned, 
-		label = "Simulation",
-		legend =:topleft,
-		scale =:log10,
-		ylabel = "Number of learned (log₁₀)",
-		xlabel = "Generation number (log₁₀)",
-		dpi = 300,
-	)
-
-	plot!(circle_area,
-		label = "y = 4πx²"
-	)
-end
-
-# ╔═╡ df8e5d9f-f8cb-49dd-9156-a016ceee32dc
-md"
-### Getting the effective radius of the spreading from the simulation
-```math
-A = n \pi r^2
-```
-* where n is the number of seeds in the initial set up
-```math
-r = \sqrt{\frac{A}{n\pi}}
-```
-* where A is the number of learned per generation
-* r is the effective radius of the learned
----
-### Derivation
-```math
-A(r) = \pi r^2
-```
-```math
-\frac{\,dA}{\,dt} = k \cdot 2\pi r
-```
-```math
-\frac{\,d}{\,dt}(\pi r^2) = k \cdot C
-```
-```math
-2\pi r \cdot \dot{r} = k \cdot 2\pi r
-```
-```math
-\dot{r} = k
-```
-```math
-\therefore \text{the rate of expansion of the circle is constant}
-```
-"
-
-# ╔═╡ fbb39644-4521-44b7-9977-aee3fad519e8
-begin
-	effective_r = sqrt.(learned ./ (4*π))
-	plot(effective_r
-		, legend = false
-		, ylabel = "Effective radius"
-		, xlabel = "Generation count"
-		, title = "Growth of effective radius over each generation"
-		, dpi = 300
-	)
-end
-
-# ╔═╡ 25c26b82-9913-438b-9080-5ddb5cc0ffe0
-md"""
-# Testing
-"""
+# ╔═╡ 2b519268-a947-40e0-8818-75de7148fd41
+heatmap(output)
 
 # ╔═╡ 7ec1daf4-a1b1-4b9e-912f-123e35ffc866
-test_grid = initiate_grid("outer_corner",8)
+test_grid = initiate_grid("inner_corner",8)
 
 # ╔═╡ 29f8c82c-9bfc-456a-93ac-a4028887fb80
 test_λ = Float64.( Matrix(
@@ -414,13 +277,40 @@ test_λ = Float64.( Matrix(
 		1 		1 		1]
 ))
 
+# ╔═╡ 3f4efea6-526f-41f4-9416-6a4d19094f1e
+@benchmark generate_next_generation(initial_class,λ)
+
+# ╔═╡ 14140ee9-a968-46f5-865c-987a250073ae
+@benchmark generate_next_generation2(initial_class,Λ)
+
+# ╔═╡ 18f74419-f32b-4418-9e5a-d5846c9cf279
+@benchmark generate_next_generation3(initial_class,Λ)
+
+# ╔═╡ db01cf96-02aa-48ab-8077-831b08ea0dcb
+#=╠═╡
+test_adjacency_matrix = generate_neighbor_list(reshape(1:64,8,8),test_λ)
+  ╠═╡ =#
+
+# ╔═╡ 70bdc2eb-f29b-4953-bfbc-60617d98c79a
+#=╠═╡
+heatmap(test_adjacency_matrix, yflip=false, cbar=true, c=cgrad(:grays,rev=true), clims=(0,1))
+  ╠═╡ =#
+
+# ╔═╡ 7bd55f31-4804-4b83-846f-d6587df0d861
+#=╠═╡
+test_adjacency_matrix
+  ╠═╡ =#
+
+# ╔═╡ 2458c1ae-a1a2-4a96-a324-326ec003ad16
+#=╠═╡
+test_dict = Dict( [(student,test_adjacency_matrix[student,:]) for student in 1:size(test_adjacency_matrix)[1]])
+  ╠═╡ =#
+
 # ╔═╡ b4a2643b-38c6-4b20-8d24-4fc151aaf106
 md"
 ### Change log:
 #### May 24, 2023:
 * Added adjacency matrix method to generating the next generation. Slower than convolution. Maybe have better implementation of dictionaries. Make sure that you are multiplying matrices when using `.*`
-### May 31, 2023:
-* Added comments in `generate_next_generation3()` function for optimization. Also, can change the name to `next!()`
 "
 
 # ╔═╡ 0e6d9178-f9b7-48ca-b2cd-985f6ee2c21c
@@ -457,21 +347,23 @@ Other things:
 # ╠═20ca43a0-7499-4e6e-b5af-44a56b3f83c7
 # ╠═c54a1e59-e363-4567-b956-5b05ea26f172
 # ╠═520615ae-62e5-4482-8473-9027c12eed8f
-# ╠═8bf82d25-6643-4245-bee3-546c560708ef
+# ╟─8bf82d25-6643-4245-bee3-546c560708ef
 # ╟─caea6e08-89c4-429c-b850-3e91b026ba80
-# ╠═4b621695-f682-4bb8-b9d0-17284457e040
+# ╟─4b621695-f682-4bb8-b9d0-17284457e040
 # ╠═6680e9cb-40e7-47c3-8c34-cf8a7df1e323
 # ╠═0dbd7206-cf15-40d4-b520-36455a048a6d
 # ╠═31d1deea-ba04-4b88-92c5-14cbe4733a6d
-# ╠═64e02837-8603-49f1-a18f-0b0391ccb430
-# ╠═186b2799-ede3-46d1-825c-55e67a56f4d3
+# ╠═824dd823-18c2-42cb-a238-df2eade0ed5a
 # ╠═4c37d313-1a61-4352-9ae6-c91d138add70
-# ╠═c5b4fd60-cb59-494c-ae99-800bb6ddb893
-# ╠═8ba48ea5-dff9-4707-9230-cf0d2773fef7
-# ╟─df8e5d9f-f8cb-49dd-9156-a016ceee32dc
-# ╠═fbb39644-4521-44b7-9977-aee3fad519e8
-# ╟─25c26b82-9913-438b-9080-5ddb5cc0ffe0
+# ╠═2b519268-a947-40e0-8818-75de7148fd41
 # ╠═7ec1daf4-a1b1-4b9e-912f-123e35ffc866
 # ╠═29f8c82c-9bfc-456a-93ac-a4028887fb80
+# ╠═3f4efea6-526f-41f4-9416-6a4d19094f1e
+# ╠═14140ee9-a968-46f5-865c-987a250073ae
+# ╠═18f74419-f32b-4418-9e5a-d5846c9cf279
+# ╠═db01cf96-02aa-48ab-8077-831b08ea0dcb
+# ╠═70bdc2eb-f29b-4953-bfbc-60617d98c79a
+# ╠═7bd55f31-4804-4b83-846f-d6587df0d861
+# ╠═2458c1ae-a1a2-4a96-a324-326ec003ad16
 # ╟─b4a2643b-38c6-4b20-8d24-4fc151aaf106
 # ╟─0e6d9178-f9b7-48ca-b2cd-985f6ee2c21c

@@ -1,0 +1,33 @@
+% !TEX root =  main.tex
+\chapter{Another Customized Chapter}
+
+In this chapter, a sample for making equations and sub-equations
+are demonstrated.
+
+\section{Equations and sub-equations}
+
+\hspace{\parindent} In the following, a set of equations is shown.
+\begin{subequations}
+\newcommand\del{\overrightarrow{\nabla}}
+\begin{equation}\label{eq:EGauss}
+    \del \cdot \vec{D} = \rho
+\end{equation}
+\begin{equation}\label{eq:BGauss}
+    \del \cdot \vec{B} = 0
+\end{equation}
+\begin{equation}\label{eq:Faraday}
+    \del \times \vec{E} = -\partial_t \vec{B}
+\end{equation}
+The last one being
+\begin{equation}\label{eq:Ampere-Maxwell}
+    \del \times \vec{H} = \vec{J} + \partial_t \vec{D}
+\end{equation}
+\end{subequations}
+Note that text can still be placed between sub-equations within
+the \verb+subequations+ environment.
+
+When using a solitary equations, you may use the usual equation
+syntax in \LaTeX.
+\begin{equation}\label{eq:Maxwell}
+    E = mc^2
+\end{equation}
