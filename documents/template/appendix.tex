@@ -1,0 +1,57 @@
+% !TEX root =  main.tex
+\chapter{Sample appendix}
+
+This gives an example of an appendix chapter.  Note that this file
+has been included \textbf{after} the line \verb+\appendix+ in
+\verb+main.tex+.
+
+\section{Equations in appendix}
+
+\hspace{\parindent} You don't need to worry about equations within
+the appendix since \LaTeX automatically formats the equation
+numbers for you. For example,
+\begin{equation}\label{eq:appendixEqn}
+    c^2 = a^2 + b^2
+\end{equation}
+becomes the Pythagorian theorem where $c$ is the length of the
+longest side of any right triangle.
+
+\section{Codes as appendix}
+
+\hspace{\parindent}Include your codes when necessary to your
+thesis/dissertation. To do this, you may use \verb+verbatim+
+environment as follows. \textbf{WARNING:} All verbatim and
+verbatiminput environments should always be treated as a separate
+paragraph.  When included in a text paragraph, it sometimes happen
+to reduce the 1.5 spacing to the usual single-spaced text.
+
+{\small
+\begin{verbatim}
+ #include <iostream>
+ using std::cout;
+ using std::endl;
+
+ int main( void )
+ {
+    cout << "Hello world!" << endl;
+    return 0;
+ }
+\end{verbatim}
+}
+
+The \verb+{\small }+ bracketed region is used to lower the font
+size of the entire verbatim text.  This will save you much space
+and give a more aesthetical look in your manuscript.
+
+On the other hand, when very long codes are wished to be included
+automatically without the tedious cut and paste procedure, you may
+include them using the \verb+\verbatiminput+ command as follows.
+You may want to include a short description of the code of course.
+
+{\small
+ \verbatiminput{"codes/newC.cpp"}
+}
+
+This time, you may just include your recent codes by just
+copy-paste-ing the codes (as long they are clean!) into the
+directory \verb$codes/$ in the directory where this file is saved.

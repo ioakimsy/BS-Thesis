@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.27
+# v0.19.26
 
 using Markdown
 using InteractiveUtils
@@ -11,11 +11,13 @@ begin
 end
 
 # ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+#=╠═╡
 begin
 	Pkg.add("Plots")
 	Pkg.add("Random")
 	Pkg.add("BenchmarkTools")
 end
+  ╠═╡ =#
 
 # ╔═╡ c54a1e59-e363-4567-b956-5b05ea26f172
 begin
@@ -251,57 +253,23 @@ function generate_next_generation3(initial_grid::Array{Int},Λ::Array{Float64})
 	return output
 end
 
-# ╔═╡ 64e02837-8603-49f1-a18f-0b0391ccb430
-function simulate(seat_config, class_size, λ)
-	initial_class = initiate_grid(seat_config, class_size)
-	generations = [initial_class]
-	
-	steady_state = false
-	num_generations = 1
-	
-	while steady_state == false
-		
-			next_gen = generate_next_generation(generations[end],λ)		
-		
-		if next_gen == generations[end] 
-			#Identifying when steady state is reached should be changed for λ << 1 because there might be generations that don't change just by chance
-			steady_state = true
-			#println("steady state reached")
-			
-		else
-			push!(generations, next_gen)
-			num_generations = num_generations + 1
-			#println("generation: $(num_generations)")
-		end
-		
-	end
+# ╔═╡ 6346ca3e-1477-4e16-9852-f67015d8bf37
+size(rand(64))
 
-	return generations, num_generations
-end
+# ╔═╡ 14144a95-0159-4642-b5cd-3a59a5a5d6e2
+typeof(ones(64))
 
-# ╔═╡ 186b2799-ede3-46d1-825c-55e67a56f4d3
-function simulate(seat_config, class_size, λ, max_gen::Int)
-	initial_class = initiate_grid(seat_config, class_size)
-	generations = [initial_class]
-	
-	steady_state = false
-	num_generations = 1
-	
-	while num_generations < max_gen
-		
-		next_gen = generate_next_generation(generations[end],λ)
-		push!(generations, next_gen)
-		num_generations = num_generations + 1
-		
-	end
+# ╔═╡ 438e582b-9114-4eb7-8a17-f744b5ed28c9
+typeof(fill(1,64))
 
-	return generations, num_generations
-end
+# ╔═╡ 6e1c2707-69a7-4f93-9eaf-2d9e2ed7dc25
+size(rand(64,1))
 
 # ╔═╡ 4c37d313-1a61-4352-9ae6-c91d138add70
 #main
 begin
-	class_size = 128
+	class_size = 8
+	initial_class = initiate_grid("inner_corner", class_size)
 
 	λ = Float64.( Matrix(
 	[ 	1 		1 		1;
@@ -310,102 +278,22 @@ begin
 ))
 
 	#Currently only works for square classrooms
-	#Λ = generate_neighbor_list(reshape(1:class_size^2,class_size,class_size),λ)
+	Λ = generate_neighbor_list(reshape(1:class_size^2,class_size,class_size),λ)
 
-	#output = generate_next_generation3(initial_class,Λ)
-
-	#Go until steady state
-	generations, num_generations = simulate("inner_corner",class_size,λ,100)
-	learned = map(x->sum(x), generations)
-
-	#Go until limit reached
-	#=
-	generations2, num_generations2 = simulate("inner_corner",class_size,λ,20)
-	learned2 = map(x->sum(x), generations2)
-	=#
-	
-	
+	output = generate_next_generation3(initial_class,Λ)
 end
 
-# ╔═╡ 8ba48ea5-dff9-4707-9230-cf0d2773fef7
-begin
-	circle_radii = 1:length(learned)
-	circle_area = 4 * (π .* circle_radii .^ 2)
-end
+# ╔═╡ 824dd823-18c2-42cb-a238-df2eade0ed5a
+generate_next_generation3(initial_class,Λ)
 
-# ╔═╡ c5b4fd60-cb59-494c-ae99-800bb6ddb893
-begin
-	default()
-	
-	hline([class_size^2], label="finite size effect cap", linestyles=:dash)
-	
-	plot!(learned, 
-		label = "Simulation",
-		legend =:topleft,
-		scale =:log10,
-		ylabel = "Number of learned (log₁₀)",
-		xlabel = "Generation number (log₁₀)",
-		dpi = 300,
-	)
+# ╔═╡ 0630e8b9-c1a3-423a-b45e-5fa247829cca
+heatmap(Λ)
 
-	plot!(circle_area,
-		label = "y = 4πx²"
-	)
-end
-
-# ╔═╡ df8e5d9f-f8cb-49dd-9156-a016ceee32dc
-md"
-### Getting the effective radius of the spreading from the simulation
-```math
-A = n \pi r^2
-```
-* where n is the number of seeds in the initial set up
-```math
-r = \sqrt{\frac{A}{n\pi}}
-```
-* where A is the number of learned per generation
-* r is the effective radius of the learned
----
-### Derivation
-```math
-A(r) = \pi r^2
-```
-```math
-\frac{\,dA}{\,dt} = k \cdot 2\pi r
-```
-```math
-\frac{\,d}{\,dt}(\pi r^2) = k \cdot C
-```
-```math
-2\pi r \cdot \dot{r} = k \cdot 2\pi r
-```
-```math
-\dot{r} = k
-```
-```math
-\therefore \text{the rate of expansion of the circle is constant}
-```
-"
-
-# ╔═╡ fbb39644-4521-44b7-9977-aee3fad519e8
-begin
-	effective_r = sqrt.(learned ./ (4*π))
-	plot(effective_r
-		, legend = false
-		, ylabel = "Effective radius"
-		, xlabel = "Generation count"
-		, title = "Growth of effective radius over each generation"
-		, dpi = 300
-	)
-end
-
-# ╔═╡ 25c26b82-9913-438b-9080-5ddb5cc0ffe0
-md"""
-# Testing
-"""
+# ╔═╡ 2b519268-a947-40e0-8818-75de7148fd41
+heatmap(output)
 
 # ╔═╡ 7ec1daf4-a1b1-4b9e-912f-123e35ffc866
-test_grid = initiate_grid("outer_corner",8)
+test_grid = initiate_grid("inner_corner",8)
 
 # ╔═╡ 29f8c82c-9bfc-456a-93ac-a4028887fb80
 test_λ = Float64.( Matrix(
@@ -413,6 +301,21 @@ test_λ = Float64.( Matrix(
 		1 		0 		1;
 		1 		1 		1]
 ))
+
+# ╔═╡ 3f4efea6-526f-41f4-9416-6a4d19094f1e
+@benchmark generate_next_generation(initial_class,λ)
+
+# ╔═╡ 14140ee9-a968-46f5-865c-987a250073ae
+@benchmark generate_next_generation2(initial_class,Λ)
+
+# ╔═╡ 18f74419-f32b-4418-9e5a-d5846c9cf279
+@benchmark generate_next_generation3(initial_class,Λ)
+
+# ╔═╡ b6e40311-2cce-4d2e-b4ac-28947a4ae990
+@benchmark 1 .- rand(64,64)
+
+# ╔═╡ db56837b-bc32-44af-b42a-e1e37f693dd4
+@benchmark ones(64,64) - rand(64,64)
 
 # ╔═╡ b4a2643b-38c6-4b20-8d24-4fc151aaf106
 md"
@@ -463,15 +366,20 @@ Other things:
 # ╠═6680e9cb-40e7-47c3-8c34-cf8a7df1e323
 # ╠═0dbd7206-cf15-40d4-b520-36455a048a6d
 # ╠═31d1deea-ba04-4b88-92c5-14cbe4733a6d
-# ╠═64e02837-8603-49f1-a18f-0b0391ccb430
-# ╠═186b2799-ede3-46d1-825c-55e67a56f4d3
+# ╠═6346ca3e-1477-4e16-9852-f67015d8bf37
+# ╠═14144a95-0159-4642-b5cd-3a59a5a5d6e2
+# ╠═438e582b-9114-4eb7-8a17-f744b5ed28c9
+# ╠═6e1c2707-69a7-4f93-9eaf-2d9e2ed7dc25
+# ╠═824dd823-18c2-42cb-a238-df2eade0ed5a
+# ╠═0630e8b9-c1a3-423a-b45e-5fa247829cca
 # ╠═4c37d313-1a61-4352-9ae6-c91d138add70
-# ╠═c5b4fd60-cb59-494c-ae99-800bb6ddb893
-# ╠═8ba48ea5-dff9-4707-9230-cf0d2773fef7
-# ╟─df8e5d9f-f8cb-49dd-9156-a016ceee32dc
-# ╠═fbb39644-4521-44b7-9977-aee3fad519e8
-# ╟─25c26b82-9913-438b-9080-5ddb5cc0ffe0
+# ╠═2b519268-a947-40e0-8818-75de7148fd41
 # ╠═7ec1daf4-a1b1-4b9e-912f-123e35ffc866
 # ╠═29f8c82c-9bfc-456a-93ac-a4028887fb80
-# ╟─b4a2643b-38c6-4b20-8d24-4fc151aaf106
+# ╠═3f4efea6-526f-41f4-9416-6a4d19094f1e
+# ╠═14140ee9-a968-46f5-865c-987a250073ae
+# ╠═18f74419-f32b-4418-9e5a-d5846c9cf279
+# ╠═b6e40311-2cce-4d2e-b4ac-28947a4ae990
+# ╠═db56837b-bc32-44af-b42a-e1e37f693dd4
+# ╠═b4a2643b-38c6-4b20-8d24-4fc151aaf106
 # ╟─0e6d9178-f9b7-48ca-b2cd-985f6ee2c21c
