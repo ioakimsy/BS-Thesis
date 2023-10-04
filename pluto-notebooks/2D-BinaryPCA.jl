@@ -302,12 +302,25 @@ end
 #main
 begin
 	class_size = 128
-
+	max_generations = 50
+	
+	λ₀ = 1
+	
+	#=
+	
 	λ = Float64.( Matrix(
 	[ 	1 		1 		1;
 		1 		0 		1;
 		1 		1 		1]
-))
+	))
+	
+	=#
+	
+	λ = Float64.( Matrix(
+	[ 	λ₀ 		λ₀ 		λ₀;
+		λ₀ 		0 		λ₀;
+		λ₀ 		λ₀ 		λ₀]
+	))
 
 	#Currently only works for square classrooms
 	#Λ = generate_neighbor_list(reshape(1:class_size^2,class_size,class_size),λ)
@@ -315,7 +328,7 @@ begin
 	#output = generate_next_generation3(initial_class,Λ)
 
 	#Go until steady state
-	generations, num_generations = simulate("inner_corner",class_size,λ,100)
+	generations, num_generations = simulate("inner_corner",class_size,λ,max_generations)
 	learned = map(x->sum(x), generations)
 
 	#Go until limit reached
@@ -342,10 +355,14 @@ begin
 	plot!(learned, 
 		label = "Simulation",
 		legend =:topleft,
-		scale =:log10,
-		ylabel = "Number of learned (log₁₀)",
-		xlabel = "Generation number (log₁₀)",
+		#scale =:log10,
+		ylabel = "Number of learned",
+		xlabel = "Generation number",
+		#ylabel = "Number of learned (log₁₀)",
+		#xlabel = "Generation number (log₁₀)",
 		dpi = 300,
+		minorticks = true,
+		minorgrid = true
 	)
 
 	plot!(circle_area,
@@ -389,7 +406,8 @@ A(r) = \pi r^2
 
 # ╔═╡ fbb39644-4521-44b7-9977-aee3fad519e8
 begin
-	effective_r = sqrt.(learned ./ (4*π))
+	circle_multiplier = sum(generations[1])
+	effective_r = sqrt.(learned ./ (circle_multiplier*π))
 	plot(effective_r
 		, legend = false
 		, ylabel = "Effective radius"
@@ -458,16 +476,16 @@ Other things:
 # ╠═c54a1e59-e363-4567-b956-5b05ea26f172
 # ╠═520615ae-62e5-4482-8473-9027c12eed8f
 # ╠═8bf82d25-6643-4245-bee3-546c560708ef
-# ╟─caea6e08-89c4-429c-b850-3e91b026ba80
-# ╠═4b621695-f682-4bb8-b9d0-17284457e040
-# ╠═6680e9cb-40e7-47c3-8c34-cf8a7df1e323
-# ╠═0dbd7206-cf15-40d4-b520-36455a048a6d
-# ╠═31d1deea-ba04-4b88-92c5-14cbe4733a6d
+# ╠═caea6e08-89c4-429c-b850-3e91b026ba80
+# ╟─4b621695-f682-4bb8-b9d0-17284457e040
+# ╟─6680e9cb-40e7-47c3-8c34-cf8a7df1e323
+# ╟─0dbd7206-cf15-40d4-b520-36455a048a6d
+# ╟─31d1deea-ba04-4b88-92c5-14cbe4733a6d
 # ╠═64e02837-8603-49f1-a18f-0b0391ccb430
 # ╠═186b2799-ede3-46d1-825c-55e67a56f4d3
 # ╠═4c37d313-1a61-4352-9ae6-c91d138add70
-# ╠═c5b4fd60-cb59-494c-ae99-800bb6ddb893
 # ╠═8ba48ea5-dff9-4707-9230-cf0d2773fef7
+# ╠═c5b4fd60-cb59-494c-ae99-800bb6ddb893
 # ╟─df8e5d9f-f8cb-49dd-9156-a016ceee32dc
 # ╠═fbb39644-4521-44b7-9977-aee3fad519e8
 # ╟─25c26b82-9913-438b-9080-5ddb5cc0ffe0
