@@ -10,13 +10,6 @@ begin
 	Pkg.activate(".")
 end
 
-# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
-begin
-	Pkg.add("Plots")
-	Pkg.add("Random")
-	Pkg.add("BenchmarkTools")
-end
-
 # ╔═╡ c54a1e59-e363-4567-b956-5b05ea26f172
 begin
 	using Random
@@ -36,6 +29,16 @@ md"""
 md"""
 ## Setting up packages
 """
+
+# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+# ╠═╡ disabled = true
+#=╠═╡
+begin
+	Pkg.add("Plots")
+	Pkg.add("Random")
+	Pkg.add("BenchmarkTools")
+end
+  ╠═╡ =#
 
 # ╔═╡ 520615ae-62e5-4482-8473-9027c12eed8f
 default(aspect_ratio=:equal,
@@ -252,30 +255,30 @@ function generate_next_generation3(initial_grid::Array{Int},Λ::Array{Float64})
 end
 
 # ╔═╡ 64e02837-8603-49f1-a18f-0b0391ccb430
-function simulate(seat_config, class_size, λ)
+function simulate_steady_state(seat_config, class_size, λ, steady_state_tolerance)
 	initial_class = initiate_grid(seat_config, class_size)
 	generations = [initial_class]
 	
 	steady_state = false
 	num_generations = 1
-	
+
 	while steady_state == false
-		
-			next_gen = generate_next_generation(generations[end],λ)		
-		
-		if next_gen == generations[end] 
-			#Identifying when steady state is reached should be changed for λ << 1 because there might be generations that don't change just by chance
-			steady_state = true
-			#println("steady state reached")
-			
-		else
+			next_gen = generate_next_generation(generations[end],λ)	
 			push!(generations, next_gen)
 			num_generations = num_generations + 1
-			#println("generation: $(num_generations)")
+		
+		if generations[end] == generations[max(1,length(generations)-steady_state_tolerance)] 
+			#Identifying when steady state is reached should be changed for λ << 1 because there might be generations that don't change just by chance
+			steady_state = true
+			#print("steady state")
 		end
 		
 	end
 
+	generations = generations[begin:end-steady_state_tolerance-1]
+
+	num_generations = length(generations)
+	
 	return generations, num_generations
 end
 
@@ -292,10 +295,16 @@ function simulate(seat_config, class_size, λ, max_gen::Int)
 		next_gen = generate_next_generation(generations[end],λ)
 		push!(generations, next_gen)
 		num_generations = num_generations + 1
+		print(num_generations)
 		
 	end
 
 	return generations, num_generations
+end
+
+# ╔═╡ da8c68a1-a62a-4f49-a500-e58cced203d9
+function class_simulation(size, seat_config, Λ,)
+
 end
 
 # ╔═╡ 4c37d313-1a61-4352-9ae6-c91d138add70
@@ -305,17 +314,7 @@ begin
 	max_generations = 50
 	
 	λ₀ = 1
-	
-	#=
-	
-	λ = Float64.( Matrix(
-	[ 	1 		1 		1;
-		1 		0 		1;
-		1 		1 		1]
-	))
-	
-	=#
-	
+
 	λ = Float64.( Matrix(
 	[ 	λ₀ 		λ₀ 		λ₀;
 		λ₀ 		0 		λ₀;
@@ -328,7 +327,7 @@ begin
 	#output = generate_next_generation3(initial_class,Λ)
 
 	#Go until steady state
-	generations, num_generations = simulate("inner_corner",class_size,λ,max_generations)
+	generations, num_generations = simulate_steady_state("inner_corner",class_size,λ,1)
 	learned = map(x->sum(x), generations)
 
 	#Go until limit reached
@@ -339,6 +338,9 @@ begin
 	
 	
 end
+
+# ╔═╡ 60e451a2-d9c6-4903-8e93-07d2854a420a
+length(generations)
 
 # ╔═╡ 8ba48ea5-dff9-4707-9230-cf0d2773fef7
 begin
@@ -482,8 +484,10 @@ Other things:
 # ╟─0dbd7206-cf15-40d4-b520-36455a048a6d
 # ╟─31d1deea-ba04-4b88-92c5-14cbe4733a6d
 # ╠═64e02837-8603-49f1-a18f-0b0391ccb430
-# ╠═186b2799-ede3-46d1-825c-55e67a56f4d3
+# ╟─186b2799-ede3-46d1-825c-55e67a56f4d3
+# ╠═da8c68a1-a62a-4f49-a500-e58cced203d9
 # ╠═4c37d313-1a61-4352-9ae6-c91d138add70
+# ╠═60e451a2-d9c6-4903-8e93-07d2854a420a
 # ╠═8ba48ea5-dff9-4707-9230-cf0d2773fef7
 # ╠═c5b4fd60-cb59-494c-ae99-800bb6ddb893
 # ╟─df8e5d9f-f8cb-49dd-9156-a016ceee32dc
