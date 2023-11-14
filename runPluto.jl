@@ -1,1 +1,0 @@
-cd("C:/School/BS Thesis"); using Pluto; Pluto.run()

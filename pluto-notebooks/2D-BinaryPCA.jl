@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.27
+# v0.19.32
 
 using Markdown
 using InteractiveUtils
@@ -9,19 +9,6 @@ begin
 	using Pkg
 	Pkg.activate(".")
 end
-
-# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
-# ╠═╡ disabled = true
-#=╠═╡
-begin
-	Pkg.add("Plots")
-	Pkg.add("Random")
-	Pkg.add("BenchmarkTools")
-	Pkg.add("CurveFit")
-	Pkg.add("DataFrames")
-	Pkg.add("CSV")
-end
-  ╠═╡ =#
 
 # ╔═╡ c54a1e59-e363-4567-b956-5b05ea26f172
 begin
@@ -51,6 +38,19 @@ md"""
 md"""
 ## Setting up packages
 """
+
+# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+# ╠═╡ disabled = true
+#=╠═╡
+begin
+	Pkg.add("Plots")
+	Pkg.add("Random")
+	Pkg.add("BenchmarkTools")
+	Pkg.add("CurveFit")
+	Pkg.add("DataFrames")
+	Pkg.add("CSV")
+end
+  ╠═╡ =#
 
 # ╔═╡ 33b8010b-e92a-4a8e-a738-5441a2371119
 # ╠═╡ disabled = true
@@ -352,7 +352,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 	
 		# row = ith student; column = jth generation
 		student_states_df = DataFrame(df_data,df_cols)
-		CSV.write("test_data.csv",student_states_df)
+		CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-data.csv",student_states_df)
 
 		learned = map(x->sum(x), generations)
 
@@ -377,13 +377,13 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 		end
 		poly_vals = sum(poly_vals)
 
-		#Writing parameters to CSV file
+		#Writing parameters to CSV file; will break if length of generation is longer than length of fit coeffs - fixable
 		fit_params_df = DataFrame(learned_per_gen=learned,
 			power_fit=[power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
 			polynomial_fit=[poly_coeffs...; [missing for _ in 1:length(learned)-length(poly_coeffs)]],
 		)
 
-		CSV.write("test_fit_params.csv", fit_params_df)
+		CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-fit_params.csv", fit_params_df)
 
 		# plotting per set of parameters
 		class_plots = []
@@ -435,7 +435,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 				dpi = 300
 			)
 
-			#savefig(class_plot,"filepath.png")
+			savefig(class_plot,"./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/images/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-$(i).png")
 			push!(class_plots, class_plot)
 		end
 	
@@ -443,19 +443,30 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 			plot(class_plots[i])
 		end
 	
-		gif(anim, "test_animation.gif", fps = 16)	
+		mp4(anim, "./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-animation.mp4", fps = 16)	
 	end
 end
 
 # ╔═╡ 9def329a-c1fd-4dd2-869d-1d61c6fb425d
 begin #main
+	# List of parameters
 	sizes = [128]
-	seat_arrangement_list = ["inner_corner"]
+	seat_configs = ["inner_corner"]
 	Λs = [0.25]
 	steady_state_tolerance = 10
 
+	# Making the directories
+	folders = ["images","data"]
+	for seat_config in seat_configs, 
+		size in sizes, 
+		λ in Λs, 
+		folder in folders
+		
+		mkpath("./../output/2D-Binary-PCA/$(seat_config)-$(size)/$(λ)/$(folder)")
+	end
+	
 	class_simulation(sizes,
-		seat_arrangement_list,
+		seat_configs,
 		Λs,
 		steady_state_tolerance
 	)
