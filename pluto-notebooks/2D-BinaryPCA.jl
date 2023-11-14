@@ -10,14 +10,36 @@ begin
 	Pkg.activate(".")
 end
 
+# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+# ╠═╡ disabled = true
+#=╠═╡
+begin
+	Pkg.add("Plots")
+	Pkg.add("Random")
+	Pkg.add("BenchmarkTools")
+	Pkg.add("CurveFit")
+	Pkg.add("DataFrames")
+	Pkg.add("CSV")
+end
+  ╠═╡ =#
+
 # ╔═╡ c54a1e59-e363-4567-b956-5b05ea26f172
 begin
 	using Random
 	println("Random")
 	using Plots
+	using Plots.PlotMeasures
 	println("Plots")
 	using BenchmarkTools
 	println("Benchmark tools")
+	using CurveFit
+	println("CurveFit")
+	using DataFrames
+	println("DataFrames")
+	using DelimitedFiles
+	println("DelimatedFiles")
+	using CSV
+	println("CSV")
 end
 
 # ╔═╡ a5ae8b1a-2249-4266-8dd3-7e6a45e637f3
@@ -30,14 +52,10 @@ md"""
 ## Setting up packages
 """
 
-# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+# ╔═╡ 33b8010b-e92a-4a8e-a738-5441a2371119
 # ╠═╡ disabled = true
 #=╠═╡
-begin
-	Pkg.add("Plots")
-	Pkg.add("Random")
-	Pkg.add("BenchmarkTools")
-end
+Pkg.update()
   ╠═╡ =#
 
 # ╔═╡ 520615ae-62e5-4482-8473-9027c12eed8f
@@ -256,6 +274,7 @@ end
 
 # ╔═╡ 64e02837-8603-49f1-a18f-0b0391ccb430
 function simulate_steady_state(seat_config, class_size, λ, steady_state_tolerance)
+	# Simulate until reaching a steady state given some steady state tolerance
 	initial_class = initiate_grid(seat_config, class_size)
 	generations = [initial_class]
 	
@@ -275,7 +294,7 @@ function simulate_steady_state(seat_config, class_size, λ, steady_state_toleran
 		
 	end
 
-	generations = generations[begin:end-steady_state_tolerance-1]
+	generations = generations[begin:end-steady_state_tolerance]
 
 	num_generations = length(generations)
 	
@@ -284,6 +303,7 @@ end
 
 # ╔═╡ 186b2799-ede3-46d1-825c-55e67a56f4d3
 function simulate(seat_config, class_size, λ, max_gen::Int)
+	#Simulates the classroom until a set amount of generations
 	initial_class = initiate_grid(seat_config, class_size)
 	generations = [initial_class]
 	
@@ -303,74 +323,156 @@ function simulate(seat_config, class_size, λ, max_gen::Int)
 end
 
 # ╔═╡ da8c68a1-a62a-4f49-a500-e58cced203d9
-function class_simulation(size, seat_config, Λ,)
+function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int)
+	
+	# seat config in string (eg. "outer_corners")
+	# Λ is the uniform spread probability
 
+	l = @layout [
+			a{0.75h}
+			b{}
+		]
+
+	for seat_config in seat_configs, λ₀ in Λs, class_size in sizes
+		λ = Float64.( Matrix(
+		[ 	λ₀ 		λ₀ 		λ₀;
+			λ₀ 		0 		λ₀;
+			λ₀ 		λ₀ 		λ₀]
+		))
+
+		generations, num_generations = simulate_steady_state(seat_config, class_size, λ, steady_state_tolerance)
+
+		# Saving raw data
+		df_cols = ["Generation $(i)" for i in 1:length(generations)]
+		df_data = vec.(generations)
+		
+		# df_data -> student number -> student state at generation
+		# state per student over time
+		#df_data = [[df_data[g][s] for g in 1:length(df_data)] for s in 1:class_size^2]
+	
+		# row = ith student; column = jth generation
+		student_states_df = DataFrame(df_data,df_cols)
+		CSV.write("test_data.csv",student_states_df)
+
+		learned = map(x->sum(x), generations)
+
+		#Set up in case need to truncate outliers
+		learned_y = learned[1:end]
+		generation_domain = 1:length(learned_y)
+
+		#axᵇ
+		power_coeffs = power_fit(generation_domain, learned_y)
+		power_vals = power_coeffs[1] .* generation_domain .^ power_coeffs[2]
+
+		#aeᵇˣ
+		#exp_coeffs = exp_fit(generation_domain, learned_y)
+		#exp_vals = exp_coeffs[1] .* exp.(exp_coeffs[2].*generation_domain)
+
+		#polynomial function
+		poly_terms = 4 #How many terms to consider in polynomial function
+		poly_coeffs = poly_fit(generation_domain, learned_y, poly_terms)
+		poly_vals = []
+		for i in 1:poly_terms
+			push!(poly_vals,poly_coeffs[i] .* generation_domain .^ (i-1))
+		end
+		poly_vals = sum(poly_vals)
+
+		#Writing parameters to CSV file
+		fit_params_df = DataFrame(learned_per_gen=learned,
+			power_fit=[power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
+			polynomial_fit=[poly_coeffs...; [missing for _ in 1:length(learned)-length(poly_coeffs)]],
+		)
+
+		CSV.write("test_fit_params.csv", fit_params_df)
+
+		# plotting per set of parameters
+		class_plots = []
+		default()
+
+		# Generating each frame
+		for i in 1:num_generations
+			class_plot = heatmap(generations[i], 
+				title = "Classroom over time \n λ=$(λ₀) \n size: $(class_size)",
+				aspect_ratio=:equal,
+				cbar = true,
+				showaxis = false,
+				c = palette(:grays,rev=true),
+				size = (512,512),
+				yflip=true,
+				dpi = 300,
+				axis=([], false)
+			)
+	
+			learned_plot = scatter(learned, legend=:topleft,
+				xlabel = "Generations",
+				ylabel = "Number of learned",
+				title = "Learned over time",
+				label = "Learned students",
+				legend_font_pointsizes = 5,
+				yrot = 0,
+				ytickfontsize = 4,
+				dpi = 300,
+				leftmargin = 5mm,
+				rightmargin = 5mm,
+				markersize = 3
+			)
+	
+			learned_plot = vline!([i], label = "Current generation: $(i)")
+	
+			learned_plot = plot!(power_vals, 
+				label="Power fit: $(round(power_coeffs[1], digits=2))⋅x^$(round(power_coeffs[2],digits=2))"
+			)
+	
+			#learned_plot = plot!(exp_vals)
+	
+			learned_plot = plot!(poly_vals,
+				label = "Polynomial fit: $(round.(poly_coeffs,digits=2))"
+			)
+		
+			class_plot = plot(class_plot,learned_plot, 
+				layout = l,
+				size=(512,512/0.75),
+				dpi = 300
+			)
+
+			#savefig(class_plot,"filepath.png")
+			push!(class_plots, class_plot)
+		end
+	
+		anim = @animate for i in 1:num_generations
+			plot(class_plots[i])
+		end
+	
+		gif(anim, "test_animation.gif", fps = 16)	
+	end
 end
 
-# ╔═╡ 4c37d313-1a61-4352-9ae6-c91d138add70
-#main
-begin
-	class_size = 128
-	max_generations = 50
-	
-	λ₀ = 1
+# ╔═╡ 9def329a-c1fd-4dd2-869d-1d61c6fb425d
+begin #main
+	sizes = [128]
+	seat_arrangement_list = ["inner_corner"]
+	Λs = [0.25]
+	steady_state_tolerance = 10
 
-	λ = Float64.( Matrix(
-	[ 	λ₀ 		λ₀ 		λ₀;
-		λ₀ 		0 		λ₀;
-		λ₀ 		λ₀ 		λ₀]
-	))
-
-	#Currently only works for square classrooms
-	#Λ = generate_neighbor_list(reshape(1:class_size^2,class_size,class_size),λ)
-
-	#output = generate_next_generation3(initial_class,Λ)
-
-	#Go until steady state
-	generations, num_generations = simulate_steady_state("inner_corner",class_size,λ,1)
-	learned = map(x->sum(x), generations)
-
-	#Go until limit reached
-	#=
-	generations2, num_generations2 = simulate("inner_corner",class_size,λ,20)
-	learned2 = map(x->sum(x), generations2)
-	=#
-	
-	
-end
-
-# ╔═╡ 60e451a2-d9c6-4903-8e93-07d2854a420a
-length(generations)
-
-# ╔═╡ 8ba48ea5-dff9-4707-9230-cf0d2773fef7
-begin
-	circle_radii = 1:length(learned)
-	circle_area = 4 * (π .* circle_radii .^ 2)
-end
-
-# ╔═╡ c5b4fd60-cb59-494c-ae99-800bb6ddb893
-begin
-	default()
-	
-	hline([class_size^2], label="finite size effect cap", linestyles=:dash)
-	
-	plot!(learned, 
-		label = "Simulation",
-		legend =:topleft,
-		#scale =:log10,
-		ylabel = "Number of learned",
-		xlabel = "Generation number",
-		#ylabel = "Number of learned (log₁₀)",
-		#xlabel = "Generation number (log₁₀)",
-		dpi = 300,
-		minorticks = true,
-		minorgrid = true
+	class_simulation(sizes,
+		seat_arrangement_list,
+		Λs,
+		steady_state_tolerance
 	)
-
-	plot!(circle_area,
-		label = "y = 4πx²"
-	)
+	
 end
+
+# ╔═╡ 1716999b-c986-4bfc-a249-6eeb22182b96
+md"
+### Curve fit parameters:
+- We use the Linear Least Square (method?) to find the coefficients via `CurveFit.jl`
+- For powerfit `power_fit(x, y)`: find coefficient a and b
+$y_i=ax_i^b$
+- For sum of exponential fit `expsum_fit(x, y, 2, withconst = true)`: finds coefficients k, p and λ
+$y_i = k + p_1\cdot\exp{(λ_1 \cdot x_i)} + p_2 \cdot \exp{(\lambda_2 \cdot x_i)}$
+- polynomial fit `polyfit(x,y,n)`: finds coefficient a[k]
+$y_i = a_1 + a_2 \cdot x_i + a_3 \cdot x_i^2 + ... + a_{n+1} \cdot x_i^n$
+"
 
 # ╔═╡ df8e5d9f-f8cb-49dd-9156-a016ceee32dc
 md"
@@ -406,10 +508,86 @@ A(r) = \pi r^2
 ```
 "
 
+# ╔═╡ 25c26b82-9913-438b-9080-5ddb5cc0ffe0
+md"""
+# Testing
+"""
+
+# ╔═╡ d40d6b87-0dc9-4078-81b7-8b6bb81a43c1
+md"""
+## Calculations
+"""
+
+# ╔═╡ 4c37d313-1a61-4352-9ae6-c91d138add70
+#calculations scratch
+begin
+	class_size = 128
+	max_generations = 50
+	
+	λ₀ = 1
+
+	λ = Float64.( Matrix(
+	[ 	λ₀ 		λ₀ 		λ₀;
+		λ₀ 		0 		λ₀;
+		λ₀ 		λ₀ 		λ₀]
+	))
+
+	#Go until steady state
+	generations, num_generations = simulate_steady_state("inner_corner",class_size,λ,1)
+	learned = map(x->sum(x), generations)
+	
+	learned_y = learned[1:end]
+	generation_domain = 1:length(learned_y)
+	
+	power_coeffs = power_fit(generation_domain, learned_y)
+	power_vals = power_coeffs[1] .* generation_domain .^ power_coeffs[2]
+
+	exp_coeffs = exp_fit(generation_domain, learned_y)
+	exp_vals = exp_coeffs[1] .* exp.(exp_coeffs[2].*generation_domain)
+
+	poly_terms = 4
+	poly_coeffs = poly_fit(generation_domain, learned_y, poly_terms)
+	poly_vals = []
+	for i in 1:poly_terms
+		push!(poly_vals,poly_coeffs[i] .* generation_domain .^ (i-1))
+	end
+	poly_vals = sum(poly_vals)
+
+end
+
+# ╔═╡ c5b4fd60-cb59-494c-ae99-800bb6ddb893
+begin
+
+	circle_radii = 1:length(learned)
+	circle_area = 4 * (π .* circle_radii .^ 2)
+	
+	default()
+	
+	hline([class_size^2], label="finite size effect cap", linestyles=:dash)
+	
+	plot!(learned, 
+		label = "Simulation",
+		legend =:topleft,
+		#scale =:log10,
+		ylabel = "Number of learned",
+		xlabel = "Generation number",
+		#ylabel = "Number of learned (log₁₀)",
+		#xlabel = "Generation number (log₁₀)",
+		dpi = 300,
+		minorticks = true,
+		minorgrid = true
+	)
+
+	plot!(circle_area,
+		label = "y = 4πx²"
+	)
+end
+
 # ╔═╡ fbb39644-4521-44b7-9977-aee3fad519e8
 begin
 	circle_multiplier = sum(generations[1])
 	effective_r = sqrt.(learned ./ (circle_multiplier*π))
+
 	plot(effective_r
 		, legend = false
 		, ylabel = "Effective radius"
@@ -419,20 +597,122 @@ begin
 	)
 end
 
-# ╔═╡ 25c26b82-9913-438b-9080-5ddb5cc0ffe0
+# ╔═╡ cc33628a-ec2f-4095-8e0a-dc289dfbe208
 md"""
-# Testing
+## Plotting
 """
 
-# ╔═╡ 7ec1daf4-a1b1-4b9e-912f-123e35ffc866
-test_grid = initiate_grid("outer_corner",8)
+# ╔═╡ 9fc867f8-c574-4559-97ea-d816df11b4f3
+#plotting scratch
+begin #plotting part of the main function
+	class_plots = []
+	default()
 
-# ╔═╡ 29f8c82c-9bfc-456a-93ac-a4028887fb80
-test_λ = Float64.( Matrix(
-	[ 	1 		1 		1;
-		1 		0 		1;
-		1 		1 		1]
-))
+	l = @layout [
+		a{0.75h}
+		b{}
+	]
+	
+	for i in 1:num_generations
+		class_plot = heatmap(generations[i], title = "Classroom over time $(size)",
+			aspect_ratio=:equal,
+			cbar = true,
+			showaxis = false,
+			c = palette(:grays,rev=true),
+			size = (512,512),
+			yflip=true,
+			dpi = 300,
+			axis=([], false)
+		)
+
+		learned_plot = scatter(learned, legend=:topleft,
+			xlabel = "Generations",
+			ylabel = "Number of learned",
+			title = "Learned over time",
+			label = "Learned students",
+			legend_font_pointsizes = 5,
+			yrot = 0,
+			ytickfontsize = 4,
+			dpi = 300,
+			leftmargin = 5mm,
+			rightmargin = 5mm,
+			markersize = 3
+		)
+
+		learned_plot = vline!([i], label = "Current generation: $(i)")
+
+		learned_plot = plot!(power_vals, 
+			label="Power fit: $(round(power_coeffs[1], digits=2))⋅x^$(round(power_coeffs[2],digits=2))"
+		)
+
+		#learned_plot = plot!(exp_vals)
+
+		learned_plot = plot!(poly_vals,
+			label = "Polynomial fit: $(round.(poly_coeffs,digits=2))"
+		)
+	
+		class_plot = plot(class_plot,learned_plot, 
+			layout = l,
+			size=(512,512/0.75),
+			dpi = 300
+		)
+		
+		push!(class_plots, class_plot)
+	end
+
+	class_plots[5]
+
+	#=
+	anim = @animate for i in 1:num_generations
+		plot(class_plots[i])
+	end
+
+	gif(anim, "test_animation_scratch.gif", fps = 16)
+	=#
+	
+end
+
+# ╔═╡ 6f326290-cbb6-446e-98a8-bb2a1079b848
+md"""
+## Raw data -> CSV
+"""
+
+# ╔═╡ 074e7215-83f7-4343-94b3-572a262277f9
+begin #scratch for exporting csv
+	df_cols = ["Generation $(i)" for i in 1:length(generations)]
+	df_data = vec.(generations)
+	
+	# df_data -> student number -> student state at generation
+	# state per student over time
+	#df_data = [[df_data[g][s] for g in 1:length(df_data)] for s in 1:class_size^2]
+
+	# row = ith student; column = jth generation
+	student_states_df = DataFrame(df_data,df_cols)
+	CSV.write("test_data_scratch.csv",student_states_df)
+
+	#fit_params = ["power fit", power_coeffs...]
+
+end
+
+# ╔═╡ 538929f8-973d-4258-a10d-1cc8f8e87ed3
+md"""
+## Parameters -> CSV
+"""
+
+# ╔═╡ c9bd742e-9908-43ee-807c-9d2f0ba7473e
+begin
+	fit_params_df = DataFrame(learned_per_gen=learned,
+		power_fit=[power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
+		polynomial_fit=[poly_coeffs...; [missing for _ in 1:length(learned)-length(poly_coeffs)]],
+	)
+
+	CSV.write("test_fit_params_scratch.csv", fit_params_df)
+end
+
+# ╔═╡ 54dc0a71-2ac7-4db8-b3c6-f513f31a4165
+begin
+	CSV.read("test_fit_params_scratch.csv",DataFrame)
+end
 
 # ╔═╡ b4a2643b-38c6-4b20-8d24-4fc151aaf106
 md"
@@ -475,6 +755,7 @@ Other things:
 # ╟─5798f6f7-4e75-4276-8a66-5d4518cde118
 # ╠═bcc8a210-fa01-11ed-1db7-d7cfebd38074
 # ╠═20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+# ╠═33b8010b-e92a-4a8e-a738-5441a2371119
 # ╠═c54a1e59-e363-4567-b956-5b05ea26f172
 # ╠═520615ae-62e5-4482-8473-9027c12eed8f
 # ╠═8bf82d25-6643-4245-bee3-546c560708ef
@@ -486,14 +767,20 @@ Other things:
 # ╠═64e02837-8603-49f1-a18f-0b0391ccb430
 # ╟─186b2799-ede3-46d1-825c-55e67a56f4d3
 # ╠═da8c68a1-a62a-4f49-a500-e58cced203d9
-# ╠═4c37d313-1a61-4352-9ae6-c91d138add70
-# ╠═60e451a2-d9c6-4903-8e93-07d2854a420a
-# ╠═8ba48ea5-dff9-4707-9230-cf0d2773fef7
-# ╠═c5b4fd60-cb59-494c-ae99-800bb6ddb893
+# ╠═9def329a-c1fd-4dd2-869d-1d61c6fb425d
+# ╟─1716999b-c986-4bfc-a249-6eeb22182b96
 # ╟─df8e5d9f-f8cb-49dd-9156-a016ceee32dc
-# ╠═fbb39644-4521-44b7-9977-aee3fad519e8
+# ╟─c5b4fd60-cb59-494c-ae99-800bb6ddb893
+# ╟─fbb39644-4521-44b7-9977-aee3fad519e8
 # ╟─25c26b82-9913-438b-9080-5ddb5cc0ffe0
-# ╠═7ec1daf4-a1b1-4b9e-912f-123e35ffc866
-# ╠═29f8c82c-9bfc-456a-93ac-a4028887fb80
+# ╟─d40d6b87-0dc9-4078-81b7-8b6bb81a43c1
+# ╠═4c37d313-1a61-4352-9ae6-c91d138add70
+# ╟─cc33628a-ec2f-4095-8e0a-dc289dfbe208
+# ╟─9fc867f8-c574-4559-97ea-d816df11b4f3
+# ╟─6f326290-cbb6-446e-98a8-bb2a1079b848
+# ╠═074e7215-83f7-4343-94b3-572a262277f9
+# ╟─538929f8-973d-4258-a10d-1cc8f8e87ed3
+# ╠═c9bd742e-9908-43ee-807c-9d2f0ba7473e
+# ╠═54dc0a71-2ac7-4db8-b3c6-f513f31a4165
 # ╟─b4a2643b-38c6-4b20-8d24-4fc151aaf106
 # ╟─0e6d9178-f9b7-48ca-b2cd-985f6ee2c21c
