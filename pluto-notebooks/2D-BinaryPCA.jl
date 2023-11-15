@@ -10,19 +10,6 @@ begin
 	Pkg.activate(".")
 end
 
-# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
-# ╠═╡ disabled = true
-#=╠═╡
-begin
-	Pkg.add("Plots")
-	Pkg.add("Random")
-	Pkg.add("BenchmarkTools")
-	Pkg.add("CurveFit")
-	Pkg.add("DataFrames")
-	Pkg.add("CSV")
-end
-  ╠═╡ =#
-
 # ╔═╡ c54a1e59-e363-4567-b956-5b05ea26f172
 begin
 	using Random
@@ -51,6 +38,19 @@ md"""
 md"""
 ## Setting up packages
 """
+
+# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+# ╠═╡ disabled = true
+#=╠═╡
+begin
+	Pkg.add("Plots")
+	Pkg.add("Random")
+	Pkg.add("BenchmarkTools")
+	Pkg.add("CurveFit")
+	Pkg.add("DataFrames")
+	Pkg.add("CSV")
+end
+  ╠═╡ =#
 
 # ╔═╡ 33b8010b-e92a-4a8e-a738-5441a2371119
 # ╠═╡ disabled = true
@@ -202,7 +202,7 @@ function generate_next_generation(initial_grid::Matrix{Int},λ::Matrix{Float64})
             continue
         end
 
-        neighborhood = grid[row-1:row+1, col-1:col+1]
+        neighborhood = grid[row-border_size:row+border_size, 													col-border_size:col+border_size]
         learn_prob = 1 - prod(1 .- (neighborhood .* λ))
 
         random_number = rand()
@@ -323,7 +323,7 @@ function simulate(seat_config, class_size, λ, max_gen::Int)
 end
 
 # ╔═╡ da8c68a1-a62a-4f49-a500-e58cced203d9
-function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int)
+function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int)
 	
 	# seat config in string (eg. "outer_corners")
 	# Λ is the uniform spread probability
@@ -332,8 +332,11 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 			a{0.75h}
 			b{}
 		]
+	
+		for seat_config in seat_configs, λ₀ in Λs, class_size in sizes, trial in 1:n_trials
 
-	for seat_config in seat_configs, λ₀ in Λs, class_size in sizes
+		print("$seat_config 	$λ₀ 	$class_size 	$trial")
+			
 		λ = Float64.( Matrix(
 		[ 	λ₀ 		λ₀ 		λ₀;
 			λ₀ 		0 		λ₀;
@@ -352,12 +355,13 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 	
 		# row = ith student; column = jth generation
 		student_states_df = DataFrame(df_data,df_cols)
-		CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-data.csv",student_states_df)
+		CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
 
 		learned = map(x->sum(x), generations)
+		learned = learned ./ maximum(learned; init=1)
 
 		#Set up in case need to truncate outliers
-		learned_y = learned[1:end]
+		learned_y = learned[1:end-Int64(floor(0.25*length(learned)))]
 		generation_domain = 1:length(learned_y)
 
 		#axᵇ
@@ -368,6 +372,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 		#exp_coeffs = exp_fit(generation_domain, learned_y)
 		#exp_vals = exp_coeffs[1] .* exp.(exp_coeffs[2].*generation_domain)
 
+		#=
 		#polynomial function
 		poly_terms = 4 #How many terms to consider in polynomial function
 		poly_coeffs = poly_fit(generation_domain, learned_y, poly_terms)
@@ -376,14 +381,15 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 			push!(poly_vals,poly_coeffs[i] .* generation_domain .^ (i-1))
 		end
 		poly_vals = sum(poly_vals)
-
+		=#
+		
 		#Writing parameters to CSV file; will break if length of generation is longer than length of fit coeffs - fixable
 		fit_params_df = DataFrame(learned_per_gen=learned,
 			power_fit=[power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
-			polynomial_fit=[poly_coeffs...; [missing for _ in 1:length(learned)-length(poly_coeffs)]],
+			#polynomial_fit=[poly_coeffs...; [missing for _ in 1:length(learned)-length(poly_coeffs)]],
 		)
 
-		CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-fit_params.csv", fit_params_df)
+		CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
 
 		# plotting per set of parameters
 		class_plots = []
@@ -401,12 +407,12 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 				yflip=true,
 				dpi = 300,
 				axis=([], false)
-			)
+			);
 	
 			learned_plot = scatter(learned, legend=:topleft,
-				xlabel = "Generations",
-				ylabel = "Number of learned",
-				title = "Learned over time",
+				xlabel = "Generation number",
+				ylabel = "Fraction of learned",
+				#title = "Learned over time",
 				label = "Learned students",
 				legend_font_pointsizes = 5,
 				yrot = 0,
@@ -416,8 +422,8 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 				rightmargin = 5mm,
 				markersize = 3,
 				scale = :log10,
-				xlims = (1,num_generations),
-				ylims = (1, maximum(learned))
+				#xlims = (1,num_generations),
+				#ylims = (10^(-16), maximum(learned))
 			);
 	
 			learned_plot = vline!([i], label = "Current generation: $(i)");
@@ -427,10 +433,11 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 			);
 	
 			#learned_plot = plot!(exp_vals)
-	
+			#=
 			learned_plot = plot!(poly_vals,
 				label = "Polynomial fit: $(round.(poly_coeffs,digits=2))"
 			);
+			=#
 		
 			class_plot = plot(class_plot,learned_plot, 
 				layout = l,
@@ -438,15 +445,17 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 				dpi = 300
 			);
 
-			savefig(class_plot,"./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/images/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-$(i).png");
-			push!(class_plots, class_plot)
+			savefig(class_plot,"./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/images/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-$(i).png");
+			#push!(class_plots, class_plot);
 		end
-	
+#=
 		anim = @animate for i in 1:num_generations
 			plot(class_plots[i]);
 		end
-	
-		mp4(anim, "./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-animation.mp4", fps = 16)	
+		
+		
+		mp4(anim, "./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-animation.mp4", fps = 16);
+=#
 	end
 end
 
@@ -455,25 +464,28 @@ end
 #=╠═╡
 begin #main
 	# List of parameters
-	sizes = [32,64,128]
-	seat_configs = ["inner_corner","center","outer_corner"]
-	Λs = [0.25,0.5,0.75]
+	sizes = [128]
+	seat_configs = ["inner_corner", "outer_corner", "center"]
+	Λs = collect(0.1:0.1:0.9)
 	steady_state_tolerance = 10
+	n_trials = 3
 
 	# Making the directories
 	folders = ["images","data"]
 	for seat_config in seat_configs, 
 		size in sizes, 
 		λ in Λs, 
-		folder in folders
+		folder in folders,
+		trial in 1:n_trials
 		
-		mkpath("./../output/2D-Binary-PCA/$(seat_config)-$(size)/$(λ)/$(folder)")
+		mkpath("./../output/2D-Binary-PCA/$(seat_config)-$(size)/$(λ)/trial_$(trial)/$(folder)")
 	end
 	
 	class_simulation(sizes,
 		seat_configs,
 		Λs,
-		steady_state_tolerance
+		steady_state_tolerance,
+		n_trials
 	)
 	
 end
@@ -525,6 +537,22 @@ A(r) = \pi r^2
 ```
 "
 
+# ╔═╡ fbb39644-4521-44b7-9977-aee3fad519e8
+#=╠═╡
+begin
+	circle_multiplier = sum(generations[1])
+	effective_r = sqrt.(learned ./ (circle_multiplier*π))
+
+	plot(effective_r
+		, legend = false
+		, ylabel = "Effective radius"
+		, xlabel = "Generation count"
+		, title = "Growth of effective radius over each generation"
+		, dpi = 300
+	)
+end
+  ╠═╡ =#
+
 # ╔═╡ 25c26b82-9913-438b-9080-5ddb5cc0ffe0
 md"""
 # Testing
@@ -535,7 +563,9 @@ md"""
 ## Calculations
 """
 
-# ╔═╡ 4c37d313-1a61-4352-9ae6-c91d138add70
+# ╔═╡ c16d78e7-e7a6-4335-a70e-422abf9d1ef3
+# ╠═╡ disabled = true
+#=╠═╡
 #calculations scratch
 begin
 	class_size = 128
@@ -571,48 +601,7 @@ begin
 	poly_vals = sum(poly_vals)
 
 end
-
-# ╔═╡ c5b4fd60-cb59-494c-ae99-800bb6ddb893
-begin
-
-	circle_radii = 1:length(learned)
-	circle_area = 4 * (π .* circle_radii .^ 2)
-	
-	default()
-	
-	hline([class_size^2], label="finite size effect cap", linestyles=:dash)
-	
-	plot!(learned, 
-		label = "Simulation",
-		legend =:topleft,
-		#scale =:log10,
-		ylabel = "Number of learned",
-		xlabel = "Generation number",
-		#ylabel = "Number of learned (log₁₀)",
-		#xlabel = "Generation number (log₁₀)",
-		dpi = 300,
-		minorticks = true,
-		minorgrid = true
-	)
-
-	plot!(circle_area,
-		label = "y = 4πx²"
-	)
-end
-
-# ╔═╡ fbb39644-4521-44b7-9977-aee3fad519e8
-begin
-	circle_multiplier = sum(generations[1])
-	effective_r = sqrt.(learned ./ (circle_multiplier*π))
-
-	plot(effective_r
-		, legend = false
-		, ylabel = "Effective radius"
-		, xlabel = "Generation count"
-		, title = "Growth of effective radius over each generation"
-		, dpi = 300
-	)
-end
+  ╠═╡ =#
 
 # ╔═╡ cc33628a-ec2f-4095-8e0a-dc289dfbe208
 md"""
@@ -620,6 +609,8 @@ md"""
 """
 
 # ╔═╡ 9fc867f8-c574-4559-97ea-d816df11b4f3
+# ╠═╡ disabled = true
+#=╠═╡
 #plotting scratch
 begin #plotting part of the main function
 	class_plots = []
@@ -665,9 +656,9 @@ begin #plotting part of the main function
 
 		#learned_plot = plot!(exp_vals)
 
-		learned_plot = plot!(poly_vals,
-			label = "Polynomial fit: $(round.(poly_coeffs,digits=2))"
-		)
+		#learned_plot = plot!(poly_vals,
+		#	label = "Polynomial fit: $(round.(poly_coeffs,digits=2))"
+		#)
 	
 		class_plot = plot(class_plot,learned_plot, 
 			layout = l,
@@ -689,8 +680,17 @@ begin #plotting part of the main function
 	=#
 	
 end
+  ╠═╡ =#
+
+# ╔═╡ f4809e61-c955-4c4c-9a08-283339d1f07f
+# ╠═╡ disabled = true
+#=╠═╡
+learned_plot;
+  ╠═╡ =#
 
 # ╔═╡ 5b33e153-dc48-488f-8008-f5482d8cad54
+# ╠═╡ disabled = true
+#=╠═╡
 begin
 	learned_plot = scatter(learned, legend=:topleft,
 			xlabel = "Generations",
@@ -723,9 +723,7 @@ begin
 			#scale =:log10
 		)
 end
-
-# ╔═╡ f4809e61-c955-4c4c-9a08-283339d1f07f
-learned_plot;
+  ╠═╡ =#
 
 # ╔═╡ 6f326290-cbb6-446e-98a8-bb2a1079b848
 md"""
@@ -733,6 +731,8 @@ md"""
 """
 
 # ╔═╡ 074e7215-83f7-4343-94b3-572a262277f9
+# ╠═╡ disabled = true
+#=╠═╡
 begin #scratch for exporting csv
 	df_cols = ["Generation $(i)" for i in 1:length(generations)]
 	df_data = vec.(generations)
@@ -748,6 +748,7 @@ begin #scratch for exporting csv
 	#fit_params = ["power fit", power_coeffs...]
 
 end
+  ╠═╡ =#
 
 # ╔═╡ 538929f8-973d-4258-a10d-1cc8f8e87ed3
 md"""
@@ -755,6 +756,8 @@ md"""
 """
 
 # ╔═╡ c9bd742e-9908-43ee-807c-9d2f0ba7473e
+# ╠═╡ disabled = true
+#=╠═╡
 begin
 	fit_params_df = DataFrame(learned_per_gen=learned,
 		power_fit=[power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
@@ -763,11 +766,15 @@ begin
 
 	CSV.write("test_fit_params_scratch.csv", fit_params_df)
 end
+  ╠═╡ =#
 
 # ╔═╡ 54dc0a71-2ac7-4db8-b3c6-f513f31a4165
+# ╠═╡ disabled = true
+#=╠═╡
 begin
 	CSV.read("test_fit_params_scratch.csv",DataFrame)
 end
+  ╠═╡ =#
 
 # ╔═╡ b4a2643b-38c6-4b20-8d24-4fc151aaf106
 md"
@@ -816,20 +823,19 @@ Other things:
 # ╠═8bf82d25-6643-4245-bee3-546c560708ef
 # ╠═caea6e08-89c4-429c-b850-3e91b026ba80
 # ╟─4b621695-f682-4bb8-b9d0-17284457e040
-# ╟─6680e9cb-40e7-47c3-8c34-cf8a7df1e323
+# ╠═6680e9cb-40e7-47c3-8c34-cf8a7df1e323
 # ╟─0dbd7206-cf15-40d4-b520-36455a048a6d
 # ╟─31d1deea-ba04-4b88-92c5-14cbe4733a6d
 # ╠═64e02837-8603-49f1-a18f-0b0391ccb430
-# ╟─186b2799-ede3-46d1-825c-55e67a56f4d3
+# ╠═186b2799-ede3-46d1-825c-55e67a56f4d3
 # ╠═da8c68a1-a62a-4f49-a500-e58cced203d9
 # ╠═9def329a-c1fd-4dd2-869d-1d61c6fb425d
 # ╟─1716999b-c986-4bfc-a249-6eeb22182b96
 # ╟─df8e5d9f-f8cb-49dd-9156-a016ceee32dc
-# ╟─c5b4fd60-cb59-494c-ae99-800bb6ddb893
 # ╟─fbb39644-4521-44b7-9977-aee3fad519e8
-# ╟─25c26b82-9913-438b-9080-5ddb5cc0ffe0
+# ╠═25c26b82-9913-438b-9080-5ddb5cc0ffe0
 # ╟─d40d6b87-0dc9-4078-81b7-8b6bb81a43c1
-# ╠═4c37d313-1a61-4352-9ae6-c91d138add70
+# ╠═c16d78e7-e7a6-4335-a70e-422abf9d1ef3
 # ╟─cc33628a-ec2f-4095-8e0a-dc289dfbe208
 # ╠═9fc867f8-c574-4559-97ea-d816df11b4f3
 # ╠═f4809e61-c955-4c4c-9a08-283339d1f07f
