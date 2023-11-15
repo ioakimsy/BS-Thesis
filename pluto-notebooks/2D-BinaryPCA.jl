@@ -10,6 +10,19 @@ begin
 	Pkg.activate(".")
 end
 
+# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
+# ╠═╡ disabled = true
+#=╠═╡
+begin
+	Pkg.add("Plots")
+	Pkg.add("Random")
+	Pkg.add("BenchmarkTools")
+	Pkg.add("CurveFit")
+	Pkg.add("DataFrames")
+	Pkg.add("CSV")
+end
+  ╠═╡ =#
+
 # ╔═╡ c54a1e59-e363-4567-b956-5b05ea26f172
 begin
 	using Random
@@ -38,19 +51,6 @@ md"""
 md"""
 ## Setting up packages
 """
-
-# ╔═╡ 20ca43a0-7499-4e6e-b5af-44a56b3f83c7
-# ╠═╡ disabled = true
-#=╠═╡
-begin
-	Pkg.add("Plots")
-	Pkg.add("Random")
-	Pkg.add("BenchmarkTools")
-	Pkg.add("CurveFit")
-	Pkg.add("DataFrames")
-	Pkg.add("CSV")
-end
-  ╠═╡ =#
 
 # ╔═╡ 33b8010b-e92a-4a8e-a738-5441a2371119
 # ╠═╡ disabled = true
@@ -414,33 +414,36 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 				dpi = 300,
 				leftmargin = 5mm,
 				rightmargin = 5mm,
-				markersize = 3
-			)
+				markersize = 3,
+				scale = :log10,
+				xlims = (1,num_generations),
+				ylims = (1, maximum(learned))
+			);
 	
-			learned_plot = vline!([i], label = "Current generation: $(i)")
+			learned_plot = vline!([i], label = "Current generation: $(i)");
 	
 			learned_plot = plot!(power_vals, 
 				label="Power fit: $(round(power_coeffs[1], digits=2))⋅x^$(round(power_coeffs[2],digits=2))"
-			)
+			);
 	
 			#learned_plot = plot!(exp_vals)
 	
 			learned_plot = plot!(poly_vals,
 				label = "Polynomial fit: $(round.(poly_coeffs,digits=2))"
-			)
+			);
 		
 			class_plot = plot(class_plot,learned_plot, 
 				layout = l,
 				size=(512,512/0.75),
 				dpi = 300
-			)
+			);
 
-			savefig(class_plot,"./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/images/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-$(i).png")
+			savefig(class_plot,"./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/images/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-$(i).png");
 			push!(class_plots, class_plot)
 		end
 	
 		anim = @animate for i in 1:num_generations
-			plot(class_plots[i])
+			plot(class_plots[i]);
 		end
 	
 		mp4(anim, "./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-animation.mp4", fps = 16)	
@@ -448,11 +451,13 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 end
 
 # ╔═╡ 9def329a-c1fd-4dd2-869d-1d61c6fb425d
+# ╠═╡ disabled = true
+#=╠═╡
 begin #main
 	# List of parameters
-	sizes = [128]
-	seat_configs = ["inner_corner"]
-	Λs = [0.25]
+	sizes = [32,64,128]
+	seat_configs = ["inner_corner","center","outer_corner"]
+	Λs = [0.25,0.5,0.75]
 	steady_state_tolerance = 10
 
 	# Making the directories
@@ -472,6 +477,7 @@ begin #main
 	)
 	
 end
+  ╠═╡ =#
 
 # ╔═╡ 1716999b-c986-4bfc-a249-6eeb22182b96
 md"
@@ -633,7 +639,7 @@ begin #plotting part of the main function
 			size = (512,512),
 			yflip=true,
 			dpi = 300,
-			axis=([], false)
+			axis=([], false),
 		)
 
 		learned_plot = scatter(learned, legend=:topleft,
@@ -647,7 +653,8 @@ begin #plotting part of the main function
 			dpi = 300,
 			leftmargin = 5mm,
 			rightmargin = 5mm,
-			markersize = 3
+			markersize = 3,
+			scale =:log10
 		)
 
 		learned_plot = vline!([i], label = "Current generation: $(i)")
@@ -664,7 +671,7 @@ begin #plotting part of the main function
 	
 		class_plot = plot(class_plot,learned_plot, 
 			layout = l,
-			size=(512,512/0.75),
+			#size=(512,512/0.75),
 			dpi = 300
 		)
 		
@@ -682,6 +689,43 @@ begin #plotting part of the main function
 	=#
 	
 end
+
+# ╔═╡ 5b33e153-dc48-488f-8008-f5482d8cad54
+begin
+	learned_plot = scatter(learned, legend=:topleft,
+			xlabel = "Generations",
+			ylabel = "Number of learned",
+			title = "Learned over time",
+			label = "Learned students",
+			legend_font_pointsizes = 5,
+			yrot = 0,
+			ytickfontsize = 4,
+			dpi = 300,
+			leftmargin = 5mm,
+			rightmargin = 5mm,
+			markersize = 3,
+			scale =:log10,
+			xlims = (1, num_generations),
+			ylims = (1,maximum(learned))
+		)
+
+		learned_plot = vline!([4], label = "Current generation: $(4)")
+
+		learned_plot = plot!(power_vals, 
+			label="Power fit: $(round(power_coeffs[1], digits=2))⋅x^$(round(power_coeffs[2],digits=2))",
+			#scale =:log10
+		)
+
+		#learned_plot = plot!(exp_vals)
+
+		learned_plot = plot!(poly_vals,
+			label = "Polynomial fit: $(round.(poly_coeffs,digits=2))",
+			#scale =:log10
+		)
+end
+
+# ╔═╡ f4809e61-c955-4c4c-9a08-283339d1f07f
+learned_plot;
 
 # ╔═╡ 6f326290-cbb6-446e-98a8-bb2a1079b848
 md"""
@@ -787,7 +831,9 @@ Other things:
 # ╟─d40d6b87-0dc9-4078-81b7-8b6bb81a43c1
 # ╠═4c37d313-1a61-4352-9ae6-c91d138add70
 # ╟─cc33628a-ec2f-4095-8e0a-dc289dfbe208
-# ╟─9fc867f8-c574-4559-97ea-d816df11b4f3
+# ╠═9fc867f8-c574-4559-97ea-d816df11b4f3
+# ╠═f4809e61-c955-4c4c-9a08-283339d1f07f
+# ╠═5b33e153-dc48-488f-8008-f5482d8cad54
 # ╟─6f326290-cbb6-446e-98a8-bb2a1079b848
 # ╠═074e7215-83f7-4343-94b3-572a262277f9
 # ╟─538929f8-973d-4258-a10d-1cc8f8e87ed3
