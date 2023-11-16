@@ -1,12 +1,13 @@
+# ! USE BS THESIS ENVIRONMENT (file paths will break if not)
 using Pkg
 Pkg.activate(".")
 
-#* Use only when packages aren't in the current environment
+#= #* Use only when packages aren't in the current environment
 Pkg.add("CSV")
 Pkg.add("CairoMakie")
 Pkg.add("DataFrames")
 Pkg.add("CurveFit")
-Pkg.add("BenchmarkTools")
+Pkg.add("BenchmarkTools") =#
 
 
 #* Use to update packages
@@ -136,7 +137,7 @@ function simulate_steady_state(seat_config, class_size, λ, steady_state_toleran
 end
 
 
-function generate_directories(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int)
+function generate_directories(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int; n_learned::Int=4)
     folders = ["images", "data"]
     for seat_config in seat_configs,
         size in sizes,
@@ -144,7 +145,12 @@ function generate_directories(sizes::Vector{Int}, seat_configs::Vector{String},�
         folder in folders,
         trial in 1:n_trials
 
-        mkpath("./../output/2D-Binary-PCA/$(seat_config)-$(size)/$(λ)/trial_$(trial)/$(folder)")
+        if seat_config == "random"
+            mkpath("./output/2D-Binary-PCA/$(seat_config)-$(size)-$(n_learned)/$(λ)/trial_$(trial)/$(folder)")
+        else
+            mkpath("./output/2D-Binary-PCA/$(seat_config)-$(size)/$(λ)/trial_$(trial)/$(folder)")
+        end
+            
     end
 end
 
@@ -169,7 +175,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 
         #* row = ith student; column = jth generation
         student_states_df = DataFrame(df_data,df_cols)
-        CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
+        CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
 
         learned = map(x->sum(x), generations)
         learned = learned ./ maximum(learned; init=1) 
@@ -190,8 +196,36 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             power_fit = [power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
         )
 
-        CSV.write("./../output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
+        CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
 
 	end
 
+end
+
+#! Main
+begin
+	# List of parameters
+	sizes = [128]
+	seat_configs = ["random"]
+	Λs = [0.25]
+	steady_state_tolerance = 10
+	n_trials = 3
+    n_learned = 4
+
+	generate_directories(sizes,
+		seat_configs,
+		Λs,
+		steady_state_tolerance,
+		n_trials;
+        n_learned = n_learned
+	)
+	
+	#= class_simulation(sizes,
+		seat_configs,
+		Λs,
+		steady_state_tolerance,
+		n_trials;
+        n_learned = n_learned
+	) =#
+	
 end
