@@ -1,13 +1,13 @@
 using Pkg
 Pkg.activate(".")
-#=
-* Use only when packages aren't in the current environment
+
+#* Use only when packages aren't in the current environment
 Pkg.add("CSV")
 Pkg.add("CairoMakie")
 Pkg.add("DataFrames")
 Pkg.add("CurveFit")
 Pkg.add("BenchmarkTools")
-=#
+
 
 #* Use to update packages
 # Pkg.update()
