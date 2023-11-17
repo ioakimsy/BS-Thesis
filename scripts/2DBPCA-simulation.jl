@@ -2,13 +2,13 @@
 using Pkg
 Pkg.activate(".")
 
-#= #* Use only when packages aren't in the current environment
+#= #= #* Use only when packages aren't in the current environment
 Pkg.add("CSV")
 Pkg.add("CairoMakie")
 Pkg.add("DataFrames")
 Pkg.add("CurveFit")
 Pkg.add("BenchmarkTools") =#
-
+Pkg.add("ProfileView") =#
 
 #* Use to update packages
 # Pkg.update()
@@ -19,7 +19,10 @@ using DelimitedFiles
 using CSV
 using DataFrames
 using CairoMakie
+using CurveFit
 using BenchmarkTools
+using ProfileView
+using Profile
 
 function initiate_grid_rand(num_learned::Int=4,L::Int=8)
     grid = zeros(Int,L,L)
@@ -157,57 +160,66 @@ end
 
 function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int; n_learned::Int=4)
 
-    for seat_config in seat_configs, λ₀ in Λs, class_size in sizes, trial in 1:n_trials
+   Threads.@threads for trial in 1:n_trials
+        for seat_config in seat_configs, λ₀ in Λs, class_size in sizes#, trial in 1:n_trials
 
-        println("$seat_config 	$λ₀ 	$class_size 	$trial")
-            
-        λ = Float64.( Matrix(
-        [ 	λ₀ 		λ₀ 		λ₀;
-            λ₀ 		0 		λ₀;
-            λ₀ 		λ₀ 		λ₀]
-        ))
+            println("$seat_config 	$λ₀ 	$class_size 	$trial")
+                
+            λ = Float64.( Matrix(
+            [ 	λ₀ 		λ₀ 		λ₀;
+                λ₀ 		0 		λ₀;
+                λ₀ 		λ₀ 		λ₀]
+            ))
 
-        generations, num_generations = simulate_steady_state(seat_config, class_size, λ, steady_state_tolerance; n_learned = n_learned)
+            generations, num_generations = simulate_steady_state(seat_config, class_size, λ, steady_state_tolerance; n_learned = n_learned)
 
-        #* Saving raw data
-        df_cols = ["Generation $(i)" for i in 1:length(generations)]
-        df_data = vec.(generations)
+            #* Saving raw data
+            df_cols = ["Generation $(i)" for i in 1:length(generations)]
+            df_data = vec.(generations)
 
-        #* row = ith student; column = jth generation
-        student_states_df = DataFrame(df_data,df_cols)
-        CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
+            #* row = ith student; column = jth generation
+            student_states_df = DataFrame(df_data,df_cols)
 
-        learned = map(x->sum(x), generations)
-        learned = learned ./ maximum(learned; init=1) 
-        #! makes the output of the maximum 1 when there is no maximum resulting into non-normalized values
-        #! it broke once, i do not know why
+            if seat_config == "random"
+                CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)-$(n_learned)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
+            else
+            CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
+            end
 
-        #* Set up in case need to truncate outliers
-        learned_y = learned[1:end-Int64(floor(0.25*length(learned)))]
-        generation_domain = 1:length(learned_y)
+            learned = map(x->sum(x), generations)
+            learned = learned ./ maximum(learned; init=1) 
+            #! makes the output of the maximum 1 when there is no maximum resulting into non-normalized values
+            #! it broke once, i do not know why
 
-        #* axᵇ where power_coeffs are (a,b)
-        power_coeffs = power_fit(generation_domain, learned_y)
+            #* Set up in case need to truncate outliers
+            learned_y = learned[1:end-Int64(floor(0.25*length(learned)))]
+            generation_domain = 1:length(learned_y)
 
-        #* Writing parameters to CSV file; 
-        #! Will break if length of generation is longer than length of fit coeffs (2 for power fit) - verly likely not to happen
-        fit_params_df = DataFrame(
-            learned_per_gen = learned,
-            power_fit = [power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
-        )
+            #* axᵇ where power_coeffs are (a,b)
+            power_coeffs = power_fit(generation_domain, learned_y)
 
-        CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
+            #* Writing parameters to CSV file; 
+            #! Will break if length of generation is longer than length of fit coeffs (2 for power fit) - verly likely not to happen
+            fit_params_df = DataFrame(
+                learned_per_gen = learned,
+                power_fit = [power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
+            )
 
-	end
-
+            if seat_config == "random"
+                CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)-$(n_learned)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
+            else        
+                CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
+            end
+        end
+    end
 end
 
 #! Main
-begin
+function main()
 	# List of parameters
 	sizes = [128]
 	seat_configs = ["random"]
-	Λs = [0.25]
+	Λs = [0.25,0.5,0.75]
 	steady_state_tolerance = 10
 	n_trials = 3
     n_learned = 4
@@ -220,12 +232,14 @@ begin
         n_learned = n_learned
 	)
 	
-	#= class_simulation(sizes,
+	class_simulation(sizes,
 		seat_configs,
 		Λs,
 		steady_state_tolerance,
 		n_trials;
         n_learned = n_learned
-	) =#
+	)
 	
 end
+
+main()
