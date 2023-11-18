@@ -18,7 +18,7 @@ using Statistics
 using DelimitedFiles
 using CSV
 using DataFrames
-using CairoMakie
+#using CairoMakie
 using CurveFit
 using BenchmarkTools
 using ProfileView
@@ -181,7 +181,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             student_states_df = DataFrame(df_data,df_cols)
 
             if seat_config == "random"
-                CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)-$(n_learned)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
+                CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)-$(n_learned)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(n_learned)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
             else
             CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
             end
@@ -206,7 +206,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             )
 
             if seat_config == "random"
-                CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)-$(n_learned)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
+                CSV.write("./output/2D-Binary-PCA/random-$(class_size)-$(n_learned)/$(λ₀)/trial_$(trial)/data/2DBPCA-random-$(class_size)-$(n_learned)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
             else        
                 CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
             end
@@ -215,8 +215,9 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
 end
 
 #! Main
-function main()
+begin
 	# List of parameters
+    #TODO: move list of parameters to external file to be read to sync across the scripts
 	sizes = [128]
 	seat_configs = ["random"]
 	Λs = [0.25,0.5,0.75]
@@ -239,7 +240,4 @@ function main()
 		n_trials;
         n_learned = n_learned
 	)
-	
 end
-
-main()
