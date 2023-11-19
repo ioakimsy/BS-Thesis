@@ -1,28 +1,32 @@
 # ! USE BS THESIS ENVIRONMENT (file paths will break if not)
-using Pkg
-Pkg.activate(".")
+begin
+    using Pkg
+    Pkg.activate(".")
 
-#= #= #* Use only when packages aren't in the current environment
-Pkg.add("CSV")
-Pkg.add("CairoMakie")
-Pkg.add("DataFrames")
-Pkg.add("CurveFit")
-Pkg.add("BenchmarkTools") =#
-Pkg.add("ProfileView") =#
+    #= #= #* Use only when packages aren't in the current environment
+    Pkg.add("CSV")
+    Pkg.add("CairoMakie")
+    Pkg.add("DataFrames")
+    Pkg.add("CurveFit")
+    Pkg.add("BenchmarkTools") =#
+    Pkg.add("ProfileView") =#
 
-#* Use to update packages
-# Pkg.update()
+    #* Use to update packages
+    # Pkg.update()
 
-using Random
-using Statistics
-using DelimitedFiles
-using CSV
-using DataFrames
-#using CairoMakie
-using CurveFit
-using BenchmarkTools
-using ProfileView
-using Profile
+    using Random
+    using Statistics
+    using DelimitedFiles
+    using CSV
+    using DataFrames
+    #using CairoMakie
+    using CurveFit
+    using BenchmarkTools
+    using ProfileView
+    using Profile
+    using Alert
+    using ProgressMeter
+end
 
 function initiate_grid_rand(num_learned::Int=4,L::Int=8)
     grid = zeros(Int,L,L)
@@ -160,10 +164,13 @@ end
 
 function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int; n_learned::Int=4)
 
+    max_iters = prod([length(x) for x in [sizes,seat_configs,Λs,n_trials]])
+    prog_bar = Progress(max_iters)
+
    Threads.@threads for trial in 1:n_trials
         for seat_config in seat_configs, λ₀ in Λs, class_size in sizes#, trial in 1:n_trials
 
-            println("$seat_config 	$λ₀ 	$class_size 	$trial")
+            #println("$seat_config 	$λ₀ 	$class_size 	$trial")
                 
             λ = Float64.( Matrix(
             [ 	λ₀ 		λ₀ 		λ₀;
@@ -210,6 +217,9 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             else        
                 CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
             end
+            ProgressMeter.next!(prog_bar, 
+                showvalues = [("Trial", trial), ("Seat config", seat_config), ("λ₀", λ₀), ("Class size", class_size)]
+                )
         end
     end
 end
@@ -233,7 +243,7 @@ begin
         n_learned = n_learned
 	)
 	
-	class_simulation(sizes,
+	@alert class_simulation(sizes,
 		seat_configs,
 		Λs,
 		steady_state_tolerance,
