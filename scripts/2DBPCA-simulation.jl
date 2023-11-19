@@ -218,9 +218,9 @@ end
 begin
 	# List of parameters
     #TODO: move list of parameters to external file to be read to sync across the scripts
-	sizes = [128]
-	seat_configs = ["random"]
-	Λs = [0.25,0.5,0.75]
+	sizes = [32,64,128]
+	seat_configs = ["outer_corner","inner_corner","center"]
+	Λs = collect(0.2:0.2:1)
 	steady_state_tolerance = 10
 	n_trials = 3
     n_learned = 4
