@@ -25,7 +25,7 @@ end
 function generate_plots(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int; n_learned::Int=4)
     println("Starting to generate plots:")
     #* I tried Threads.@threads, but it doesn't seem to be very stable for this application...?
-    Threads.@threads for trial in 1:n_trials
+    for trial in 1:n_trials
         for seat_config in seat_configs, λ₀ in Λs, class_size in sizes#, trial in 1:n_trials
 
             println("$seat_config 	$λ₀ 	$class_size 	$trial")
@@ -128,4 +128,4 @@ function generate_plots(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Ve
     end
 end
 
-generate_plots(sizes,seat_configs, Λs, steady_state_tolerance, n_trials; n_learned = n_learned)
+@time generate_plots(sizes,seat_configs, Λs, steady_state_tolerance, n_trials; n_learned = n_learned)
