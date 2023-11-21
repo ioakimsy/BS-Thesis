@@ -126,11 +126,11 @@ function simulate_steady_state(seat_config, class_size, λ, steady_state_toleran
 	num_generations = 1
 
 	while steady_state == false
-			next_gen = generate_next_generation(generations[end],λ)	
-			push!(generations, next_gen)
-			num_generations = num_generations + 1
+        next_gen = generate_next_generation(generations[end],λ)	
+        push!(generations, next_gen)
+        num_generations = num_generations + 1
 		
-		if generations[end] == generations[max(1,length(generations)-steady_state_tolerance)] 
+		if generations[end] == generations[max(1,num_generations-steady_state_tolerance)] && num_generations > steady_state_tolerance
 			steady_state = true
 		end
 		
@@ -164,8 +164,8 @@ end
 
 function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int; n_learned::Int=4)
 
-    max_iters = prod([length(x) for x in [sizes,seat_configs,Λs,n_trials]])
-    prog_bar = Progress(max_iters)
+    max_iters = prod([length(x) for x in [sizes,seat_configs,Λs]]) * n_trials
+    prog_bar = Progress(max_iters; showspeed=true)
 
    Threads.@threads for trial in 1:n_trials
         for seat_config in seat_configs, λ₀ in Λs, class_size in sizes#, trial in 1:n_trials
@@ -181,7 +181,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             generations, num_generations = simulate_steady_state(seat_config, class_size, λ, steady_state_tolerance; n_learned = n_learned)
 
             #* Saving raw data
-            df_cols = ["Generation $(i)" for i in 1:length(generations)]
+            df_cols = ["Generation $(i)" for i in 1:num_generations]
             df_data = vec.(generations)
 
             #* row = ith student; column = jth generation
@@ -190,16 +190,17 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             if seat_config == "random"
                 CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)-$(n_learned)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(n_learned)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
             else
-            CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
+                CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
             end
 
             learned = map(x->sum(x), generations)
             learned = learned ./ maximum(learned; init=1) 
+            
             #! makes the output of the maximum 1 when there is no maximum resulting into non-normalized values
             #! it broke once, i do not know why
-
+            
             #* Set up in case need to truncate outliers
-            learned_y = learned[1:end-Int64(floor(0.25*length(learned)))]
+            learned_y = learned[1:end-Int64(floor(0.25*num_generations))]
             generation_domain = 1:length(learned_y)
 
             #* axᵇ where power_coeffs are (a,b)
@@ -209,7 +210,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             #! Will break if length of generation is longer than length of fit coeffs (2 for power fit) - verly likely not to happen
             fit_params_df = DataFrame(
                 learned_per_gen = learned,
-                power_fit = [power_coeffs...; [missing for _ in 1:length(learned)-length(power_coeffs)]],
+                power_fit = [power_coeffs...; [missing for _ in 1:num_generations-length(power_coeffs)]],
             )
 
             if seat_config == "random"
@@ -218,8 +219,8 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
                 CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", fit_params_df)
             end
             ProgressMeter.next!(prog_bar, 
-                showvalues = [("Trial", trial), ("Seat config", seat_config), ("λ₀", λ₀), ("Class size", class_size)]
-                )
+                showvalues = [("Seat config", seat_config), ("λ₀", λ₀), ("Class size", class_size), ("Trial", trial)]
+            )
         end
     end
 end
@@ -228,10 +229,11 @@ end
 begin
 	# List of parameters
     #TODO: move list of parameters to external file to be read to sync across the scripts
-	sizes = [32,64,128]
-	seat_configs = ["outer_corner","inner_corner","center"]
-	Λs = collect(0.2:0.2:1)
-	steady_state_tolerance = 10
+	# List of parameters
+    sizes = [32,64,128]
+	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
+	Λs = collect(0.1:0.1:1)
+	steady_state_tolerance = 20
 	n_trials = 3
     n_learned = 4
 
