@@ -30,7 +30,7 @@ function generate_plots(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Ve
 
         ProgressMeter.next!(prog_bar, 
                 showvalues = [("Seat config", seat_config), ("λ₀", λ₀), ("Class size", class_size), ("Trial", trial)]
-                )
+            )
 
         frames = []
 
@@ -137,8 +137,8 @@ end # function end
 begin
     # List of parameters
     sizes = [32,64,128]
-	seat_configs = ["inner_corner"]
-	Λs = collect(0.2:0.2:1)
+	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
+	Λs = collect(0.1:0.1:1)
 	steady_state_tolerance = 10
 	n_trials = 3
     n_learned = 4
