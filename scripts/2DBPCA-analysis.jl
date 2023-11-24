@@ -10,19 +10,6 @@ begin
     Pkg.status()
 end
 
-begin
-    # List of parameters
-    sizes = [32,64,128]
-	seat_configs = ["inner_corner","outer_corner","center","random"]
-	Λs = collect(0.1:0.1:1)
-	steady_state_tolerance = 20
-	n_trials = 3
-    n_learned = 4
-    mkpath("./output/2D-Binary-PCA/analysis")
-    mkpath("./output/2D-Binary-PCA/analysis/plots")
-end
-
-
 function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
     data = DataFrame(seat_config=String[],class_size=Int[],λ=Float64[],m=Float64[],num_generations=Float64[])
     for seat_config in seat_configs, class_size in sizes, λ₀ in Λs
@@ -46,8 +33,6 @@ function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
     CSV.write("./output/2D-Binary-PCA/analysis/data.csv", data)
     return data
 end
-
-data = read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
 
 function plot_data(data, sizes)
     for class_size in sizes
@@ -94,4 +79,17 @@ function plot_data(data, sizes)
     end
 end
 
-plot_data(data,sizes)
+begin
+    # List of parameters
+    sizes = [32,64,128]
+	seat_configs = ["inner_corner","outer_corner","center","random"]
+	Λs = collect(0.1:0.1:1)
+	steady_state_tolerance = 20
+	n_trials = 3
+    n_learned = 4
+    
+    mkpath("./output/2D-Binary-PCA/analysis")
+    mkpath("./output/2D-Binary-PCA/analysis/plots")
+    data = read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
+    plot_data(data,sizes)
+end
