@@ -8,6 +8,7 @@ begin
     Pkg.add("CairoMakie")
     Pkg.add("DataFrames")
     Pkg.add("LsqFit")
+    Pkg.add("Measurements")
     Pkg.add("BenchmarkTools")
     Pkg.add("ProfileView") =#
 
@@ -26,6 +27,7 @@ begin
     using Alert
     using ProgressMeter
 end
+
 
 
 function initiate_grid_rand(num_learned::Int=4,L::Int=8)
@@ -167,7 +169,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
     max_iters = prod([length(x) for x in [sizes,seat_configs,Λs]]) * n_trials
     prog_bar = Progress(max_iters; showspeed=true)
     
-    @. model(x,p) = p[1] * exp(x*p[2])
+    @. model(x,p) = p[1] * x ^ p[2]
 
    for trial in 1:n_trials
         for seat_config in seat_configs, λ₀ in Λs, class_size in sizes#, trial in 1:n_trials
@@ -206,16 +208,16 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             generation_domain = 1:length(learned_y)
 
             #* axᵇ where power_coeffs are (a,b)
-            fit = curve_fit(model, learned_y, generation_domain, [2.0,2.0])
+            fit = curve_fit(model, generation_domain, learned_y, [0.25,2.0], lower = [0.,0.], upper = [1.,5.])
             power_coeffs = coef(fit)
-            standard_errors = stderror(fit)
+            #standard_errors = stderror(fit)
 
             #* Writing parameters to CSV file; 
             #! Will break if length of generation is longer than length of fit coeffs (2 for power fit) - verly likely not to happen
             #* power_fit column for the dataframe would be: a, b, σₐ, σᵦ
             fit_params_df = DataFrame(
                 learned_per_gen = learned,
-                power_fit = [power_coeffs...; standard_errors...; [missing for _ in 1:num_generations-length(power_coeffs)-length(standard_errors)]],
+                power_fit = [power_coeffs...; [missing for _ in 1:num_generations-length(power_coeffs)]],
             )
 
             if seat_config == "random"
@@ -258,3 +260,4 @@ begin
         n_learned = n_learned
 	)
 end
+

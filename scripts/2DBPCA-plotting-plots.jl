@@ -97,7 +97,7 @@ function generate_plots(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Ve
 
             learned_plot = vline!([i], label = "Current generation: $(i)", lw = 1.5);
 
-            learned_plot = vline!([length(generations) - Int64(floor(0.25*length(learned)))], ls = :dash, label = "End of fit data")
+            learned_plot = vline!([length(generations) - Int64(floor(0.5*length(learned)))], ls = :dash, label = "End of fit data")
 
             _plot_title = seat_config == "random" ? "Classroom over time\n$(seat_config)-$(class_size)-$(n_learned)-$(λ₀)" : "Classroom over time\n$(seat_config)-$(class_size)-$(λ₀)"
 
@@ -136,11 +136,14 @@ end # function end
 
 begin
     # List of parameters
-    sizes = [32,64,128]
-	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
-	Λs = collect(0.1:0.1:1)
+    # sizes = [32,64,128]
+	# seat_configs = ["outer_corner", "inner_corner", "center", "random"]
+	# Λs = collect(0.1:0.1:1)
+    sizes = [128]
+	seat_configs = ["inner_corner"]
+	Λs = [0.3]
 	steady_state_tolerance = 10
-	n_trials = 3
+	n_trials = 5
     n_learned = 4
 end;
 
