@@ -3,12 +3,12 @@ begin
     using Pkg
     Pkg.activate(".")
 
-    #= #= #* Use only when packages aren't in the current environment
+    #= #* Use only when packages aren't in the current environment
     Pkg.add("CSV")
     Pkg.add("CairoMakie")
     Pkg.add("DataFrames")
-    Pkg.add("CurveFit")
-    Pkg.add("BenchmarkTools") =#
+    Pkg.add("LsqFit")
+    Pkg.add("BenchmarkTools")
     Pkg.add("ProfileView") =#
 
     #* Use to update packages
@@ -19,14 +19,14 @@ begin
     using DelimitedFiles
     using CSV
     using DataFrames
-    #using CairoMakie
-    using CurveFit
+    using LsqFit
     using BenchmarkTools
     using ProfileView
     using Profile
     using Alert
     using ProgressMeter
 end
+
 
 function initiate_grid_rand(num_learned::Int=4,L::Int=8)
     grid = zeros(Int,L,L)
@@ -163,11 +163,13 @@ end
 
 
 function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Vector{Float64}, steady_state_tolerance::Int, n_trials::Int; n_learned::Int=4)
-
+    
     max_iters = prod([length(x) for x in [sizes,seat_configs,Λs]]) * n_trials
     prog_bar = Progress(max_iters; showspeed=true)
+    
+    @. model(x,p) = p[1] * exp(x*p[2])
 
-   Threads.@threads for trial in 1:n_trials
+   for trial in 1:n_trials
         for seat_config in seat_configs, λ₀ in Λs, class_size in sizes#, trial in 1:n_trials
 
             #println("$seat_config 	$λ₀ 	$class_size 	$trial")
@@ -200,17 +202,20 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
             #! it broke once, i do not know why
             
             #* Set up in case need to truncate outliers
-            learned_y = learned[1:end-Int64(floor(0.25*num_generations))]
+            learned_y = learned[1:end-Int64(floor(0.5*num_generations))]
             generation_domain = 1:length(learned_y)
 
             #* axᵇ where power_coeffs are (a,b)
-            power_coeffs = power_fit(generation_domain, learned_y)
+            fit = curve_fit(model, learned_y, generation_domain, [2.0,2.0])
+            power_coeffs = coef(fit)
+            standard_errors = stderror(fit)
 
             #* Writing parameters to CSV file; 
             #! Will break if length of generation is longer than length of fit coeffs (2 for power fit) - verly likely not to happen
+            #* power_fit column for the dataframe would be: a, b, σₐ, σᵦ
             fit_params_df = DataFrame(
                 learned_per_gen = learned,
-                power_fit = [power_coeffs...; [missing for _ in 1:num_generations-length(power_coeffs)]],
+                power_fit = [power_coeffs...; standard_errors...; [missing for _ in 1:num_generations-length(power_coeffs)-length(standard_errors)]],
             )
 
             if seat_config == "random"
@@ -234,7 +239,7 @@ begin
 	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
 	Λs = collect(0.1:0.1:1)
 	steady_state_tolerance = 20
-	n_trials = 3
+	n_trials = 5
     n_learned = 4
 
 	generate_directories(sizes,
