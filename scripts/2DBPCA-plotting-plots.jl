@@ -135,13 +135,14 @@ function generate_plots(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Ve
 end # function end
 
 begin
-    # List of parameters
-    # sizes = [32,64,128]
-	# seat_configs = ["outer_corner", "inner_corner", "center", "random"]
-	# Λs = collect(0.1:0.1:1)
-    sizes = [128]
-	seat_configs = ["inner_corner"]
-	Λs = [0.3]
+    #* List of parameters
+    sizes = [32,64,128]
+	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
+	#seat_configs = ["inner_corner"]
+	Λs = collect(0.1:0.1:1)
+    # sizes = [128]
+	# seat_configs = ["inner_corner"]
+	# Λs = [0.3]
 	steady_state_tolerance = 10
 	n_trials = 5
     n_learned = 4
