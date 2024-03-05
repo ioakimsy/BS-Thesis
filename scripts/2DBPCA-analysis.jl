@@ -106,42 +106,44 @@ function plot_data(data, sizes)
 end
 
 function scale_factor_analysis(data, class_config, λs)
-    
+    data.class_size .= data.class_size .^ 2
     size_data = data[(data.seat_config .== class_config) .& ([data.λ[i] in λs for i in 1:length(data.λ)]),:]
     
-    preanalysis_plot = scatter(size_data[(size_data.λ .== λs[1]),:].class_size, size_data[(size_data.λ .== λs[1]),:].ttl,
+    preanalysis_plot = scatter((size_data[(size_data.λ .== λs[1]),:].class_size), size_data[(size_data.λ .== λs[1]),:].ttl,
     label = "λ = $(λs[1])",
     xlabel = "Class size",
     ylabel = "Time to learn",
     scale = :log10,
-    title = "$(class_config) TTL vs Size"
+    title = "$(class_config) TTL vs Size",
     )
     
     for i in 2:length(λs)
-        preanalysis_plot = scatter!(size_data[(size_data.λ .== λs[i]),:].class_size, size_data[(size_data.λ .== λs[i]),:].ttl,
+        preanalysis_plot = scatter!((size_data[(size_data.λ .== λs[i]),:].class_size), size_data[(size_data.λ .== λs[i]),:].ttl,
         label = "λ = $(λs[i])",
         )
     end
 
-    savefig(preanalysis_plot, "./output/2D-Binary-PCA/analysis/plots/scale_factor_preadjusted.png")
     
     @. power_model(x,p) = p[1] * x ^ p[2]
-
-    linear_fit = curve_fit(power_model, 
-        size_data[(size_data.λ .== λs[3]),:].class_size, 
-        Measurements.value.(size_data[(size_data.λ .== λs[3]),:].ttl),
-        [0.1,-1],
-    )
-    α = coef(linear_fit)[2]
     
+    for j in 1:length(λs)
+        power_fit = curve_fit(power_model, 
+            (size_data[(size_data.λ .== λs[j]),:].class_size), 
+            Measurements.value.(size_data[(size_data.λ .== λs[j]),:].ttl),
+            [0.1,-1],
+        )
+        α = coef(power_fit)[2]
+        preanalysis_plot = plot!(minimum(size_data.class_size):maximum(size_data.class_size), power_model(minimum(size_data.class_size):maximum(size_data.class_size), coef(power_fit)), label = "α = $(round(α, digits = 5))", dpi = 300)
+    end
 
-    #preanalysis_plot = plot!(32:128, linear_model(32:128, coef(linear_fit)))
+    savefig(preanalysis_plot, "./output/2D-Binary-PCA/analysis/plots/scale_factor_preadjusted.png")
+    
     #! new data
     new_data = data
-    new_data.ttl = new_data.ttl .* new_data.class_size.^(2*α)
-
     new_size_data = new_data[(new_data.seat_config .== class_config) .& ([new_data.λ[i] in λs for i in 1:length(new_data.λ)]),:]
     
+
+
     analysis_plot = scatter(new_size_data[(new_size_data.λ .== λs[1]),:].class_size, new_size_data[(new_size_data.λ .== λs[1]),:].ttl,
     label = "λ = $(λs[1])",
     xlabel = "Class size",
@@ -153,6 +155,7 @@ function scale_factor_analysis(data, class_config, λs)
     for i in 2:length(λs)
         analysis_plot = scatter!(new_size_data[(new_size_data.λ .== λs[i]),:].class_size, new_size_data[(new_size_data.λ .== λs[i]),:].ttl,
         label = "λ = $(λs[i])",
+        dpi = 300,
         )
     end
 
@@ -160,7 +163,7 @@ function scale_factor_analysis(data, class_config, λs)
 
     CSV.write("./output/2D-Binary-PCA/analysis/scaled_data.csv", new_data)
 
-    return new_data, α
+    return new_size_data, α
 end
 
 begin
@@ -176,7 +179,14 @@ begin
     mkpath("./output/2D-Binary-PCA/analysis/plots")
     data = read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
     plot_data(data,sizes)
-    scale_factor_analysis(data,"inner_corner", [0.1,0.5,0.9])
+
+    # new_data, α = scale_factor_analysis(data,"inner_corner", [0.1,0.5,0.9])
+    # show(new_data, allrows=true)
+
 end
 
+
+new_data.class_size
+new_data.class_size .= new_data.class_size .^ 2
+show(new_data[(new_data.seat_config .== "inner_corner"), :], allrows=true)
 
