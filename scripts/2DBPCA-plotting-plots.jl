@@ -86,6 +86,7 @@ function generate_plots(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Ve
                 rightmargin = 5mm,
                 markersize = 3,
                 scale = :log10,
+                guidefontsize = 9
                 #xlims = (1,num_generations),
                 #ylims = (10^(-16), maximum(learned))
             );
@@ -105,7 +106,8 @@ function generate_plots(sizes::Vector{Int}, seat_configs::Vector{String},Λs::Ve
                 layout = l,
                 size = (512, 512/0.9),
                 dpi = 300,
-                plot_title = _plot_title
+                plot_title = _plot_title,
+                plot_titlefontsize = 11
             );
 
             if animation == true
@@ -138,7 +140,6 @@ begin
     #* List of parameters
     sizes = [32,64,128]
 	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
-	#seat_configs = ["inner_corner"]
 	Λs = collect(0.1:0.1:1)
     # sizes = [128]
 	# seat_configs = ["inner_corner"]
