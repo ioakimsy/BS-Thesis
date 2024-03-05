@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{1}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -12,22 +12,7 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
 
-\bibitem[{\citenamefont{Surname et~al.}(2016)\citenamefont{Surname, Twoword~Surname, Suffix~III, and Fourth}}]{articlekey}
-\bibinfo{author}{\bibfnamefont{A.~B.} \bibnamefont{Surname}}, \bibinfo{author}{\bibfnamefont{F.~N.} \bibnamefont{Twoword~Surname}}, \bibinfo{author}{\bibfnamefont{I.~M.} \bibnamefont{Suffix~III}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{X.~V.} \bibnamefont{Fourth}}, \bibinfo{title}{Title of journal article in sentence case with capitalized {Proper} nouns like {H}all effect}, \href{https://doi.org/10.1000/num.1000}{\emph{\bibinfo{journal}{J. Abbrev.}} }\href{https://doi.org/10.1000/num.1000}{\textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{555}} (\bibinfo{year}{2016}), \bibinfo{note}{{P}lease, do not forget the DOI.}
-
-\bibitem[{\citenamefont{Hyphenated-Lastname and Lastname~Jr.}(2016)}]{preprintkey}
-\bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Hyphenated-Lastname}} \bibnamefont{and} \bibinfo{author}{\bibfnamefont{X.~J.} \bibnamefont{Lastname~Jr.}}, \bibinfo{title}{Title of eprint or ar{X}iv paper}, \eprint{1601.00000} (\bibinfo{year}{2016}).
-
-\bibitem[{\citenamefont{Lastname and Last}(2007)}]{bookkey}
-\bibinfo{author}{\bibfnamefont{B.~V.} \bibnamefont{Lastname}} \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Last}}, \emph{\bibinfo{title}{Title of Book}} (\bibinfo{publisher}{Publisher Name Inc.}, \bibinfo{address}{City Address}, \bibinfo{year}{2007}).
-
-\bibitem[{\citenamefont{Lastname}(2017)}]{proceedingskey}
-\bibinfo{author}{\bibfnamefont{F.~N.} \bibnamefont{Lastname}}, \bibinfo{title}{Article title with no {URL} or {DOI}}, in \emph{\bibinfo{booktitle}{Proceedings of the 4\textsuperscript{th} Conference of Organization}} (\bibinfo{address}{Conference Venue, Country}, \bibinfo{year}{2017}),  \bibinfo{pages}{P23123}.
-
-\bibitem[{\citenamefont{Lastname}(2018)}]{proceedingskey1}
-\bibinfo{author}{\bibfnamefont{F.~N.} \bibnamefont{Lastname}}, \bibinfo{title}{Proceedings entry with a {URL} and {Article Identifier number or Page number}}, in \emph{\bibinfo{booktitle}{Proceedings of the 10\textsuperscript{th} Conference of Organization}} (\bibinfo{address}{Conference Venue, Country}, \bibinfo{year}{2018}),  \bibinfo{pages}{\href{https://paperview.spp-online.org/proceedings/article/view/SPP-2018-E1} {SPP-2018-XXX}}.
-
-\bibitem[{\citenamefont{Lastname and Lastname2}(2015)}]{proceedingskey2}
-\bibinfo{author}{\bibfnamefont{F.~N.} \bibnamefont{Lastname}} \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.~N.} \bibnamefont{Lastname2}}, \bibinfo{title}{Proceedings entry with a {DOI}}, in \emph{\bibinfo{booktitle}{Society Conference on Physics Topic SCPT2018}} (\bibinfo{address}{City of Conference, Country}, \bibinfo{year}{2015}),  \bibinfo{pages}{\href{http://doi.org/10.1109/XXXX} {626-630}}.
+\bibitem[{\citenamefont{Roxas et~al.}(2010)\citenamefont{Roxas, Carreon-Monterola, and Monterola}}]{roxas2010seating}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Roxas}}, \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Carreon-Monterola}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Monterola}}, \bibinfo{title}{Seating arrangement, group composition and competition-driven interaction: Effects on students’ performance in physics}, in \emph{\bibinfo{booktitle}{AIP Conference Proceedings}} (\bibinfo{organization}{American Institute of Physics}, \bibinfo{year}{2010}), vol. \bibinfo{volume}{1263},  \bibinfo{pages}{155--158}.
 
 \end{thebibliography}
