@@ -88,7 +88,7 @@ function plot_data(data, sizes)
 
         t_plot = scatter(λs[1],num_generations_list[1], 
             label = labels[1],
-            ylabel = "Time to Learn (n)",
+            ylabel = "Time to Learn (tₘₐₓ)",
             xlabel = "Spread coefficient (λ)",
             title = "Classroom size: $class_size",
             #legend = :topright,
