@@ -74,7 +74,7 @@ function plot_data(data, sizes)
             label = labels[1],
             ylabel = "Characteristic variable (m)",
             xlabel = "Spread coefficient (λ)",
-            title = "Classroom size: $class_size",
+            title = "Classroom length: $class_size",
             #legend = :topleft,
             dpi = 300
         )
@@ -90,7 +90,7 @@ function plot_data(data, sizes)
             label = labels[1],
             ylabel = "Time to Learn (tₘₐₓ)",
             xlabel = "Spread coefficient (λ)",
-            title = "Classroom size: $class_size",
+            title = "Classroom length: $class_size",
             #legend = :topright,
             dpi = 300
         )
@@ -111,10 +111,10 @@ function scale_factor_analysis(data, class_config, λs)
     
     preanalysis_plot = scatter((size_data[(size_data.λ .== λs[1]),:].class_size), size_data[(size_data.λ .== λs[1]),:].ttl,
     label = "λ = $(λs[1])",
-    xlabel = "Class size",
-    ylabel = "Time to learn",
+    xlabel = "Class size (N)",
+    ylabel = "Time to learn (tₘₐₓ)",
     scale = :log10,
-    title = "$(class_config) TTL vs Size",
+    title = "$(class_config) tₘₐₓ vs N",
     )
     
     for i in 2:length(λs)
@@ -146,10 +146,10 @@ function scale_factor_analysis(data, class_config, λs)
 
     analysis_plot = scatter(new_size_data[(new_size_data.λ .== λs[1]),:].class_size, new_size_data[(new_size_data.λ .== λs[1]),:].ttl,
     label = "λ = $(λs[1])",
-    xlabel = "Class size",
-    ylabel = "Time to learn",
+    xlabel = "Class size (N)",
+    ylabel = "Time to learn (tₘₐₓ)",
     scale = :log10,
-    title = "$(class_config) TTL vs Size"
+    title = "$(class_config) tₘₐₓ vs N"
     )
     
     for i in 2:length(λs)
@@ -163,12 +163,12 @@ function scale_factor_analysis(data, class_config, λs)
 
     CSV.write("./output/2D-Binary-PCA/analysis/scaled_data.csv", new_data)
 
-    return new_size_data, α
+    return new_size_data
 end
 
 begin
     # List of parameters
-    sizes = [32,64,128]
+    lengths = [32,48,64,96,128]
 	seat_configs = ["inner_corner","outer_corner","center","random"]
 	Λs = collect(0.1:0.1:1)
 	steady_state_tolerance = 20
@@ -177,10 +177,10 @@ begin
     
     mkpath("./output/2D-Binary-PCA/analysis")
     mkpath("./output/2D-Binary-PCA/analysis/plots")
-    data = read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
-    plot_data(data,sizes)
+    data = read_data(lengths, seat_configs, Λs, n_trials; n_learned = 4)
+    plot_data(data,lengths)
 
-    # new_data, α = scale_factor_analysis(data,"inner_corner", [0.1,0.5,0.9])
+    new_data = scale_factor_analysis(data,"inner_corner", [0.1,0.5,0.9])
     # show(new_data, allrows=true)
 
 end
