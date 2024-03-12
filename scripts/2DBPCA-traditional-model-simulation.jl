@@ -3,7 +3,7 @@ begin
     Pkg.activate(".")
 
     #! Pkg.add() is in 2DBPCA-simulation
-    Pkg.update()
+    #Pkg.update()
 
     using Random
     using Statistics
@@ -135,7 +135,7 @@ function class_simulation(lengths::Vector{Int}, Λs::Vector{Float64}, steady_sta
             
             #* Set up in case need to truncate outliers
             #* Only considers first 50% of the data
-            learned_y = learned[1:end-Int64(floor(0.5*num_generations))]
+            learned_y = learned[1:end-Int64(floor(0.75*num_generations))]
             generation_domain = 1:length(learned_y)
 
             #* axᵇ where power_coeffs are (a,b)
