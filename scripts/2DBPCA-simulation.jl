@@ -4,13 +4,13 @@ begin
     Pkg.activate(".")
 
     #* Use only when packages aren't in the current environment
-    Pkg.add("CSV")
-    Pkg.add("CairoMakie")
-    Pkg.add("DataFrames")
-    Pkg.add("LsqFit")
-    Pkg.add("Measurements")
-    Pkg.add("BenchmarkTools")
-    Pkg.add("ProfileView")
+    # Pkg.add("CSV")
+    # Pkg.add("CairoMakie")
+    # Pkg.add("DataFrames")
+    # Pkg.add("LsqFit")
+    # Pkg.add("Measurements")
+    # Pkg.add("BenchmarkTools")
+    # Pkg.add("ProfileView")
 
     #* Use to update packages
     Pkg.update()
