@@ -14,8 +14,10 @@ end
 
 function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
 
+    #* Initialize dataframe for the summary of the simulation data
     data = DataFrame(seat_config=String[],class_size=Int[],λ=Float64[],m=Measurement{Float64}[],ttl=Measurement{Float64}[])
 
+    #* Reading the data from each simulation
     for seat_config in seat_configs, class_size in sizes, λ₀ in Λs
         m_list = []
         num_generations_list = []
@@ -26,7 +28,8 @@ function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
                 params_df = CSV.read("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", DataFrame)
             end
 
-            num_generations = length(params_df[!, "learned_per_gen"]) / class_size^2
+            #* Adding the data per simulation  to the summary
+            num_generations = length(params_df[!, "learned_per_gen"]) #/ class_size^2
             m = params_df[!, "power_fit"][2] #± params_df[!, "power_fit"][4]
 
             push!(num_generations_list, num_generations)

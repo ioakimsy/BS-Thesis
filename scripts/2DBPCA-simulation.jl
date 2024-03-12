@@ -197,6 +197,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Λs::
                 CSV.write("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-data.csv",student_states_df)
             end
 
+            #* Normalized to percent of classroom learned
             learned = map(x->sum(x), generations)
             learned = learned ./ maximum(learned; init=1) 
             
