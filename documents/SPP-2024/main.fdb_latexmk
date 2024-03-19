@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1706513212 "main.aux" "main.bbl" "main" 1706513295 0
+["bibtex main"] 1706513212 "main.aux" "main.bbl" "main" 1710828355 0
   "./bibfile.bib" 1706503961 2066 c7c69e51b316ac9a4cce5bf690a5df22 ""
   "./spp-bst.bst" 1701295730 33000 db1d87a764ab720e2f013bc6f132b870 ""
-  "main.aux" 1706513293 3191 0d3c545dd7350df07c9a2cb4ca519f3b "pdflatex"
+  "main.aux" 1710828354 3191 0d3c545dd7350df07c9a2cb4ca519f3b "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1706513289 "c:/School/BS Thesis/documents/SPP-2024/main.tex" "main.pdf" "main" 1706513295 0
-  "c:/School/BS Thesis/documents/SPP-2024/main.tex" 1706513288 12177 76c36edc7f69cbe2205f6dc4a7e5826c ""
+["pdflatex"] 1710828350 "c:/School/BS Thesis/documents/SPP-2024/main.tex" "main.pdf" "main" 1710828355 0
+  "c:/School/BS Thesis/documents/SPP-2024/main.tex" 1710828349 12192 81611b5d266ed3558e4394d3ec0ecf0b ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1696359370 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1696353102 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1696353102 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -51,6 +51,7 @@
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb" 1696353103 32298 c6d25bb16d1eac01ebdc6d7084126a1e ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1696353103 30251 6afa5cb1d0204815a708a080681d4674 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1696353103 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1696353103 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1696353103 36281 c355509802a035cadc5f15869451dcee ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb" 1696353103 36094 798f80770b3b148ceedd006d487db67c ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1696353103 35752 024fb6c41858982481f6968b5fc26508 ""
@@ -138,10 +139,10 @@
   "figures/t-128.png" 1704870048 121497 73c536675a16fbc626ac28176dd6eb05 ""
   "figures/t-32.png" 1704870047 118983 013b02df1895d7cd2e7fadcc78a9fdfe ""
   "figures/t-64.png" 1704870047 118538 dd96b00aa2b0d682fd5aa8cceb6e9b16 ""
-  "main.aux" 1706513293 3191 0d3c545dd7350df07c9a2cb4ca519f3b "pdflatex"
+  "main.aux" 1710828354 3191 0d3c545dd7350df07c9a2cb4ca519f3b "pdflatex"
   "main.bbl" 1706513213 1268 07d0c5e039c122ad76c5c19a30423b82 "bibtex main"
-  "main.out" 1706513293 820 0f50023fab4857b2e30791b1fef7d051 "pdflatex"
-  "main.tex" 1706513288 12177 76c36edc7f69cbe2205f6dc4a7e5826c ""
+  "main.out" 1710828354 820 0f50023fab4857b2e30791b1fef7d051 "pdflatex"
+  "main.tex" 1710828349 12192 81611b5d266ed3558e4394d3ec0ecf0b ""
   "spp.dat" 1706508423 3789 2229f93c0742fb1df525f4f2eed39708 ""
   (generated)
   "main.aux"
