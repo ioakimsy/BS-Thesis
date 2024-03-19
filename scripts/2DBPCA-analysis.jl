@@ -108,27 +108,50 @@ function plot_data(data, sizes)
     end
 end
 
-function scale_factor_analysis(data, class_config, λs)
+function scale_factor_analysis(data, class_configs, λs)
+
+    markers = [:circle, :rect, :star5, :diamond, :hexagon, :cross, :xcross, :utriangle, :dtriangle, :rtriangle, :ltriangle, :pentagon, :heptagon, :octagon, :star4, :star6, :star7, :star8, :vline, :hline, :+, :x]
+
+    @. power_model(x,p) = p[1] * x ^ p[2]
     data.class_size .= data.class_size .^ 2
-    size_data = data[(data.seat_config .== class_config) .& ([data.λ[i] in λs for i in 1:length(data.λ)]),:]
+
+    size_config_data = data[([data.seat_config[i] in class_configs for i in eachindex(data.seat_config)]) .& ([data.λ[i] in λs for i in 1:length(data.λ)]),:]
     
-    preanalysis_plot = scatter((size_data[(size_data.λ .== λs[1]),:].class_size), size_data[(size_data.λ .== λs[1]),:].ttl,
-    label = "λ = $(λs[1])",
-    xlabel = "Class size (N)",
-    ylabel = "Time to learn (tₘₐₓ)",
-    scale = :log10,
-    title = "$(class_config) tₘₐₓ vs N",
-    )
-    
-    for i in 2:length(λs)
-        preanalysis_plot = scatter!((size_data[(size_data.λ .== λs[i]),:].class_size), size_data[(size_data.λ .== λs[i]),:].ttl,
-        label = "λ = $(λs[i])",
-        )
+    for j in eachindex(class_configs)
+        seat_config = class_configs[j]
+        _data = size_config_data[[size_config_data.seat_config[i] .== seat_config for i in eachindex(size_config_data.seat_config)],:]
+        if j == 1
+            preanalysis_plot = scatter((_data[(_data.λ .== λs[1]),:].class_size), _data[(_data.λ .== λs[1]),:].ttl,
+            label = seat_config * " λ = $(λs[1])",
+            xlabel = "Class size (N)",
+            ylabel = "Time to learn (tₘₐₓ)",
+            scale = :log10,
+            title = "tₘₐₓ vs N",
+            markershape = markers[j],
+            dpi = 300,
+            legend = :bottomright,
+            )
+        else
+            preanalysis_plot = scatter!((_data[(_data.λ .== λs[1]),:].class_size), _data[(_data.λ .== λs[1]),:].ttl,
+            label = seat_config * " λ = $(λs[1])",
+            xlabel = "Class size (N)",
+            ylabel = "Time to learn (tₘₐₓ)",
+            scale = :log10,
+            title = "tₘₐₓ vs N",
+            markershape = markers[j],
+            )
+        end
+        
+        for i in 2:length(λs)
+            preanalysis_plot = scatter!((_data[(_data.λ .== λs[i]),:].class_size), _data[(_data.λ .== λs[i]),:].ttl,
+            label =seat_config * " λ = $(λs[i])",
+            markershape = markers[j],
+            )
+        end
     end
 
-    
-    @. power_model(x,p) = p[1] * x ^ p[2]
-    
+    #=
+    #* Best fit lines
     for j in 1:length(λs)
         power_fit = curve_fit(power_model, 
             (size_data[(size_data.λ .== λs[j]),:].class_size), 
@@ -137,10 +160,13 @@ function scale_factor_analysis(data, class_config, λs)
         )
         α = coef(power_fit)[2]
         preanalysis_plot = plot!(minimum(size_data.class_size):maximum(size_data.class_size), power_model(minimum(size_data.class_size):maximum(size_data.class_size), coef(power_fit)), label = "α = $(round(α, digits = 5))", dpi = 300)
-    end
 
-    savefig(preanalysis_plot, "./output/2D-Binary-PCA/analysis/plots/scale_factor_preadjusted.png")
-    
+    end
+    =#
+    savefig("./output/2D-Binary-PCA/analysis/plots/scale_factor_preadjusted.png")
+    return size_config_data
+
+    #=
     #! new data
     new_data = data
     new_size_data = new_data[(new_data.seat_config .== class_config) .& ([new_data.λ[i] in λs for i in 1:length(new_data.λ)]),:]
@@ -162,17 +188,18 @@ function scale_factor_analysis(data, class_config, λs)
         )
     end
 
+    
+    CSV.write("./output/2D-Binary-PCA/analysis/scaled_data.csv", new_data)
     savefig(analysis_plot, "./output/2D-Binary-PCA/analysis/plots/scale_factor_adjusted.png")
 
-    CSV.write("./output/2D-Binary-PCA/analysis/scaled_data.csv", new_data)
-
     return new_size_data
+    =#
 end
 
 begin
     # List of parameters
     lengths = [32,48,64,96,128]
-	seat_configs = ["inner_corner","outer_corner","center","random"]
+	seat_configs = ["inner_corner","outer_corner","center","random","traditional"]
 	Λs = collect(0.1:0.1:1)
 	steady_state_tolerance = 20
 	n_trials = 5
@@ -183,13 +210,7 @@ begin
     data = read_data(lengths, seat_configs, Λs, n_trials; n_learned = 4)
     plot_data(data,lengths)
 
-    new_data = scale_factor_analysis(data,"inner_corner", [0.1,0.5,0.9])
+    new_data = scale_factor_analysis(data,["inner_corner","traditional"], [0.1,0.5,0.9])
     # show(new_data, allrows=true)
 
 end
-
-
-new_data.class_size
-new_data.class_size .= new_data.class_size .^ 2
-show(new_data[(new_data.seat_config .== "inner_corner"), :], allrows=true)
-
