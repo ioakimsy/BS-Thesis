@@ -1,8 +1,8 @@
-PWD c:/School/BS Thesis/documents/template
+PWD c:/School/BS Thesis/documents/Thesis-Manuscript
 INPUT c:/texlive/2023/texmf.cnf
 INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/School/BS Thesis/documents/template/main.tex
+INPUT c:/School/BS Thesis/documents/Thesis-Manuscript/main.tex
 OUTPUT main.log
 INPUT ./nip3.cls
 INPUT nip3.cls
@@ -152,7 +152,6 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT ./dedication.tex
 INPUT ./dedication.tex
 INPUT dedication.tex
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./acknowledgments.tex
@@ -201,6 +200,7 @@ OUTPUT main.lof
 INPUT ./1introduction.tex
 INPUT ./1introduction.tex
 INPUT 1introduction.tex
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./2litReview.tex

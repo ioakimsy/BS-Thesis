@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  8 OCT 2023 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  17 APR 2024 01:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/School/BS Thesis/documents/template/main.tex"
-(c:/School/BS Thesis/documents/template/main.tex
+**"c:/School/BS Thesis/documents/Thesis-Manuscript/main.tex"
+(c:/School/BS Thesis/documents/Thesis-Manuscript/main.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
 (./nip3.cls
@@ -400,11 +400,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--70
 
  []
 
-[1] (./dedication.tex) [2] (./acknowledgments.tex) [3
+[1] (./dedication.tex) [2] (./acknowledgments.tex [3
 
-]
+]) [4]
 Creating NIP abstract..
-(./0abstract.tex) [4] (./main.toc
+(./0abstract.tex) [5] (./main.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
  (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -420,13 +420,13 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [5
+ [6
 
 ] (./main.lof)
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [6
+ [7
 
 ] (./1introduction.tex
 Chapter 1.
@@ -443,7 +443,7 @@ Chapter 2.
 
 ]
 Chapter 3.
-<figures/model.png, id=146, 1027.84pt x 508.90125pt>
+<figures/model.png, id=150, 1027.84pt x 508.90125pt>
 File: figures/model.png Graphic file (type png)
 <use figures/model.png>
 Package pdftex.def Info: figures/model.png  used on input line 29.
@@ -487,18 +487,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C9ED8D060C5FECD072E826AE02C87BF3;2564.
  ) 
 Here is how much of TeX's memory you used:
- 10984 strings out of 474928
- 165167 string characters out of 5763562
+ 10985 strings out of 474928
+ 165202 string characters out of 5763562
  1926785 words of memory out of 5000000
  32304 multiletter control sequences out of 15000+600000
  565894 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,582b,619s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,591b,619s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (19 pages, 454497 bytes).
+Output written on main.pdf (20 pages, 457432 bytes).
 PDF statistics:
- 267 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 272 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 500000)
  147 words of extra memory for PDF output out of 10000 (max. 10000000)
 

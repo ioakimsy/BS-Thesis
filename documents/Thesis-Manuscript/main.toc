@@ -1,6 +1,6 @@
 \contentsline {chapter}{Acknowledgments}{iii}{chapter*.1}%
-\contentsline {chapter}{Abstract}{iv}{chapter*.1}%
-\contentsline {chapter}{List of Figures}{v}{chapter*.2}%
+\contentsline {chapter}{Abstract}{v}{chapter*.1}%
+\contentsline {chapter}{List of Figures}{vi}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Introduction, Hello world}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}First section}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Second section}{2}{section.1.2}%
