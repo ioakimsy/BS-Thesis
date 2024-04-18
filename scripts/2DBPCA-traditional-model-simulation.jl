@@ -134,7 +134,7 @@ function class_simulation(lengths::Vector{Int}, Λs::Vector{Float64}, steady_sta
             #! it broke once, i do not know why
             
             #* Set up in case need to truncate outliers
-            #* Only considers first 50% of the data
+            #* Only considers first 25% of the data
             learned_y = learned[1:end-Int64(floor(0.75*num_generations))]
             generation_domain = 1:length(learned_y)
 
