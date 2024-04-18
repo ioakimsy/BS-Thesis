@@ -2,7 +2,7 @@
 % The following LaTeX packages must be installed on your machine: amsmath, authblk, bm, booktabs, caption, dcolumn, fancyhdr, geometry, graphicx, hyperref, latexsym, natbib
 
 % Please make sure that spp.dat (supplied with this template) is in your working directory or path
-\input{spp.dat}
+\input{spp2024.dat}
 
 %  Editorial staff will uncomment the next line
 % \providecommand{\artnum}[0]{XX-XX}
@@ -25,7 +25,7 @@
 \author[ ]{Johnrob Y.~Bantang
 \lastauthorsep}
 \affil[ ]{National Institute of Physics, University of the Philippines - Diliman, Philippines}
-\affil[*]{\corremail{csy@nip.upd.edu.ph} }
+\affil[*]{\corremail{ctsy@up.edu.ph} }
 
 %--------------------------------------------------
 %  For three or more authors with the same affiliation please use this block
@@ -56,7 +56,7 @@
 %--------------------------------------------------
 % Include abstract and keywords here
 %--------------------------------------------------
-This study aims to model the transfer of knowledge through peer-to-peer interactions in the classroom by using a binary probabilistic cellular automata (PCA) model. This study mainly focuses on the effects of the  initial seating arrangement of learned or high aptitude students to the classes' overall learning rate. We found that in square classrooms with different lengths $L \in\lbrace32,48,64,96,128\rbrace$, the inner corner seating arrangement performed the best in terms of both time it takes to saturate the classroom with learned students ($t_{max}$) and the classroom’s learning rate in the first half of the simulation before the finite size effect affects the system ($m$). This result is different from a similar previous study by Roxas et. al. (2010). This difference stems from the simplifications made in this model. Our model uses binary values instead of continuous values as a measure of students’ aptitude, does not consider directionality or orientation bias (non-isotropy) and the similarity effect mentioned in related literature (?), and does not incorporate memory or unlearning - all of which are factors in the real world.
+This study aims to model the transfer of knowledge through peer-to-peer interactions in the classroom by using a binary probabilistic cellular automata (PCA) model. This study mainly focuses on the effects of the initial seating arrangement of learned or high aptitude students to the classes' overall learning rate. We also compared the efficiency of learning between the traditional learning model and peer-to-peer learning model. We found that in square classrooms with different lengths $L \in\lbrace32,48,64,96,128\rbrace$, the inner corner seating arrangement performed the best among the peer-to-peer learning setups in terms of both the time it takes to saturate the classroom with learned students ($t_{max}$) and the classroom’s learning rate ($m$). This result is different from a similar previous study by Roxas et. al. (2010) \cite{roxas2010seating}. This difference stems from the simplifications made in this model that may not reflect real world factors. Our model uses binary values instead of continuous values as a measure of students’ aptitude, does not consider directionality or orientation bias (non-isotropy) and the similarity effect mentioned in related literature where peer discussion can enhance understanding even if none of the students knows the correct answer. Our model also does not incorporate memory or unlearning. However, despite these simplifications, we found that in smaller classrooms with slow learners, peer-to-peer learning is more efficient compared to the traditional learning model, just as the previous study has suggested.
 
 \keywords{classroom dynamics, probabilistic cellular automata}
 
@@ -70,10 +70,12 @@ This study aims to model the transfer of knowledge through peer-to-peer interact
 % the main text of your paper begins here
 %--------------------------------------------------
 \section{Introduction}\label{sec:intro}
-
+what is PI/P2P learning, its benefits, and then how/why we use PCA to model it?
+something something \cite{smith2009peer}
 
 \section{Methodology}\label{sec:methods}
-We used a two-dimensional binary probabilistic cellular automata (PCA) model to simulate the learning of students from peer-to-peer interactions in a classroom. The PCA model parameters include: (1) spread coefficient matrix $\Lambda$ (eq \ref{eq:Lambda matrix}) in a neighborhood which can be both isotropic (no orientation bias, all $\lambda_i$ are equal) and anisotropic (has orientation bias, not all $\lambda_i$ are equal), (2) the dimensions of the classroom ($L_1 \times L_2$) such that the size is $N=L_1 \times L_2$, and (3) the initial position of the learned students. The initial positions chosen for the simulations are based on a previous study from Roxas et. al. (2010) \cite{roxas2010seating}, namely inner corner, outer corner, center, and random with the number of initial learned students being constantly $n_0 = 4$. 
+\subsection{Peer-to-peer (P2P) learning model}
+We used a two-dimensional binary probabilistic cellular automata (PCA) model to simulate the learning of students from peer-to-peer interactions in a square classroom. The PCA model runs until the classroom is fully saturated with learned students and includes three parameters. Firstly, (1) the dimensions of the classroom ($L_1 \times L_2$) such that the size is $N=L_1 \times L_2$. In the simulations ran for this experiment, the classrooms were set to be squares with lengths $L \in \lbrace 32,48,64,96,128\rbrace$. This is not representative of reality and is different from the previous study \cite{roxas2010seating}. This was done because a classroom length of $L=8$ (and corresponding size of $N=64$) will not give much insight as the simulations would end too quickly and would not yield enough data points for analysis. Secondly, (2) the initial position or seating arrangement (SA) of the learned students. The SA's chosen for the simulations are based on a previous study \cite{roxas2010seating}, namely inner corner, outer corner, center, and random with the number of initial learned students being constantly $n_0 = 4$. The inner corner SA places learned students halfway between the corners of the classroom and the middle. The outer corner SA places the learned students at the classroom's corners, while the center SA places the learned students in the center of the classroom, and the random SA places the learned students randomly within the classroom. Lastly, (3) the spread coefficient matrix $\Lambda$ within a neighborhood given by 
 
 \begin{equation}\label{eq:Lambda matrix}
   \Lambda = 
@@ -81,10 +83,10 @@ We used a two-dimensional binary probabilistic cellular automata (PCA) model to 
   \lambda_1 & \lambda_4 & \lambda_7\\
   \lambda_2 & \lambda_5 & \lambda_8\\
   \lambda_3 & \lambda_6 & \lambda_9\\
-  \end{bmatrix}, \text{where } \lambda_i=\lambda \forall i \in \lbrace1...9\rbrace
+  \end{bmatrix}%, \text{where } \lambda_i=\lambda \forall i \in \lbrace1...9\rbrace
 \end{equation}
 
-\noindent In the simulations ran for this experiment, only isotropic spreading was considered with spread coefficients ($\lambda$) between 0.1 to 1.0 with increments of 0.1. The matrix $\Lambda$ dictates the probability of the student of interest, placed at the center of the matrix, to learn from its neighbors based on the latter's relative position. For example, an unlearned student whose only learned neighbor is in front of them will have a $\lambda_4$ chance of learning in the next generation. The probability of an unlearned student learning from multiple neighbors is dictated by equation \ref{eq:learning probability}.
+\noindent The spread coefficient matrix $\Lambda$ can be both isotropic (no orientation bias, all $\lambda_i$ are equal) and anisotropic (has orientation bias, not all $\lambda_i$ are equal). However, in the simulations ran for this experiment, we only considered isotropic spreading with spread coefficients ($\lambda$) between 0.1 to 1.0 with increments of 0.1. The matrix $\Lambda$ dictates the probability of the student of interest, placed at the center of the matrix, to learn from its neighbors based on the latter's relative position. For example, an unlearned student whose only learned neighbor is in front of them will have a $\lambda_4$ chance of learning in the next generation. In the case where an unlearned student has more than one learned student in their neighborhood, probability of learning is dictated by:
 
 \begin{equation}
   P = 1 - \prod_{n=1}^{9}{(1-S_n\lambda_n)}
@@ -96,20 +98,22 @@ We used a two-dimensional binary probabilistic cellular automata (PCA) model to 
   \label{eq:learning probability}
 \end{equation}
 
-\noindent The classrooms were set to be squares with lengths $L \in \lbrace 32,64,128\rbrace$. This is not representative of reality and it was done because a classroom length of 8 (and corresponding size of 64) will not give much insight as the simulations would end too quickly and would not have yielded enough data points for analysis.
+\subsection{Traditional learning model}
+To simulate traditonal learning models where the teacher simply gives a lecture to the class, a diffent set of rules were applied to the 2D binary PCA model using the same parameters as in the P2P model. Instead of having a chance to learn based on a probability matrix $\Lambda$ and learned neighbors, each student has a chance $\lambda$ to learn from the teacher. That is, for every generation, a student has a $\lambda$ probability of transitioning from unlearned to learned. Similar to the P2P model, this model runs until the classroom is saturated with learned students.
 
-\subsection{Time to learn and learning rate}
-From the simulations, we compared both the average number of generations it takes to saturate the classroom with learned students ($T$) and the average learning rate across different configurations over 5 independent runs. The learning rate for each trial was obtained by fitting a power model ($y = ax^m$) to the first half of the data, which is often before the finite size effect starts to affect the simulation, and taking the exponent as the characteristic variable or learning rate ($m$) for that independent run.
+\subsection{Time to learn ($t_{max}$) and learning rate ($m$)}
+From the simulations, we compared both the average number of generations it takes to saturate the classroom with learned students ($t_{max}$) and the average learning rate ($m$) across different configurations over 5 independent runs. The learning rate for each trial was obtained by fitting a power law ($y = ax^m$) to the first half of the data for the P2P model or the first quarter of the data for the traditional model. This truncation was done so that we only fit the part of the data before the finite size effect starts to affect the simulation. %We then take the exponent as the characteristic variable or learning rate ($m$) for that independent run.
 
-
-\subsection{Size dependence}
-We also analyzed the dependence of the time to learn ($T$) on the class size ($L^2$). For each seating arrangement, we took representative learning coefficients $\lambda \in \lbrace 0.1, 0.5, 0.9 \rbrace$ to see how the class size and the learning coefficient affects the time to learn.
+\subsection{Class size dependence}
+We also analyzed the dependence of the time to learn ($t_{max}$) on the class size ($N$). We took representative learning coefficients $\lambda \in \lbrace 0.1, 0.5, 0.9 \rbrace$ from the traditional model and the inner corner SA from the P2P model to see how the class size and the learning coefficient affects the time to learn. %By doing this, we can see in which situations one model can be more beneficial than the other.
 
 \section{Results and Discussion}
-The data shown in Figure \ref{fig:TTL and m vs lambda} suggests that the time to learn ($T$) (\textit{Plot labels not yet corrected}) does not vary significantly between the outer corner, center, and random seat configurations across classroom sizes and spread coefficients. However, there is a significant difference between random arrangement when compared against the outer corner and inner corner seating arrangements. The inner corner seating arrangement consistently performs the best with the shortest time to saturate the classroom with learned students ($T$) and the highest characteristic variable or learning rate ($m$), while the random arrangement generally performs the worst. These findings can be attributed to the simplicity of the model which lends itself to being heavily influenced by geometric factors. Analytically, the configurations’ performance is dictated by the maximum distance of any point to an initially learned student. The outer corner and center seating arrangements perform very similarly because they are geometrically one circle expanding at a constant rate. In these two configurations, the maximum distance of any unlearned student to an initially learned student is the same at $d_{\text{max, center}} = d_{\text{max, outer corner}}=\frac{L\cdot\sqrt{2}}{2}$. The inner corner seating arrangement performs the best because it minimizes this distance to $d_{\text{max, inner corner}}=\frac{L\cdot\sqrt{2}}{4}$.
+The data shown in Figure \ref{fig:TTL and m vs lambda} suggests that the time to learn ($t_{max}$) does not vary significantly within the same SA's when we vary the class size and spread coefficient. Among the P2P models, the inner corner seating arrangement consistently performs the best with the shortest time to learn ($t_{max}$) and the highest learning rate ($m$), while the random arrangement generally performs the worst. These findings can be attributed to the simplicity of the model which lends itself to being heavily influenced by geometric factors. Analytically, the configurations’ performance is heavily dependent on the maximum distance of any point to an initially learned student. The outer corner and center seating arrangements perform very similarly because they are geometrically one circle expanding at a constant rate. In these two configurations, the maximum distance of any unlearned student to an initially learned student is the same at $d_{\text{max, center}} = d_{\text{max, outer corner}}=\frac{L\cdot\sqrt{2}}{2}$. The inner corner seating arrangement performs the best because it minimizes this distance to $d_{\text{max, inner corner}}=\frac{L\cdot\sqrt{2}}{4}$.
+
+\noindent The data in Figure \ref{fig:TTL and m vs lambda} also shows that the traditional learning model is generally more efficient for bigger classrooms and higher spread coefficients $\lambda$. However, this result may change if we vary the number of initially learned students with respect to the classroom size.
 
 %figures of lambda dependence
-\begin{figure}[h!]
+\begin{figure}[h]
   \centering
   \subfloat{\makebox[0.3\textwidth]{{\includegraphics[width=0.3\textwidth]{figures/m-32.png}\label{fig:m-32}}}}
   \quad % or other spacing between figures
@@ -122,27 +126,47 @@ The data shown in Figure \ref{fig:TTL and m vs lambda} suggests that the time to
   \subfloat{\makebox[0.3\textwidth]{\includegraphics[width=0.3\textwidth]{figures/t-64}\label{fig:t-64}}}
   \quad % or other spacing between figures
   \subfloat{\makebox[0.3\textwidth]{\includegraphics[width=0.3\textwidth]{figures/t-128}\label{fig:t-128}}}
-  \caption{Characteristic variable ($m$) and time to learn ($T$) vs. Spread coefficient ($\lambda$).}\label{fig:TTL and m vs lambda}
+  \caption{Characteristic variable ($m$) (higher is better) and time to learn ($T$) (lower is better) vs. Spread coefficient ($\lambda$).}
+  \label{fig:TTL and m vs lambda}
 \end{figure}
 
-\noindent These results, however, do not agree with existing studies. In a similar study by Roxas et. al. (2010) \cite{roxas2010seating}, they found that the outer corner configuration performed the best in reality. The difference is expected due to the simplifications made in this study. They mentioned that there is a similarity effect that goes on in peer-to-peer learning wherein students of the the same aptitude level, regardless of their actual aptitude, learn better when seated together. The similarity effect has not yet been implemented in our system because this is not applicable to a binary system. The system being binary also introduces more granularity when compared to reality where aptitude is measured more continuously. This study also does not consider the non-isotropy or the presence of an orientation bias when it comes to the learning within each neighborhood. Non-isotropy in the system can stem from the fact (citation needed?) that students may prefer to interact with students beside them or in front of them instead of behind them out of convenience, possibly leading to more learning. This study also assumes that everyone is equally receptive to learning from their peers which may not be the case, so future models will/should take into account the non-uniformity of individuals’ learning rates. 
+\noindent Our findings regarding the optimal seating arrangement for peer-to-peer learning, however, do not agree with existing studies. In a similar study \cite{roxas2010seating}, they found that the outer corner configuration performed the best in reality. The difference is expected due to the simplifications made in this study. They mentioned that there is a similarity effect that goes on in peer-to-peer learning wherein students of the the same aptitude level, regardless of their actual aptitude, learn better when seated together. The similarity effect has not yet been implemented in our system because it is not applicable to a binary system. The system being binary also introduces more granularity when compared to reality where aptitude is measured more continuously. This study also does not consider the non-isotropy or the presence of an orientation bias when it comes to the learning within each neighborhood. Non-isotropy in the system can stem from the fact (citation needed?) that students may prefer to interact with students beside them or in front of them instead of behind them out of convenience, possibly better peer-to-peer learning opportunity. This study also assumes that everyone is equally receptive to learning from their peers which may not be the case, so future models should take into account the non-uniformity of individuals’ learning rates.
+
+
+\noindent When we analyze the dependnce of $t_{max}$ on $N$, we see that resulting trend for both P2P and traditional models also follow the power law ($t_{max}=aN^b$). Figure \ref{fig:tmax vs N} shows that there is a point where in one model can perform better than the other. P2P learning models perform better than traditional in small classrooms with slower learners (low spread coefficient $\lambda$). This agrees with the results shown in Figure \ref{fig:TTL and m vs lambda}. It also similar to the results from previous study \cite{roxas2010seating} wherein they show that low aptitude students are the ones who benefitted the most from the P2P learning model.
 
 %figure of TTL vs Size
-\begin{figure}[h!]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/scale_factor_preadjusted.png}
-  \caption{Time to Learn ($T$) vs Class size ($L^2$)}
-  \label{fig:scale factor unadjusted}
+  \includegraphics[width=0.6\textwidth]{figures/N_vs_tmax-traditional-inner_corner.png}
+  \caption{Maximum time $t_{max}$ vs class size $N$ for P2P and traditional models (lower is better). Symbols denote the data points and the dash lines are the power law fit in the form of $t_{max}=a \cdot N^b$ using three $\lambda$ values, $\lambda \in \lbrace 0.1, 0.5, 0.9 \rbrace$ for two cases: (1) peer-to-peer learning (inner corner configuration), and (2) traditional learning . The two major groups of power law fits are obtained based on the exponent $b$: (a) inner corner, $b = 0.432 \pm 0.019$, (b) traditional, $b=0.087\pm0.021$
+  }
+  \label{fig:tmax vs N}
 \end{figure}
 
-\noindent The linear plot on the log-log scale in Figure \ref{fig:scale factor unadjusted} (\textit{plot labels and legend not yet fixed}) suggests that the relationship of the time to learn vs class size is dictated by a power law wherein it can be normalized so that the lines would collapse. (\textit{no plot yet})
-\\
-\\
-\section{Conclusions}
-Here is the Summary or Conclusions section.
+\begin{table}[h]
+  \centering
+  
+  \begin{tabular}{|c|cc|cc|}
+    \hline
+    & \multicolumn{2}{c|}{\textbf{Inner corner}}       & \multicolumn{2}{c|}{\textbf{Traditional}}        \\ \cline{2-5} 
+    & \multicolumn{1}{c|}{\textbf{$a$}} & \textbf{$b$} & \multicolumn{1}{c|}{\textbf{$a$}} & \textbf{$b$} \\ \hline
+    \textbf{$\lambda=0.1$} & \multicolumn{1}{c|}{2.4515}       & 0.3955       & \multicolumn{1}{c|}{32.4884}      & 0.1119       \\ \hline
+    \textbf{$\lambda=0.5$} & \multicolumn{1}{c|}{0.5795}       & 0.4428       & \multicolumn{1}{c|}{6.0079}       & 0.1052       \\ \hline
+    \textbf{$\lambda=0.9$} & \multicolumn{1}{c|}{0.4055}       & 0.4589       & \multicolumn{1}{c|}{3.6914}       & 0.0445       \\ \hline
+  \end{tabular}
+  \caption{Power law fit parameters $a$ and $b$ for $t_{max}$ vs $N$, where $t_{max}=a \cdot N ^ b$}
+  \label{tab:tmax vs N fit params}
+\end{table}
 
-\section*{Acknowledgments}
-Here are the acknowledgments. Note the asterisk \textbackslash{\ttfamily section*}\{{\ttfamily Acknowledgments}\} that signifies that this section is unnumbered.
+\noindent We see from both Figures \ref{tab:tmax vs N fit params} and \ref{fig:tmax vs N} that there are two major groups of power law fits based on their exponent or b-values: (1) those from the P2P model (inner corner SA) with $\bar{b} = 0.432 \pm 0.019$, (2) those from the traditional model with $\bar{b}=0.087\pm0.021$. From this, we can say that the traditional learning model is more scalable or that it is less size dependent compared to the P2P model. Numerically, this is explained by the lower b-values of the traditional models vs the P2P models. We also found that b-values generally increase as the spread coefficient $\lambda$ increases as shown in Table \ref{tab:tmax vs N fit params}. This suggests that in classrooms with higher aptitude students are more affected by the class size than classrooms with lower aptitude students.
+
+
+\section{Conclusions}
+Due to the simplifications made in our model, our results in comparing between different SA's in the peer-to-peer learning model were heavily influence by geometric biases, and may not represent reality as well as other models. However, even with a simplified model, we were able to show when one method of teaching is more advantageous than the other. Classrooms with slow learners benefit the most from peer-to-peer learning methods and classrooms with fast learners are likely better off with traditional learning methods.
+
+% \section*{Acknowledgments}
+% Here are the acknowledgments. Note the asterisk \textbackslash{\ttfamily section*}\{{\ttfamily Acknowledgments}\} that signifies that this section is unnumbered.
 
 % Please use the style file spp-bst.bst. If you wish to use BibTeX, kindly use us the filename bibfile.bib for your bib file.
 \bibliographystyle{spp-bst}

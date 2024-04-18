@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{2}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -14,5 +14,8 @@
 
 \bibitem[{\citenamefont{Roxas et~al.}(2010)\citenamefont{Roxas, Carreon-Monterola, and Monterola}}]{roxas2010seating}
 \bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Roxas}}, \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Carreon-Monterola}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Monterola}}, \bibinfo{title}{Seating arrangement, group composition and competition-driven interaction: Effects on students’ performance in physics}, in \emph{\bibinfo{booktitle}{AIP Conference Proceedings}} (\bibinfo{organization}{American Institute of Physics}, \bibinfo{year}{2010}), vol. \bibinfo{volume}{1263},  \bibinfo{pages}{155--158}.
+
+\bibitem[{\citenamefont{Smith et~al.}(2009)\citenamefont{Smith, Wood, Adams, Wieman, Knight, Guild, and Su}}]{smith2009peer}
+\bibinfo{author}{\bibfnamefont{M.~K.} \bibnamefont{Smith}}, \bibinfo{author}{\bibfnamefont{W.~B.} \bibnamefont{Wood}}, \bibinfo{author}{\bibfnamefont{W.~K.} \bibnamefont{Adams}}, \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Wieman}}, \bibinfo{author}{\bibfnamefont{J.~K.} \bibnamefont{Knight}}, \bibinfo{author}{\bibfnamefont{N.}~\bibnamefont{Guild}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{T.~T.} \bibnamefont{Su}}, \bibinfo{title}{Why peer discussion improves student performance on in-class concept questions}, \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{323}}, \bibinfo{pages}{122} (\bibinfo{year}{2009}).
 
 \end{thebibliography}

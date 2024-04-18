@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  19 MAR 2024 14:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  18 APR 2024 10:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -23,7 +23,7 @@ File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-) (./spp.dat (c:/texlive/2023/texmf-dist/tex/latex/base/latexsym.sty
+) (./spp2024.dat (c:/texlive/2023/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
@@ -440,92 +440,94 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 59.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 76.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 78.
  [1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figures/m-32.png, id=57, 1806.75pt x 1204.5pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 104.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 104.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 104.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 104.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 104.
+
+<figures/m-32.png, id=67, 1806.75pt x 1204.5pt>
 File: figures/m-32.png Graphic file (type png)
 <use figures/m-32.png>
-Package pdftex.def Info: figures/m-32.png  used on input line 114.
+Package pdftex.def Info: figures/m-32.png  used on input line 118.
 (pdftex.def)             Requested size: 136.57462pt x 91.032pt.
-<figures/m-64.png, id=58, 1806.75pt x 1204.5pt>
+<figures/m-64.png, id=68, 1806.75pt x 1204.5pt>
 File: figures/m-64.png Graphic file (type png)
 <use figures/m-64.png>
-Package pdftex.def Info: figures/m-64.png  used on input line 116.
+Package pdftex.def Info: figures/m-64.png  used on input line 120.
 (pdftex.def)             Requested size: 136.57462pt x 91.032pt.
-<figures/m-128.png, id=59, 1806.75pt x 1204.5pt>
+<figures/m-128.png, id=69, 1806.75pt x 1204.5pt>
 File: figures/m-128.png Graphic file (type png)
 <use figures/m-128.png>
-Package pdftex.def Info: figures/m-128.png  used on input line 118.
+Package pdftex.def Info: figures/m-128.png  used on input line 122.
 (pdftex.def)             Requested size: 136.57462pt x 91.032pt.
-<figures/t-32.png, id=60, 1806.75pt x 1204.5pt>
+<figures/t-32.png, id=70, 1806.75pt x 1204.5pt>
 File: figures/t-32.png Graphic file (type png)
 <use figures/t-32.png>
-Package pdftex.def Info: figures/t-32.png  used on input line 120.
+Package pdftex.def Info: figures/t-32.png  used on input line 124.
 (pdftex.def)             Requested size: 136.57462pt x 91.032pt.
-<figures/t-64.png, id=61, 1806.75pt x 1204.5pt>
+<figures/t-64.png, id=71, 1806.75pt x 1204.5pt>
 File: figures/t-64.png Graphic file (type png)
 <use figures/t-64.png>
-Package pdftex.def Info: figures/t-64.png  used on input line 122.
+Package pdftex.def Info: figures/t-64.png  used on input line 126.
 (pdftex.def)             Requested size: 136.57462pt x 91.032pt.
-<figures/t-128.png, id=62, 1806.75pt x 1204.5pt>
+<figures/t-128.png, id=72, 1806.75pt x 1204.5pt>
 File: figures/t-128.png Graphic file (type png)
 <use figures/t-128.png>
-Package pdftex.def Info: figures/t-128.png  used on input line 124.
+Package pdftex.def Info: figures/t-128.png  used on input line 128.
 (pdftex.def)             Requested size: 136.57462pt x 91.032pt.
-<figures/scale_factor_preadjusted.png, id=64, 602.25pt x 401.5pt>
-File: figures/scale_factor_preadjusted.png Graphic file (type png)
-<use figures/scale_factor_preadjusted.png>
-Package pdftex.def Info: figures/scale_factor_preadjusted.png  used on input line 133.
-(pdftex.def)             Requested size: 182.09486pt x 121.39438pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2]
+<figures/N_vs_tmax-traditional-inner_corner.png, id=86, 1806.75pt x 1204.5pt>
+File: figures/N_vs_tmax-traditional-inner_corner.png Graphic file (type png)
+<use figures/N_vs_tmax-traditional-inner_corner.png>
+Package pdftex.def Info: figures/N_vs_tmax-traditional-inner_corner.png  used on input line 141.
+(pdftex.def)             Requested size: 273.14923pt x 182.10077pt.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 138--141
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 138--141
-
- []
-
-[2 <./figures/m-32.png> <./figures/m-64.png> <./figures/m-128.png> <./figures/t-32.png> <./figures/t-64.png> <./figures/t-128.png>]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 145.
- (c:/texlive/2023/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
- (./main.bbl)
-
-Package caption Warning: Unused \captionsetup[table] on input line 86.
-See the caption package documentation for explanation.
-
-[3 <./figures/scale_factor_preadjusted.png>] (./main.aux)
+[3 <./figures/m-32.png> <./figures/m-64.png> <./figures/m-128.png> <./figures/t-32.png> <./figures/t-64.png> <./figures/t-128.png> <./figures/N_vs_tmax-traditional-inner_corner.png>] (./main.bbl) [4] (./main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0F50023FAB4857B2E30791B1FEF7D051;820.
+(rerunfilecheck)             Checksum: BABB57984418A7CBE1269E3B5B15B7F5;1356.
  ) 
 Here is how much of TeX's memory you used:
- 12195 strings out of 474928
- 191140 string characters out of 5763562
+ 12184 strings out of 474928
+ 191073 string characters out of 5763562
  1940785 words of memory out of 5000000
- 33546 multiletter control sequences out of 15000+600000
- 568763 words of font info for 76 fonts, out of 8000000 for 9000
+ 33535 multiletter control sequences out of 15000+600000
+ 568595 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,13n,82p,1529b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (3 pages, 908142 bytes).
+ 80i,14n,82p,1767b,453s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on main.pdf (4 pages, 1013235 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 84 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 100 words of extra memory for PDF output out of 10000 (max. 10000000)
 
