@@ -29,13 +29,14 @@ function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
                 params_df = CSV.read("./output/2D-Binary-PCA/$(seat_config)-$(class_size)/$(λ₀)/trial_$(trial)/data/2DBPCA-$(seat_config)-$(class_size)-$(λ₀)-trial_$(trial)-fit_params.csv", DataFrame)
             end
 
-            #* Adding the data per simulation  to the summary
+            #* Adding the data per simulation to the summary
             num_generations = length(params_df[!, "learned_per_gen"]) #/ class_size^2
             m = params_df[!, "power_fit"][2] #± params_df[!, "power_fit"][4]
 
             push!(num_generations_list, num_generations)
             push!(m_list, m)
         end
+        #* for m and t_max: x̄ ± σ/√(N)
         push!(data, 
             (
                 seat_config, 
@@ -119,6 +120,8 @@ function scale_factor_analysis(data, class_configs, λs)
     size_config_data = data[([data.seat_config[i] in class_configs for i in eachindex(data.seat_config)]) .& ([data.λ[i] in λs for i in 1:length(data.λ)]),:]
     
     fit_coefs = []
+    a = []
+    b = []
 
     color = 1
 
@@ -141,7 +144,10 @@ function scale_factor_analysis(data, class_configs, λs)
             _power_fit = curve_fit(power_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [0.1,-1])
             _fit_coefs = coef(_power_fit)
             push!(fit_coefs, _fit_coefs)
+            push!(a, _fit_coefs[1])
+            push!(b, _fit_coefs[2])
             _fit_domain = minimum(_data.class_size):maximum(_data.class_size)
+
 
             #* Plots data points
             preanalysis_plot = scatter(_x_data, _y_data,
@@ -156,23 +162,23 @@ function scale_factor_analysis(data, class_configs, λs)
                 #legend_title = "Legend",
                 legend_columns = 1,
                 legendfontsize = 6,
-                markercolor = color,
+                markercolor = 1,
             )
 
-            #* Adds space in the legend
-            preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
+            # #* Adds space in the legend
+            # preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
 
             #* Plots the best fit line
             preanalysis_plot = plot!(_fit_domain, power_model(_fit_domain, _fit_coefs),
-                label = L"y = %$(round(_fit_coefs[1], digits=3)) \cdot x^{%$(round(_fit_coefs[2], digits=3))}",
+                label = false,
                 linestyle = :dash,
-                linecolor = color
+                linecolor = 1
             )
 
-            #* Adds space in the legend
-            preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
+            # * Adds space in the legend
+            # preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
 
-            color = color + 1
+            #color = color + 1
         else
             #* selects a series of data only from 1 lambda
             _x_data = (_data[(_data.λ .== λs[1]),:].class_size)
@@ -182,33 +188,35 @@ function scale_factor_analysis(data, class_configs, λs)
             _power_fit = curve_fit(power_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [0.1,-1])
             _fit_coefs = coef(_power_fit)
             push!(fit_coefs, _fit_coefs)
+            push!(a, _fit_coefs[1])
+            push!(b, _fit_coefs[2])
             _fit_domain = minimum(_data.class_size):maximum(_data.class_size)
 
             #* Plots data points
             preanalysis_plot = scatter!((_data[(_data.λ .== λs[1]),:].class_size), _data[(_data.λ .== λs[1]),:].ttl,
             label = seat_config * " λ = $(λs[1])",
             xlabel = "Class size (N)",
-            ylabel = "Time to learn (tₘₐₓ)",
+            ylabel = "Time to Learn (tₘₐₓ)",
             scale = :log10,
             #title = "tₘₐₓ vs N",
             markershape = markers[j],
-            markercolor = color,
+            markercolor = 1,
             )
 
-             #* Adds space in the legend
-             preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
+            #  #* Adds space in the legend
+            #  preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
 
             #* Plots the best fit line
             preanalysis_plot = plot!(_fit_domain, power_model(_fit_domain, _fit_coefs),
-                label = L"y = %$(round(_fit_coefs[1], digits=3)) \cdot x^{%$(round(_fit_coefs[2], digits=3))}",
+                label = false,
                 linestyle = :dash,
-                linecolor = color,
+                linecolor = 1,
             )
 
              #* Adds space in the legend
-             preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
+            #  preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
              
-            color = color + 1
+            #color = color + 1
         end
         
         for i in 2:length(λs)
@@ -220,34 +228,36 @@ function scale_factor_analysis(data, class_configs, λs)
             _power_fit = curve_fit(power_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [0.1,-1])
             _fit_coefs = coef(_power_fit)
             push!(fit_coefs, _fit_coefs)
+            push!(a, _fit_coefs[1])
+            push!(b, _fit_coefs[2])
             _fit_domain = minimum(_data.class_size):maximum(_data.class_size)
 
             #* Plots data points
             preanalysis_plot = scatter!((_data[(_data.λ .== λs[i]),:].class_size), _data[(_data.λ .== λs[i]),:].ttl,
             label =seat_config * " λ = $(λs[i])",
             markershape = markers[j],
-            markercolor = color,
+            markercolor = i,
             )
 
-             #* Adds space in the legend
-             preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
+            #  #* Adds space in the legend
+            #  preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
 
             #* Plots the best fit line
             preanalysis_plot = plot!(_fit_domain, power_model(_fit_domain, _fit_coefs),
-                label = L"y = %$(round(_fit_coefs[1], digits=3)) \cdot x^{%$(round(_fit_coefs[2], digits=3))}",
+                label = false,
                 linestyle = :dash,
-                linecolor = color
+                linecolor = i
             )
 
              #* Adds space in the legend
-             preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
+            # preanalysis_plot = scatter!([minimum(_x_data)],[minimum(_y_data)], label=" ", ms=0, mc=false, msc=false, ma = 0)
 
-            color = color + 1
+            #color = color + 1
         end
     end
 
     savefig("./output/2D-Binary-PCA/analysis/plots/N_vs_tmax-traditional-inner_corner.png")
-    return size_config_data
+    return size_config_data, a, b
 
 end
 
@@ -265,7 +275,14 @@ begin
     data = read_data(lengths, seat_configs, Λs, n_trials; n_learned = 4)
     plot_data(data,lengths)
 
-    new_data = scale_factor_analysis(data,["inner_corner","traditional"], [0.1,0.5,0.9])
-    show(new_data, allrows=true)
+    #* fit coefs follow the same order as the graph legend
+    new_data, as, bs = scale_factor_analysis(data,["inner_corner","traditional"], [0.1,0.5,0.9])
 
+    as_inner_corner = [as[i] for i in 1:Int(length(as)//2)]
+    as_traditional = [as[i] for i in Int(length(as)//2)+1:length(as)]
+    bs_inner_corner = [bs[i] for i in 1:Int(length(bs)//2)]
+    bs_traditional = [bs[i] for i in Int(length(bs)//2)+1:length(bs)]
+
+    bs_inner_corner_mean = mean(bs_inner_corner) ± std(bs_inner_corner)/sqrt(length(bs_inner_corner))
+    bs_traditional_mean = mean(bs_traditional) ± std(bs_traditional)/sqrt(length(bs_traditional))
 end
