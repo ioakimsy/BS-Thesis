@@ -7,45 +7,45 @@ Database file #1: bibfile.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--can't use both volume and number fields in roxas2010seating
-You've used 2 entries,
+You've used 7 entries,
             3450 wiz_defined-function locations,
-            683 strings with 5375 characters,
-and the built_in function-call counts, 2095 in all, are:
-= -- 109
-> -- 82
-< -- 12
-+ -- 72
-- -- 20
-* -- 284
-:= -- 195
-add.period$ -- 2
-call.type$ -- 2
-change.case$ -- 10
-chr.to.int$ -- 2
-cite$ -- 3
-duplicate$ -- 197
-empty$ -- 167
-format.name$ -- 46
-if$ -- 398
+            718 strings with 6110 characters,
+and the built_in function-call counts, 5243 in all, are:
+= -- 288
+> -- 165
+< -- 27
++ -- 132
+- -- 40
+* -- 704
+:= -- 537
+add.period$ -- 7
+call.type$ -- 7
+change.case$ -- 34
+chr.to.int$ -- 7
+cite$ -- 8
+duplicate$ -- 507
+empty$ -- 458
+format.name$ -- 105
+if$ -- 998
 int.to.chr$ -- 1
-int.to.str$ -- 3
-missing$ -- 29
-newline$ -- 21
-num.names$ -- 6
-pop$ -- 51
+int.to.str$ -- 8
+missing$ -- 78
+newline$ -- 36
+num.names$ -- 21
+pop$ -- 133
 preamble$ -- 1
-purify$ -- 8
+purify$ -- 28
 quote$ -- 0
-skip$ -- 88
+skip$ -- 205
 stack$ -- 0
-substring$ -- 48
-swap$ -- 170
-text.length$ -- 12
+substring$ -- 136
+swap$ -- 399
+text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
+type$ -- 40
 warning$ -- 1
-while$ -- 6
+while$ -- 19
 width$ -- 0
-write$ -- 37
+write$ -- 90
 (There was 1 warning)
