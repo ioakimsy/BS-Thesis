@@ -1,4 +1,4 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{7}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -12,10 +12,25 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
 
-\bibitem[{\citenamefont{Roxas et~al.}(2010)\citenamefont{Roxas, Carreon-Monterola, and Monterola}}]{roxas2010seating}
-\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Roxas}}, \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Carreon-Monterola}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Monterola}}, \bibinfo{title}{Seating arrangement, group composition and competition-driven interaction: Effects on students’ performance in physics}, in \emph{\bibinfo{booktitle}{AIP Conference Proceedings}} (\bibinfo{organization}{American Institute of Physics}, \bibinfo{year}{2010}), vol. \bibinfo{volume}{1263},  \bibinfo{pages}{155--158}.
+\bibitem[{\citenamefont{Knight and Brame}(2018)}]{knight2018peer}
+\bibinfo{author}{\bibfnamefont{J.~K.} \bibnamefont{Knight}} \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.~J.} \bibnamefont{Brame}}, \bibinfo{title}{Peer instruction}, \emph{\bibinfo{journal}{CBE—Life Sciences Education}} \textbf{\bibinfo{volume}{17}}, \bibinfo{pages}{fe5} (\bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Crouch and Mazur}(2001)}]{crouch2001peer}
+\bibinfo{author}{\bibfnamefont{C.~H.} \bibnamefont{Crouch}} \bibnamefont{and} \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Mazur}}, \bibinfo{title}{Peer instruction: Ten years of experience and results}, \emph{\bibinfo{journal}{American journal of physics}} \textbf{\bibinfo{volume}{69}}, \bibinfo{pages}{970} (\bibinfo{year}{2001}).
 
 \bibitem[{\citenamefont{Smith et~al.}(2009)\citenamefont{Smith, Wood, Adams, Wieman, Knight, Guild, and Su}}]{smith2009peer}
 \bibinfo{author}{\bibfnamefont{M.~K.} \bibnamefont{Smith}}, \bibinfo{author}{\bibfnamefont{W.~B.} \bibnamefont{Wood}}, \bibinfo{author}{\bibfnamefont{W.~K.} \bibnamefont{Adams}}, \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Wieman}}, \bibinfo{author}{\bibfnamefont{J.~K.} \bibnamefont{Knight}}, \bibinfo{author}{\bibfnamefont{N.}~\bibnamefont{Guild}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{T.~T.} \bibnamefont{Su}}, \bibinfo{title}{Why peer discussion improves student performance on in-class concept questions}, \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{323}}, \bibinfo{pages}{122} (\bibinfo{year}{2009}).
+
+\bibitem[{\citenamefont{Lasry et~al.}(2008)\citenamefont{Lasry, Mazur, and Watkins}}]{lasry2008peer}
+\bibinfo{author}{\bibfnamefont{N.}~\bibnamefont{Lasry}}, \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Mazur}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Watkins}}, \bibinfo{title}{Peer instruction: From harvard to the two-year college}, \emph{\bibinfo{journal}{American journal of Physics}} \textbf{\bibinfo{volume}{76}}, \bibinfo{pages}{1066} (\bibinfo{year}{2008}).
+
+\bibitem[{\citenamefont{Weisstein}(2002)}]{weisstein2002cellular}
+\bibinfo{author}{\bibfnamefont{E.~W.} \bibnamefont{Weisstein}}, \bibinfo{title}{Cellular automaton}, \emph{\bibinfo{journal}{https://mathworld. wolfram. com/}}  (\bibinfo{year}{2002}).
+
+\bibitem[{\citenamefont{Louis and Nardi}(2018)}]{louis2018probabilistic}
+\bibinfo{author}{\bibfnamefont{P.-Y.} \bibnamefont{Louis}} \bibnamefont{and} \bibinfo{author}{\bibfnamefont{F.~R.} \bibnamefont{Nardi}}, \emph{\bibinfo{title}{Probabilistic Cellular Automata: Theory, Applications and Future Perspectives}}, vol.~\bibinfo{volume}{27} (\bibinfo{publisher}{Springer}, \bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Roxas et~al.}(2010)\citenamefont{Roxas, Carreon-Monterola, and Monterola}}]{roxas2010seating}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Roxas}}, \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Carreon-Monterola}}, \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Monterola}}, \bibinfo{title}{Seating arrangement, group composition and competition-driven interaction: Effects on students’ performance in physics}, in \emph{\bibinfo{booktitle}{AIP Conference Proceedings}} (\bibinfo{organization}{American Institute of Physics}, \bibinfo{year}{2010}), vol. \bibinfo{volume}{1263},  \bibinfo{pages}{155--158}.
 
 \end{thebibliography}
