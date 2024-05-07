@@ -1,4 +1,5 @@
 begin
+    println("Loading packages")
     using Pkg
     #Pkg.activate(".")
 
@@ -11,6 +12,7 @@ begin
     using LaTeXStrings
 
     #Pkg.status()
+    println("Done loading packages")
 end
 
 function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
@@ -52,6 +54,9 @@ function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
 end
 
 function plot_data(data, sizes)
+    @. cubic_model(x,p) = p[1] * x ^ 3 + p[2] * x ^ 2 + p[3] * x + p[4]
+    @. exponential_model(x,p) = p[1] * ℯ ^ (p[2] * x)
+
     for class_size in sizes
 
         size_data = data[(data.class_size .== class_size),:]
@@ -60,6 +65,7 @@ function plot_data(data, sizes)
         ms = []
         num_generations_list = []
         labels = []
+        ttl_maxes = []
 
         for seat_config in seat_configs
             _data = size_data[(size_data.seat_config .== seat_config),:]
@@ -67,12 +73,12 @@ function plot_data(data, sizes)
             _λ = _data[:,:λ]
             _m = _data[:,:m]
             _num_generations = _data[:,:ttl]
-            
 
             push!(λs, _λ)
             push!(ms, _m)
             push!(num_generations_list, _num_generations)
             push!(labels, "$(seat_config)")
+            push!(ttl_maxes, maximum(_num_generations))
         end
 
         m_plot = scatter(λs[1],ms[1], 
@@ -85,9 +91,28 @@ function plot_data(data, sizes)
         )
 
         for i in 2:length(ms)
+
             m_plot = scatter!(λs[i],ms[i], 
-                label = labels[i],
-            )
+                    label = labels[i],
+                )
+
+            if labels[i] == "traditional"
+                _x_data = λs[i][1:end-1]
+                _y_data = ms[i][1:end-1]
+                cubic_fit = curve_fit(cubic_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [0.1,0.1,0.1,0.1])
+                cubic_fit_coefs = coef(cubic_fit)
+
+                R² = r_squared(_y_data, cubic_model(Measurements.value.(_x_data), cubic_fit_coefs))
+
+                plot!(0.1:0.01:1, cubic_model(0.1:0.01:1, cubic_fit_coefs),
+                    label = "Cubic fit: R² = $R²",
+                    linestyle = :dash,
+                    linecolor = i,
+                )
+
+                annotate!(0.1, 3, text("m = $(round(cubic_fit_coefs[1], digits=3))λ³ + $(round(cubic_fit_coefs[2], digits=3))λ² + $(round(cubic_fit_coefs[3], digits=3))λ + $(round(cubic_fit_coefs[4], digits=3))", :left, 8))
+            end 
+                
         end
         savefig(m_plot, "./output/2D-Binary-PCA/analysis/plots/m-$class_size.png")
 
@@ -104,6 +129,25 @@ function plot_data(data, sizes)
             t_plot = scatter!(λs[i],num_generations_list[i], 
                 label = labels[i],
             )
+
+            if labels[i] == "traditional"
+                _x_data = λs[i][1:end-1]
+                _y_data = num_generations_list[i][1:end-1]
+                exponential_fit = curve_fit(exponential_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [maximum(Measurements.value.(_y_data)),-2.0])
+                exp_fit_coefs = coef(exponential_fit)
+
+                R² = r_squared(_y_data, exponential_model(Measurements.value.(_x_data), exp_fit_coefs))
+
+                t_plot = plot!(0.1:0.01:1, exponential_model(0.1:0.01:1, exp_fit_coefs),
+                    label = "Exponential fit: R² = $R²",
+                    linestyle = :dash,
+                    linecolor = i,
+                )
+
+                t_plot = annotate!(0.8, Measurements.value(maximum(ttl_maxes)/2), text("tₘₐₓ = $(round(exp_fit_coefs[1], digits=3))e^($(round(exp_fit_coefs[2], digits=3))λ)", :center, 8))
+
+            end
+
         end
 
         savefig(t_plot, "./output/2D-Binary-PCA/analysis/plots/t-$class_size.png")
@@ -261,28 +305,114 @@ function scale_factor_analysis(data, class_configs, λs)
 
 end
 
-begin
-    # List of parameters
-    lengths = [32,48,64,96,128]
-	seat_configs = ["inner_corner","outer_corner","center","random","traditional"]
-	Λs = collect(0.1:0.1:1)
-	steady_state_tolerance = 20
-	n_trials = 5
-    n_learned = 4
+function scale_factor_analysis1(data, class_configs, λs)
+    markers = [:circle, :rect, :star5, :diamond, :hexagon, :cross, :xcross, :utriangle, :dtriangle, :rtriangle, :ltriangle, :pentagon, :heptagon, :octagon, :star4, :star6, :star7, :star8, :vline, :hline, :+, :x]
+
     
+    @. power_model(x,p) = p[1] * x ^ p[2]
+    data.class_size .= data.class_size .^ 2
+
+    size_config_data = data[([data.seat_config[i] in class_configs for i in eachindex(data.seat_config)]) .& ([data.λ[i] in λs for i in 1:length(data.λ)]),:]
+
+    fit_coefs = []
+    a = []
+    b = []
+
+    #* For each seating arrangement do: 
+    for (j, seat_config) in enumerate(class_configs)
+        #* Only gets the seating arrangement of interest
+        _data = size_config_data[size_config_data.seat_config .== seat_config,:]
+
+        for i in 1:length(λs)
+            #* selects a series of data only from 1 lambda
+            _x_data = (_data[(_data.λ .== λs[i]),:].class_size)
+            _y_data = _data[(_data.λ .== λs[i]),:].ttl
+
+            #* Calculates the best fit line: y = αx^β 
+            _power_fit = curve_fit(power_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [0.1,-1])
+            _fit_coefs = coef(_power_fit)
+            push!(fit_coefs, _fit_coefs)
+            push!(a, _fit_coefs[1])
+            push!(b, _fit_coefs[2])
+            _fit_domain = minimum(_data.class_size):maximum(_data.class_size)
+
+            #* Plots data points
+            if i == 1 && j == 1
+                preanalysis_plot = scatter(_x_data, _y_data,
+                    label = seat_config * " λ = $(λs[i])",
+                    xlabel = "Class size (N)",
+                    ylabel = "Time to Learn (tₘₐₓ)",
+                    scale = :log10,
+                    markershape = markers[j],
+                    markercolor = i,
+                    dpi = 300,
+                    legend = :outerright,
+                    title = "tₘₐₓ vs N"
+                )
+            else
+                preanalysis_plot = scatter!(_x_data, _y_data,
+                    label = seat_config * " λ = $(λs[i])",
+                    xlabel = "Class size (N)",
+                    ylabel = "Time to Learn (tₘₐₓ)",
+                    scale = :log10,
+                    markershape = markers[j],
+                    markercolor = i,
+                )
+            end
+
+            #* Plots the best fit line
+            preanalysis_plot = plot!(_fit_domain, power_model(_fit_domain, _fit_coefs),
+                label = false,
+                linestyle = :dash,
+                linecolor = i
+            )
+        end
+    end
+    
+    savefig("./output/2D-Binary-PCA/analysis/plots/N_vs_tmax-traditional-inner_corner.png")
+    return size_config_data, a, b
+end
+
+# Calculate R^2 value
+function r_squared(y_data, y_fit)
+    ȳ = mean(y_data)
+    SS_tot = sum((y_data .- ȳ).^2)
+    SS_res = sum((y_data .- y_fit).^2)
+    return 1 - SS_res/SS_tot
+end
+
+begin
+    # Define a list of parameters
+    lengths = [32,48,64,96,128]  # lengths for the analysis
+    seat_configs = ["inner_corner","outer_corner","center","random","traditional"]  # seating configurations
+    Λs = collect(0.1:0.1:1)  # range of λ values
+    steady_state_tolerance = 20  # tolerance for steady state
+    n_trials = 5  # number of trials
+    n_learned = 4  # number of learned
+    
+    # Create directories for output and plots
     mkpath("./output/2D-Binary-PCA/analysis")
     mkpath("./output/2D-Binary-PCA/analysis/plots")
+    
+    # Read the data using the defined parameters
     data = read_data(lengths, seat_configs, Λs, n_trials; n_learned = 4)
+    
+    # Plot the data
     plot_data(data,lengths)
-
-    #* fit coefs follow the same order as the graph legend
-    new_data, as, bs = scale_factor_analysis(data,["inner_corner","traditional"], [0.1,0.5,0.9])
-
+    
+    # Perform scale factor analysis on the data for specific configurations and λs
+    # fit coefs follow the same order as the graph legend
+    new_data, as, bs = scale_factor_analysis1(data,["inner_corner","traditional"], [0.1,0.5,0.9])
+    
+    # Split the 'a' coefficients for the two seating configurations
     as_inner_corner = [as[i] for i in 1:Int(length(as)//2)]
     as_traditional = [as[i] for i in Int(length(as)//2)+1:length(as)]
+    
+    # Split the 'b' coefficients for the two seating configurations
     bs_inner_corner = [bs[i] for i in 1:Int(length(bs)//2)]
     bs_traditional = [bs[i] for i in Int(length(bs)//2)+1:length(bs)]
-
+    
+    # Calculate the mean and standard error of the 'b' coefficients for the two seating configurations
     bs_inner_corner_mean = mean(bs_inner_corner) ± std(bs_inner_corner)/sqrt(length(bs_inner_corner))
     bs_traditional_mean = mean(bs_traditional) ± std(bs_traditional)/sqrt(length(bs_traditional))
 end
