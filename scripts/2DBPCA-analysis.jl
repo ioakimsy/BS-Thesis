@@ -10,6 +10,7 @@ begin
     using Measurements
     using LsqFit
     using LaTeXStrings
+    using Interpolations
 
     #Pkg.status()
     println("Done loading packages")
@@ -54,9 +55,6 @@ function read_data(sizes, seat_configs, Λs, n_trials; n_learned = 4)
 end
 
 function plot_data(data, sizes)
-    @. cubic_model(x,p) = p[1] * x ^ 3 + p[2] * x ^ 2 + p[3] * x + p[4]
-    @. exponential_model(x,p) = p[1] * ℯ ^ (p[2] * x)
-
     for class_size in sizes
 
         size_data = data[(data.class_size .== class_size),:]
@@ -97,20 +95,16 @@ function plot_data(data, sizes)
                 )
 
             if labels[i] == "traditional"
-                _x_data = λs[i][1:end-1]
-                _y_data = ms[i][1:end-1]
-                cubic_fit = curve_fit(cubic_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [0.1,0.1,0.1,0.1])
-                cubic_fit_coefs = coef(cubic_fit)
+                _x_data = λs[i][1:end]
+                _y_data = ms[i][1:end]
+                print(typeof(_y_data))
+                interp_cubic = cubic_spline_interpolation(0.1:0.1:1, Measurements.value.(_y_data))
 
-                R² = r_squared(_y_data, cubic_model(Measurements.value.(_x_data), cubic_fit_coefs))
-
-                plot!(0.1:0.01:1, cubic_model(0.1:0.01:1, cubic_fit_coefs),
-                    label = "Cubic fit: R² = $R²",
+                m_plot = plot!(0.1:0.01:1, interp_cubic(0.1:0.01:1),
+                    label = "Cubic interpolation",
                     linestyle = :dash,
                     linecolor = i,
                 )
-
-                annotate!(0.1, 3, text("m = $(round(cubic_fit_coefs[1], digits=3))λ³ + $(round(cubic_fit_coefs[2], digits=3))λ² + $(round(cubic_fit_coefs[3], digits=3))λ + $(round(cubic_fit_coefs[4], digits=3))", :left, 8))
             end 
                 
         end
@@ -131,20 +125,16 @@ function plot_data(data, sizes)
             )
 
             if labels[i] == "traditional"
-                _x_data = λs[i][1:end-1]
-                _y_data = num_generations_list[i][1:end-1]
-                exponential_fit = curve_fit(exponential_model, Measurements.value.(_x_data), Measurements.value.(_y_data), [maximum(Measurements.value.(_y_data)),-2.0])
-                exp_fit_coefs = coef(exponential_fit)
+                _x_data = λs[i][1:end]
+                _y_data = num_generations_list[i][1:end]
+                
+                interp_cubic = cubic_spline_interpolation(0.1:0.1:1.0, Measurements.value.(_y_data))
 
-                R² = r_squared(_y_data, exponential_model(Measurements.value.(_x_data), exp_fit_coefs))
-
-                t_plot = plot!(0.1:0.01:1, exponential_model(0.1:0.01:1, exp_fit_coefs),
-                    label = "Exponential fit: R² = $R²",
+                t_plot = plot!(0.1:0.01:1, interp_cubic(0.1:0.01:1),
+                    label = "Cubic interpolation",
                     linestyle = :dash,
                     linecolor = i,
                 )
-
-                t_plot = annotate!(0.8, Measurements.value(maximum(ttl_maxes)/2), text("tₘₐₓ = $(round(exp_fit_coefs[1], digits=3))e^($(round(exp_fit_coefs[2], digits=3))λ)", :center, 8))
 
             end
 
