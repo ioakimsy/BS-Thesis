@@ -98,10 +98,10 @@ function plot_data(data, sizes)
                 _x_data = λs[i][1:end]
                 _y_data = ms[i][1:end]
                 print(typeof(_y_data))
-                interp_cubic = cubic_spline_interpolation(0.1:0.1:1, Measurements.value.(_y_data))
+                interp_linear = linear_interpolation(0.1:0.1:1, Measurements.value.(_y_data))
 
-                m_plot = plot!(0.1:0.01:1, interp_cubic(0.1:0.01:1),
-                    label = "Cubic interpolation",
+                m_plot = plot!(0.1:0.01:1, interp_linear(0.1:0.01:1),
+                    label = false,
                     linestyle = :dash,
                     linecolor = i,
                 )
@@ -128,10 +128,10 @@ function plot_data(data, sizes)
                 _x_data = λs[i][1:end]
                 _y_data = num_generations_list[i][1:end]
                 
-                interp_cubic = cubic_spline_interpolation(0.1:0.1:1.0, Measurements.value.(_y_data))
+                interp_linear = linear_interpolation(0.1:0.1:1.0, Measurements.value.(_y_data))
 
-                t_plot = plot!(0.1:0.01:1, interp_cubic(0.1:0.01:1),
-                    label = "Cubic interpolation",
+                t_plot = plot!(0.1:0.01:1, interp_linear(0.1:0.01:1),
+                    label = false,
                     linestyle = :dash,
                     linecolor = i,
                 )
