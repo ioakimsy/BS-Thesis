@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: plain.bst
 Database file #1: biblio.bib
-You've used 3 entries,
+Warning--can't use both volume and number fields in roxas2010seating
+You've used 2 entries,
             2118 wiz_defined-function locations,
-            519 strings with 4413 characters,
-and the built_in function-call counts, 919 in all, are:
-= -- 82
-> -- 53
-< -- 0
-+ -- 21
-- -- 18
-* -- 70
-:= -- 170
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 17
+            514 strings with 4451 characters,
+and the built_in function-call counts, 914 in all, are:
+= -- 94
+> -- 36
+< -- 2
++ -- 14
+- -- 12
+* -- 71
+:= -- 143
+add.period$ -- 7
+call.type$ -- 2
+change.case$ -- 12
 chr.to.int$ -- 0
 cite$ -- 3
-duplicate$ -- 33
-empty$ -- 66
-format.name$ -- 18
-if$ -- 182
+duplicate$ -- 34
+empty$ -- 71
+format.name$ -- 12
+if$ -- 196
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 4
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 17
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 11
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 10
 quote$ -- 0
-skip$ -- 21
+skip$ -- 26
 stack$ -- 0
-substring$ -- 30
-swap$ -- 3
-text.length$ -- 0
+substring$ -- 73
+swap$ -- 14
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 10
-warning$ -- 0
-while$ -- 7
-width$ -- 4
-write$ -- 35
+type$ -- 8
+warning$ -- 1
+while$ -- 9
+width$ -- 3
+write$ -- 26
+(There was 1 warning)
