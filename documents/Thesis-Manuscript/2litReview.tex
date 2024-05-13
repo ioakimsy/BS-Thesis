@@ -1,19 +1,87 @@
 % !TEX root =  main.tex
-\chapter{Review of Literature}
+\chapter{The Classroom as a Binary Probabilistic Cellular Automata Model}
+\hspace{\parindent} The classroom is a complex system that can be modeled as a probabilistic cellular automata. This chapter will discuss the classroom as a complex system and the probabilistic cellular automata model. The chapter will also discuss the implications of the model on the classroom and the teaching-learning process. (AI Generated Text)
 
-In this chapter, a review of literature related to the problem
-statement or the area of research is presented.  In this chapter,
-it is expected that a lot of citations are needed.  The creation
-of \verb+*.bib+ file might be necessary.  You may need to run
-\verb+bibtex+ to create \verb+bbl+ files for your \verb+main.tex+.
+\section{What is a cellular automaton and why use is to model a classroom?}
+\indent Things to discuss (see Reinier's MS for help):
+\begin{itemize}
+    \item Lattice neighborhood: von Neumann, Moore, etc.
+    \item Boundary conditions: toroidal, spherical, fixed, etc.
+    \item Transition rules: deterministic, probabilistic, etc.
+    \item Update rules: synchronous, asynchronous, etc.
+    \item Other factors considered: Inhomogeneous individual learning rate
+    \item Other factors not (yet) considered: Anisotropy, similarity effect, memory/unlearning
+\end{itemize}
 
-\section{Separation of chapters into different files}
+\section{The binary probabilistic cellular automata model for a peer instruction classroom set up}
 
-\hspace{\parindent} The quick brown fox jumps over the lazy dog.
-The quick brown fox jumps over the lazy dog. The quick brown fox
-jumps over the lazy dog. The quick brown fox jumps over the lazy
-dog. The quick brown fox jumps over the lazy dog.
+\begin{itemize}
+    \item Governing equation: 
+    \begin{equation}
+    \label{eq:BPCA PI learning probability}
+        P_{ij} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{ij})(\rho_{i+\delta i, j+\delta j}})(s_{i+\delta i, j+\delta j})\rbrack
+    \end{equation}
 
-The quick brown fox jumps over the lazy dog. The quick brown fox
-jumps over the lazy dog. The quick brown fox jumps over the lazy
-dog. The quick brown fox jumps over the lazy dog.
+    where:
+    \subitem $P_{ij} \in [0,1]$ is the probability of the student seated in row $i$ and column $j$ to learn, 
+    \subitem $\lambda_{ij} \in [0,1]$ is the learning rate of the student in row $i$ column $j$, 
+    \subitem $\rho_{ij} \in [0,1]$ is the probability the student in seat $i,j$ to learn from the students in seat $i+\delta i, j+\delta j$, and 
+    \subitem \begin{equation*}
+        s_{i+\delta i, j+\delta j} = \begin{cases}
+            1 & \text{if the student in seat $i + \delta i,\space j + \delta j$ is learned} \\
+            0 & \text{if the student in seat $i + \delta i,\space j + \delta j$ is not learned}
+        \end{cases}
+    \end{equation*}
+
+    \item Other relevant rules:
+    \begin{itemize}
+        \item Seating arrangement chosen from the following: Inner corner, outer corner, center, and random \cite{roxas2010seating}
+        \item Simulation is considered done when all students are learned
+    \end{itemize}
+   
+\end{itemize}
+
+\section{The binary probabilistic cellular automata model for a traditional classroom set up}
+\begin{itemize}
+    \item Governing equation:
+    \begin{equation}
+    \label{eq:BPCA traditional learning probability}
+        P_{ij} = \lambda_0
+    \end{equation}
+
+    where:
+    \subitem $P_{ij} \in [0,1]$ is the probability of the student seated in row $i$ and column $j$ to learn,
+    \subitem $\lambda_0 \in [0,1]$ is the probability of the student $i,\space j$ to learn from the teacher
+
+    \item Other relevant rules:
+    \begin{enumerate}
+        \item All students are unlearned at the start of the simulation.
+        \item Simulation is considered done when all students are learned.
+    \end{enumerate}
+\end{itemize}
+
+\section{Results: PI vs Traditional}
+\begin{itemize}
+    \item List of input and output parameters?
+    \item $m$ vs $\lambda$ or $\rho_0$
+    \item $t_{max}$ vs $\lambda$ or $\rho_0$
+    \item $t_{max}$ vs $N$ for specific $\lambda$ or $\rho_0$
+    \item Comparison between levels of homogeneity of learning rates
+\end{itemize}
+
+\section{Discussion/conclusions?}
+\begin{enumerate}
+    \item The traditional learning model is more scalable. Between the same $\rho$, the power law exponent $b$ is lower than its peer-to-peer counterpart.
+    \item Inner corner configurations have higher b-values, while the traditional configurations have lower b-values.
+    \item B-values generally increases with $\rho$ values
+    \item Intersections where PI is more efficient occur at lower class sizes and lower $\rho$ values.
+    
+    \begin{itemize}
+        \item In some class sizes, traditional and P2P approaches can become equally efficient depending on the learning rate $\rho$.
+    \end{itemize}
+
+    \item Similar finding with previous research \cite{lasry2008peer}: Students with less background knowledge learned as much with PI as students with more background knowledge with traditional instruction.
+
+\end{enumerate}
+
+    
