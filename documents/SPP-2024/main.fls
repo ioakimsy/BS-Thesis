@@ -216,10 +216,6 @@ INPUT ./figures/Picture3.png
 INPUT ./figures/Picture3.png
 INPUT ./figures/Picture3.png
 INPUT ./figures/Picture3.png
-INPUT c:/texlive/2023/texmf-dist/tex/latex/base/omscmr.fd
-INPUT c:/texlive/2023/texmf-dist/tex/latex/base/omscmr.fd
-INPUT c:/texlive/2023/texmf-dist/tex/latex/base/omscmr.fd
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
@@ -244,4 +240,3 @@ INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
-INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
