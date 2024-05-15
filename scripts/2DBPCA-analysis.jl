@@ -82,10 +82,13 @@ function plot_data(data, sizes)
         m_plot = scatter(λs[1],ms[1], 
             label = labels[1],
             ylabel = "Characteristic variable (m)",
-            xlabel = "Spread coefficient (λ)",
+            xlabel = "Learning coefficient (λ)",
+            labelfontsize = 14,
+            titlefontsize = 16,
             title = "Classroom length: $class_size",
             #legend = :topleft,
-            dpi = 300
+            dpi = 300,
+            #fontfamily = "Times"
         )
 
         for i in 2:length(ms)
@@ -112,11 +115,15 @@ function plot_data(data, sizes)
 
         t_plot = scatter(λs[1],num_generations_list[1], 
             label = labels[1],
-            ylabel = "Time to Learn (tₘₐₓ)",
-            xlabel = "Spread coefficient (λ)",
+            ylabel = "Time to learn (tₘₐₓ)",
+            xlabel = "Learning coefficient (λ)",
+            labelfontsize = 14,
+            titlefontsize = 16,
             title = "Classroom length: $class_size",
-            #legend = :topright,
-            dpi = 300
+            yscale = :log10,
+            legend = :bottomleft,
+            dpi = 300,
+            #fontfamily = "Times"
         )
 
         for i in 2:length(ms)
@@ -331,22 +338,24 @@ function scale_factor_analysis1(data, class_configs, λs)
                 preanalysis_plot = scatter(_x_data, _y_data,
                     label = seat_config * " λ = $(λs[i])",
                     xlabel = "Class size (N)",
-                    ylabel = "Time to Learn (tₘₐₓ)",
+                    ylabel = "Time to learn (tₘₐₓ)",
                     scale = :log10,
                     markershape = markers[j],
                     markercolor = i,
                     dpi = 300,
                     legend = :outerright,
-                    title = "tₘₐₓ vs N"
+                    title = "tₘₐₓ vs N",
+                    #fontfamily = "Times"
                 )
             else
                 preanalysis_plot = scatter!(_x_data, _y_data,
                     label = seat_config * " λ = $(λs[i])",
                     xlabel = "Class size (N)",
-                    ylabel = "Time to Learn (tₘₐₓ)",
+                    ylabel = "Time to learn (tₘₐₓ)",
                     scale = :log10,
                     markershape = markers[j],
                     markercolor = i,
+                    #fontfamily = "Times"
                 )
             end
 
