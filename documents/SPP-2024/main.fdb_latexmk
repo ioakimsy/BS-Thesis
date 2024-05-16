@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1715783705 "main.aux" "main.bbl" "main" 1715784038 0
+["bibtex main"] 1715836589 "main.aux" "main.bbl" "main" 1715836594 0
   "./bibfile.bib" 1714063446 3766 31f41a8943a2116ea8d1a1fc806e0b9f ""
   "./spp-bst.bst" 1713361933 33000 db1d87a764ab720e2f013bc6f132b870 ""
-  "main.aux" 1715784036 5611 6d435efab68d25e7696f3705ef5d7b3d "pdflatex"
+  "main.aux" 1715836592 5275 8ce75960fa34636d2b77c10b2db446c2 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1715784032 "c:/School/BS Thesis/documents/SPP-2024/main.tex" "main.pdf" "main" 1715784038 0
-  "c:/School/BS Thesis/documents/SPP-2024/main.tex" 1715783986 20914 844e2abb5b1955ffa8a69ca36e738782 ""
+["pdflatex"] 1715836590 "c:/School/BS Thesis/documents/SPP-2024/main.tex" "main.pdf" "main" 1715836594 0
+  "c:/School/BS Thesis/documents/SPP-2024/main.tex" 1715836584 20640 8db9e11915bc7c908e7cd94f7ef3612c ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1696359370 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1696353102 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1696353102 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -134,10 +134,10 @@
   "figures/m-96.png" 1715674465 155727 4ef2c54cf779d8b6d8a49ef112bc85d7 ""
   "figures/t-48.png" 1715674628 143994 498758a5e7d28e532fafafeb884a3a3d ""
   "figures/t-96.png" 1715674629 144506 018800a799501bb0c156ecfb482f15fd ""
-  "main.aux" 1715784036 5611 6d435efab68d25e7696f3705ef5d7b3d "pdflatex"
-  "main.bbl" 1715783706 3952 65682011684632a661d19d80ca0935c0 "bibtex main"
-  "main.out" 1715784036 1356 babb57984418a7cbe1269e3b5b15b7f5 "pdflatex"
-  "main.tex" 1715783986 20914 844e2abb5b1955ffa8a69ca36e738782 ""
+  "main.aux" 1715836592 5275 8ce75960fa34636d2b77c10b2db446c2 "pdflatex"
+  "main.bbl" 1715836590 3952 65682011684632a661d19d80ca0935c0 "bibtex main"
+  "main.out" 1715836592 1334 1ac14f91675c837ccf0808ff2e82c7e7 "pdflatex"
+  "main.tex" 1715836584 20640 8db9e11915bc7c908e7cd94f7ef3612c ""
   "spp2024.dat" 1713361940 3801 f0e361f2bf36acacaa64994606be53f0 ""
   (generated)
   "main.aux"

@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QFuture research regarding this topic should consider the non-isotropy and inhomogeneity of learning and the similarity effect that goes on in peer-to-peer learning.\\E$"}
