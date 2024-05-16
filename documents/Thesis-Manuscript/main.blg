@@ -4,45 +4,45 @@ The top-level auxiliary file: main.aux
 The style file: plain.bst
 Database file #1: biblio.bib
 Warning--can't use both volume and number fields in roxas2010seating
-You've used 2 entries,
+You've used 4 entries,
             2118 wiz_defined-function locations,
-            514 strings with 4451 characters,
-and the built_in function-call counts, 914 in all, are:
-= -- 94
-> -- 36
-< -- 2
-+ -- 14
-- -- 12
-* -- 71
-:= -- 143
-add.period$ -- 7
-call.type$ -- 2
-change.case$ -- 12
+            528 strings with 4900 characters,
+and the built_in function-call counts, 1580 in all, are:
+= -- 153
+> -- 77
+< -- 3
++ -- 30
+- -- 26
+* -- 123
+:= -- 259
+add.period$ -- 13
+call.type$ -- 4
+change.case$ -- 24
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 34
-empty$ -- 71
-format.name$ -- 12
-if$ -- 196
+cite$ -- 5
+duplicate$ -- 57
+empty$ -- 119
+format.name$ -- 26
+if$ -- 330
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 11
+int.to.str$ -- 4
+missing$ -- 5
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 25
 preamble$ -- 1
-purify$ -- 10
+purify$ -- 21
 quote$ -- 0
-skip$ -- 26
+skip$ -- 41
 stack$ -- 0
-substring$ -- 73
-swap$ -- 14
-text.length$ -- 2
+substring$ -- 101
+swap$ -- 17
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
+type$ -- 14
 warning$ -- 1
-while$ -- 9
-width$ -- 3
-write$ -- 26
+while$ -- 14
+width$ -- 5
+write$ -- 48
 (There was 1 warning)
