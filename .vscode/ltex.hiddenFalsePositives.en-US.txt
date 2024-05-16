@@ -1,1 +1,2 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QFuture research regarding this topic should consider the non-isotropy and inhomogeneity of learning and the similarity effect that goes on in peer-to-peer learning.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe learning rate for each trial was obtained by using a Levenberg-Marquardt algorithm to fit a power law (\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q) to the fraction of learned students as a function of the generation number.\\E$"}
