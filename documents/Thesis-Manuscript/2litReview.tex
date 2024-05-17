@@ -14,16 +14,34 @@ A two-dimensional (2D) rectangular cellular automata can be defined by a five-tu
 \end{equation}
 
 where
+\newlist{CAdef}{itemize}{1}
+\newcommand\itemS{\item[$\mathcal{S}=$]}
+\newcommand\itemC{\item[$\mathcal{C}=$]}
+\newcommand\itemL{\item[$\mathcal{L}=$]}
+\newcommand\itemN{\item[$\mathcal{N}=$]}
+\newcommand\itemR{\item[$\mathcal{R}=$]}
 
-$\mathcal{S} = \lbrace 0,...,S-1 \rbrace$ is the set of representations of states each cell can take on.
+\begin{CAdef}
+    \itemS $\lbrace 0, \dots, S-1 \rbrace$ is the set of representations of states each cell can take on.
+    
+    \itemC $\lbrace c = {i,j} \mid i \in \lbrace 1,2,3,\dots,L_1 \rbrace, j \in \lbrace 1,2,3,\dots,L_2\ \rbrace \text{s.t. } L_1 \times L_2 = N \rbrace$ is the set of identifiers for each cell in the automaton where $N$ is the total number of cells and $L_1$ and $L_2$ are the lengths of each side of the automaton space. The cells can then be identified by their position in the automaton $(i,j)$. So, the state of cell $c \in \mathcal{C}$ can be written as $s_c = s_{i,j} \in \mathcal{S}$
+    
+    \itemL defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i-1,j-1), (i-1, j), (i-1, j+1), (i, j-1), \dots, (i,j)$. Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
+    
+    \itemN $\mathcal{S}^M$, the set of neighborhood states. Thus, $N_c = N_{i,j} \in \mathcal{N}$ such that each $\mathcal{N}$ is in the form of the $M$-tuple $\lbrace s_{i-1,j-1}, s_{i-1, j}, s_{i-1. j+1}, s_{i, j-1}, \dots, s_{i,j} \rbrace$.
+    
+    \itemR defines the set of rules implemented in the CA with $g : s_{i,j} \mid \mathcal{L} \rightarrow \mathcal{S}$ as the mapping of any neighborhood state $N_c$ to a new state $s'_{i,j}$ of the cell $c$. At the next time step, $s'_{i,j}$ replaces the original state $s_{i,j}$.
+\end{CAdef}
 
-$\mathcal{C} = \lbrace c = {i,j} \mid i \in \lbrace 1,2,3,\dots,L_1 \rbrace, j \in \lbrace 1,2,3,\dots,L_2\ \rbrace \text{s.t. } L_1 \times L_2 = N \rbrace$ is the set of identifiers for each cell in the automaton where $N$ is the total number of cells and $L_1$ and $L_2$ are the lengths of each side of the automaton space. The cells can then be identified by their position in the automaton $(i,j)$. So, the state of cell $c \in \mathcal{C}$ can be written as $s_c = s_{i,j} \in \mathcal{S}$
+% $\mathcal{S} = \lbrace 0,...,S-1 \rbrace$ is the set of representations of states each cell can take on.
 
-$\mathcal{L} =$ defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i-1,j-1), (i-1, j), (i-1, j+1), (i, j-1), \dots, (i,j)$. Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
+% $\mathcal{C} = \lbrace c = {i,j} \mid i \in \lbrace 1,2,3,\dots,L_1 \rbrace, j \in \lbrace 1,2,3,\dots,L_2\ \rbrace \text{s.t. } L_1 \times L_2 = N \rbrace$ is the set of identifiers for each cell in the automaton where $N$ is the total number of cells and $L_1$ and $L_2$ are the lengths of each side of the automaton space. The cells can then be identified by their position in the automaton $(i,j)$. So, the state of cell $c \in \mathcal{C}$ can be written as $s_c = s_{i,j} \in \mathcal{S}$
 
-$\mathcal{N} = \mathcal{S}^M$, the set of neighborhood states. Thus, $N_c = N_{i,j} \in \mathcal{N}$ such that each $\mathcal{N}$ is in the form of the $M$-tuple $\lbrace s_{i-1,j-1}, s_{i-1, j}, s_{i-1. j+1}, s_{i, j-1}, \dots, s_{i,j} \rbrace$.
+% $\mathcal{L} =$ defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i-1,j-1), (i-1, j), (i-1, j+1), (i, j-1), \dots, (i,j)$. Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
 
-$\mathcal{R} =$ defines the set of rules implemented in the CA with $g : s_{i,j} \mid \mathcal{L} \rightarrow \mathcal{S}$ as the mapping of any neighborhood state $N_c$ to a new state $s'_{i,j}$ of the cell $c$. At the next time step, $s'_{i,j}$ replaces the original state $s_{i,j}$.
+% $\mathcal{N} = \mathcal{S}^M$, the set of neighborhood states. Thus, $N_c = N_{i,j} \in \mathcal{N}$ such that each $\mathcal{N}$ is in the form of the $M$-tuple $\lbrace s_{i-1,j-1}, s_{i-1, j}, s_{i-1. j+1}, s_{i, j-1}, \dots, s_{i,j} \rbrace$.
+
+% $\mathcal{R} =$ defines the set of rules implemented in the CA with $g : s_{i,j} \mid \mathcal{L} \rightarrow \mathcal{S}$ as the mapping of any neighborhood state $N_c$ to a new state $s'_{i,j}$ of the cell $c$. At the next time step, $s'_{i,j}$ replaces the original state $s_{i,j}$.
 
 $\mathcal{N}$ can vary with the neighborhood structure and the boundary conditions of the automaton. The neighborhood structure dictates the shape the neighborhood in the lattice. Common neighborhood structures include the von Neumann (diamond) and Moore (square) neighborhoods. Boundary conditions dictate how the automaton treats cells at the egde of the lattice when determining the neighborhood. Common boundary conditions include toroidal, spherical, and fixed boundary conditions. 
 
@@ -52,21 +70,32 @@ $\rho_{i+\delta i, j+\delta j} \in [0,1]$ is the probability of $c_{i,j}$ to lea
 
 $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors aptitude level.
 
-\subsection*{spacing? idk}
-
+% \subsection*{spacing? idk}
+\newpage
 In the five-tuple form, the PCA model for the classroom can be written as:
 
-$\mathcal{S} = \lbrace \text{learned, unlearned} \rbrace = \lbrace 0, 1 \rbrace$
+\begin{CAdef}
+\itemS $\lbrace \text{learned, unlearned} \rbrace = \lbrace 0, 1 \rbrace$
 
-$\mathcal{C} = \lbrace (1,1), (1,2), \dots, (1,L), (2, 1), (2,2), \dots, (2,L), \dots, (L,L)\rbrace$ where L is the length of the square classroom.
+\itemC $\lbrace (1,1), (1,2), \dots, (1,L), (2, 1), (2,2), \dots, (2,L), \dots, (L,L)\rbrace$ where L is the length of the square classroom.
 
-$\mathcal{L} = f(c) \leftarrow \lbrack L_c = \lbrace (i+\delta i,j+\delta j) \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace $ as a mapping for outer-totalistic Moore neighborhood of radius $r=1$ with a fixed boundary condition.
+\itemL $f(c) \leftarrow \lbrack L_c = \lbrace (i+\delta i,j+\delta j) ~\forall~ (\delta i \land \delta j),  \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace $ as a mapping for outer-totalistic Moore neighborhood of radius $r=1$ with a fixed boundary condition.
 
-$\mathcal{N} = \lbrace 00000000, 00000001, \dots, 11111111 \rbrace$ such that the representation of the neighborhood state $N_c \in \mathcal{N}$ is equivalent to $N_c = \lbrace s_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$.
+\itemN $\lbrace 00000000, 00000001, \dots, 11111111 \rbrace$ such that the representation of the neighborhood state $N_c \in \mathcal{N}$ is equivalent to $N_c = \lbrace s_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$.
 
-$\mathcal{R} =$ the probabilistic rule defined by equation \ref{eq:BPCA PI learning probability}.
+\itemR the probabilistic rule defined by equation \ref{eq:BPCA PI learning probability}.
+\end{CAdef}
 
-Each simulation starts the classroom with four learned students $n_0 = 4$ placed in different seats in the classroom. The seating arrangement (SA) were chosen from a previous study that showed that the SA can affect the learning process \cite{roxas2010seating}. These SA's are namely: inner corner, outer corner, center, and random. The SA configurations are shown in Figure \ref{fig:PI SAs}.
+The numerical procedure is outlined in Figure \ref{fig:2DBPCA PI Flowchart}. Each simulation starts the classroom with four learned students $n_0 = 4$ placed in different seats in the classroom. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/2DBPCA PI Flowchart.png}
+    \caption[Peer instruction flowchart]{Numerical process for simulation of 2D BPCA for PI set-ups.}
+    \label{fig:2DBPCA PI Flowchart}
+\end{figure}
+
+The seating arrangement (SA) were chosen from a previous study that showed that the SA can affect the learning process \cite{roxas2010seating}. These SA's are namely: inner corner, outer corner, center, and random. The SA configurations are shown in Figure \ref{fig:PI SAs}.
 
  \begin{figure}[h!]
     \centering
@@ -76,15 +105,6 @@ Each simulation starts the classroom with four learned students $n_0 = 4$ placed
  \end{figure}
 
  From the simulations, we compared both the average number time steps $\langle t_{max} \rangle$ it takes for all the students in the classroom to learn and the average learning rate $\langle m \rangle$ across different configurations over 5 independent runs. The learning rate for each trial was obtained by using a Levenberg-Marquardt algorithm to fit a power law ($y = ax^m$) to the fraction of learned students as a function of the generation number. We only considered the first $50\%$ of the data for the PI model or the first $25\%$ of the data for the traditional model. This truncation was done so that we only fit the part of the data before the finite size effect starts to affect the simulation.
-
-\begin{itemize}
-    \item Other relevant rules:
-    \begin{itemize}
-        \item Seating arrangement chosen from the following: Inner corner, outer corner, center, and random \cite{roxas2010seating}
-        \item Simulation is considered done when all students are learned
-    \end{itemize}
-   
-\end{itemize}
 
 \section{The binary probabilistic cellular automata model for a traditional classroom set up}
 \begin{itemize}
