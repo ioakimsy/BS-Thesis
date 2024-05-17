@@ -117,6 +117,8 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT c:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT ./main.aux
@@ -149,14 +151,6 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
-INPUT ./dedication.tex
-INPUT ./dedication.tex
-INPUT dedication.tex
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT ./acknowledgments.tex
-INPUT ./acknowledgments.tex
-INPUT acknowledgments.tex
 INPUT ./0abstract.tex
 INPUT ./0abstract.tex
 INPUT 0abstract.tex
@@ -189,6 +183,8 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/base/ulasy.fd
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy8.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./main.toc
 INPUT ./main.toc
 INPUT main.toc
@@ -207,6 +203,11 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./2litReview.tex
 INPUT ./2litReview.tex
 INPUT 2litReview.tex
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
 INPUT ./figures/PI SAs.png
 INPUT ./figures/PI SAs.png
 INPUT ./figures/PI SAs.png
