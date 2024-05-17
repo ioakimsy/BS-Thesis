@@ -19,9 +19,9 @@ $\mathcal{S} = \lbrace 0,...,S-1 \rbrace$ is the set of representations of state
 
 $\mathcal{C} = \lbrace c = {i,j} \mid i \in \lbrace 1,2,3,\dots,L_1 \rbrace, j \in \lbrace 1,2,3,\dots,L_2\ \rbrace \text{s.t. } L_1 \times L_2 = N \rbrace$ is the set of identifiers for each cell in the automaton where $N$ is the total number of cells and $L_1$ and $L_2$ are the lengths of each side of the automaton space. The cells can then be identified by their position in the automaton $(i,j)$. So, the state of cell $c \in \mathcal{C}$ can be written as $s_c = s_{i,j} \in \mathcal{S}$
 
-$\mathcal{L} =$ defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i + \delta i, j + \delta j) \forall \delta i, \delta j \in \lbrace -r, -r+1, \dots, 0, \dots, r-1, r \rbrace \rbrace$. Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
+$\mathcal{L} =$ defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i-1,j-1), (i-1, j), (i-1, j+1), (i, j-1), \dots, (i,j)$. Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
 
-$\mathcal{N} = \mathcal{S}^M$, the set of neighborhood states. Thus, $N_c = N_{i,j} \in \mathcal{N}$ such that each $\mathcal{N}$ is in the form of the $M$-tuple $\lbrace (s_{i+\delta i, j+\delta j}) \forall \delta i, \delta j \in \lbrace -r, -r+1, \dots, 0, \dots, r-1, r \rbrace$.
+$\mathcal{N} = \mathcal{S}^M$, the set of neighborhood states. Thus, $N_c = N_{i,j} \in \mathcal{N}$ such that each $\mathcal{N}$ is in the form of the $M$-tuple $\lbrace s_{i-1,j-1}, s_{i-1, j}, s_{i-1. j+1}, s_{i, j-1}, \dots, s_{i,j} \rbrace$.
 
 $\mathcal{R} =$ defines the set of rules implemented in the CA with $g : s_{i,j} \mid \mathcal{L} \rightarrow \mathcal{S}$ as the mapping of any neighborhood state $N_c$ to a new state $s'_{i,j}$ of the cell $c$. At the next time step, $s'_{i,j}$ replaces the original state $s_{i,j}$.
 
@@ -32,7 +32,8 @@ $\mathcal{R}$ can also be affected by other factors such as whether the rules ar
 
 Due to the flexibility of cellular automata, they can be used to model a wide variety of complex systems. Cellular automata have been used to model physical systems such as fluid dynamics, biological systems such as the spread of diseases, and social systems such as traffic flow \cite{louis2018probabilistic}. Its discreteness and locality make it a good model for systems that are composed of many interacting parts. Thus, we have chosen to use a two-state probability cellular automata to simulate the learning process for students in the classroom
 
-\section{The PI Model as a Discrete Probabilistic CA Model}
+
+\section{PI as a Discrete Probabilistic CA Model}
 
 We used a two-dimensional binary probabilistic cellular automata (PCA) model to simulate the learning process in a classroom. In this PCA model, each cell in the automaton represents a student and the state of each cell represents their aptitude $S=\lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$. We assign the neighborhood to be an outer-totalistic Moore neighborhood of radius $r=1$ and define the boundary conditions to be fixed wherein the grid does not wrap around itself and $s_{i,j} = 0$ for ${i,j \notin [1,L]}$. The rules of the automaton describes how the students learn from their neighbors based on three parameters. First (1), the learning rate $\lambda_{i,j}$ of student $c_{i,j}$ which describes how receptive they are to peer instruction. Secondly (2), the relative spatial factor $\rho_{i+\delta i, j+\delta j}$ which describes how likely it is to learn from the neighbor $c_{i+\delta i, j+\delta j}$ based solely on their relative position with respect to $c_{i,j}$. Lastly (3), the aptitude level of the neighbor $s_{i+\delta i, j+\delta j}$ which dictates whether student $c_{i,j}$ can learn from them. The probability for a student to learn in each time step is then determined by the following equation:
 
@@ -45,17 +46,19 @@ where
 
 $P_{i,j} \in [0,1]$ is the probability of $c_{i,j}$ to learn in each time step, 
 
-$\lambda_{i,j} \in [0,1]$ is the learning rate of $c_{i,j}$, 
+$\lambda_{i,j} \in [0,1]$ is the learning rate of $c_{i,j}$ with values $\lambda_{i,j} = \lbrace \lambda_0 \pm \delta \lambda \rbrace$ where $\lambda_0 = 0.5$ and $\delta \lambda = \lbrace 0.1, 0.2, 0.3, 0.4 \rbrace$, 
 
 $\rho_{i+\delta i, j+\delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
 
 $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors aptitude level.
 
+\subsection*{spacing? idk}
+
 In the five-tuple form, the PCA model for the classroom can be written as:
 
 $\mathcal{S} = \lbrace \text{learned, unlearned} \rbrace = \lbrace 0, 1 \rbrace$
 
-$\mathcal{C} = \lbrace (1,1), (1,2), \dots, (1,L), (2, 1), (2,2), \dots, (2,L), \dots, (L,L)\rbrace$
+$\mathcal{C} = \lbrace (1,1), (1,2), \dots, (1,L), (2, 1), (2,2), \dots, (2,L), \dots, (L,L)\rbrace$ where L is the length of the square classroom.
 
 $\mathcal{L} = f(c) \leftarrow \lbrack L_c = \lbrace (i+\delta i,j+\delta j) \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace $ as a mapping for outer-totalistic Moore neighborhood of radius $r=1$ with a fixed boundary condition.
 
@@ -63,9 +66,16 @@ $\mathcal{N} = \lbrace 00000000, 00000001, \dots, 11111111 \rbrace$ such that th
 
 $\mathcal{R} =$ the probabilistic rule defined by equation \ref{eq:BPCA PI learning probability}.
 
-Model input paremters: class length/size, SA, spatial learning rate, individual learning rate
+Each simulation starts the classroom with four learned students $n_0 = 4$ placed in different seats in the classroom. The seating arrangement (SA) were chosen from a previous study that showed that the SA can affect the learning process \cite{roxas2010seating}. These SA's are namely: inner corner, outer corner, center, and random. The SA configurations are shown in Figure \ref{fig:PI SAs}.
 
-To investigate the effects of different placements of high aptitude students on the learning process for PI methods, we consider the following seating arrangements: inner corner, outer corner, center, and random \cite{roxas2010seating}. The inner corner configuration places high aptitude students halfway between the center and the corner of the classroom. The outer corner configuration places high aptitude students at the corner of the classroom. The center configuration places high aptitude students in the center of the classroom. The random configuration places high aptitude students randomly throughout the classroom.
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/PI SAs.png}
+    \caption[Peer instruction seating arrangements.]{ Peer instruction seating arrangements. Circles denote high aptitude students. The inner corner configuration places high aptitude students halfway between the center and the corner of the classroom. The outer corner configuration places high aptitude students at the corner of the classroom. The center configuration places high aptitude students in the center of the classroom. The random configuration places high aptitude students randomly throughout the classroom.}
+    \label{fig:PI SAs}
+ \end{figure}
+
+ From the simulations, we compared both the average number time steps $\langle t_{max} \rangle$ it takes for all the students in the classroom to learn and the average learning rate $\langle m \rangle$ across different configurations over 5 independent runs. The learning rate for each trial was obtained by using a Levenberg-Marquardt algorithm to fit a power law ($y = ax^m$) to the fraction of learned students as a function of the generation number. We only considered the first $50\%$ of the data for the PI model or the first $25\%$ of the data for the traditional model. This truncation was done so that we only fit the part of the data before the finite size effect starts to affect the simulation.
 
 \begin{itemize}
     \item Other relevant rules:

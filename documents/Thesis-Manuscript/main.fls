@@ -207,6 +207,11 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./2litReview.tex
 INPUT ./2litReview.tex
 INPUT 2litReview.tex
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./3myChapter.tex
