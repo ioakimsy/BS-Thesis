@@ -52,15 +52,145 @@ function read_data(sizes, seat_configs, Ρs, δλs,  n_trials; n_learned = 4, λ
                 mean(m_list) ± (std(m_list)/sqrt(length(m_list))), 
                 mean(num_generations_list) ± (std(num_generations_list)/sqrt(length(num_generations_list)))
             )
-        )
+            )
+        end
+        CSV.write("./output/2D-Binary-PCA-IH/analysis/data.csv", data)
+        return data
     end
-    CSV.write("./output/2D-Binary-PCA-IH/analysis/data.csv", data)
-    return data
+    
+function plot_t_data(data, lengths, SAs, δλs)
+    for seat_config in SAs, class_size in lengths
+        _data = data[((data.class_size .== class_size).& (data.seat_config .== seat_config)),:]
+        
+        x_data = []
+        y_data = []
+        labels = []
+
+        for _δλ in δλs
+            _x_data = vec(_data.ρ[(_data.δλ .== _δλ), :])
+            _y_data = vec((_data.ttl[(_data.δλ .== _δλ), :]))
+            push!(x_data, _x_data)
+            push!(y_data, _y_data)
+            push!(labels, "δλ = $_δλ")
+        end
+    
+        _plot = nothing
+        for i in eachindex(x_data)
+            if i == 1
+
+                lin_interp = linear_interpolation(x_data[i], Measurements.value.(y_data[i]))
+
+                y_fit = lin_interp(0.1:0.01:1)
+
+                _plot = scatter(x_data[i], y_data[i], 
+                    label=labels[i], 
+                    xlabel="Learning coefficient (ρ)", 
+                    ylabel="Time to Learn (tₘₐₓ)", 
+                    title = "Inhomogenous " * seat_config * " L=$class_size",
+                    yscale = :log10,
+                    color = i,
+                    dpi=300
+                )
+                _plot = plot!(0.1:0.01:1, lin_interp(0.1:0.01:1), 
+                    label = false,
+                    linestyle = :dash,
+                    color = i
+                )
+
+            elseif i == length(x_data)
+                lin_interp = linear_interpolation(x_data[i], Measurements.value.(y_data[i]))
+
+                y_fit = lin_interp(0.1:0.01:1)
+
+                _plot = scatter!(x_data[i], y_data[i], 
+                    label=labels[i],
+                    color = i
+                )
+
+                _plot = plot!(0.1:0.01:1, y_fit, 
+                    label = false,
+                    linestyle = :dash,
+                    color = i
+                )
+            else
+                _plot = scatter!(x_data[i], y_data[i], 
+                    label=labels[i],
+                    color = i
+                )
+            end
+        end
+        savefig(_plot, "./output/2D-Binary-PCA-IH/analysis/plots/t-plots/t-$(seat_config)-$(class_size).png")
+    end
+end
+
+function plot_m_data(data, lengths, SAs, δλs)
+    for seat_config in SAs, class_size in lengths
+        _data = data[((data.class_size .== class_size).& (data.seat_config .== seat_config)),:]
+        
+        x_data = []
+        y_data = []
+        labels = []
+
+        for _δλ in δλs
+            _x_data = vec(_data.ρ[(_data.δλ .== _δλ), :])
+            _y_data = vec((_data.m[(_data.δλ .== _δλ), :]))
+            push!(x_data, _x_data)
+            push!(y_data, _y_data)
+            push!(labels, "δλ = $_δλ")
+        end
+    
+        _plot = nothing
+        for i in eachindex(x_data)
+            if i == 1
+
+                lin_interp = linear_interpolation(x_data[i], Measurements.value.(y_data[i]))
+
+                y_fit = lin_interp(0.1:0.01:1)
+
+                _plot = scatter(x_data[i], y_data[i], 
+                    label=labels[i], 
+                    xlabel="Learning coefficient (ρ)", 
+                    ylabel="Learning rate (m)", 
+                    title = "Inhomogenous " * seat_config * " L=$class_size",
+                    #yscale = :log10,
+                    color = i,
+                    dpi=300
+                )
+                _plot = plot!(0.1:0.01:1, lin_interp(0.1:0.01:1), 
+                    label = false,
+                    linestyle = :dash,
+                    color = i
+                )
+
+            elseif i == length(x_data)
+                lin_interp = linear_interpolation(x_data[i], Measurements.value.(y_data[i]))
+
+                y_fit = lin_interp(0.1:0.01:1)
+
+                _plot = scatter!(x_data[i], y_data[i], 
+                    label=labels[i],
+                    color = i
+                )
+
+                _plot = plot!(0.1:0.01:1, y_fit, 
+                    label = false,
+                    linestyle = :dash,
+                    color = i
+                )
+            else
+                _plot = scatter!(x_data[i], y_data[i], 
+                    label=labels[i],
+                    color = i
+                )
+            end
+        end
+        savefig(_plot, "./output/2D-Binary-PCA-IH/analysis/plots/m-plots/m-$(seat_config)-$(class_size).png")
+    end
 end
 
 begin
     sizes = [32,48,64,96,128]
-	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
+	seat_configs = ["outer_corner", "inner_corner", "center", "random", "traditional"]
 	Ρs = collect(0.1:0.1:1)
     δλs = collect(0.0:0.1:0.4)
 	steady_state_tolerance = 20
@@ -69,5 +199,11 @@ begin
     λ₀ = 0.5
 
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀)
+
+    plot_t_data(data, sizes, seat_configs, δλs)
+    plot_m_data(data, sizes, seat_configs, δλs)
 end
 
+show(_data, allrows=true)
+
+#* Plotting the data

@@ -82,7 +82,7 @@ function plot_data(data, sizes)
         m_plot = scatter(λs[1],ms[1], 
             label = labels[1],
             ylabel = "Characteristic variable (m)",
-            xlabel = "Learning coefficient (λ)",
+            xlabel = "Positional Learning factor (ρ₀)",
             labelfontsize = 14,
             titlefontsize = 16,
             title = "Classroom length: $class_size",
@@ -116,7 +116,7 @@ function plot_data(data, sizes)
         t_plot = scatter(λs[1],num_generations_list[1], 
             label = labels[1],
             ylabel = "Time to learn (tₘₐₓ)",
-            xlabel = "Learning coefficient (λ)",
+            xlabel = "Positional Learning factor (ρ₀)",
             labelfontsize = 14,
             titlefontsize = 16,
             title = "Classroom length: $class_size",
@@ -192,7 +192,7 @@ function scale_factor_analysis(data, class_configs, λs)
 
             #* Plots data points
             preanalysis_plot = scatter(_x_data, _y_data,
-                label = seat_config * " λ = $(λs[1])",
+                label = seat_config * " ρ = $(λs[1])",
                 xlabel = "Class size (N)",
                 ylabel = "Time to learn (tₘₐₓ)",
                 scale = :log10,
@@ -275,7 +275,7 @@ function scale_factor_analysis(data, class_configs, λs)
 
             #* Plots data points
             preanalysis_plot = scatter!((_data[(_data.λ .== λs[i]),:].class_size), _data[(_data.λ .== λs[i]),:].ttl,
-            label =seat_config * " λ = $(λs[i])",
+            label =seat_config * " ρ = $(λs[i])",
             markershape = markers[j],
             markercolor = i,
             )
@@ -336,7 +336,7 @@ function scale_factor_analysis1(data, class_configs, λs)
             #* Plots data points
             if i == 1 && j == 1
                 preanalysis_plot = scatter(_x_data, _y_data,
-                    label = seat_config * " λ = $(λs[i])",
+                    label = seat_config * " ρ = $(λs[i])",
                     xlabel = "Class size (N)",
                     ylabel = "Time to learn (tₘₐₓ)",
                     scale = :log10,
@@ -349,7 +349,7 @@ function scale_factor_analysis1(data, class_configs, λs)
                 )
             else
                 preanalysis_plot = scatter!(_x_data, _y_data,
-                    label = seat_config * " λ = $(λs[i])",
+                    label = seat_config * " ρ = $(λs[i])",
                     xlabel = "Class size (N)",
                     ylabel = "Time to learn (tₘₐₓ)",
                     scale = :log10,

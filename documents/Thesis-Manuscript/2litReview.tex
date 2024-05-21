@@ -86,7 +86,7 @@ In the five-tuple form, the PCA model for the classroom can be written as:
 \itemR the probabilistic rule defined by equation \ref{eq:BPCA PI learning probability}.
 \end{CAdef}
 
-The numerical procedure is outlined in Figure \ref{fig:2DBPCA PI Flowchart}. Each simulation starts the classroom with four learned students $n_0 = 4$ placed in different seats in the classroom. 
+The numerical procedure is outlined in Figure \ref{fig:2DBPCA PI Flowchart}. Each simulation starts the classroom with four learned students $n_0 = 4$ placed in different seats in the classroom. The simulation is considered finished once all the students have learned.
 
 \begin{figure}[h!]
     \centering
@@ -104,28 +104,87 @@ The seating arrangement (SA) were chosen from a previous study that showed that 
     \label{fig:PI SAs}
  \end{figure}
 
- From the simulations, we compared both the average number time steps $\langle t_{max} \rangle$ it takes for all the students in the classroom to learn and the average learning rate $\langle m \rangle$ across different configurations over 5 independent runs. The learning rate for each trial was obtained by using a Levenberg-Marquardt algorithm to fit a power law ($y = ax^m$) to the fraction of learned students as a function of the generation number. We only considered the first $50\%$ of the data for the PI model or the first $25\%$ of the data for the traditional model. This truncation was done so that we only fit the part of the data before the finite size effect starts to affect the simulation.
-
 \section{The binary probabilistic cellular automata model for a traditional classroom set up}
-\begin{itemize}
-    \item Governing equation:
-    \begin{equation}
+The main difference between the PI model and the traditional instructional model is that the latter only relies on one source of information - the teacher. To simulate this, for each time step, we set the probability of each student to learn $P_{ij}$ to be the product of their individual learning rate $\lambda_{i,j}$ and probability of learning from the teacher $\rho_{0}$. 
+\begin{equation}
     \label{eq:BPCA traditional learning probability}
-        P_{ij} = \lambda_0
-    \end{equation}
+        P_{ij} = \lambda_{ij} \rho_{0}
+\end{equation}
+The five-tuple of the traditional instructional model then only differs from the PI model in the update rule $\mathcal{R}$.
 
-    where:
-    \subitem $P_{ij} \in [0,1]$ is the probability of the student seated in row $i$ and column $j$ to learn,
-    \subitem $\lambda_0 \in [0,1]$ is the probability of the student $i,\space j$ to learn from the teacher
+The numerical procedure is outlined in Figure \ref{fig:2DBPCA Traditional Flowchart}. Each simulation for the traditional model starts with all students unlearned. Similar with the PI model, the simulation is considered finished once all the students have learned.
 
-    \item Other relevant rules:
-    \begin{enumerate}
-        \item All students are unlearned at the start of the simulation.
-        \item Simulation is considered done when all students are learned.
-    \end{enumerate}
-\end{itemize}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/2DBPCA TI Flowchart.png}
+    \caption[Traditional instruction flowchart]{Numerical process for simulation of 2D BPCA for traditional set-ups.}
+    \label{fig:2DBPCA Traditional Flowchart}
+\end{figure}
 
-\section{Results: PI vs Traditional}
+\section{Results: Homogenous PI vs Traditional}
+In this section/chapter, we only consider the case where all students have the same learning rate $\lambda_{i,j} = \lambda_0 = 1$ and an isotropic positional learning factor $\rho_{i,j} = \rho_0 \space ~\forall~ (\delta i \land \delta j),  \delta i, \delta j \in \lbrace -1,0,1 \rbrace $. From the simulations, we compared both the average number time steps $\langle t_{max} \rangle$ it takes for all the students in the classroom to learn and the average learning rate $\langle m \rangle$ across different configurations over 5 independent runs. The learning rate $m$ for each trial was obtained by using a Levenberg-Marquardt algorithm to fit a power law ($y = ax^m$) to the fraction of learned students as a function of the generation number. We only considered the first $50\%$ of the data for the PI model or the first $25\%$ of the data for the traditional model. This truncation was done so that we only fit the part of the data before the finite size effect starts to affect the simulation.
+
+\subsection{Time to learn $t_{max}$ vs positional learning factor $\rho_0$} \label{subsec: 2DBPCA tmax vs rho}
+
+The data in Figure \ref{fig:2DBPCA tmax vs rho} shows that the time to learn $t_{max}$ decreases with increasing positional learning factor $\rho_0$ for all classroom sizes for both traditional models and PI models. Among PI models, the inner corner configuration has the lowest $t_{max}$ for all classroom sizes. The outer corner and center SAs performed similarly, while the random SA has the highest $t_{max}$. The traditional model performs situationally better than even the inner corner PI model, something we will investigate in \ref{subsec: 2DBPCA tmax vs N}.
+
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[$L=32$]{\label{fig:2DBPCA tmax vs rho 32}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/t-32.png}}
+    \subfigure[$L=48$]{\label{fig:2DBPCA tmax vs rho 48}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/t-48.png}}
+    \subfigure[$L=64$]{\label{fig:2DBPCA tmax vs rho 64}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/t-64.png}}
+    \subfigure[$L=96$]{\label{fig:2DBPCA tmax vs rho 96}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/t-96.png}}
+    \subfigure[$L=128$]{\label{fig:2DBPCA tmax vs rho 128}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/t-128.png}}
+    \caption{Time to learn $t_{max}$ as a function of positional learning factor $\rho_0$ for different classroom sizes $L \in \lbrace 32,48,64,96,128 \rbrace$. Lower time to learn $t_{max}$ indicate better performance.}
+    \label{fig:2DBPCA tmax vs rho}
+\end{figure}
+
+\newpage
+
+\subsection{Learning rate $m$ vs positional learning factor $\rho_0$}
+
+The data in Figure \ref{fig:2DBPCA m vs rho} shows that the learning rate $m$ does not generally change for different positional learning factors $\rho_0$ when comparing against similar SAs for the PI model. The traditional model, however, shows a increase in learning rate $m$ with increasing $\rho_0$ for all classroom sizes. Similar to the findings in section \ref{subsec: 2DBPCA tmax vs rho}, the inner corner configuration has the highest learning rate $m$ for all classroom sizes. The outer corner and center SAs performed similarly, while the random SA has the lowest learning rate $m$. We still find that the traditional model performs situationally better than even the inner corner PI model. 
+
+The sudden decrease in learning rate $m$ for the traditional model at $\rho_0 = 1.0$ is due to the improper truncation and fitting of the data. In the traditional model where $\rho_0 = 1.0$, all the students will transition from unlearned to learned in one time step, so fitting the power law to the first 25\% of the data would yield a learning rate $m$ that does not represent the results of the simulations well.
+
+\begin{figure}[htbp!]
+    \centering
+    \subfigure[$L=32$]{\label{fig:2DBPCA m vs rho 32}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/m-32.png}}
+    \subfigure[$L=48$]{\label{fig:2DBPCA m vs rho 48}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/m-48.png}}
+    \subfigure[$L=64$]{\label{fig:2DBPCA m vs rho 64}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/m-64.png}}
+    \subfigure[$L=96$]{\label{fig:2DBPCA m vs rho 96}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/m-96.png}}
+    \subfigure[$L=128$]{\label{fig:2DBPCA m vs rho 128}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/m-128.png}}
+    \caption{Learning rate $m$ as a function of positional learning factor $\rho_0$ for different classroom sizes $L \in \lbrace 32,48,64,96,128 \rbrace$. Higher learning rate $m$ values indicate better performance.}
+    \label{fig:2DBPCA m vs rho}
+\end{figure}
+
+\newpage
+
+\subsection{Time to learn $t_{max}$ vs class size $N$} \label{subsec: 2DBPCA tmax vs N}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png}
+    \caption[Class size dependence of time to learn in homogenous models]{Maximum time $t_{max}$ as a function of class size $N$ for P2P and traditional models. Circles and squares denote data points for the inner corner P2P configuration and traditional learning model, respectively. The dash lines are the corresponding power law fit of the form $t_{max}=a \cdot N^b$ using $\lambda \in \lbrace 0.1, 0.5, 0.9 \rbrace$. The fitted parameters are shown in the table with an average of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner and $\langle b \rangle = 0.087\pm0.021$ for the traditional model.}
+    \label{fig:Traditional vs PI tmax vs N}
+\end{figure}
+
+\begin{table}[htbp!]
+  \centering
+  
+  \begin{tabular}{|c|cc|cc|}
+    \hline
+    & \multicolumn{2}{c|}{\textbf{Inner corner}}       & \multicolumn{2}{c|}{\textbf{Traditional}}        \\ \cline{2-5} 
+    & \multicolumn{1}{c|}{\textbf{$a$}} & \textbf{$b$} & \multicolumn{1}{c|}{\textbf{$a$}} & \textbf{$b$} \\ \hline
+    \textbf{$\lambda=0.1$} & \multicolumn{1}{c|}{2.4515}       & 0.3955       & \multicolumn{1}{c|}{32.4884}      & 0.1119       \\ \hline
+    \textbf{$\lambda=0.5$} & \multicolumn{1}{c|}{0.5795}       & 0.4428       & \multicolumn{1}{c|}{6.0079}       & 0.1052       \\ \hline
+    \textbf{$\lambda=0.9$} & \multicolumn{1}{c|}{0.4055}       & 0.4589       & \multicolumn{1}{c|}{3.6914}       & 0.0445       \\ \hline
+  \end{tabular}
+  \caption{Power law fit parameters $a$ and $b$ for $t_{max}$ vs $N$, where $t_{max}=a \cdot N ^ b$}
+  \label{tab:2DBPCA tmax vs N fit params}
+\end{table}
+
+When we analyze the dependence of the time to learn $t_{max}$ on the class size $N$, we find that the trend for both models follow the power law $t_{max} = a \cdot N^b$. In Figure \ref{fig:Traditional vs PI tmax vs N} we observe break-even points where the traditional model becomes more efficient than the PI model. These points happen at lower class sizes and lower $\rho$ values. We also find two major groups of power laws based on their $b$ values, as summarized in Table \ref{tab:2DBPCA tmax vs N fit params}. The first group has an average $b$ value of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner configuration, while the second group has an average $b$ value of $\langle b \rangle = 0.087\pm0.021$ for the traditional model. The inner corner configuration has higher $b$ values than the traditional model, indicating that the traditional model is less affected by class size $N$ and so is more scalable than the PI model.
+
 \begin{itemize}
     \item List of input and output parameters?
     \item $m$ vs $\lambda$ or $\rho_0$
