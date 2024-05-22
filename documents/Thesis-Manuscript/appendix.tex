@@ -5,6 +5,42 @@ This gives an example of an appendix chapter.  Note that this file
 has been included \textbf{after} the line \verb+\appendix+ in
 \verb+main.tex+.
 
+\section{Derivation of Equation \ref{eq:BPCA PI learning probability}} \label{sec: BPCA PI learning probability derivation}
+\begin{subequations}
+    For any event $e$, either it occurs with probability $p$ or not with probability $q$ where
+
+    \begin{equation}
+        \label{eq:A1}
+        p + q = 1.
+    \end{equation}
+
+    \noindent For $n$ events, each being event $e$:
+    \begin{equation}
+        \label{eq:A2}
+        \prod_{\forall e}(p_e + q_e) = 1.
+    \end{equation}
+
+    \noindent Expanding equation \ref{eq:A2}, we get
+    \begin{equation}
+        \label{eq:A3}
+        \prod_{\forall e}{p_e}+ \ldots + \prod_{\forall e}{q_e} = 1.
+    \end{equation}
+
+    \noindent where the first $n-1$ terms are the products of the probabilities of the events occurring at least once and the last term is the product of the probabilities of the events not occurring at all.  Thus, the probability of the events occurring at least once is
+
+    \begin{equation}
+        \label{eq:A4}
+        P = 1 - \prod_{\forall e}{q_e}.
+    \end{equation}
+
+    \noindent substituting equation \ref{eq:A1} into equation \ref{eq:A4}, we get
+
+    \begin{equation}
+        \label{eq:A5}
+        P = 1 - \prod_{\forall e}{(1 - p_e)}.
+    \end{equation}
+\end{subequations}
+
 \section{Equations in appendix}
 
 \hspace{\parindent} You don't need to worry about equations within
