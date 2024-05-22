@@ -33,16 +33,6 @@ where
     \itemR defines the set of rules implemented in the CA with $g : s_{i,j} \mid \mathcal{L} \rightarrow \mathcal{S}$ as the mapping of any neighborhood state $N_c$ to a new state $s'_{i,j}$ of the cell $c$. At the next time step, $s'_{i,j}$ replaces the original state $s_{i,j}$.
 \end{CAdef}
 
-% $\mathcal{S} = \lbrace 0,...,S-1 \rbrace$ is the set of representations of states each cell can take on.
-
-% $\mathcal{C} = \lbrace c = {i,j} \mid i \in \lbrace 1,2,3,\dots,L_1 \rbrace, j \in \lbrace 1,2,3,\dots,L_2\ \rbrace \text{s.t. } L_1 \times L_2 = N \rbrace$ is the set of identifiers for each cell in the automaton where $N$ is the total number of cells and $L_1$ and $L_2$ are the lengths of each side of the automaton space. The cells can then be identified by their position in the automaton $(i,j)$. So, the state of cell $c \in \mathcal{C}$ can be written as $s_c = s_{i,j} \in \mathcal{S}$
-
-% $\mathcal{L} =$ defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i-1,j-1), (i-1, j), (i-1, j+1), (i, j-1), \dots, (i,j)$. Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
-
-% $\mathcal{N} = \mathcal{S}^M$, the set of neighborhood states. Thus, $N_c = N_{i,j} \in \mathcal{N}$ such that each $\mathcal{N}$ is in the form of the $M$-tuple $\lbrace s_{i-1,j-1}, s_{i-1, j}, s_{i-1. j+1}, s_{i, j-1}, \dots, s_{i,j} \rbrace$.
-
-% $\mathcal{R} =$ defines the set of rules implemented in the CA with $g : s_{i,j} \mid \mathcal{L} \rightarrow \mathcal{S}$ as the mapping of any neighborhood state $N_c$ to a new state $s'_{i,j}$ of the cell $c$. At the next time step, $s'_{i,j}$ replaces the original state $s_{i,j}$.
-
 $\mathcal{N}$ can vary with the neighborhood structure and the boundary conditions of the automaton. The neighborhood structure dictates the shape the neighborhood in the lattice. Common neighborhood structures include the von Neumann (diamond) and Moore (square) neighborhoods. Boundary conditions dictate how the automaton treats cells at the egde of the lattice when determining the neighborhood. Common boundary conditions include toroidal, spherical, and fixed boundary conditions. 
 
 $\mathcal{R}$ can also be affected by other factors such as whether the rules are deterministic or probabilistic and whether they are implemented synchronously or asynchronously. An automaton with deterministic rules will always produce the same output given the same input, while an automaton with probabilistic rules will produce different outputs given the same input. In Conway's Game of Life, a cell dies when it has three live neighbors, while a cell is born when it has two or three live neighbors. This is an example of a deterministic rule. An example of a probabilistic rule would be a cell dying with a probability of $0.25$ when it has three live neighbors. An automaton with synchronous rules will update all cells simultaneously, while an automaton with asynchronous rules will update cells one at a time. (something explanation something about sync vs async)
@@ -70,8 +60,10 @@ $\rho_{i+\delta i, j+\delta j} \in [0,1]$ is the probability of $c_{i,j}$ to lea
 
 $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors aptitude level.
 
+The derivation of Equation \ref{eq:BPCA PI learning probability} is shown in Appendix \ref{sec: BPCA PI learning probability derivation}.
 % \subsection*{spacing? idk}
-\newpage
+%\newpage
+
 In the five-tuple form, the PCA model for the classroom can be written as:
 
 \begin{CAdef}
@@ -126,7 +118,7 @@ In this section/chapter, we only consider the case where all students have the s
 
 \subsection{Time to learn $t_{max}$ vs positional learning factor $\rho_0$} \label{subsec: 2DBPCA tmax vs rho}
 
-The data in Figure \ref{fig:2DBPCA tmax vs rho} shows that the time to learn $t_{max}$ decreases with increasing positional learning factor $\rho_0$ for all classroom sizes for both traditional models and PI models. Among PI models, the inner corner configuration has the lowest $t_{max}$ for all classroom sizes. The outer corner and center SAs performed similarly, while the random SA has the highest $t_{max}$. The traditional model performs situationally better than even the inner corner PI model, something we will investigate in \ref{subsec: 2DBPCA tmax vs N}.
+The data in Figure \ref{fig:2DBPCA tmax vs rho} shows that the time to learn $t_{max}$ decreases with increasing positional learning factor $\rho_0$ for all classroom sizes for both traditional models and PI models. Among PI models, the inner corner configuration has the lowest $t_{max}$ for all classroom sizes. The outer corner and center SAs performed similarly, while the random SA has the highest $t_{max}$. The traditional model performs situationally better than even the inner corner PI model, something we will investigate in Section \ref{subsec: 2DBPCA tmax vs N}.
 
 \begin{figure}[htbp!]
     \centering
@@ -164,7 +156,7 @@ The sudden decrease in learning rate $m$ for the traditional model at $\rho_0 = 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png}
-    \caption[Class size dependence of time to learn in homogenous models]{Maximum time $t_{max}$ as a function of class size $N$ for P2P and traditional models. Circles and squares denote data points for the inner corner P2P configuration and traditional learning model, respectively. The dash lines are the corresponding power law fit of the form $t_{max}=a \cdot N^b$ using $\lambda \in \lbrace 0.1, 0.5, 0.9 \rbrace$. The fitted parameters are shown in the table with an average of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner and $\langle b \rangle = 0.087\pm0.021$ for the traditional model.}
+    \caption[Class size dependence of time to learn in homogenous models]{Maximum time $t_{max}$ as a function of class size $N$ for P2P and traditional models. Circles and squares denote data points for the inner corner P2P configuration and traditional learning model, respectively. The dash lines are the corresponding power law fit of the form $t_{max}=a \cdot N^b$ using $\rho \in \lbrace 0.1, 0.5, 0.9 \rbrace$. The fitted parameters are shown in the table with an average of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner and $\langle b \rangle = 0.087\pm0.021$ for the traditional model.}
     \label{fig:Traditional vs PI tmax vs N}
 \end{figure}
 
@@ -185,27 +177,20 @@ The sudden decrease in learning rate $m$ for the traditional model at $\rho_0 = 
 
 When we analyze the dependence of the time to learn $t_{max}$ on the class size $N$, we find that the trend for both models follow the power law $t_{max} = a \cdot N^b$. In Figure \ref{fig:Traditional vs PI tmax vs N} we observe break-even points where the traditional model becomes more efficient than the PI model. These points happen at lower class sizes and lower $\rho$ values. We also find two major groups of power laws based on their $b$ values, as summarized in Table \ref{tab:2DBPCA tmax vs N fit params}. The first group has an average $b$ value of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner configuration, while the second group has an average $b$ value of $\langle b \rangle = 0.087\pm0.021$ for the traditional model. The inner corner configuration has higher $b$ values than the traditional model, indicating that the traditional model is less affected by class size $N$ and so is more scalable than the PI model.
 
-\begin{itemize}
-    \item List of input and output parameters?
-    \item $m$ vs $\lambda$ or $\rho_0$
-    \item $t_{max}$ vs $\lambda$ or $\rho_0$
-    \item $t_{max}$ vs $N$ for specific $\lambda$ or $\rho_0$
-    \item Comparison between levels of homogeneity of learning rates
-\end{itemize}
-
 \section{Discussion/conclusions?}
-\begin{enumerate}
-    \item The traditional learning model is more scalable. Between the same $\rho$, the power law exponent $b$ is lower than its peer-to-peer counterpart.
-    \item Inner corner configurations have higher b-values, while the traditional configurations have lower b-values.
-    \item B-values generally increases with $\rho$ values
-    \item Intersections where PI is more efficient occur at lower class sizes and lower $\rho$ values.
-    
-    \begin{itemize}
-        \item In some class sizes, traditional and P2P approaches can become equally efficient depending on the learning rate $\rho$.
-    \end{itemize}
+In this chapter, we have shown that between different seating arrangements for the PI model, the inner corner SA is the most efficient in terms of time to learn $t_{max}$ and learning rate $m$. The outer corner and center SAs performed similarly worse than that inner corner, while the random configuration performed the worst. This is different from what existing literature has shown, where the outer corner SA is the most efficient \cite{roxas2010seating}. This is likely because of the simplifications made in our model. Our model does not incorporate factors such as the similarity effect mentioned in previous studies \cite{roxas2010seating,smith2009peer}. This effect is the phenomenon where in students of similar aptitude levels tend to learn better when seated together and are able to learn from each other regardless their actual aptitude. Our model also does not consider anisotropic positional learning factors $\rho_{i,j}$, where the probability of learning from a neighbor varies with the neighbors' relative positions. Besides being binary, which introduces granularity, our model also does not consider that not all students are equally receptive to peer instruction or have the same learning rate. Introducing these factors, which we will explore in the next chapters, may make our model reflect reality better and provide us with better understanding of the learning dynamics in the classroom.
 
-    \item Similar finding with previous research \cite{lasry2008peer}: Students with less background knowledge learned as much with PI as students with more background knowledge with traditional instruction.
+The nature of our model lends itself to be heavily influenced by geometric factors. The most impactful factor in this case is then the distance $d_{max}$ of any student to a high aptitude or learned student as shown in figure \ref{fig:SA dmax}. The inner corner SA minimizes $d_{max}$, which is why it is the most efficient. The outer corner and center SAs have equal $d_{max}$ higher than the inner corner SA, which explains why they performed very similarly albeit worse than the inner corner SA.
 
-\end{enumerate}
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/SA dmax.png}
+    \caption{Distance $d_{max}$ of any student to a high aptitude or learned student for different seating arrangements.}
+    \label{fig:SA dmax}
+\end{figure}
+
+Our analysis on the dependence of $t_{max}$ on $N$ gives us an explanation on why the traditional model performed better than the PI model in most cases. With lower $b$-values, the traditional model is less affected by class size than the PI models are. Because of this, the traditional model performed better in cases with larger classrooms. 
+
+With regards to the performance of PI methods with traditional teaching methods, we found that classrooms with higher $\rho_0$ values performed better in PI models, while classrooms with lower $\rho_0$ values performed better in traditional models. A previous similar study \cite{roxas2010seating} found that classes with lower aptitude levels were the ones who benefited the most from the PI methods. Although we cannot directly conclude this from our model, we were able to show that students with a lower probability of learning or students who learn slower, can benefit as much from PI as in traditional set ups. This reinforces other studies' findings \cite{lasry2008peer} that show that PI methods can be effective even regardless of the students' actual aptitude levels.
 
     
