@@ -7,7 +7,7 @@ has been included \textbf{after} the line \verb+\appendix+ in
 
 \section{Derivation of Equation \ref{eq:BPCA PI learning probability}} \label{sec: BPCA PI learning probability derivation}
 \begin{subequations}
-    For any event $e$, either it occurs with probability $p$ or not with probability $q$ where
+    For any event $e$, the desired outcome occurs with probability $p$ or not with probability $q$ where
 
     \begin{equation}
         \label{eq:A1}
@@ -26,7 +26,7 @@ has been included \textbf{after} the line \verb+\appendix+ in
         \prod_{\forall e}{p_e}+ \ldots + \prod_{\forall e}{q_e} = 1.
     \end{equation}
 
-    \noindent where the first $n-1$ terms are the products of the probabilities of the events occurring at least once and the last term is the product of the probabilities of the events not occurring at all.  Thus, the probability of the events occurring at least once is
+    \noindent where the sum of the first $n-1$ terms is the probability of the desired outcome occurring at least once over $n$ events and the last term is the of the probability of the desired outcome not occurring at all. Thus, we can rewrite the probability of the desired outcome occurring at least once as
 
     \begin{equation}
         \label{eq:A4}

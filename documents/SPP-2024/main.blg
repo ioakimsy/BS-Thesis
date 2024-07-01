@@ -9,37 +9,37 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--can't use both volume and number fields in roxas2010seating
 You've used 7 entries,
             3450 wiz_defined-function locations,
-            718 strings with 6110 characters,
-and the built_in function-call counts, 5243 in all, are:
-= -- 288
+            723 strings with 6228 characters,
+and the built_in function-call counts, 5225 in all, are:
+= -- 289
 > -- 165
 < -- 27
 + -- 132
 - -- 40
-* -- 704
-:= -- 537
+* -- 737
+:= -- 531
 add.period$ -- 7
 call.type$ -- 7
-change.case$ -- 34
+change.case$ -- 35
 chr.to.int$ -- 7
 cite$ -- 8
-duplicate$ -- 507
-empty$ -- 458
+duplicate$ -- 496
+empty$ -- 447
 format.name$ -- 105
-if$ -- 998
+if$ -- 986
 int.to.chr$ -- 1
 int.to.str$ -- 8
-missing$ -- 78
+missing$ -- 76
 newline$ -- 36
 num.names$ -- 21
-pop$ -- 133
+pop$ -- 124
 preamble$ -- 1
 purify$ -- 28
 quote$ -- 0
-skip$ -- 205
+skip$ -- 191
 stack$ -- 0
-substring$ -- 136
-swap$ -- 399
+substring$ -- 138
+swap$ -- 408
 text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
@@ -47,5 +47,5 @@ type$ -- 40
 warning$ -- 1
 while$ -- 19
 width$ -- 0
-write$ -- 90
+write$ -- 91
 (There was 1 warning)
