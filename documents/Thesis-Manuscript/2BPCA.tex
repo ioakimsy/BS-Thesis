@@ -1,6 +1,9 @@
 % !TEX root =  main.tex
-\chapter{The Classroom as a Binary Probabilistic Cellular Automata Model}
-\hspace{\parindent} The classroom is a complex system that can be modeled as a probabilistic cellular automata. This chapter will discuss the classroom as a complex system and the probabilistic cellular automata model. The chapter will also discuss the implications of the model on the classroom and the teaching-learning process. (AI Generated Text)
+\chapter{The Classroom as a PCA}
+\hspace{\parindent} The classroom is a complex system that can be modeled as a probabilistic cellular automata (PCA). 
+This chapter will discuss the classroom as a complex system and the probabilistic cellular automata model. 
+The chapter will also discuss the implications of the model on the classroom and the teaching-learning process. 
+(AI Generated Text)
 
 Probably add objectives here???
 
@@ -41,7 +44,12 @@ $\mathcal{R}$ can also be affected by other factors such as whether the rules ar
 Due to the flexibility of cellular automata, they can be used to model a wide variety of complex systems. Cellular automata have been used to model physical systems such as fluid dynamics, biological systems such as the spread of diseases, and social systems such as traffic flow \cite{louis2018probabilistic}. Its discreteness and locality make it a good model for systems that are composed of many interacting parts. Thus, we have chosen to use a two-state probability cellular automata to simulate the learning process for students in the classroom
 
 
-\section{PI as a Discrete Probabilistic CA Model}
+\section{PCA model for classroom dynamics}
+\subsection{Traditional}
+\subsection{Peer-based}
+
+\section{old section}
+\textbf{Make this general na CA model of a classroom => differences between PI and trad}
 
 We used a two-dimensional binary probabilistic cellular automata (PCA) model to simulate the learning process in a classroom. In this PCA model, each cell in the automaton represents a student and the state of each cell represents their aptitude $S=\lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$. We assign the neighborhood to be an outer-totalistic Moore neighborhood of radius $r=1$ and define the boundary conditions to be fixed wherein the grid does not wrap around itself and $s_{i,j} = 0$ for ${i,j \notin [1,L]}$. The rules of the automaton describes how the students learn from their neighbors based on three parameters. First (1), the learning rate $\lambda_{i,j}$ of student $c_{i,j}$ which describes how receptive they are to peer instruction. Secondly (2), the positional learning factor $\rho_{i+\delta i, j+\delta j}$ which describes how likely it is to learn from the neighbor $c_{i+\delta i, j+\delta j}$ based solely on their relative position with respect to $c_{i,j}$. Lastly (3), the aptitude level of the neighbor $s_{i+\delta i, j+\delta j}$ which dictates whether student $c_{i,j}$ can learn from them. The probability for a student to learn in each time step is then determined by the following equation:
 
