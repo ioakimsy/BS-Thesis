@@ -163,110 +163,112 @@ begin
     fit_dom = 1:0.1:length(learned)
     fit_vals = power_coeff .* fit_dom .^ power_exp
 
+    frames = []
 
     #! Plotting starts here
 
-    fig = Figure(;dpi=300)
+    for t in eachindex(generations)
+        fig = Figure(;dpi=300)
 
-    class_ax = Axis(fig[1,1]; 
-        title = "Classroom over time",
-        # titlesize = 24,
-        # subtitlesize = 18,
-        subtitle = "$(SA), L=$class_size, ρ₀=$(ρ₀), λ=$(λ₀)±$(δλ)",
-        yreversed = true, 
-        limits = (0.5,class_size+0.5,0.5,class_size+0.5),
-        alignmode = Inside()
-        )
-    
-    class = heatmap!(class_ax, generations[10] .* λ_mult, 
-        colormap=(cgrad(:jblue, 3, categorical = true)),
-        colorrange=(0,1),
-        fxaa = false,
-        limits = (0,1)
-    )
-
-    hidedecorations!(class_ax)
-
-    colsize!(fig.layout, 1, Aspect(1,1))
-
-    cbar = Colorbar(fig[1,2], class, 
-    # label = "Aptitude", 
-    vertical = true;
-    halign = :left,
-    alignmode = Outside(),
-    ticks = ([1/6, 0.5, 5/6], ["Unlearned", "Learned (Slow)", "Learned (Fast)"]),
-    ticklabelrotation = -π/2,
-    ticksvisible = false,
-    ticklabelsize = 10
-    # limits = (0,1)
-    )
-
-    learned_ax = Axis(fig[2,1:2]; 
-        xlabel = "Time step",
-        ylabel = "Fraction of learned",
-        xscale = log10,
-        yscale = log10,
-        xminorgridvisible = false,
-        yminorgridvisible = false,
-        xlabelsize = 12,
-        ylabelsize = 10,
-        xticklabelsize = 10,
-        yticklabelsize = 10,
-    )
-
-    scatter!(learned_ax, learned_dom, learned,
-        markersize = 3,
-        label = "Learned students",
-        color = Cycled(1),
-        # color = :black,
-    )
-
-    lines!(learned_ax, fit_dom, fit_vals,
-        label = L"y = %$(round(power_coeff, digits = 5))x^{%$(round(power_coeff, digits = 5))}",
-        color = Cycled(2),
-        linewidth = 1,
-    )
-
-    vlines!(learned_ax, [10], 
-        label = "Current time step: 10", 
-        color = Cycled(3),
-        linewidth = 1,
-    )
-
-    vlines!(learned_ax, [length(generations) - Int64(floor(0.5*length(learned)))], 
-        linestyle = :dash, 
-        label = "End of fit data",
-        lw = 1.5,
-        color = Cycled(4),
-        linewidth = 1,
-    )
-
-    Legend(fig[2,1], learned_ax,
-        "Legend",
-        titlesize = 7,
-        titlegap = 0,
-        alignmode = Mixed(left = 5, top = 5),
-        halign = :left,
-        valign = :top,
-        patchsize = (15,9),
-        labelsize = 7,
-        rowgap = 0,
-        tellheight = true,
-        padding = (3,3,3,3),
-        framevisible = true, 
-        backgroundcolor = :white,
-        patchlabelgap = 4,
-        groupgap = 0,
-    
-    )
+        class_ax = Axis(fig[1,1]; 
+            title = "Classroom over time",
+            # titlesize = 24,
+            # subtitlesize = 18,
+            subtitle = "$(SA), L=$class_size, ρ₀=$(ρ₀), λ=$(λ₀)±$(δλ)",
+            yreversed = true, 
+            limits = (0.5,class_size+0.5,0.5,class_size+0.5),
+            alignmode = Inside()
+            )
         
-    rowsize!(fig.layout, 2, Relative(0.3))
+        class = heatmap!(class_ax, generations[t] .* λ_mult, 
+            colormap=(cgrad(:jblue, 3, categorical = true)),
+            colorrange=(0,1),
+            fxaa = false,
+            limits = (0,1)
+        )
 
-    # Box(fig[2,1], color = (:red, 0.2), strokecolor = :red)
-    resize_to_layout!(fig)
-    save("makie test.png", fig)
-    fig
+        hidedecorations!(class_ax)
+
+        colsize!(fig.layout, 1, Aspect(1,1))
+
+        cbar = Colorbar(fig[1,2], class, 
+        # label = "Aptitude", 
+        vertical = true;
+        halign = :left,
+        alignmode = Outside(),
+        ticks = ([1/6, 0.5, 5/6], ["Unlearned", "Learned (Slow)", "Learned (Fast)"]),
+        ticklabelrotation = -π/2,
+        ticksvisible = false,
+        ticklabelsize = 10
+        # limits = (0,1)
+        )
+
+        learned_ax = Axis(fig[2,1:2]; 
+            xlabel = "Time step",
+            ylabel = "Fraction of learned",
+            xscale = log10,
+            yscale = log10,
+            xminorgridvisible = false,
+            yminorgridvisible = false,
+            xlabelsize = 12,
+            ylabelsize = 10,
+            xticklabelsize = 10,
+            yticklabelsize = 10,
+        )
+
+        scatter!(learned_ax, learned_dom, learned,
+            markersize = 3,
+            label = "Learned students",
+            color = Cycled(1),
+            # color = :black,
+        )
+
+        lines!(learned_ax, fit_dom, fit_vals,
+            label = L"y = %$(round(power_coeff, digits = 5))x^{%$(round(power_coeff, digits = 5))}",
+            color = Cycled(2),
+            linewidth = 1,
+        )
+
+        vlines!(learned_ax, [t], 
+            label = "Current time step: 10", 
+            color = Cycled(3),
+            linewidth = 1,
+        )
+
+        vlines!(learned_ax, [length(generations) - Int64(floor(0.5*length(learned)))], 
+            linestyle = :dash, 
+            label = "End of fit data",
+            lw = 1.5,
+            color = Cycled(4),
+            linewidth = 1,
+        )
+
+        Legend(fig[2,1], learned_ax,
+            "Legend",
+            titlesize = 7,
+            titlegap = 0,
+            alignmode = Mixed(left = 5, top = 5),
+            halign = :left,
+            valign = :top,
+            patchsize = (15,9),
+            labelsize = 7,
+            rowgap = 0,
+            tellheight = true,
+            padding = (3,3,3,3),
+            framevisible = true, 
+            backgroundcolor = :white,
+            patchlabelgap = 4,
+            groupgap = 0,
+        
+        )
+            
+        rowsize!(fig.layout, 2, Relative(0.3))
+
+        # Box(fig[2,1], color = (:red, 0.2), strokecolor = :red)
+        resize_to_layout!(fig)
+        img_path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/images/2DBPCAIH-$(SA)-$(class_size)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
+        push!(frames, fig)
+        save(img_path * "$t.png", fig)
+    end
 
 end
-
-
