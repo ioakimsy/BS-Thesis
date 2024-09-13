@@ -1,3 +1,7 @@
 \.tmp.driveupload
+\.tmp.drivedownloaded
 documents/~$AY 23-24 2nd Sem RM Slides.pptx
 documents/~$202324s2-RM-Slides-Sy.pptx
+output/2D-Binary-PCA-IH/*.png
+!output/2D-Binary-PCA-IH/analysis/
+!output/2D-Binary-PCA-IH/analysis/*.png
