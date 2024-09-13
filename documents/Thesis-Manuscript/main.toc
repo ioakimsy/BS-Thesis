@@ -12,14 +12,12 @@
 \contentsline {section}{\numberline {2.1}Cellular Automata and its use in modelling complex systems}{3}{section.2.1}%
 \contentsline {section}{\numberline {2.2}PCA model for classroom dynamics}{5}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Traditional}{5}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Peer-based}{5}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}old section}{5}{section.2.3}%
-\contentsline {section}{\numberline {2.4}The binary probabilistic cellular automata model for a traditional classroom set up}{9}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Results: Homogenous PI vs Traditional}{9}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Time to learn $t_{max}$ vs positional learning factor $\rho _0$}{10}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Learning rate $m$ vs positional learning factor $\rho _0$}{12}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Time to learn $t_{max}$ vs class size $N$}{14}{subsection.2.5.3}%
-\contentsline {section}{\numberline {2.6}Discussion/conclusions?}{15}{section.2.6}%
+\contentsline {subsection}{\numberline {2.2.2}Peer instruction}{6}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Results: Homogenous PI vs Traditional}{10}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Time to learn $t_{max}$ vs positional learning factor $\rho _0$}{10}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Learning rate $m$ vs positional learning factor $\rho _0$}{12}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Time to learn $t_{max}$ vs class size $N$}{14}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Discussion/conclusions?}{15}{section.2.4}%
 \contentsline {chapter}{\numberline {3}Modified PCA models}{17}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Heterogeneous Learning Rates}{17}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}$m$ vs $\rho $}{17}{subsection.3.1.1}%

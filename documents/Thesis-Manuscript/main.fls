@@ -209,6 +209,11 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./2BPCA.tex
 INPUT ./2BPCA.tex
 INPUT 2BPCA.tex
+INPUT ./figures/2DBPCA TI Flowchart.png
+INPUT ./figures/2DBPCA TI Flowchart.png
+INPUT ./figures/2DBPCA TI Flowchart.png
+INPUT ./figures/2DBPCA TI Flowchart.png
+INPUT ./figures/2DBPCA TI Flowchart.png
 INPUT ./figures/2DBPCA PI Flowchart.png
 INPUT ./figures/2DBPCA PI Flowchart.png
 INPUT ./figures/2DBPCA PI Flowchart.png
@@ -250,8 +255,106 @@ INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png
 INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png
 INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png
 INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm
+INPUT ./figures/2D-BPCA-analysis/t-32.png
+INPUT ./figures/2D-BPCA-analysis/t-32.png
+INPUT ./figures/2D-BPCA-analysis/t-32.png
+INPUT ./figures/2D-BPCA-analysis/t-32.png
+INPUT ./figures/2D-BPCA-analysis/t-32.png
+INPUT ./figures/2D-BPCA-analysis/t-48.png
+INPUT ./figures/2D-BPCA-analysis/t-48.png
+INPUT ./figures/2D-BPCA-analysis/t-48.png
+INPUT ./figures/2D-BPCA-analysis/t-48.png
+INPUT ./figures/2D-BPCA-analysis/t-48.png
+INPUT ./figures/2D-BPCA-analysis/t-64.png
+INPUT ./figures/2D-BPCA-analysis/t-64.png
+INPUT ./figures/2D-BPCA-analysis/t-64.png
+INPUT ./figures/2D-BPCA-analysis/t-64.png
+INPUT ./figures/2D-BPCA-analysis/t-64.png
+INPUT ./figures/2D-BPCA-analysis/t-96.png
+INPUT ./figures/2D-BPCA-analysis/t-96.png
+INPUT ./figures/2D-BPCA-analysis/t-96.png
+INPUT ./figures/2D-BPCA-analysis/t-96.png
+INPUT ./figures/2D-BPCA-analysis/t-96.png
+INPUT ./figures/2D-BPCA-analysis/t-128.png
+INPUT ./figures/2D-BPCA-analysis/t-128.png
+INPUT ./figures/2D-BPCA-analysis/t-128.png
+INPUT ./figures/2D-BPCA-analysis/t-128.png
+INPUT ./figures/2D-BPCA-analysis/t-128.png
+INPUT ./figures/2D-BPCA-analysis/m-32.png
+INPUT ./figures/2D-BPCA-analysis/m-32.png
+INPUT ./figures/2D-BPCA-analysis/m-32.png
+INPUT ./figures/2D-BPCA-analysis/m-32.png
+INPUT ./figures/2D-BPCA-analysis/m-32.png
+INPUT ./figures/2D-BPCA-analysis/m-48.png
+INPUT ./figures/2D-BPCA-analysis/m-48.png
+INPUT ./figures/2D-BPCA-analysis/m-48.png
+INPUT ./figures/2D-BPCA-analysis/m-48.png
+INPUT ./figures/2D-BPCA-analysis/m-48.png
+INPUT ./figures/2D-BPCA-analysis/m-64.png
+INPUT ./figures/2D-BPCA-analysis/m-64.png
+INPUT ./figures/2D-BPCA-analysis/m-64.png
+INPUT ./figures/2D-BPCA-analysis/m-64.png
+INPUT ./figures/2D-BPCA-analysis/m-64.png
+INPUT ./figures/2D-BPCA-analysis/m-96.png
+INPUT ./figures/2D-BPCA-analysis/m-96.png
+INPUT ./figures/2D-BPCA-analysis/m-96.png
+INPUT ./figures/2D-BPCA-analysis/m-96.png
+INPUT ./figures/2D-BPCA-analysis/m-96.png
+INPUT ./figures/2D-BPCA-analysis/m-128.png
+INPUT ./figures/2D-BPCA-analysis/m-128.png
+INPUT ./figures/2D-BPCA-analysis/m-128.png
+INPUT ./figures/2D-BPCA-analysis/m-128.png
+INPUT ./figures/2D-BPCA-analysis/m-128.png
+INPUT ./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png
+INPUT ./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png
+INPUT ./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png
+INPUT ./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png
+INPUT ./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png
+INPUT ./figures/SA dmax.png
+INPUT ./figures/SA dmax.png
+INPUT ./figures/SA dmax.png
+INPUT ./figures/SA dmax.png
+INPUT ./figures/SA dmax.png
+INPUT ./3BPCAmodifications.tex
+INPUT ./3BPCAmodifications.tex
+INPUT 3BPCAmodifications.tex
+INPUT ./4anotherChapter.tex
+INPUT ./4anotherChapter.tex
+INPUT 4anotherChapter.tex
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
+INPUT ./5summaryAndConclusions.tex
+INPUT ./5summaryAndConclusions.tex
+INPUT 5summaryAndConclusions.tex
+INPUT ./appendix.tex
+INPUT ./appendix.tex
+INPUT appendix.tex
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT ./codes/newC.cpp
+INPUT ./codes/newC.cpp
+INPUT codes/newC.cpp
+INPUT ./main.bbl
+INPUT ./main.bbl
+INPUT main.bbl
+INPUT main.aux
+INPUT ./main.out
+INPUT ./main.out
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb

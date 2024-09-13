@@ -1,13 +1,13 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Peer instruction flowchart}}{6}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Peer instruction seating arrangements.}}{7}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Sample classroom evolution for $L=64$, $\lambda _0 = 1$, and $\rho _0 = 0.5$ with the inner corner SA. Black squares represent learned students while white squares represent unlearned students. The accompanying graphs show the fraction of learned students as a function of time. The blue circle represents the data points while the orange line shows the power law fit. The broken pink line shows the where we truncate the data for fitting the power law and the green line shows the current time step in the plot.}}{8}{figure.2.3}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=1$}}}{8}{figure.2.3}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=9$}}}{8}{figure.2.3}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=17$}}}{8}{figure.2.3}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=23$}}}{8}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Traditional instruction flowchart}}{9}{figure.2.4}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Traditional instruction flowchart}}{6}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Peer instruction flowchart}}{7}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Peer instruction seating arrangements.}}{8}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Sample classroom evolution for $L=64$, $\lambda _0 = 1$, and $\rho _0 = 0.5$ with the inner corner SA. Black squares represent learned students while white squares represent unlearned students. The accompanying graphs show the fraction of learned students as a function of time. The blue circle represents the data points while the orange line shows the power law fit. The broken pink line shows the where we truncate the data for fitting the power law and the green line shows the current time step in the plot.}}{9}{figure.2.4}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=1$}}}{9}{figure.2.4}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=9$}}}{9}{figure.2.4}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=17$}}}{9}{figure.2.4}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=23$}}}{9}{figure.2.4}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Time to learn $t_{max}$ as a function of positional learning factor $\rho _0$ for different classroom sizes $L \in \lbrace 32,48,64,96,128 \rbrace $. Lower time to learn $t_{max}$ indicate better performance.}}{11}{figure.2.5}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{11}{figure.2.5}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{11}{figure.2.5}%
