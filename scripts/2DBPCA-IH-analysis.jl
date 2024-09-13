@@ -59,7 +59,17 @@ function read_data(sizes, seat_configs, Ρs, δλs,  n_trials; n_learned = 4, λ
     
     else
         #! Need to set data type for measurments
-        data = CSV.read("./output/2D-Binary-PCA-IH/analysis/data.csv", DataFrame)
+        column_types = Dict(
+            "seat_config" => String,
+            "class_size" => Int,
+            "ρ" => Float64,
+            "λ₀" => Float64,
+            "δλ" => Float64,
+            "m" => Measurement{Float64},
+            "ttl" => Measurement{Float64}
+        )
+        path = "./output/2D-Binary-PCA-IH/analysis/data.csv"
+        data = DataFrame(CSV.File(path, types=column_types))
     end
     return data
 end
@@ -253,47 +263,9 @@ begin
     n_learned = 4
     λ₀ = 0.5
 
-    data = read_data(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀, update = true)
+    data = read_data(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀, update = false)
 
     # plot_t_data(data, sizes, seat_configs, δλs)
     # plot_m_data(data, sizes, seat_configs, δλs)
-    plot_t_data_ribbon(data, sizes, seat_configs, δλs)
-end
-
-show(data, allrows=true)
-
-#* Plotting the data
-
-begin
-    class_size = 32
-    SA = "outer_corner"
-
-    _data = data[(data.class_size .== class_size), :]
-
-    _data_SA = _data[(_data.seat_config .== SA), :]
-
-    insertcols!(_data_SA, :ttl_min => Measurements.value.(_data_SA.ttl) .- Measurements.uncertainty.(_data_SA.ttl))
-    
-    insertcols!(_data_SA, :ttl_max => Measurements.value.(_data_SA.ttl) .+ Measurements.uncertainty.(_data_SA.ttl))
-
-    min_ttl = combine(groupby(_data_SA, :ρ), :ttl_min => minimum => :ttl_min)[:,2]
-    med_ttl = combine(groupby(_data_SA, :ρ), :ttl => median => :ttl)[:,2]
-    max_ttl = combine(groupby(_data_SA, :ρ), :ttl_max => maximum => :ttl_max)[:,2]
-
-    # show(_data_SA, allrows=true, allcols = true)
-    # Plots med ttl with min and max ttl as ribbons
-    plot(Ρs, Measurements.value.(med_ttl), 
-        ribbon = (Measurements.value.(med_ttl) .- Measurements.value.(min_ttl), Measurements.value.(max_ttl) .- Measurements.value.(med_ttl)),
-        fillalpha = 0.2,
-        yscale = :log10,
-        alpha = 1,
-        label = SA,
-        dpi = 300,
-        title = "Inhomogenous tₘₐₓ vs ρ for L=$class_size",
-        xlabel = "Learning Coefficient (ρ)",
-        ylabel = "Time to Learn (tₘₐₓ)",
-        ylims = (10^1, 10^3)
-    )
-
-
+    # plot_t_data_ribbon(data, sizes, seat_configs, δλs)
 end
