@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  7 AUG 2024 14:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  13 SEP 2024 11:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -395,7 +395,7 @@ Package hyperref Info: Link coloring OFF on input line 69.
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<figures/UnibersidadngPilipinas.png, id=147, 661.47125pt x 661.47125pt>
+<figures/UnibersidadngPilipinas.png, id=139, 661.47125pt x 661.47125pt>
 File: figures/UnibersidadngPilipinas.png Graphic file (type png)
 <use figures/UnibersidadngPilipinas.png>
 Package pdftex.def Info: figures/UnibersidadngPilipinas.png  used on input line 71.
@@ -458,182 +458,177 @@ Chapter 2.
 [3
 
 ] [4] [5]
-<figures/2DBPCA PI Flowchart.png, id=297, 1042.44pt x 497.568pt>
-File: figures/2DBPCA PI Flowchart.png Graphic file (type png)
-<use figures/2DBPCA PI Flowchart.png>
-Package pdftex.def Info: figures/2DBPCA PI Flowchart.png  used on input line 93.
-(pdftex.def)             Requested size: 346.89731pt x 165.57973pt.
-<figures/PI SAs.png, id=300, 474.135pt x 525.162pt>
-File: figures/PI SAs.png Graphic file (type png)
-<use figures/PI SAs.png>
-Package pdftex.def Info: figures/PI SAs.png  used on input line 102.
-(pdftex.def)             Requested size: 216.81pt x 240.14307pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png, id=302, 1541.76pt x 1712.3975pt>
-File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png Graphic file (type png)
-<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png  used on input line 111.
-(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png, id=303, 1541.76pt x 1712.3975pt>
-File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png Graphic file (type png)
-<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png  used on input line 112.
-(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png, id=304, 1541.76pt x 1712.3975pt>
-File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png Graphic file (type png)
-<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png  used on input line 113.
-(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png, id=305, 1541.76pt x 1712.3975pt>
-File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png Graphic file (type png)
-<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png  used on input line 114.
-(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
- [6 <./figures/2DBPCA PI Flowchart.png>] [7 <./figures/PI SAs.png>]
-Overfull \hbox (18.69772pt too wide) in paragraph at lines 119--119
-[]\OT1/cmr/bx/n/17.28 The bi-nary prob-a-bilis-tic cel-lu-lar au-tomata model
- []
-
-[8 <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png>]
-<figures/2DBPCA TI Flowchart.png, id=328, 940.167pt x 378.432pt>
+<figures/2DBPCA TI Flowchart.png, id=284, 940.167pt x 378.432pt>
 File: figures/2DBPCA TI Flowchart.png Graphic file (type png)
 <use figures/2DBPCA TI Flowchart.png>
-Package pdftex.def Info: figures/2DBPCA TI Flowchart.png  used on input line 131.
+Package pdftex.def Info: figures/2DBPCA TI Flowchart.png  used on input line 89.
 (pdftex.def)             Requested size: 346.89731pt x 139.63075pt.
- [9 <./figures/2DBPCA TI Flowchart.png>]
+ [6 <./figures/2DBPCA TI Flowchart.png>]
+<figures/2DBPCA PI Flowchart.png, id=293, 1042.44pt x 497.568pt>
+File: figures/2DBPCA PI Flowchart.png Graphic file (type png)
+<use figures/2DBPCA PI Flowchart.png>
+Package pdftex.def Info: figures/2DBPCA PI Flowchart.png  used on input line 128.
+(pdftex.def)             Requested size: 346.89731pt x 165.57973pt.
+<figures/PI SAs.png, id=296, 474.135pt x 525.162pt>
+File: figures/PI SAs.png Graphic file (type png)
+<use figures/PI SAs.png>
+Package pdftex.def Info: figures/PI SAs.png  used on input line 138.
+(pdftex.def)             Requested size: 216.81pt x 240.14307pt.
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png, id=298, 1541.76pt x 1712.3975pt>
+File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png Graphic file (type png)
+<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png>
+Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png  used on input line 152.
+(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png, id=299, 1541.76pt x 1712.3975pt>
+File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png Graphic file (type png)
+<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png>
+Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png  used on input line 153.
+(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png, id=300, 1541.76pt x 1712.3975pt>
+File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png Graphic file (type png)
+<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png>
+Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png  used on input line 154.
+(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png, id=301, 1541.76pt x 1712.3975pt>
+File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png Graphic file (type png)
+<use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png>
+Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png  used on input line 155.
+(pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
+ [7 <./figures/2DBPCA PI Flowchart.png>] [8 <./figures/PI SAs.png>] [9 <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 139.
+(hyperref)                removing `math shift' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 139.
+(hyperref)                removing `subscript' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 139.
+(hyperref)                removing `math shift' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 139.
+(hyperref)                removing `math shift' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 139.
+(hyperref)                removing `\rho' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 139.
+(hyperref)                removing `subscript' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 139.
+(hyperref)                removing `math shift' on input line 171.
 
-<figures/2D-BPCA-analysis/t-32.png, id=337, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-32.png, id=326, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-32.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-32.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/t-32.png  used on input line 145.
+Package pdftex.def Info: figures/2D-BPCA-analysis/t-32.png  used on input line 180.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-48.png, id=338, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-48.png, id=327, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-48.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-48.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/t-48.png  used on input line 146.
+Package pdftex.def Info: figures/2D-BPCA-analysis/t-48.png  used on input line 181.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-64.png, id=339, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-64.png, id=328, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-64.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-64.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/t-64.png  used on input line 147.
+Package pdftex.def Info: figures/2D-BPCA-analysis/t-64.png  used on input line 182.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-96.png, id=340, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-96.png, id=329, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-96.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-96.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/t-96.png  used on input line 148.
+Package pdftex.def Info: figures/2D-BPCA-analysis/t-96.png  used on input line 183.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-128.png, id=341, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-128.png, id=330, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-128.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-128.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/t-128.png  used on input line 149.
+Package pdftex.def Info: figures/2D-BPCA-analysis/t-128.png  used on input line 184.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
 [10] [11 <./figures/2D-BPCA-analysis/t-32.png> <./figures/2D-BPCA-analysis/t-48.png> <./figures/2D-BPCA-analysis/t-64.png> <./figures/2D-BPCA-analysis/t-96.png> <./figures/2D-BPCA-analysis/t-128.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 156.
+(hyperref)                removing `math shift' on input line 192.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 156.
+(hyperref)                removing `math shift' on input line 192.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 156.
+(hyperref)                removing `math shift' on input line 192.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 156.
+(hyperref)                removing `\rho' on input line 192.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 156.
+(hyperref)                removing `subscript' on input line 192.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 156.
+(hyperref)                removing `math shift' on input line 192.
 
-<figures/2D-BPCA-analysis/m-32.png, id=360, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-32.png, id=349, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-32.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-32.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/m-32.png  used on input line 166.
+Package pdftex.def Info: figures/2D-BPCA-analysis/m-32.png  used on input line 211.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-48.png, id=361, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-48.png, id=350, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-48.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-48.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/m-48.png  used on input line 167.
+Package pdftex.def Info: figures/2D-BPCA-analysis/m-48.png  used on input line 212.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-64.png, id=362, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-64.png, id=351, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-64.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-64.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/m-64.png  used on input line 168.
+Package pdftex.def Info: figures/2D-BPCA-analysis/m-64.png  used on input line 213.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-96.png, id=363, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-96.png, id=352, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-96.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-96.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/m-96.png  used on input line 169.
+Package pdftex.def Info: figures/2D-BPCA-analysis/m-96.png  used on input line 214.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-128.png, id=364, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-128.png, id=353, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-128.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-128.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/m-128.png  used on input line 170.
+Package pdftex.def Info: figures/2D-BPCA-analysis/m-128.png  used on input line 215.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
 [12] [13 <./figures/2D-BPCA-analysis/m-32.png> <./figures/2D-BPCA-analysis/m-48.png> <./figures/2D-BPCA-analysis/m-64.png> <./figures/2D-BPCA-analysis/m-96.png> <./figures/2D-BPCA-analysis/m-128.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 177.
+(hyperref)                removing `math shift' on input line 223.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 177.
+(hyperref)                removing `subscript' on input line 223.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 177.
+(hyperref)                removing `math shift' on input line 223.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 177.
+(hyperref)                removing `math shift' on input line 223.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 177.
+(hyperref)                removing `math shift' on input line 223.
 
-<figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png, id=378, 595.899pt x 416.757pt>
+<figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png, id=367, 595.899pt x 416.757pt>
 File: figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png>
-Package pdftex.def Info: figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png  used on input line 180.
+Package pdftex.def Info: figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png  used on input line 226.
 (pdftex.def)             Requested size: 346.89731pt x 242.61588pt.
 [14 <./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png>]
-<figures/SA dmax.png, id=391, 900.309pt x 340.764pt>
+<figures/SA dmax.png, id=380, 900.309pt x 340.764pt>
 File: figures/SA dmax.png Graphic file (type png)
 <use figures/SA dmax.png>
-Package pdftex.def Info: figures/SA dmax.png  used on input line 209.
+Package pdftex.def Info: figures/SA dmax.png  used on input line 272.
 (pdftex.def)             Requested size: 346.89731pt x 131.30113pt.
  [15]) (./3BPCAmodifications.tex [16 <./figures/SA dmax.png>]
 Chapter 3.
@@ -644,46 +639,6 @@ Overfull \hbox (1.52766pt too wide) in paragraph at lines 9--11
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 13.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 13.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 13.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 13.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 13.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 14.
 
 
@@ -696,11 +651,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delta' on input line 14.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 14.
+(hyperref)                removing `\rho' on input line 14.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -720,15 +671,59 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delta' on input line 15.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 15.
+(hyperref)                removing `\rho' on input line 15.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 15.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\delta' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\lambda' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\delta' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\lambda' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 17.
 
 ) (./4anotherChapter.tex [17
 
@@ -766,21 +761,21 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4634D0DCEFA56F3550F50B180C8D76AF;6962.
+(rerunfilecheck)             Checksum: F844DE8397F17F238C8D839C6FE2AF5F;6379.
  ) 
 Here is how much of TeX's memory you used:
- 11622 strings out of 474928
- 180193 string characters out of 5763562
- 1930785 words of memory out of 5000000
- 32867 multiletter control sequences out of 15000+600000
+ 11618 strings out of 474928
+ 180145 string characters out of 5763562
+ 1929785 words of memory out of 5000000
+ 32865 multiletter control sequences out of 15000+600000
  569869 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,13n,79p,1704b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (33 pages, 2863341 bytes).
+Output written on main.pdf (33 pages, 2863169 bytes).
 PDF statistics:
- 550 PDF objects out of 1000 (max. 8388607)
- 456 compressed objects within 5 object streams
- 115 named destinations out of 1000 (max. 500000)
- 389 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 444 compressed objects within 5 object streams
+ 113 named destinations out of 1000 (max. 500000)
+ 373 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -9,6 +9,8 @@ To introduce learning rate heterogeneity in the classroom, we revisit equation \
 \end{equation*}
 We can adjust the parameter $\lambda_{ij}$ to introduce differences in each student's learning rate. We set a student's learning rate as $\lambda_{ij} = \lambda_0 \pm \delta\lambda$ where $\delta\lambda \in \lbrace 0.0,0.1, 0.2, 0.3, 0.4\rbrace$ and $\lambda_0 = 0.5$. Each student has a 50\% chance of having a learning rate that is either faster $(\lambda_0 + \delta\lambda)$ or slower $(\lambda_0 - \delta\lambda)$ than the average learning rate $\lambda_0$. 
 
+$\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$ with values $\lambda_{i,j} = \lbrace \lambda_0 \pm \delta \lambda \rbrace$ where $\lambda_0 = 0.5$ and $\delta \lambda = \lbrace 0.1, 0.2, 0.3, 0.4 \rbrace$, 
+
 \subsection{$m$ vs $\rho$}\label{subsec:BPCAIH m vs rho}
 \subsection{$t$ vs $\rho$}\label{subsec:BPCAIH t vs rho}
 \subsection{$m$ vs $\delta\lambda$}\label{subsec:BPCAIH m vs dl}
