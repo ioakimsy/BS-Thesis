@@ -23,6 +23,34 @@
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Class size dependence of time to learn in homogenous models}}{14}{figure.2.7}%
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Distance $d_{max}$ of any student to a high aptitude or learned student for different seating arrangements.}}{16}{figure.2.8}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho _0=0.1$, $\delta \lambda = 0.4$.}}{18}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=48$}}}{18}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=69$}}}{18}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=128$}}}{18}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=200$}}}{18}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho _0=0.9$, $\delta \lambda = 0.1$.}}{19}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=5$}}}{19}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=16$}}}{19}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=30$}}}{19}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=36$}}}{19}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho _0=0.9$, $\delta \lambda = 0.4$.}}{20}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=5$}}}{20}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=13$}}}{20}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=19$}}}{20}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=29$}}}{20}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Time to learn $t_{max}$ as a function of positional learning factor $\rho _0$ for different representative classroom configurations and sizes. Lower time to learn $t_{max}$ indicates better performance.}}{22}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Outer corner $L=48$}}}{22}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Outer corner $L=96$}}}{22}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Inner corner $L=48$}}}{22}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Inner corner $L=96$}}}{22}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Traditional $L=48$}}}{22}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Traditional $L=96$}}}{22}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Time to learn $t_{max}$ as a function of positional learning factor $\rho _0$ for the heteregenous model of all seating arrangements and classroom sizes $L$. Lower time to learn $t_{max}$ indicates better performance.}}{23}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{23}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{23}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{23}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{23}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{23}{figure.3.5}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
