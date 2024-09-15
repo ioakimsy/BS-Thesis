@@ -253,6 +253,56 @@ function plot_t_data_ribbon(data, lengths, SAs, δλs)
     end
 end
 
+function plot_dl_t_data(data, sizes; SAs = ["traditional", "inner_corner"], Ρs = [0.3, 0.5, 0.7])
+
+    markers = [:circle, :rect, :star5, :diamond, :hexagon, :cross, :xcross, :utriangle, :dtriangle, :rtriangle, :ltriangle, :pentagon, :heptagon, :octagon, :star4, :star6, :star7, :star8, :vline, :hline, :+, :x]
+
+    SA_labels = Dict(
+        "outer_corner" => "OC",
+        "inner_corner" => "IC",
+        "center" => "C",
+        "random" => "R",
+        "traditional" => "T"
+    )
+
+    for class_size in sizes
+        _data = filter(row -> row.class_size == class_size && row.seat_config in SAs && row.ρ in Ρs, data)
+        
+        # Initialize the plot
+        p = plot(title="L = $class_size", 
+            xlabel="Heterogeneity (δλ)", 
+            ylabel="Time to learn (tₘₐₓ)", 
+            dpi =300,
+            yscale = :log10
+        )
+    
+        # Loop through each seating arrangement and rho value
+        for (i, SA) in enumerate(SAs)
+            for ρ_i in 1:length(Ρs)
+                ρ = Ρs[ρ_i]
+                # Filter data for the current SA and rho
+                filtered_data = filter(row -> row.seat_config == SA && row.ρ == ρ, _data)
+                
+                # Extract delta lambda and ttl values
+                x_values = filtered_data.δλ
+                y_values = filtered_data.ttl
+                
+                # SA Label
+                SA_label = SA_labels[SA]
+
+                # Add series to the plot
+                plot!(p, x_values, y_values, 
+                    label="$SA_label, ρ=$ρ", 
+                    marker=markers[i],
+                    color = ρ_i,
+                    ls = :dash
+                )
+            end
+        end
+        savefig(p, "./output/2D-Binary-PCA-IH/analysis/plots/dl-t-plots/dl-t-$(class_size).png")
+    end
+end
+
 begin
     sizes = [32,48,64,96,128]
 	seat_configs = ["outer_corner", "inner_corner", "center", "random", "traditional"]
@@ -268,4 +318,5 @@ begin
     # plot_t_data(data, sizes, seat_configs, δλs)
     # plot_m_data(data, sizes, seat_configs, δλs)
     # plot_t_data_ribbon(data, sizes, seat_configs, δλs)
+    plot_dl_t_data(data, sizes; SAs = ["traditional", "inner_corner"], Ρs = [0.3, 0.5, 0.7])
 end

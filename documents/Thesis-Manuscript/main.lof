@@ -14,7 +14,7 @@
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{11}{figure.2.5}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{11}{figure.2.5}%
 \contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{11}{figure.2.5}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Learning rate $m$ as a function of positional learning factor $\rho _0$ for different classroom sizes $L \in \lbrace 32,48,64,96,128 \rbrace $. Higher learning rate $m$ values indicate better performance.}}{13}{figure.2.6}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Class learning rate $m$ as a function of positional learning factor $\rho _0$ for different classroom sizes $L \in \lbrace 32,48,64,96,128 \rbrace $. Higher class learning rate $m$ values indicate better performance.}}{13}{figure.2.6}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{13}{figure.2.6}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{13}{figure.2.6}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{13}{figure.2.6}%
@@ -38,19 +38,22 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=13$}}}{20}{figure.3.3}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=19$}}}{20}{figure.3.3}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=29$}}}{20}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Time to learn $t_{max}$ as a function of positional learning factor $\rho _0$ for different representative classroom configurations and sizes. Lower time to learn $t_{max}$ indicates better performance.}}{22}{figure.3.4}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Time to learn $t_{max}$ as a function of positional learning factor $\rho _0$ for different representative classroom configurations and sizes with varying heterogeneity $\delta \lambda \in \lbrace 0, 0.1, 0.2, 0.3, 0.4 \rbrace $. Lower time to learn $t_{max}$ indicates better performance.}}{22}{figure.3.4}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Outer corner $L=48$}}}{22}{figure.3.4}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Outer corner $L=96$}}}{22}{figure.3.4}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Inner corner $L=48$}}}{22}{figure.3.4}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Inner corner $L=96$}}}{22}{figure.3.4}%
 \contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Traditional $L=48$}}}{22}{figure.3.4}%
 \contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Traditional $L=96$}}}{22}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Time to learn $t_{max}$ as a function of positional learning factor $\rho _0$ for the heteregenous model of all seating arrangements and classroom sizes $L$. Lower time to learn $t_{max}$ indicates better performance.}}{23}{figure.3.5}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Time to learn $t_{max}$ as a function of positional learning factor $\rho _0$ for the heteregenous model of all seating arrangements and classroom sizes $L$. Each ribbon series represent the range of values for $t_max$ for a given seating arrangments with heterogeneity $\delta \lambda = \lbrace 0.0, 0.1, 0.2, 0.3, 0.4 \rbrace $. Lower time to learn $t_{max}$ indicates better performance. }}{23}{figure.3.5}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{23}{figure.3.5}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{23}{figure.3.5}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{23}{figure.3.5}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{23}{figure.3.5}%
 \contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{23}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Time to learn $t_{max}$ as a function of heterogeneity $\delta \lambda $ for the heteregenous models of the PI (inner corner configuration) and traditional models with varying positional learning factor $\rho _0\in \lbrace 0.3,0.5,0.7\rbrace $ and classroom sizes $L\in \lbrace 32,128\rbrace $. Each color represents a diffent value of $\rho _0$, while the circle and square symbols represent the traditional and PI models respectively. Lower time to learn $t_{max}$ indicates better performance. }}{24}{figure.3.6}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{24}{figure.3.6}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=128$}}}{24}{figure.3.6}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
