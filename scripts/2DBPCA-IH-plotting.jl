@@ -8,6 +8,9 @@
 ! Added Animations and Plotting
 ! Set up to do for all data
 ! Outer corner and inner corner for today
+
+! 2024-07-16
+! Generate plots for traditional
 =#
 begin
     using Pkg
@@ -126,7 +129,6 @@ end
 #     fig
 # end
 
-# sample data 
 function generate_plots(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = 4, λ₀ = 0.5)
 
     max_iters = max_iters = prod([length(x) for x in [sizes,seat_configs,Ρs,δλs]]) * n_trials
@@ -159,11 +161,15 @@ function generate_plots(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = 4
 
         learned = params_df[!,"learned_per_gen"]
         learned_dom = 1:length(learned)
-        power_coeff, power_exp = params_df[!,"power_fit"][1:2]
         fit_dom = 1:0.1:length(learned)
+        power_coeff, power_exp = params_df[!,"power_fit"][1:2]
         fit_vals = power_coeff .* fit_dom .^ power_exp
+        if SA == "traditional"
+            learned = learned[begin+1:end]
+            learned_dom = 1:length(learned)
+        end
 
-        frames = []
+        # frames = []
 
         #! Plotting starts here
 
@@ -235,7 +241,7 @@ function generate_plots(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = 4
                 linewidth = 1,
             )
 
-            vlines!(learned_ax, [length(generations) - Int64(floor(0.5*length(learned)))], 
+            vlines!(learned_ax, SA == "traditional" ? [length(generations) - Int64(floor(0.75*length(learned)))] : [length(generations) - Int64(floor(0.5*length(learned)))], 
                 linestyle = :dash, 
                 label = "End of fit data",
                 lw = 1.5,
@@ -267,7 +273,7 @@ function generate_plots(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = 4
             # Box(fig[2,1], color = (:red, 0.2), strokecolor = :red)
             resize_to_layout!(fig)
             img_path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/images/2DBPCAIH-$(SA)-$(class_size)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
-            push!(frames, fig)
+            # push!(frames, fig)
             save(img_path * "$t.png", fig)
         end
     end
@@ -305,9 +311,13 @@ function generate_animation(sizes, seat_configs, Ρs, δλs, n_trials; n_learned
 
         learned = params_df[!,"learned_per_gen"]
         learned_dom = 1:length(learned)
-        power_coeff, power_exp = params_df[!,"power_fit"][1:2]
         fit_dom = 1:0.1:length(learned)
+        power_coeff, power_exp = params_df[!,"power_fit"][1:2]
         fit_vals = power_coeff .* fit_dom .^ power_exp
+        if SA == "traditional"
+            learned = learned[begin+1:end]
+            learned_dom = 1:length(learned)
+        end
 
         ts = Observable(1)
 
@@ -378,7 +388,7 @@ function generate_animation(sizes, seat_configs, Ρs, δλs, n_trials; n_learned
             linewidth = 1,
         )
 
-        vlines!(learned_ax, [length(generations) - Int64(floor(0.5*length(learned)))], 
+        vlines!(learned_ax, SA == "traditional" ? [length(generations) - Int64(floor(0.75*length(learned)))] : [length(generations) - Int64(floor(0.5*length(learned)))], 
             linestyle = :dash, 
             label = "End of fit data",
             lw = 1.5,
@@ -420,11 +430,11 @@ end
 begin
     sizes = [32,48,64,96,128]
 	seat_configs = [
-        "outer_corner", 
-        "inner_corner", 
+        # "outer_corner", 
+        # "inner_corner", 
         # "center", 
         # "random", 
-        # "traditional",
+        "traditional",
         ]
 	Ρs = collect(0.1:0.1:1)
     δλs = collect(0.0:0.1:0.4)
@@ -436,4 +446,3 @@ begin
     generate_plots(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀)
     generate_animation(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀)
 end
-
