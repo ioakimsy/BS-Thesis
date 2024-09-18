@@ -10,7 +10,10 @@
 ! Outer corner and inner corner for today
 
 ! 2024-07-16
-! Generate plots for traditional
+! Generate plots and animations for traditional
+
+! 2024-07-17
+! Generate plots and animations for center
 =#
 begin
     using Pkg
@@ -288,7 +291,7 @@ function generate_animation(sizes, seat_configs, Ρs, δλs, n_trials; n_learned
     for class_size in sizes, SA in seat_configs, ρ₀ in Ρs, δλ in δλs, trial in 1:n_trials
 
         ProgressMeter.next!(prog_bar, 
-            showvalues = [("Seat config", SA), ("ρ₀", ρ₀), ("Class size", class_size), ("δλ", δλ), ("Trial", trial)]
+            showvalues = [("Class size", class_size), ("Seat config", SA), ("ρ₀", ρ₀), ("δλ", δλ), ("Trial", trial)]
         )
 
         path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-$(SA)-$(class_size)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
@@ -432,9 +435,9 @@ begin
 	seat_configs = [
         # "outer_corner", 
         # "inner_corner", 
-        # "center", 
+        "center", 
         # "random", 
-        "traditional",
+        # "traditional",
         ]
 	Ρs = collect(0.1:0.1:1)
     δλs = collect(0.0:0.1:0.4)
