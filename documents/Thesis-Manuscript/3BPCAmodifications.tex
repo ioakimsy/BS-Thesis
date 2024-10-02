@@ -14,42 +14,88 @@ Each student has an equal chance of having a learning rate that is either faster
 $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$ with values $\lambda_{i,j} = \lbrace \lambda_0 \pm \delta \lambda \rbrace$ where $\lambda_0 = 0.5$ and $\delta \lambda = \lbrace 0.1, 0.2, 0.3, 0.4 \rbrace$, 
 
 \subsection{Effects on classroom evolution}\label{subsec:BPCAIH effects on classroom evolution}
-As shown in the figures in this subsection, we notice values of $\rho_0$ is still the most important factor in determining $t_{max}$. 
+As shown in the figures in this subsection, we notice values of $\rho_0$ is still the most important factor in determining class performance. 
 However, irregularities in the shapes of the "wave of learning" become more pronounced for lower values of $\rho_0$ and high values of $\delta\lambda$ as shown in figure \ref{fig:2DBPCAIH sample class evolution low rho}.
-These irregularities are also more pronounced at the start of the classroom.
-We also notice that compared to the homogenous model, there is a more evident deviation from the power law at earlier times $t$.
-The irregularities in both the shape of the "wave of learning" and the deviation from the power law are less pronounced for higher values of $\rho_0$, regardless of the value of $\delta\lambda$, as shown in figure \ref{fig:2DBPCAIH sample class evolution high rho} and \ref{fig:2DBPCAIH sample class evolution high rho high delta}.
+These irregularities are also more pronounced at the start of the classroom and fades over time.
 For high values of $\rho_0$, high values of $\delta\lambda$ leads to the irregularity in the "wave of learning" to persist longer than those with lower values of $\delta\lambda$.
+Compared to the homogenous model, there is a more evident deviation from the power law at earlier times $t$, where the class learning rate is slower than the fitted power law.
+The irregularities in both the shape of the "wave of learning" and the deviation from the power law are less pronounced for higher values of $\rho_0$, regardless of the value of $\delta\lambda$, as shown in figure \ref{fig:2DBPCAIH sample class evolution high rho} and \ref{fig:2DBPCAIH sample class evolution high rho high delta}.
+
+For the traditional model, even though the value of $\rho_0$ is still an important factor in determininng class performance, the effect of $\delta\lambda$ is more pronounced compared to the PI model.
+The trend we see in the traditional model that is absent or less evident in the PI model, is that majority of the students that learn earlier in the simulations are fast learning students students (Figure \ref{fig:2DBPCAIH class evolution trad low rho high delta 2}). 
+After this period, most of the simulation time is spent waiting for the slow learning students to learn.
+This behavior is more pronounced for higher values of $\delta\lambda$ and lower values of $\rho_0$ as shown in Figure \ref{fig:2DBPCAIH sample class evolution trad low rho high delta}.
+This could explain the deviation from the power law fit at earlier times $t$ for the traditional model considering that the deviation shows that the class learning rate is higher than the fitted power law.
 
 \begin{figure}[htbp!]
    \centering
-   \subfigure[$t=48$]{\label{fig:2DBPCAIH class evolution low rho 48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png}}
-   \subfigure[$t=69$]{\label{fig:2DBPCAIH class evolution low rho 69}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png}}
-   \subfigure[$t=128$]{\label{fig:2DBPCAIH class evolution low rho 128}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png}}
-   \subfigure[$t=200$]{\label{fig:2DBPCAIH class evolution low rho 200}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png}}
-   \caption{Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho_0=0.1$, $\delta\lambda = 0.4$.}
+   \subfigure[$t=48$]{\label{fig:2DBPCAIH class evolution low rho 48}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png}}
+   \subfigure[$t=69$]{\label{fig:2DBPCAIH class evolution low rho 69}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png}}
+   \subfigure[$t=128$]{\label{fig:2DBPCAIH class evolution low rho 128}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png}}
+   \subfigure[$t=200$]{\label{fig:2DBPCAIH class evolution low rho 200}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png}}
+   \caption{Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho_0=0.1$, $\delta\lambda = 0.4$.
+   Dark blue squares represent learned students with learning rate $\lambda = \lambda_0 + \delta\lambda$, blue squares represent learned students with learning rate $\lambda = \lambda_0 - \delta\lambda$, and light squares represent unlearned students.
+   The accompanying graph shows the fraction of learned students as a function time step.
+   The blue dots represent data points. 
+   The yellow line shows the power law fit.
+   The pink dashed vertical line shows where we truncate the data for fitting the power law.
+   The green vertical line shows the current time step in the simulation.
+   }
    \label{fig:2DBPCAIH sample class evolution low rho}
  \end{figure}
 
  \begin{figure}[htbp!]
-    \centering
-    \subfigure[$t=5$]{\label{fig:2DBPCAIH class evolution high rho 5}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png}}
-    \subfigure[$t=16$]{\label{fig:2DBPCAIH class evolution high rho 16}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png}}
-    \subfigure[$t=30$]{\label{fig:2DBPCAIH class evolution high rho 30}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png}}
-    \subfigure[$t=36$]{\label{fig:2DBPCAIH class evolution high rho 36}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png}}   
-    \caption{Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho_0=0.9$, $\delta\lambda = 0.1$.}
+   \centering
+   \subfigure[$t=5$]{\label{fig:2DBPCAIH class evolution high rho 5}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png}}
+   \subfigure[$t=16$]{\label{fig:2DBPCAIH class evolution high rho 16}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png}}
+   \subfigure[$t=30$]{\label{fig:2DBPCAIH class evolution high rho 30}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png}}
+   \subfigure[$t=36$]{\label{fig:2DBPCAIH class evolution high rho 36}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png}}   
+   \caption{Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho_0=0.9$, $\delta\lambda = 0.1$.
+   Dark blue squares represent learned students with learning rate $\lambda = \lambda_0 + \delta\lambda$, blue squares represent learned students with learning rate $\lambda = \lambda_0 - \delta\lambda$, and light squares represent unlearned students.
+   The accompanying graph shows the fraction of learned students as a function time step.
+   The blue dots represent data points. 
+   The yellow line shows the power law fit.
+   The pink dashed vertical line shows where we truncate the data for fitting the power law.
+   The green vertical line shows the current time step in the simulation.
+   }
     \label{fig:2DBPCAIH sample class evolution high rho}
  \end{figure}
 
  \begin{figure}[htbp!]
-    \centering
-    \subfigure[$t=5$]{\label{fig:2DBPCAIH class evolution high rho high delta 5}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png}}
-    \subfigure[$t=13$]{\label{fig:2DBPCAIH class evolution high rho high delta 13}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png}}
-    \subfigure[$t=19$]{\label{fig:2DBPCAIH class evolution high rho high delta 19}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png}}
-    \subfigure[$t=29$]{\label{fig:2DBPCAIH class evolution high rho high delta 29}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png}}
-    \caption{Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho_0=0.9$, $\delta\lambda = 0.4$.}
+   \centering
+   \subfigure[$t=5$]{\label{fig:2DBPCAIH class evolution high rho high delta 5}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png}}
+   \subfigure[$t=13$]{\label{fig:2DBPCAIH class evolution high rho high delta 13}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png}}
+   \subfigure[$t=19$]{\label{fig:2DBPCAIH class evolution high rho high delta 19}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png}}
+   \subfigure[$t=29$]{\label{fig:2DBPCAIH class evolution high rho high delta 29}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png}}
+   \caption{Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho_0=0.9$, $\delta\lambda = 0.4$.
+   Dark blue squares represent learned students with learning rate $\lambda = \lambda_0 + \delta\lambda$, blue squares represent learned students with learning rate $\lambda = \lambda_0 - \delta\lambda$, and light squares represent unlearned students.
+   The accompanying graph shows the fraction of learned students as a function time step.
+   The blue dots represent data points. 
+   The yellow line shows the power law fit.
+   The pink dashed vertical line shows where we truncate the data for fitting the power law.
+   The green vertical line shows the current time step in the simulation.
+    }
     \label{fig:2DBPCAIH sample class evolution high rho high delta}
  \end{figure}
+
+ \begin{figure}[htbp!]
+   \centering
+   \subfigure[$t=2$]{\label{fig:2DBPCAIH class evolution trad low rho high delta 2}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png}}
+   \subfigure[$t=13$]{\label{fig:2DBPCAIH class evolution trad low rho high delta 13}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png}}
+   \subfigure[$t=50$]{\label{fig:2DBPCAIH class evolution trad low rho high delta 50}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png}}
+   \subfigure[$t=80$]{\label{fig:2DBPCAIH class evolution trad low rho high delta 80}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png}}
+   \caption{Sample classroom evolutions for the inner corner configuration with $L=128$ at different times $t$ for positional learning rate $\rho_0=0.9$, $\delta\lambda = 0.4$.
+   Dark blue squares represent learned students with learning rate $\lambda = \lambda_0 + \delta\lambda$, blue squares represent learned students with learning rate $\lambda = \lambda_0 - \delta\lambda$, and light squares represent unlearned students.
+   The accompanying graph shows the fraction of learned students as a function time step.
+   The blue dots represent data points. 
+   The yellow line shows the power law fit.
+   The pink dashed vertical line shows where we truncate the data for fitting the power law.
+   The green vertical line shows the current time step in the simulation.
+    }
+    \label{fig:2DBPCAIH sample class evolution trad low rho high delta}
+ \end{figure}
+
+\newpage % new page after subsection class evolution
 
 \subsection{$m$ vs $\rho$}\label{subsec:BPCAIH m vs rho}
 
@@ -89,6 +135,8 @@ When $L\geq64$, the PI models can perform better than the traditional model depe
     \label{fig:2DBPCAIH t-rho ribbon plot}
  \end{figure}
 
+ \newpage % new page after subsection t vs rho
+
 \subsection{$m$ vs $\delta\lambda$}\label{subsec:BPCAIH m vs dl}
 
 \subsection{$t_{max}$ vs $\delta\lambda$}\label{subsec:BPCAIH t vs dl}
@@ -104,11 +152,13 @@ However, at $L=128$ shown in figure \ref{fig:2DBPCAIH dl-t plot 128}, the tradit
    \centering
    \subfigure[$L=32$]{\label{fig:2DBPCAIH dl-t plot 32}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/dl-t plots/dl-t-32.png}}
    \subfigure[$L=128$]{\label{fig:2DBPCAIH dl-t plot 128}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png}}
-   \caption{Time to learn $t_{max}$ as a function of heterogeneity $\delta\lambda$ for the heteregenous models of the PI (inner corner configuration) and traditional models with varying positional learning factor $\rho_0\in\lbrace0.3,0.5,0.7\rbrace$ and classroom sizes $L\in\lbrace32,128\rbrace$. 
+   \caption{Time to learn $t_{max}$ as a function of heterogeneity $\delta\lambda$ for the heteregenous models of the PI (inner corner configuration) and traditional models with varying positional learning factor $\rho_0\in\lbrace 0.3,0.5,0.7 \rbrace$ and classroom sizes $L\in\lbrace32,128\rbrace$. 
    Each color represents a diffent value of $\rho_0$, while the circle and square symbols represent the traditional and PI models respectively.
    Lower time to learn $t_{max}$ indicates better performance.
    }
    \label{fig:2DBPCAIH dl-t plots}
 \end{figure}
+
+\newpage % new page after subsection t vs dl
 
 \section{Anisotropic Interactions}
