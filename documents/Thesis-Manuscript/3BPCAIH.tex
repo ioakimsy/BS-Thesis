@@ -1,7 +1,6 @@
 % !TEX root =  main.tex
-\chapter{Modified PCA models}
+\chapter{Heterogeneous Learning Rates}
 
-\section{Heterogeneous Learning Rates}
 To introduce learning rate heterogeneity in the classroom, we revisit equation \ref{eq:BPCA PI learning probability}. 
 \begin{equation*}
     P_{ij} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{ij})(\rho_{i+\delta i, j+\delta j})(s_{i+\delta i, j+\delta j})}\rbrack
@@ -13,19 +12,15 @@ Each student has an equal chance of having a learning rate that is either faster
 
 $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$ with values $\lambda_{i,j} = \lbrace \lambda_0 \pm \delta \lambda \rbrace$ where $\lambda_0 = 0.5$ and $\delta \lambda = \lbrace 0.1, 0.2, 0.3, 0.4 \rbrace$, 
 
-\subsection{Effects on classroom evolution}\label{subsec:BPCAIH effects on classroom evolution}
-As shown in the figures in this subsection, we notice values of $\rho_0$ is still the most important factor in determining class performance. 
+\section{Effects on classroom evolution}\label{sec:BPCAIH effects on classroom evolution}
+\subsection{Peer Instruction Models}
+As shown in the figures in this section, we notice values of $\rho_0$ is still the most important factor in determining class performance. 
 However, irregularities in the shapes of the "wave of learning" become more pronounced for lower values of $\rho_0$ and high values of $\delta\lambda$ as shown in figure \ref{fig:2DBPCAIH sample class evolution low rho}.
 These irregularities are also more pronounced at the start of the classroom and fades over time.
 For high values of $\rho_0$, high values of $\delta\lambda$ leads to the irregularity in the "wave of learning" to persist longer than those with lower values of $\delta\lambda$.
-Compared to the homogenous model, there is a more evident deviation from the power law at earlier times $t$, where the class learning rate is slower than the fitted power law.
 The irregularities in both the shape of the "wave of learning" and the deviation from the power law are less pronounced for higher values of $\rho_0$, regardless of the value of $\delta\lambda$, as shown in figure \ref{fig:2DBPCAIH sample class evolution high rho} and \ref{fig:2DBPCAIH sample class evolution high rho high delta}.
-
-For the traditional model, even though the value of $\rho_0$ is still an important factor in determininng class performance, the effect of $\delta\lambda$ is more pronounced compared to the PI model.
-The trend we see in the traditional model that is absent or less evident in the PI model, is that majority of the students that learn earlier in the simulations are fast learning students students (Figure \ref{fig:2DBPCAIH class evolution trad low rho high delta 2}). 
-After this period, most of the simulation time is spent waiting for the slow learning students to learn.
-This behavior is more pronounced for higher values of $\delta\lambda$ and lower values of $\rho_0$ as shown in Figure \ref{fig:2DBPCAIH sample class evolution trad low rho high delta}.
-This could explain the deviation from the power law fit at earlier times $t$ for the traditional model considering that the deviation shows that the class learning rate is higher than the fitted power law.
+There are some sets of parameters who deviate from the power law fit. For peer instruction, these deviations happen for low values of $\rho_0$.
+In these cases, the class learning rate is slower than the power law fit at the start of the simulation.
 
 \begin{figure}[htbp!]
    \centering
@@ -42,9 +37,9 @@ This could explain the deviation from the power law fit at earlier times $t$ for
    The green vertical line shows the current time step in the simulation.
    }
    \label{fig:2DBPCAIH sample class evolution low rho}
- \end{figure}
+\end{figure}
 
- \begin{figure}[htbp!]
+\begin{figure}[htbp!]
    \centering
    \subfigure[$t=5$]{\label{fig:2DBPCAIH class evolution high rho 5}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png}}
    \subfigure[$t=16$]{\label{fig:2DBPCAIH class evolution high rho 16}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png}}
@@ -58,10 +53,10 @@ This could explain the deviation from the power law fit at earlier times $t$ for
    The pink dashed vertical line shows where we truncate the data for fitting the power law.
    The green vertical line shows the current time step in the simulation.
    }
-    \label{fig:2DBPCAIH sample class evolution high rho}
- \end{figure}
+   \label{fig:2DBPCAIH sample class evolution high rho}
+\end{figure}
 
- \begin{figure}[htbp!]
+\begin{figure}[htbp!]
    \centering
    \subfigure[$t=5$]{\label{fig:2DBPCAIH class evolution high rho high delta 5}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png}}
    \subfigure[$t=13$]{\label{fig:2DBPCAIH class evolution high rho high delta 13}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png}}
@@ -74,11 +69,18 @@ This could explain the deviation from the power law fit at earlier times $t$ for
    The yellow line shows the power law fit.
    The pink dashed vertical line shows where we truncate the data for fitting the power law.
    The green vertical line shows the current time step in the simulation.
-    }
-    \label{fig:2DBPCAIH sample class evolution high rho high delta}
- \end{figure}
+   }
+   \label{fig:2DBPCAIH sample class evolution high rho high delta}
+\end{figure}
 
- \begin{figure}[htbp!]
+\subsection{Traditional Models}
+For the traditional model, even though the value of $\rho_0$ is still an important factor in determininng class performance, the effect of $\delta\lambda$ is more pronounced compared to the PI model.
+The trend we see in the traditional model that is absent or less evident in the PI model, is that majority of the students that learn earlier in the simulations are fast learning students students (Figure \ref{fig:2DBPCAIH class evolution trad low rho high delta 2}). 
+After this period, most of the simulation time is spent waiting for the slow learning students to learn.
+This behavior is more pronounced for higher values of $\delta\lambda$ and lower values of $\rho_0$ as shown in Figure \ref{fig:2DBPCAIH sample class evolution trad low rho high delta}.
+This could explain the deviation from the power law fit at earlier times $t$ for the traditional model considering that the deviation shows that the class learning rate is higher than the fitted power law.
+
+\begin{figure}[htbp!]
    \centering
    \subfigure[$t=2$]{\label{fig:2DBPCAIH class evolution trad low rho high delta 2}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png}}
    \subfigure[$t=13$]{\label{fig:2DBPCAIH class evolution trad low rho high delta 13}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png}}
@@ -91,15 +93,38 @@ This could explain the deviation from the power law fit at earlier times $t$ for
    The yellow line shows the power law fit.
    The pink dashed vertical line shows where we truncate the data for fitting the power law.
    The green vertical line shows the current time step in the simulation.
-    }
-    \label{fig:2DBPCAIH sample class evolution trad low rho high delta}
- \end{figure}
+   }
+   \label{fig:2DBPCAIH sample class evolution trad low rho high delta}
+\end{figure}
 
-\newpage % new page after subsection class evolution
+\newpage % new page after section class evolution
 
-\subsection{$m$ vs $\rho$}\label{subsec:BPCAIH m vs rho}
+\section{Class learning rate $m$ vs positional learning factor $\rho_0$}\label{sec:BPCAIH m vs rho}
 
-\subsection{$t_{max}$ vs $\rho_0$}\label{subsec:BPCAIH t vs rho}
+Figure \ref{fig:2DBPCAIH m rho plot} shows that class learning rate becomes inconsistent with the positional learning factor $\rho_0$ in PI models when introducing heterogeneity. 
+With heterogeneity, PI models no longer show trends in learning rate $m$ as a function of positional learning factor $\rho_0$.
+The traditional model shows a similar trend in learning rate $m$ as with time to learn $t_{max}$ where homogenous classrooms perform better then heterogenous classrooms.
+This might be explained by the spatiotemporal dynamics of traditional learning models where the fast learning students learn first and the slow learning students learn last, as discussed in section \ref{sec:BPCAIH effects on classroom evolution} and shown in figure \ref{fig:2DBPCAIH sample class evolution trad low rho high delta}.
+
+\begin{figure}[htbp!]
+   \centering
+   \subfigure[Center $L=32$]{\label{fig:BPCAIH m plot C32}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/m-plots/m-center-32.png}}
+   \subfigure[Outer corner $L=48$]{\label{fig:BPCAIH m plot O48}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png}}
+   \subfigure[Inner corner $L=64$]{\label{fig:BPCAIH m plot I64}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png}}
+   \subfigure[Random $L=96$]{\label{fig:BPCAIH m plot R96}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/m-plots/m-random-96.png}}
+   \subfigure[Traditional $L=128$]{\label{fig:BPCAIH m plot T128}\includegraphics[width=0.40\textwidth]{figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png}}
+   
+   \caption{Representative plots for class learning rate $m$ as a function of positional learning coefficient $\rho_0$.
+   Each subplot represent a different SA and classroom size $L$.
+   In each plot, the circles represent the data points, color represents a different value of $\delta\lambda \in \lbrace 0.0, 0.1, 0.2, 0.3, 0.4 \rbrace$, dashed lines connect the data points for $\delta\lambda \in \lbrace 0.0, 0.4 \rbrace$.
+   Higher class learning rate m values indicate better performance.
+   }
+   \label{fig:2DBPCAIH m rho plot}
+\end{figure}
+
+\newpage % new page after section m vs rho
+
+\section{Time to learn $t_{max}$ vs positional learning factor $\rho_0$}\label{sec:BPCAIH t vs rho}
 Figure \ref{fig:2DBPCAIH t-rho plot} shows the time to learn $t_{max}$ is directly affected by the level of heterogeneity $\delta\lambda$. 
 This means that the heterogeneity $\delta\lambda$ has a significant effect on the time to learn $t_{max}$, with lower values of $\delta\lambda$ leading to lower time to learn $t_{max}$ for all values of $\rho_0$. 
 We also notice that the traditional model is more affected by classroom heterogeneity comapred to PI models.
@@ -110,36 +135,36 @@ However, the comparison is not as clear when comparing between different levels 
 When $L\geq64$, the PI models can perform better than the traditional model depending on the heterogeneity $\delta\lambda$, even with the same positional learning factor $\rho_0$.
 
 \begin{figure}[htbp!]
-    \centering
-    \subfigure[Outer corner $L=48$]{\label{fig:2DBPCAIH t-rho plot OC48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png}}
-    \subfigure[Outer corner $L=96$]{\label{fig:2DBPCAIH t-rho plot OC96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-96.png}}
-    \subfigure[Inner corner $L=48$]{\label{fig:2DBPCAIH t-rho plot IC48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-48.png}}
-    \subfigure[Inner corner $L=96$]{\label{fig:2DBPCAIH t-rho plot IC96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-96.png}}
-    \subfigure[Traditional $L=48$]{\label{fig:2DBPCAIH t-rho plot T48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-traditional-48.png}}
-    \subfigure[Traditional $L=96$]{\label{fig:2DBPCAIH t-rho plot T96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-traditional-96.png}}
-    \caption{Time to learn $t_{max}$ as a function of positional learning factor $\rho_0$ for different representative classroom configurations and sizes with varying heterogeneity $\delta\lambda \in \lbrace 0, 0.1, 0.2, 0.3, 0.4 \rbrace$. Lower time to learn $t_{max}$ indicates better performance.}
-    \label{fig:2DBPCAIH t-rho plot}
- \end{figure}
+   \centering
+   \subfigure[Outer corner $L=48$]{\label{fig:2DBPCAIH t-rho plot OC48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png}}
+   \subfigure[Outer corner $L=96$]{\label{fig:2DBPCAIH t-rho plot OC96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-96.png}}
+   \subfigure[Inner corner $L=48$]{\label{fig:2DBPCAIH t-rho plot IC48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-48.png}}
+   \subfigure[Inner corner $L=96$]{\label{fig:2DBPCAIH t-rho plot IC96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-96.png}}
+   \subfigure[Traditional $L=48$]{\label{fig:2DBPCAIH t-rho plot T48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-traditional-48.png}}
+   \subfigure[Traditional $L=96$]{\label{fig:2DBPCAIH t-rho plot T96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/t-plots/t-traditional-96.png}}
+   \caption{Time to learn $t_{max}$ as a function of positional learning factor $\rho_0$ for different representative classroom configurations and sizes with varying heterogeneity $\delta\lambda \in \lbrace 0, 0.1, 0.2, 0.3, 0.4 \rbrace$. Lower time to learn $t_{max}$ indicates better performance.}
+   \label{fig:2DBPCAIH t-rho plot}
+\end{figure}
 
  \begin{figure}[htbp!]
-    \centering
-    \subfigure[$L=32$]{\label{fig:2DBPCAIH t-rho ribbon plot 32}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png}}
-    \subfigure[$L=48$]{\label{fig:2DBPCAIH t-rho ribbon plot 48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png}}
-    \subfigure[$L=64$]{\label{fig:2DBPCAIH t-rho ribbon plot 64}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-64.png}}
-    \subfigure[$L=96$]{\label{fig:2DBPCAIH t-rho ribbon plot 96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-96.png}}
-    \subfigure[$L=128$]{\label{fig:2DBPCAIH t-rho ribbon plot 128}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png}}
-    \caption{Time to learn $t_{max}$ as a function of positional learning factor $\rho_0$ for the heteregenous model of all seating arrangements and classroom sizes $L$. 
-    Each ribbon series represent the range of values for $t_max$ for a given seating arrangments with heterogeneity $\delta\lambda = \lbrace 0.0, 0.1, 0.2, 0.3, 0.4 \rbrace$.
-    Lower time to learn $t_{max}$ indicates better performance.
-    }
-    \label{fig:2DBPCAIH t-rho ribbon plot}
+   \centering
+   \subfigure[$L=32$]{\label{fig:2DBPCAIH t-rho ribbon plot 32}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png}}
+   \subfigure[$L=48$]{\label{fig:2DBPCAIH t-rho ribbon plot 48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png}}
+   \subfigure[$L=64$]{\label{fig:2DBPCAIH t-rho ribbon plot 64}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-64.png}}
+   \subfigure[$L=96$]{\label{fig:2DBPCAIH t-rho ribbon plot 96}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-96.png}}
+   \subfigure[$L=128$]{\label{fig:2DBPCAIH t-rho ribbon plot 128}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png}}
+   \caption{Time to learn $t_{max}$ as a function of positional learning factor $\rho_0$ for the heteregenous model of all seating arrangements and classroom sizes $L$. 
+   Each ribbon series represent the range of values for $t_{max}$ for a given seating arrangments with heterogeneity $\delta\lambda = \lbrace 0.0, 0.1, 0.2, 0.3, 0.4 \rbrace$.
+   Lower time to learn $t_{max}$ indicates better performance.
+   }
+   \label{fig:2DBPCAIH t-rho ribbon plot}
  \end{figure}
 
- \newpage % new page after subsection t vs rho
+ \newpage % new page after section t vs rho
 
-\subsection{$m$ vs $\delta\lambda$}\label{subsec:BPCAIH m vs dl}
+\section{Class learning rate $m$ vs heterogeneity $\delta\lambda$}\label{sec:BPCAIH m vs dl}
 
-\subsection{$t_{max}$ vs $\delta\lambda$}\label{subsec:BPCAIH t vs dl}
+\section{Time to learn $t_{max}$ vs heterogeneity $\delta\lambda$}\label{sec:BPCAIH t vs dl}
 
 Figure \ref{fig:2DBPCAIH dl-t plots} shows that as heterogeneity $\delta\lambda$ increases, PI methods perform better than traditional methods even when PI methods have lower positional learning factors $\rho_0$. For our represntative $\rho_0$ values, PI performs better than traditional methods regardless of the $\rho_0$ value, even in a large classroom $L=128$. 
 However, in larger classrooms, the advantage in performance of PI over traditional methods is less pronounced. 
@@ -159,6 +184,10 @@ However, at $L=128$ shown in figure \ref{fig:2DBPCAIH dl-t plot 128}, the tradit
    \label{fig:2DBPCAIH dl-t plots}
 \end{figure}
 
-\newpage % new page after subsection t vs dl
-
-\section{Anisotropic Interactions}
+\section{Discussions/Conclusions?}\label{sec:BPCAIH discussions}
+\begin{itemize}
+   \item PI models still better for small classrooms, traditional models better for large class sizes. Same for both homogenous and heterogenous.
+   \item heterogeneity can sway which set up is advantageous. Low heterogeneity favors traditional models, high heterogeneity favors PI models. Need to add plots for easier explanation.
+   \item Traditional models are more sensitive than heterogeneity. Higher difference, less effective traditional models.
+   \item Initial learning rate for traditional models is fast, but overall time to learn is longer than PI models. Natural consequence: trad then PI. This is what is done currently.
+\end{itemize}

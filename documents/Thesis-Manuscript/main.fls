@@ -323,9 +323,9 @@ INPUT ./figures/SA dmax.png
 INPUT ./figures/SA dmax.png
 INPUT ./figures/SA dmax.png
 INPUT ./figures/SA dmax.png
-INPUT ./3BPCAmodifications.tex
-INPUT ./3BPCAmodifications.tex
-INPUT 3BPCAmodifications.tex
+INPUT ./3BPCAIH.tex
+INPUT ./3BPCAIH.tex
+INPUT 3BPCAIH.tex
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png
@@ -406,6 +406,37 @@ INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBP
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-center-32.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-center-32.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-center-32.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-center-32.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-center-32.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-random-96.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-random-96.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-random-96.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-random-96.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-random-96.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png
+INPUT ./figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png
 INPUT ./figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png
 INPUT ./figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png
 INPUT ./figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png
@@ -471,9 +502,9 @@ INPUT ./figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png
 INPUT ./figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png
 INPUT ./figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png
 INPUT ./figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png
-INPUT ./4anotherChapter.tex
-INPUT ./4anotherChapter.tex
-INPUT 4anotherChapter.tex
+INPUT ./4mixedModels.tex
+INPUT ./4mixedModels.tex
+INPUT 4mixedModels.tex
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT ./5summaryAndConclusions.tex
 INPUT ./5summaryAndConclusions.tex
