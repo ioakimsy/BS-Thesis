@@ -123,9 +123,9 @@ function plot_comparison(initial_conditions)
     )
 
     δλ_ls_dict = Dict(
-        0.0 => (:dash, :dense),
-        0.2 => :dash,
-        0.4 => (:dash, :loose),
+        0.0 => :dash,
+        0.2 => :dashdot,
+        0.4 => :dashdotdot
     )
 
     rho_alpha_dict = Dict(collect(0.1:0.1:1.0)[i] => collect(range(0.5, stop=1.0, length=10))[i] for i in 1:length(collect(0.1:0.1:1.0)))
@@ -159,7 +159,7 @@ function plot_comparison(initial_conditions)
 
         band!(ax, learned_μ_dom, learned_max, learned_min;
             # whiskerwidth = 5,
-            color = (color[SA_color_dict[SA]], rho_alpha_dict[ρ₀]/2),
+            color = (color[SA_color_dict[SA]], rho_alpha_dict[ρ₀]/4),
         )
 
         lines!(ax, learned_μ_dom, learned_μ,
@@ -190,7 +190,7 @@ end
 begin
 
     comparison = [
-        # "size",
+        "size",
         # "SA",
         "ρ₀",
         # "δλ",
