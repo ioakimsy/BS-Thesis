@@ -211,7 +211,6 @@ The outer corner and center SAs performed similarly, while the random SA has the
 The sudden decrease in class learning rate $m$ for the traditional model at $\rho_0 = 1.0$ is due to the improper truncation and fitting of the data. 
 In the traditional model where $\rho_0 = 1.0$, all the students will transition from unlearned to learned in one time step, so fitting the power law to the first 25\% of the data would yield a class learning rate $m$ that does not represent the results of the simulations well.
 
-We notice that these results differ slightly from the ones presented in section \ref{subsec: 2DBPCA tmax vs rho}. 
 The results in this section show that the traditional model performs better than the PI model in terms of class learning rate $m$ for all classroom sizes at low $\rho_0$. 
 This is in contrast to the results in section \ref{subsec: 2DBPCA tmax vs rho} where the PI model performed better only in small classrooms with low positional learning factor $\rho_0$. 
 This discrepancy is likely due to the different metrics used to evaluate the performance of the models. The class learning rate $m$ is a measure of how quickly the students learn, while the time to learn $t_{max}$ is a measure of how long it takes for all the students to learn. 
@@ -239,7 +238,9 @@ In cases where the classroom is large and positional learning factor $\rho_0$ is
     \caption[Class size dependence of time to learn in homogenous models]{Time to learn $t_{max}$ as a function of class size $N$ for PI and traditional models. 
     Circles and squares denote data points for the inner corner PI configuration and traditional learning model, respectively. 
     The dash lines are the corresponding power law fit of the form $t_{max}=a \cdot N^b$ using $\rho \in \lbrace 0.1, 0.5, 0.9 \rbrace$. 
-    The fitted parameters are shown in the table with an average of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner and $\langle b \rangle = 0.087\pm0.021$ for the traditional model.}
+    The fitted parameters are shown in the table with an average of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner and $\langle b \rangle = 0.087\pm0.021$ for the traditional model.
+    Lower time to learn $t_{max}$ indicate better performance.
+    }
     \label{fig:Traditional vs PI tmax vs N}
 \end{figure}
 
