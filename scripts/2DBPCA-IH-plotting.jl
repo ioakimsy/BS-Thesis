@@ -9,11 +9,18 @@
 ! Set up to do for all data
 ! Outer corner and inner corner for today
 
-! 2024-07-16
+! 2024-09-16
 ! Generate plots and animations for traditional
 
-! 2024-07-17
+! 2024-09-17
 ! Generate plots and animations for center
+
+! 2024-10-18
+! Regenerate plots for traditional for some sets of parameters (need for manuscript)
+! Need to regenerate for all trad set ups
+! Correction on data points. Start from 2 instead of 1
+! Currently still checking on fitting functions
+
 =#
 begin
     using Pkg
@@ -169,7 +176,7 @@ function generate_plots(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = 4
         fit_vals = power_coeff .* fit_dom .^ power_exp
         if SA == "traditional"
             learned = learned[begin+1:end]
-            learned_dom = 1:length(learned)
+            learned_dom = 2:length(learned)+1
         end
 
         # frames = []
@@ -431,21 +438,37 @@ function generate_animation(sizes, seat_configs, Ρs, δλs, n_trials; n_learned
 end
 
 begin
-    sizes = [32,48,64,96,128]
+    # sizes = [32,48,64,96,128]
+	# seat_configs = [
+    #     # "outer_corner", 
+    #     # "inner_corner", 
+    #     "center", 
+    #     # "random", 
+    #     # "traditional",
+    #     ]
+	# Ρs = collect(0.1:0.1:1)
+    # δλs = collect(0.0:0.1:0.4)
+	# steady_state_tolerance = 20
+	# n_trials = 5
+    # n_learned = 4
+    # λ₀ = 0.5
+    
+    sizes = [64]
 	seat_configs = [
         # "outer_corner", 
         # "inner_corner", 
-        "center", 
+        # "center", 
         # "random", 
-        # "traditional",
+        "traditional",
         ]
-	Ρs = collect(0.1:0.1:1)
-    δλs = collect(0.0:0.1:0.4)
+	Ρs = 0.3
+    δλs = 0.4
 	steady_state_tolerance = 20
 	n_trials = 5
     n_learned = 4
     λ₀ = 0.5
+    
 
     generate_plots(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀)
-    generate_animation(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀)
+    # generate_animation(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀)
 end
