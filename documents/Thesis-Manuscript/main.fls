@@ -406,6 +406,26 @@ INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBP
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png
 INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
@@ -530,6 +550,7 @@ INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb

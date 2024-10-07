@@ -179,8 +179,7 @@ function plot_comparison(initial_conditions)
     Legend(fig[1,2], ax,
         "Legend",
         titlesize = 16,
-        labelsize = 16,
-
+        labelsize = 16
     )
 
     return fig
