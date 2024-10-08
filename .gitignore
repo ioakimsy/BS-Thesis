@@ -6,3 +6,4 @@ output/2D-Binary-PCA-IH/**/*.png
 !output/2D-Binary-PCA-IH/analysis/**
 !output/2D-Binary-PCA-IH/analysis/**/*.png
 documents/~$202425s1-RM-Slides-Sy.pptx
+scripts/test.jl
