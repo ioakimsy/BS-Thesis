@@ -154,11 +154,6 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT ./dedication.tex
 INPUT ./dedication.tex
 INPUT dedication.tex
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT ./acknowledgments.tex
-INPUT ./acknowledgments.tex
-INPUT acknowledgments.tex
 INPUT ./0abstract.tex
 INPUT ./0abstract.tex
 INPUT 0abstract.tex
@@ -191,6 +186,8 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/base/ulasy.fd
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy8.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./main.toc
 INPUT ./main.toc
 INPUT main.toc
@@ -216,21 +213,11 @@ INPUT ./figures/2DBPCA TI Flowchart.png
 INPUT ./figures/2DBPCA TI Flowchart.png
 INPUT ./figures/2DBPCA TI Flowchart.png
 INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA PI Flowchart.png
-INPUT ./figures/2DBPCA PI Flowchart.png
-INPUT ./figures/2DBPCA PI Flowchart.png
-INPUT ./figures/2DBPCA PI Flowchart.png
-INPUT ./figures/2DBPCA PI Flowchart.png
-INPUT ./figures/PI SAs.png
-INPUT ./figures/PI SAs.png
-INPUT ./figures/PI SAs.png
-INPUT ./figures/PI SAs.png
-INPUT ./figures/PI SAs.png
-INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
-INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
-INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
-INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
-INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
@@ -242,6 +229,36 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy7.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/latex-fonts/lasy5.tfm
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png
+INPUT ./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/2DBPCA PI Flowchart.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/PI SAs.png
+INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
+INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png
 INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png
 INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png
 INPUT ./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png
