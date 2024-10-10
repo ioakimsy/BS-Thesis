@@ -13,13 +13,13 @@ Each student has an equal chance of having a learning rate that is either faster
 $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$ with values $\lambda_{i,j} = \lbrace \lambda_0 \pm \delta \lambda \rbrace$ where $\lambda_0 = 0.5$ and $\delta \lambda = \lbrace 0.1, 0.2, 0.3, 0.4 \rbrace$, 
 
 \section{Effects on classroom evolution}\label{sec:BPCAIH effects on classroom evolution}
-\subsection{Peer Instruction Models}
+\subsection{Peer Instruction Models}\label{sec:BPCAIH effects on classroom evolution PI}
+When introducing heterogeneity to the PI model, we see that the general trend of the classroom evolution is still the same as the homogenous case.
 As shown in the figures in this section, we notice values of $\rho_0$ is still the most important factor in determining class performance. 
-However, irregularities in the shapes of the "wave of learning" become more pronounced for lower values of $\rho_0$ and high values of $\delta\lambda$ as shown in figure \ref{fig:2DBPCAIH sample class evolution low rho}.
+However, irregularities in the shapes of the ``wave of learning" become more pronounced for lower values of $\rho_0$ and high values of $\delta\lambda$ as shown in figure \ref{fig:2DBPCAIH sample class evolution low rho}.
 These irregularities are also more pronounced at the start of the classroom and fades over time.
-For high values of $\rho_0$, high values of $\delta\lambda$ leads to the irregularity in the "wave of learning" to persist longer than those with lower values of $\delta\lambda$.
-The irregularities in both the shape of the "wave of learning" and the deviation from the power law are less pronounced for higher values of $\rho_0$, regardless of the value of $\delta\lambda$, as shown in figure \ref{fig:2DBPCAIH sample class evolution high rho} and \ref{fig:2DBPCAIH sample class evolution high rho high delta}.
-There are some sets of parameters who deviate from the power law fit. For peer instruction, these deviations happen for low values of $\rho_0$.
+For high values of $\rho_0$, high values of $\delta\lambda$ leads to the irregularity in the ``wave of learning" to persist longer than those with lower values of $\delta\lambda$.
+The irregularities in both the shape of the ``wave of learning" and the deviation from the power law are less pronounced for higher values of $\rho_0$, regardless of the value of $\delta\lambda$, as shown in Figures \ref{fig:2DBPCAIH sample class evolution high rho} and \ref{fig:2DBPCAIH sample class evolution high rho high delta}.
 In these cases, the class learning rate is slower than the power law fit at the start of the simulation.
 
 \begin{figure}[htbp!]
@@ -99,22 +99,28 @@ This could explain the deviation from the power law fit at earlier times $t$ for
 
 \subsection{Comparing temporal learning dynamics of different classroom configurations}
 
-When varying the class size $L$, as in Figure \ref{fig:2DBPCAIH t-learned size comparison}, we see that the traditional model's performance remains generally unchanged, with only the time to learn $t_{max}$ increasing as the class size $L$ increases. 
-For PI models, an increase in class size $L$ adds a time delay to when the learning starts to speed up. 
+When varying the class size $N$, as in Figure \ref{fig:2DBPCAIH t-learned size comparison}, we see that the traditional model's dynamics remains generally unchanged, with only the time to learn $t_{max}$ increasing as the class size $N$ increases. 
+For PI models, an increase in class size $N$ adds a time delay to when the learning starts to speed up. 
 Despite the added time delay, the general shape of the learning curve remains the same.
+An increase in class size $N$ also does not affect the time to learn $t_{max}$ for PI models as much as it does for the traditional model.
 
-When varying the positional learning factor $\rho_0$, we see that idk
+When varying the positional learning factor $\rho_0$, we see that it varies the shape of the learning curve for traditional instruction, especially for lower values of $\rho_0$ as shown in Figure \ref{fig:2DBPCAIH t-learned rho comparison}. 
+For traditional instruction, the value of $\rho_0$ also greatly changes the initial number of students that learn in the second time step.
+The same figure shows that for PI, the value of $\rho_0$ has a similar effect to class size $N$, where it only adds a time delay to when the learning starts to speed up.
+Notably, the effect of $\rho_0$ is not linear for either instruction models.
+We can see in the same figure that those with extremely low values of $\rho$, like that of $\rho_0=0.1$ perform much worse with the learning curves being further from $\rho_0=0.5$ than $\rho_0=0.9$.
 
-Figure \ref{fig:2DBPCAIH t-learned delta comparison} shows that an increase in heterogeneity $\delta\lambda$ changes how fast the slope of the learning curve changes for the traditional model, while mostly not affecting PI models.
+Figure \ref{fig:2DBPCAIH t-learned delta comparison} shows that an increase in heterogeneity $\delta\lambda$ changes how fast the slope of the learning curve changes for the traditional model without changing the initial number of learned students. 
+As for PI, an increase in heterogeneity $\delta\lambda$  only shifts the curve to the right without changing the shape of the curve.
 
-As shown in Figure \ref{fig:2DBPCAIH t-learned SA comparison}, when comparing between the different SA's, at least for $L=64, \rho_0=0.5, \lambda=0.5\pm0.2$, the traditional model generally performs better than PI models, especially in the early time steps. 
-Among the different SA's for the PI model, the inner corner SA still performs the best while the center and outer corner SAs perform similarly, the same conclusion we got from the homogenous case.
-Contrary to the results of the homoegnous classrooms, the random SA did not perform the worst, it performed better than the center and outer corner SA's.
+As shown in Figure \ref{fig:2DBPCAIH t-learned SA comparison}, when comparing between the different SA's for PI, at least for $L=64, \rho_0=0.5, \lambda=0.5\pm0.2$, traditional instruction generally performs better than PI, especially in the early time steps. 
+Among the different SA's for PI, the inner corner SA still performs the best while the center and outer corner SAs perform similarly, the same conclusion we got from the homogenous case.
+Contrary to the results of the homoegnous classes, the random SA did not perform the worst, it performed better than the center and outer corner SA's.
 
-One observation that is consistent with all the comparisons shown in Figure \ref{fig:2DBPCAIH t-learned comparisons} is that even though the traditional model has more students learning in the early time steps, they also spend more time waiting for the last few students to learn. 
-In contrast to this, PI models may take some time before the learning starts to speed up, but once majority of the students have learned, it does not take long until all the students to learn.
-This makes PI models having a shorter time to learn $t_{max}$, despite being outperformed by the traditional model in early time steps.
-This phenomenon is further investigated in the next sections where we look closer at the different factors that can affect which set up is better for a given classroom configuration.
+One observation that is consistent with all the comparisons shown in Figure \ref{fig:2DBPCAIH t-learned comparisons} is that even though using traditional instruction has more students learning in the early time steps, it also spend more time waiting for the last few students to learn. 
+In contrast to this, PI takes some time before the learning starts to speed up, but once majority of the students have learned, it does not take long until all the students to learn.
+This makes PI have a shorter time to learn $t_{max}$, despite being outperformed by the traditional model in early time steps.
+This phenomenon is further investigated in the next sections where we look closer at the different factors that can affect which set up is better for different classroom parameters.
 
 \begin{figure}[htbp!]
    \centering
@@ -138,9 +144,13 @@ This phenomenon is further investigated in the next sections where we look close
 \section{Class learning rate $m$ vs positional learning factor $\rho_0$}\label{sec:BPCAIH m vs rho}
 
 Figure \ref{fig:2DBPCAIH m rho plot} shows that class learning rate becomes inconsistent with the positional learning factor $\rho_0$ in PI models when introducing heterogeneity. 
+The inconsistency may be caused by sampling problem where the first 50\% of the data may not be just capturing the initial dynamics of the classroom, which should be the only basis of the class learning rate $m$.
 With heterogeneity, PI models no longer show trends in learning rate $m$ as a function of positional learning factor $\rho_0$.
-The traditional model shows a similar trend in learning rate $m$ as with time to learn $t_{max}$ where homogenous classrooms perform better then heterogenous classrooms.
-This might be explained by the spatiotemporal dynamics of traditional learning models where the fast learning students learn first and the slow learning students learn last, as discussed in section \ref{sec:BPCAIH effects on classroom evolution} and shown in figure \ref{fig:2DBPCAIH sample class evolution trad low rho high delta}.
+
+The traditional instruction model shows a similar trend in learning rate $m$ as with time to learn $t_{max}$ where homogenous classrooms perform better then heterogenous classrooms.
+This might be explained by the spatiotemporal dynamics of traditional learning models where the fast learning students learn first and the slow learning students learn last, as discussed in Section \ref{sec:BPCAIH effects on classroom evolution} and shown in Figure \ref{fig:2DBPCAIH sample class evolution trad low rho high delta}.
+
+Moving forward, we will only focus on the time to learn $t_{max}$ as a metric for performance.
 
 \begin{figure}[htbp!]
    \centering
@@ -182,7 +192,8 @@ When $L\geq64$, the PI models can perform better than the traditional model depe
    \label{fig:2DBPCAIH t-rho plot}
 \end{figure}
 
- \begin{figure}[htbp!]
+
+\begin{figure}[htbp!]
    \centering
    \subfigure[$L=32$]{\label{fig:2DBPCAIH t-rho ribbon plot 32}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png}}
    \subfigure[$L=48$]{\label{fig:2DBPCAIH t-rho ribbon plot 48}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png}}
@@ -194,11 +205,9 @@ When $L\geq64$, the PI models can perform better than the traditional model depe
    Lower time to learn $t_{max}$ indicates better performance.
    }
    \label{fig:2DBPCAIH t-rho ribbon plot}
- \end{figure}
+\end{figure}
 
- \newpage % new page after section t vs rho
-
-\section{Class learning rate $m$ vs heterogeneity $\delta\lambda$}\label{sec:BPCAIH m vs dl}
+\newpage % new page after section t vs rho
 
 \section{Time to learn $t_{max}$ vs heterogeneity $\delta\lambda$}\label{sec:BPCAIH t vs dl}
 
@@ -220,10 +229,58 @@ However, at $L=128$ shown in figure \ref{fig:2DBPCAIH dl-t plot 128}, the tradit
    \label{fig:2DBPCAIH dl-t plots}
 \end{figure}
 
+\newpage % new page after section t vs dl
+
+\section{Time to learn $t_{max}$ vs class size $N$}\label{sec:BPCAIH m vs dl}
+
+When investigating the size dependence of time to learn $t_{max}$ shown in Figure \ref{fig:2DBPCAIH n-t plots}, we see a similar trend to what we found in section \ref{subsec: 2DBPCA tmax vs N} where PI models are better for smaller classes and traditional models are better for larger classes.
+Heterogeneity $\delta\lambda$ generally has a negative effect on the time to learn $t_{max}$ for both PI and traditional models.
+However, as shown in sections \ref{sec:BPCAIH t vs rho} and \ref{sec:BPCAIH t vs dl}, the traditional model is more affected by heterogeneity $\delta\lambda$ compared to PI models.
+Because of the sensitivity of traditional instruction to heterogeneity $\delta\lambda$, at low values of $\rho_0$, even for large classes, PI models can perform better than traditional models for higher values of heterogeneity $\delta\lambda$.
+This is shown in Figures \ref{fig:2DBPCAIH n-t plot 0.3} and \ref{fig:2DBPCAIH n-t plot 0.4} where the PI model performs better than the traditional model for all class sizes (N) and the same value of $\rho_0$.
+
+\begin{figure}[htbp!]
+   \centering
+   \subfigure[$\delta\lambda=0.0$]{\label{fig:2DBPCAIH n-t plot 0.0}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.0.png}}
+   \subfigure[$\delta\lambda=0.1$]{\label{fig:2DBPCAIH n-t plot 0.1}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.1.png}}
+   \subfigure[$\delta\lambda=0.2$]{\label{fig:2DBPCAIH n-t plot 0.2}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.2.png}}
+   \subfigure[$\delta\lambda=0.3$]{\label{fig:2DBPCAIH n-t plot 0.3}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.3.png}}
+   \subfigure[$\delta\lambda=0.4$]{\label{fig:2DBPCAIH n-t plot 0.4}\includegraphics[width=0.49\textwidth]{figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.4.png}}
+   \caption{Time to learn $t_{max}$ as a function of class size $N$ for the heteregenous models of the PI (inner corner SA) and traditional models with varying positional learning factor $\rho_0\in\lbrace 0.1, 0.5, 0.9 \rbrace$ and heterogeneity $\delta\lambda\in\lbrace0.0, 0.1, 0.2, 0.3, 0.4 \rbrace$. 
+   Each color represents a diffent value of $\rho_0$, while the circle and square symbols represent the traditional and PI models respectively.
+   Each band represent the standard deviation of time to learn $t_{max}$ over 5 trials.
+   Lower time to learn $t_{max}$ indicates better performance.
+   }
+   \label{fig:2DBPCAIH n-t plots}
+\end{figure}
+
+\newpage % new page after section t vs N
+
+
+
 \section{Discussions/Conclusions?}\label{sec:BPCAIH discussions}
-\begin{itemize}
-   \item PI models still better for small classrooms, traditional models better for large class sizes. Same for both homogenous and heterogenous.
-   \item heterogeneity can sway which set up is advantageous. Low heterogeneity favors traditional models, high heterogeneity favors PI models. Need to add plots for easier explanation.
-   \item Traditional models are more sensitive than heterogeneity. Higher difference, less effective traditional models.
-   \item Initial learning rate for traditional models is fast, but overall time to learn is longer than PI models. Natural consequence: trad then PI. This is what is done currently.
-\end{itemize}
+To better model the real world, we introduced heterogeneity to the students' learning rate. 
+Adding heterogeneity does not affect the general trend of our instruction models. 
+For the case of a heteregenous system, we still find traditional instruction fares better than PI for larger classes with high positional learning factor $rho_0$.
+
+Besides not affecting the general trend, we also found out that traditional instruction is more sensitive to heterogeneity. 
+As discussed in section \ref{sec:BPCAIH effects on classroom evolution}, the difference in sensitivity is because of the dynamics that were seen in the classes' evolution. 
+This is related to the spatiotemporal dynamics of traditional learning models where the fast learning students learn first and the slow learning students learn last.
+The time to learn $t_{max}$ for traditional instruction is then dependent on waiting for the slow students.
+
+In contrast to the spatiotemporal dynamics of traditional instruction, the advantage of PI is that it is not as heavily dependent on the students themselves as traditional instruction.
+PI is more dependent on the geomety of the classroom and the number of learning sources available to the students.
+For the case of PI, the ``wavefront of learning'' (see: section \ref{sec:BPCAIH effects on classroom evolution}) provides students with more than one source of learning, unlike in the traditional model. 
+This phenomenon offsets the increase in the time to learn $t_{max}$ that is caused by waiting for the slow learning students.
+PI models therefore have a shorter time to learn $t_{max}$ despite being outperformed by the traditional model in earlier time steps.
+
+Given the foregoing, initially performing traditional instruction and then proceeding with PI later would maximize each methods' strengths. 
+The traditional instruction phase would yield high learning rates at the start of the simulation, by allowing the fast learning students to learn first.
+The learned students would then be able to help the slow learning students learn in the PI phase, shortening the time to learn $t_{max}$.
+
+% \begin{itemize}
+%    \item PI models still better for small classrooms, traditional models better for large class sizes. Same for both homogenous and heterogenous.
+%    \item heterogeneity can sway which set up is advantageous. Low heterogeneity favors traditional models, high heterogeneity favors PI models. Need to add plots for easier explanation.
+%    \item Traditional models are more sensitive than heterogeneity. Higher difference, less effective traditional models.
+%    \item Initial learning rate for traditional models is fast, but overall time to learn is longer than PI models. Natural consequence: trad then PI. This is what is done currently.
+% \end{itemize}

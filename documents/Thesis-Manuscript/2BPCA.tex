@@ -164,7 +164,7 @@ These SA's are namely: inner corner, outer corner, center, and random. The diffe
     \subfigure[$t=1$]{\label{fig:2DBPCA classroom 1}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png}}
     \subfigure[$t=9$]{\label{fig:2DBPCA classroom 9}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png}}
     \subfigure[$t=17$]{\label{fig:2DBPCA classroom 17}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png}}
-    \subfigure[$t=23$]{\label{fig:2DBPCA classroom 1}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png}}
+    \subfigure[$t=23$]{\label{fig:2DBPCA classroom 23}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png}}
     \caption{Sample classroom evolution for $L=64$, $\lambda_0 = 1$, and $\rho_0 = 0.5$ with the inner corner SA. 
     Black squares represent learned students while white squares represent unlearned students. 
     The accompanying graphs show the fraction of learned students as a function of time. 
@@ -215,7 +215,6 @@ The results in this section show that the traditional model performs better than
 This is in contrast to the results in section \ref{subsec: 2DBPCA tmax vs rho} where the PI model performed better only in small classrooms with low positional learning factor $\rho_0$. 
 This discrepancy is likely due to the different metrics used to evaluate the performance of the models. The class learning rate $m$ is a measure of how quickly the students learn, while the time to learn $t_{max}$ is a measure of how long it takes for all the students to learn. 
 In cases where the classroom is large and positional learning factor $\rho_0$ is small, the traditional model is able to teach all the students in a shorter amount of time despite the PI model being able to teach the students more effectively. 
-\textit{This could be what other researches find when they claim that PI is a more effective method without accounting for the classroom room size or the students' learning rates. citation needed}
 
 \begin{figure}[htbp!]
     \centering

@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex main"] 1728043449 "main.aux" "main.bbl" "main" 1728043468 0
+["bibtex main"] 1728459796 "main.aux" "main.bbl" "main" 1728459861 0
   "./biblio.bib" 1726816279 6758 31fcbf8c574477b3dbd7f9e7d2534a14 ""
   "c:/texlive/2023/texmf-dist/bibtex/bst/base/plain.bst" 1696354735 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1728043466 43540 21ee3e00f46f93d23c30078a3253c1f2 "pdflatex"
+  "main.aux" 1728459859 46650 b58a592fc9ea97afdfdd8c3ddd39dfad "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1728043449 "c:/School/BS Thesis/documents/Thesis-Manuscript/main.tex" "main.pdf" "main" 1728043468 0
+["pdflatex"] 1728459836 "c:/School/BS Thesis/documents/Thesis-Manuscript/main.tex" "main.pdf" "main" 1728459861 0
   "0abstract.tex" 1715865827 1490 8b8f6724ab97efdd960afb2316c65d56 ""
   "1introduction.tex" 1726816325 773 d0e4cecbda862ea355c1f02a653f9984 ""
-  "2BPCA.tex" 1728025125 25224 b0b13e875ead2ab43ac3a2d7508d398b ""
-  "3BPCAIH.tex" 1728043429 23903 081c483328c7b8109d65251fe0c201ac ""
+  "2BPCA.tex" 1728382479 25027 0e29ecbd3fa08ab5284d863f01455797 ""
+  "3BPCAIH.tex" 1728459834 30062 dc09a51f9ac2ddfcc382de69c3fce9e8 ""
   "4mixedModels.tex" 1727837680 958 1dc439aef1fae395bd34b038ed103322 ""
   "5summaryAndConclusions.tex" 1727859390 264 c7d9ca12eb95043fb63fca107440dfb0 ""
   "acknowledgments.tex" 1728042687 3708 37ea31c2039fcbcb4be100151f740a09 ""
@@ -172,6 +172,11 @@
   "figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png" 1716004112 171028 6c5775ef4f83621717d675895546f17d ""
   "figures/2D-BPCAIH-analysis/m-plots/m-random-96.png" 1716004115 176044 27581f905be638d7f0bb1bdabc073fdf ""
   "figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png" 1716004115 152960 f1a950d970c1a308cef952877f0dc08b ""
+  "figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.0.png" 1728446534 179323 b7ac78f3f4e561c1a48424fc617e6427 ""
+  "figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.1.png" 1728446534 171866 2dc37c3d3a94f76b9b2f94b0abe1e468 ""
+  "figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.2.png" 1728446534 166885 eb60e383bd7b37ec0da0f38b68bbb322 ""
+  "figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.3.png" 1728446534 162958 23f2c5198e253b62c89bf8d32b1dc4a1 ""
+  "figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.4.png" 1728446535 154441 23749edc126b38a288b9d6f9e43ae377 ""
   "figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png" 1726196312 180242 2b51a180e8f0d94bb2d74f6f751cd231 ""
   "figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png" 1726196311 179087 89b74324be45dabd7015b5206cad9db5 ""
   "figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png" 1726196312 177842 7e48b934d9dce99d9122a2f3e5262aaf ""
@@ -188,12 +193,12 @@
   "figures/PI SAs.png" 1715907867 121723 881d3305891e6715c3a058db0d610b85 ""
   "figures/SA dmax.png" 1716393028 161776 13b92cbfb39f670c7132dbf3d9915fd3 ""
   "figures/UnibersidadngPilipinas.png" 1572807464 243466 c46fc65842cde84e3d05f528312cd950 ""
-  "main.aux" 1728043466 43540 21ee3e00f46f93d23c30078a3253c1f2 "pdflatex"
-  "main.bbl" 1728043449 1602 8d254023df9f27d025bb29ab464a03c2 "bibtex main"
-  "main.lof" 1728043466 12792 f9d6660a363b38d9a1461cb9d6b7ac1b "pdflatex"
-  "main.out" 1728043466 8277 945c34b15a8051f597566555d727ad22 "pdflatex"
+  "main.aux" 1728459859 46650 b58a592fc9ea97afdfdd8c3ddd39dfad "pdflatex"
+  "main.bbl" 1728459797 1602 8d254023df9f27d025bb29ab464a03c2 "bibtex main"
+  "main.lof" 1728459859 13966 45ee1b15e12178eb431061b4082ef04f "pdflatex"
+  "main.out" 1728459859 8255 eb8d56c6b13093ff06644fdc40f18154 "pdflatex"
   "main.tex" 1727837657 3398 e88e173ba2d7224c0912653e10403edd ""
-  "main.toc" 1728043466 3639 672ed92c92fbd538a854e6b18626db73 "pdflatex"
+  "main.toc" 1728459859 3622 f4babca83d707edd9d22e8ab0397bec8 "pdflatex"
   "nip3.cls" 1572807464 26912 20267c5a88379e62eedadd7ed1a4b27c ""
   (generated)
   "main.aux"
