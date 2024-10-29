@@ -39,8 +39,15 @@
 \usepackage{amsthm}
 \usepackage{newlfont}
 \usepackage{subfigure}
+\usepackage[svgnames]{xcolor}
 \usepackage{hyperref}
 \usepackage{enumitem}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!80!black},
+    citecolor=black
+}
 
 %% Header section
 \title{Classroom learning dynamics using a cellular automata spatiotemporal model comparing peer instruction and traditional instruction} %%required
@@ -63,7 +70,7 @@
 \abstract{ \input{0abstract.tex} } %% see abstract.tex
 \pacs{
    01.40.Ha Learning in education,
-   05.45.Pq Numerical Simulations,
+   05.45.Pq Numerical simulations,
    89.75.-k Complex systems
 }
 
@@ -75,15 +82,15 @@
 \input{1introduction.tex}
 \input{2BPCA.tex}
 \input{3BPCAIH.tex} %%could be model or experiment set-up
-\input{4mixedModels.tex} %%could be results and discussions
-\input{5summaryAndConclusions.tex}
+% \input{4mixedModels.tex} %%could be results and discussions
+\input{5conclusions.tex}
 %% you may add more chapters by including more files just as above.
 %% see the files for patterns of the format used.
 
 \appendix
 \input{appendix.tex}
 
-\bibliographystyle{plain}
+\bibliographystyle{ieeetr}
 \bibliography{biblio} %% see file: "biblio.bib"
 
 \end{document}
