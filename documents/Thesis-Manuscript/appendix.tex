@@ -1,9 +1,5 @@
 % !TEX root =  main.tex
-\chapter{Sample appendix}
-
-This gives an example of an appendix chapter.  Note that this file
-has been included \textbf{after} the line \verb+\appendix+ in
-\verb+main.tex+.
+\chapter{Appendix}
 
 \section{Derivation of Equation \ref{eq:BPCA PI learning probability}} \label{sec: BPCA PI learning probability derivation}
 \begin{subequations}
@@ -41,53 +37,61 @@ has been included \textbf{after} the line \verb+\appendix+ in
     \end{equation}
 \end{subequations}
 
-\section{Equations in appendix}
+\section{Julia packages used}
+This study used the following Julia packages:
 
-\hspace{\parindent} You don't need to worry about equations within
-the appendix since \LaTeX automatically formats the equation
-numbers for you. For example,
-\begin{equation}\label{eq:appendixEqn}
-    c^2 = a^2 + b^2
-\end{equation}
-becomes the Pythagorian theorem where $c$ is the length of the
-longest side of any right triangle.
+\begin{enumerate}
+    \item Alert.jl % can't find citation
+    \item CSV.jl % can't find citation
+    \item CairoMakie.jl \cite{MakieJL}
+    \item ColorSchemes.jl % can't find citation
+    \item DataFrames.jl \cite{DataFramesJL}
+    \item GLMakie.jl \cite{MakieJL}
+    \item LaTeXStrings.jl % can't find citation
+    \item LsqFit.jl % can't find citation
+    \item Measurements.jl \cite{Measurements.jl-2016}
+    \item Plots.jl \cite{PlotsJL}
+    \item ProgressMeter.jl % can't find citation
+\end{enumerate}
 
 \section{Codes as appendix}
 
-\hspace{\parindent}Include your codes when necessary to your
-thesis/dissertation. To do this, you may use \verb+verbatim+
-environment as follows. \textbf{WARNING:} All verbatim and
-verbatiminput environments should always be treated as a separate
-paragraph.  When included in a text paragraph, it sometimes happen
-to reduce the 1.5 spacing to the usual single-spaced text.
+idk how to do this with julia code na may unicode characters, will insert a github link or something before submission
 
-{\small
-\begin{verbatim}
- #include <iostream>
- using std::cout;
- using std::endl;
+% \hspace{\parindent}Include your codes when necessary to your
+% thesis/dissertation. To do this, you may use \verb+verbatim+
+% environment as follows. \textbf{WARNING:} All verbatim and
+% verbatiminput environments should always be treated as a separate
+% paragraph.  When included in a text paragraph, it sometimes happen
+% to reduce the 1.5 spacing to the usual single-spaced text.
 
- int main( void )
- {
-    cout << "Hello world!" << endl;
-    return 0;
- }
-\end{verbatim}
-}
+% {\small
+% \begin{verbatim}
+%  #include <iostream>
+%  using std::cout;
+%  using std::endl;
 
-The \verb+{\small }+ bracketed region is used to lower the font
-size of the entire verbatim text.  This will save you much space
-and give a more aesthetical look in your manuscript.
+%  int main( void )
+%  {
+%     cout << "Hello world!" << endl;
+%     return 0;
+%  }
+% \end{verbatim}
+% }
 
-On the other hand, when very long codes are wished to be included
-automatically without the tedious cut and paste procedure, you may
-include them using the \verb+\verbatiminput+ command as follows.
-You may want to include a short description of the code of course.
+% The \verb+{\small }+ bracketed region is used to lower the font
+% size of the entire verbatim text.  This will save you much space
+% and give a more aesthetical look in your manuscript.
 
-{\small
- \verbatiminput{"codes/newC.cpp"}
-}
+% On the other hand, when very long codes are wished to be included
+% automatically without the tedious cut and paste procedure, you may
+% include them using the \verb+\verbatiminput+ command as follows.
+% You may want to include a short description of the code of course.
 
-This time, you may just include your recent codes by just
-copy-paste-ing the codes (as long they are clean!) into the
-directory \verb$codes/$ in the directory where this file is saved.
+% {\small
+%  \verbatiminput{"codes/newC.cpp"}
+% }
+
+% This time, you may just include your recent codes by just
+% copy-paste-ing the codes (as long they are clean!) into the
+% directory \verb$codes/$ in the directory where this file is saved.

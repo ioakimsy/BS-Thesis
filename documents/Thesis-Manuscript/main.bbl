@@ -1,33 +1,74 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{arciaga2009experimental}
-M~Arciaga, M~Pastor, R~Batac, J~Bantang, and C~Monterola.
-\newblock Experimental observation and an empirical model of enhanced heap stability resulting from the mixing of granular materials.
-\newblock {\em Journal of Statistical Mechanics: Theory and Experiment}, 2009(07):P07040, 2009.
+\bibitem{mazur1997peer}
+E.~Mazur, {\em Peer instruction: A User's Manual}.
+\newblock Benjamin Cummings, 1997.
+
+\bibitem{mazur1999}
+E.~Mazur and M.~D. Somers, ``{Peer Instruction: A User’s Manual},'' {\em American Journal of Physics}, vol.~67, pp.~359--360, 04 1999.
+
+\bibitem{johnson2008active}
+R.~T. Johnson and D.~W. Johnson, ``Active learning: Cooperation in the classroom,'' {\em The annual report of educational psychology in Japan}, vol.~47, pp.~29--30, 2008.
+
+\bibitem{fagen2000factors}
+A.~P. Fagen, C.~H. Crouch, T.~Yang, and E.~Mazur, ``Factors that make peer instruction work: A 700-user survey,'' in {\em talk given at the 2000 AAPT Winter Meeting, Kissimmee, FL}, 2000.
+
+\bibitem{fagen2002peer}
+A.~P. Fagen, C.~H. Crouch, and E.~Mazur, ``Peer instruction: Results from a range of classrooms,'' {\em The physics teacher}, vol.~40, no.~4, pp.~206--209, 2002.
+
+\bibitem{crouch2001peer}
+C.~H. Crouch and E.~Mazur, ``Peer instruction: Ten years of experience and results,'' {\em American journal of physics}, vol.~69, no.~9, pp.~970--977, 2001.
 
 \bibitem{lasry2008peer}
-Nathaniel Lasry, Eric Mazur, and Jessica Watkins.
-\newblock Peer instruction: From harvard to the two-year college.
-\newblock {\em American journal of Physics}, 76(11):1066--1069, 2008.
+N.~Lasry, E.~Mazur, and J.~Watkins, ``Peer instruction: From harvard to the two-year college,'' {\em American journal of Physics}, vol.~76, no.~11, pp.~1066--1069, 2008.
 
-\bibitem{louis2018probabilistic}
-Pierre-Yves Louis and Francesca~R Nardi.
-\newblock {\em Probabilistic Cellular Automata: Theory, Applications and Future Perspectives}, volume~27.
-\newblock Springer, 2018.
-
-\bibitem{nitta2019mathematical}
-Hideo Nitta.
-\newblock A mathematical model of peer instruction and its applications.
-\newblock {\em Upgrading Physics Education to Meet the Needs of Society}, pages 87--98, 2019.
-
-\bibitem{roxas2010seating}
-RM~Roxas, SL~Carreon-Monterola, and C~Monterola.
-\newblock Seating arrangement, group composition and competition-driven interaction: Effects on students’ performance in physics.
-\newblock In {\em AIP Conference Proceedings}, volume 1263, pages 155--158. American Institute of Physics, 2010.
+\bibitem{thacker1994comparing}
+B.~Thacker, E.~Kim, K.~Trefz, and S.~M. Lea, ``Comparing problem solving performance of physics students in inquiry-based and traditional introductory physics courses,'' {\em American Journal of Physics}, vol.~62, no.~7, pp.~627--633, 1994.
 
 \bibitem{smith2009peer}
-Michelle~K Smith, William~B Wood, Wendy~K Adams, Carl Wieman, Jennifer~K Knight, Nancy Guild, and Tin~Tin Su.
-\newblock Why peer discussion improves student performance on in-class concept questions.
-\newblock {\em Science}, 323(5910):122--124, 2009.
+M.~K. Smith, W.~B. Wood, W.~K. Adams, C.~Wieman, J.~K. Knight, N.~Guild, and T.~T. Su, ``Why peer discussion improves student performance on in-class concept questions,'' {\em Science}, vol.~323, no.~5910, pp.~122--124, 2009.
+
+\bibitem{coletta2005interpreting}
+V.~P. Coletta and J.~A. Phillips, ``Interpreting fci scores: Normalized gain, preinstruction scores, and scientific reasoning ability,'' {\em American journal of physics}, vol.~73, no.~12, pp.~1172--1182, 2005.
+
+\bibitem{tobias1990they}
+S.~Tobias, ``They're not dumb. they're different.: A new “tier of talent” for science,'' {\em Change: The Magazine of Higher Learning}, vol.~22, no.~4, pp.~11--30, 1990.
+
+\bibitem{roxas2010seating}
+R.~Roxas, S.~Carreon-Monterola, and C.~Monterola, ``Seating arrangement, group composition and competition-driven interaction: Effects on students’ performance in physics,'' in {\em AIP Conference Proceedings}, vol.~1263, pp.~155--158, American Institute of Physics, 2010.
+
+\bibitem{hake1998}
+R.~R. Hake, ``{Interactive-engagement versus traditional methods: A six-thousand-student survey of mechanics test data for introductory physics courses},'' {\em American Journal of Physics}, vol.~66, pp.~64--74, 01 1998.
+
+\bibitem{nitta2019mathematical}
+H.~Nitta, ``A mathematical model of peer instruction and its applications,'' {\em Upgrading Physics Education to Meet the Needs of Society}, pp.~87--98, 2019.
+
+\bibitem{bordogna2001theoretical}
+C.~M. Bordogna and E.~V. Albano, ``Theoretical description of teaching-learning processes: A multidisciplinary approach,'' {\em Physical Review Letters}, vol.~87, no.~11, p.~118701, 2001.
+
+\bibitem{bordogna2003simulation}
+C.~M. Bordogna and E.~V. Albano, ``Simulation of social processes: application to social learning,'' {\em Physica A: Statistical Mechanics and its Applications}, vol.~329, no.~1-2, pp.~281--286, 2003.
+
+\bibitem{pritchard2008mathematical}
+D.~E. Pritchard, Y.-J. Lee, and L.~Bao, ``Mathematical learning models that depend on prior knowledge and instructional strategies,'' {\em Physical Review Special Topics—Physics Education Research}, vol.~4, no.~1, p.~010109, 2008.
+
+\bibitem{arciaga2009experimental}
+M.~Arciaga, M.~Pastor, R.~Batac, J.~Bantang, and C.~Monterola, ``Experimental observation and an empirical model of enhanced heap stability resulting from the mixing of granular materials,'' {\em Journal of Statistical Mechanics: Theory and Experiment}, vol.~2009, no.~07, p.~P07040, 2009.
+
+\bibitem{louis2018probabilistic}
+P.-Y. Louis and F.~R. Nardi, {\em Probabilistic Cellular Automata: Theory, Applications and Future Perspectives}, vol.~27.
+\newblock Springer, 2018.
+
+\bibitem{MakieJL}
+S.~Danisch and J.~Krumbiegel, ``{Makie.jl}: Flexible high-performance data visualization for {Julia},'' {\em Journal of Open Source Software}, vol.~6, no.~65, p.~3349, 2021.
+
+\bibitem{DataFramesJL}
+M.~Bouchet-Valat and B.~Kamiński, ``Dataframes.jl: Flexible and fast tabular data in julia,'' {\em Journal of Statistical Software}, vol.~107, no.~4, pp.~1--32, 2023.
+
+\bibitem{Measurements.jl-2016}
+M.~{Giordano}, ``{Uncertainty propagation with functionally correlated quantities},'' {\em ArXiv e-prints}, Oct. 2016.
+
+\bibitem{PlotsJL}
+S.~Christ, D.~Schwabeneder, C.~Rackauckas, M.~K. Borregaard, and T.~Breloff, ``Plots.jl -- a user extendable plotting api for the julia programming language,'' 2023.
 
 \end{thebibliography}

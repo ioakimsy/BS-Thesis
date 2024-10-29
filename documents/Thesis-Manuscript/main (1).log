@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  10 OCT 2024 14:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  24 OCT 2024 03:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -388,7 +388,7 @@ Package hyperref Info: Link coloring OFF on input line 71.
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<figures/UnibersidadngPilipinas.png, id=152, 661.47125pt x 661.47125pt>
+<figures/UnibersidadngPilipinas.png, id=159, 661.47125pt x 661.47125pt>
 File: figures/UnibersidadngPilipinas.png Graphic file (type png)
 <use figures/UnibersidadngPilipinas.png>
 Package pdftex.def Info: figures/UnibersidadngPilipinas.png  used on input line 73.
@@ -408,7 +408,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--73
 
  []
 
-[1] (./dedication.tex) [2]
+[1] (./dedication.tex) [2] (./acknowledgments.tex [3
+
+]) [4]
 Creating NIP abstract..
 (./0abstract.tex
 LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
@@ -422,90 +424,149 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 7.
  (c:/texlive/2023/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)) [3] (./main.toc [4
+)) [5] (./main.toc [6
 
 ])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [5] (./main.lof [6
+ [7] (./main.lof [8
 
-] [7])
+] [9])
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [8] (./1introduction.tex
+ [10] [11] (./1introduction.tex
 Chapter 1.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.7 \newpage
-             [1
+l.19 
+      [1
 
-]) (./2BPCA.tex [2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2] [3] [4] [5]
+./1introduction.tex:144: Display math should end with $$.
+<to be read again> 
+                   \delimiter 
+l.144     $\langle
+                   g \rangle = \frac{\langle 2^{\text{nd}}\text{ assessment}...
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+./1introduction.tex:144: Missing $ inserted.
+<inserted text> 
+                $
+l.144     $\langle
+                   g \rangle = \frac{\langle 2^{\text{nd}}\text{ assessment}...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./1introduction.tex:145: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 \end{equation}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./1introduction.tex:145: You can't use `\eqno' in horizontal mode.
+\veqno ->\@kernel@eqno 
+                       \aftergroup \ignorespaces 
+l.145 \end{equation}
+                    
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./1introduction.tex:145: Missing $ inserted.
+<inserted text> 
+                $
+l.145 \end{equation}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./1introduction.tex:145: Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.145 \end{equation}
+                    
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+) (./2BPCA.tex [6]
 Chapter 2.
 \enitdp@CAdef=\count301
-[3
+[7
 
-] [4] [5]
-<figures/2DBPCA TI Flowchart.png, id=407, 940.167pt x 378.432pt>
+] [8] [9]
+<figures/2DBPCA TI Flowchart.png, id=495, 940.167pt x 378.432pt>
 File: figures/2DBPCA TI Flowchart.png Graphic file (type png)
 <use figures/2DBPCA TI Flowchart.png>
 Package pdftex.def Info: figures/2DBPCA TI Flowchart.png  used on input line 101.
 (pdftex.def)             Requested size: 346.89731pt x 139.63075pt.
-<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png, id=409, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png, id=497, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png  used on input line 110.
 (pdftex.def)             Requested size: 212.47617pt x 235.97144pt.
-<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png, id=410, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png, id=498, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png  used on input line 111.
 (pdftex.def)             Requested size: 212.47617pt x 235.97144pt.
-<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png, id=411, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png, id=499, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png  used on input line 112.
 (pdftex.def)             Requested size: 212.47617pt x 235.97144pt.
-<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png, id=412, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png, id=500, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png  used on input line 113.
 (pdftex.def)             Requested size: 212.47617pt x 235.97144pt.
- [6 <./figures/2DBPCA TI Flowchart.png>] [7 <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png> <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png> <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png> <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png>]
-<figures/2DBPCA PI Flowchart.png, id=431, 1042.44pt x 497.568pt>
+ [10 <./figures/2DBPCA TI Flowchart.png>] [11 <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-1.png> <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-2.png> <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-10.png> <./figures/2D-BPCA-analysis/sample run - trad/2DBPCA-random-64-0.3-18.png>]
+<figures/2DBPCA PI Flowchart.png, id=518, 1042.44pt x 497.568pt>
 File: figures/2DBPCA PI Flowchart.png Graphic file (type png)
 <use figures/2DBPCA PI Flowchart.png>
 Package pdftex.def Info: figures/2DBPCA PI Flowchart.png  used on input line 156.
 (pdftex.def)             Requested size: 346.89731pt x 165.57973pt.
-<figures/PI SAs.png, id=434, 474.135pt x 525.162pt>
+<figures/PI SAs.png, id=521, 474.135pt x 525.162pt>
 File: figures/PI SAs.png Graphic file (type png)
 <use figures/PI SAs.png>
 Package pdftex.def Info: figures/PI SAs.png  used on input line 166.
 (pdftex.def)             Requested size: 216.81pt x 240.14307pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png, id=436, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png, id=523, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png  used on input line 180.
 (pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png, id=437, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png, id=524, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png  used on input line 181.
 (pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png, id=438, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png, id=525, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png  used on input line 182.
 (pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
-<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png, id=439, 1541.76pt x 1712.3975pt>
+<figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png, id=526, 1541.76pt x 1712.3975pt>
 File: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png  used on input line 183.
 (pdftex.def)             Requested size: 195.12767pt x 216.71432pt.
- [8 <./figures/2DBPCA PI Flowchart.png>] [9 <./figures/PI SAs.png>] [10 <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png>]
+ [12 <./figures/2DBPCA PI Flowchart.png>] [13 <./figures/PI SAs.png>] [14 <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-1.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-9.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-17.png> <./figures/2D-BPCA-analysis/sample run - PI/2DBPCA-random-64-0.5-23.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 199.
@@ -534,32 +595,32 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 199.
 
-<figures/2D-BPCA-analysis/t-32.png, id=462, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-32.png, id=549, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-32.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-32.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/t-32.png  used on input line 208.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-48.png, id=463, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-48.png, id=550, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-48.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-48.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/t-48.png  used on input line 209.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-64.png, id=464, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-64.png, id=551, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-64.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-64.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/t-64.png  used on input line 210.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-96.png, id=465, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-96.png, id=552, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-96.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-96.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/t-96.png  used on input line 211.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/t-128.png, id=466, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/t-128.png, id=553, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/t-128.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/t-128.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/t-128.png  used on input line 212.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-[11] [12 <./figures/2D-BPCA-analysis/t-32.png> <./figures/2D-BPCA-analysis/t-48.png> <./figures/2D-BPCA-analysis/t-64.png> <./figures/2D-BPCA-analysis/t-96.png> <./figures/2D-BPCA-analysis/t-128.png>]
+[15] [16 <./figures/2D-BPCA-analysis/t-32.png> <./figures/2D-BPCA-analysis/t-48.png> <./figures/2D-BPCA-analysis/t-64.png> <./figures/2D-BPCA-analysis/t-96.png> <./figures/2D-BPCA-analysis/t-128.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 220.
@@ -584,32 +645,32 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 220.
 
-<figures/2D-BPCA-analysis/m-32.png, id=483, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-32.png, id=571, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-32.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-32.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/m-32.png  used on input line 237.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-48.png, id=484, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-48.png, id=572, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-48.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-48.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/m-48.png  used on input line 238.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-64.png, id=485, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-64.png, id=573, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-64.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-64.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/m-64.png  used on input line 239.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-96.png, id=486, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-96.png, id=574, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-96.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-96.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/m-96.png  used on input line 240.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-<figures/2D-BPCA-analysis/m-128.png, id=487, 1806.75pt x 1204.5pt>
+<figures/2D-BPCA-analysis/m-128.png, id=575, 1806.75pt x 1204.5pt>
 File: figures/2D-BPCA-analysis/m-128.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/m-128.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/m-128.png  used on input line 241.
 (pdftex.def)             Requested size: 195.12767pt x 130.06935pt.
-[13] [14 <./figures/2D-BPCA-analysis/m-32.png> <./figures/2D-BPCA-analysis/m-48.png> <./figures/2D-BPCA-analysis/m-64.png> <./figures/2D-BPCA-analysis/m-96.png> <./figures/2D-BPCA-analysis/m-128.png>]
+[17] [18 <./figures/2D-BPCA-analysis/m-32.png> <./figures/2D-BPCA-analysis/m-48.png> <./figures/2D-BPCA-analysis/m-64.png> <./figures/2D-BPCA-analysis/m-96.png> <./figures/2D-BPCA-analysis/m-128.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 249.
@@ -630,103 +691,103 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 249.
 
-<figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png, id=501, 595.899pt x 416.757pt>
+<figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png, id=589, 595.899pt x 416.757pt>
 File: figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png Graphic file (type png)
 <use figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png>
 Package pdftex.def Info: figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png  used on input line 252.
 (pdftex.def)             Requested size: 346.89731pt x 242.61588pt.
-[15 <./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png>]
-<figures/SA dmax.png, id=514, 900.309pt x 340.764pt>
+[19 <./figures/2D-BPCA-analysis/N_vs_tmax-traditional-inner_corner.png>]
+<figures/SA dmax.png, id=603, 900.309pt x 340.764pt>
 File: figures/SA dmax.png Graphic file (type png)
 <use figures/SA dmax.png>
 Package pdftex.def Info: figures/SA dmax.png  used on input line 302.
 (pdftex.def)             Requested size: 346.89731pt x 131.30113pt.
- [16]) (./3BPCAIH.tex [17 <./figures/SA dmax.png>]
+ [20]) (./3BPCAIH.tex [21 <./figures/SA dmax.png>]
 Chapter 3.
 
 Overfull \hbox (1.52766pt too wide) in paragraph at lines 8--12
 \OT1/cmr/m/n/12 rate. We set a stu-dent's learn-ing rate as $\OML/cmm/m/it/12 ^^U[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^U[] \OMS/cmsy/m/n/12 ^^F \OML/cmm/m/it/12 ^^N^^U$ \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 ^^N^^U \OMS/cmsy/m/n/12 2 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 3\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 4\OMS/cmsy/m/n/12 g$
  []
 
-<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png, id=534, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png, id=620, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png  used on input line 27.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png, id=535, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png, id=621, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png  used on input line 28.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png, id=536, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png, id=622, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png  used on input line 29.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png, id=537, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png, id=623, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png  used on input line 30.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-[18
+[22
 
 ]
-<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png, id=543, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png, id=629, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png  used on input line 44.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png, id=544, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png, id=630, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png  used on input line 45.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png, id=545, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png, id=631, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png  used on input line 46.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png, id=546, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png, id=632, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png  used on input line 47.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png, id=547, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png, id=633, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png  used on input line 61.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png, id=548, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png, id=634, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png  used on input line 62.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png, id=549, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png, id=635, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png  used on input line 63.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png, id=550, 1405.25pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png, id=636, 1405.25pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png  used on input line 64.
 (pdftex.def)             Requested size: 173.44534pt x 222.97604pt.
-<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png, id=553, 1429.34pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png, id=639, 1429.34pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png  used on input line 85.
 (pdftex.def)             Requested size: 173.44534pt x 219.2267pt.
-<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png, id=554, 1429.34pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png, id=640, 1429.34pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png  used on input line 86.
 (pdftex.def)             Requested size: 173.44534pt x 219.2267pt.
-<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png, id=555, 1429.34pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png, id=641, 1429.34pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png  used on input line 87.
 (pdftex.def)             Requested size: 173.44534pt x 219.2267pt.
-<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png, id=556, 1429.34pt x 1806.75pt>
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png, id=642, 1429.34pt x 1806.75pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png  used on input line 88.
@@ -736,292 +797,8 @@ Overfull \hbox (12.60782pt too wide) in paragraph at lines 100--100
 []\OT1/cmr/bx/n/14.4 Comparing tem-po-ral learn-ing dy-nam-ics of dif-fer-ent class-
  []
 
-[19] [20 <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png> <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png> <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png> <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png>] [21 <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png>] [22 <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png>] [23 <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png>]
-<figures/2D-BPCAIH-analysis/comparison plots/size.png, id=602, 4015.0pt x 2409.0pt>
+[23] [24 <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-48.png> <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-69.png> <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-128.png> <./figures/2D-BPCAIH-analysis/class evolutions/low rho/2DBPCAIH-inner_corner-128-0.1-0.5-0.4-trial_3-200.png>] [25 <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-5.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-16.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-30.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho/2DBPCAIH-inner_corner-128-0.9-0.5-0.1-trial_3-36.png>] [26 <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-5.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-13.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-19.png> <./figures/2D-BPCAIH-analysis/class evolutions/high rho high delta/2DBPCAIH-inner_corner-128-0.9-0.5-0.4-trial_3-29.png>] [27 <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-50.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-80.png>]
+<figures/2D-BPCAIH-analysis/comparison plots/size.png, id=687, 4015.0pt x 2409.0pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/size.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/size.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/size.png  used on input line 128.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-<figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png, id=603, 4015.0pt x 2409.0pt>
-File: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png  used on input line 129.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=604, 4015.0pt x 2409.0pt>
-File: figures/2D-BPCAIH-analysis/comparison plots/δλ.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/comparison plots/δλ.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  used on input line 130.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-<figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=605, 4015.0pt x 2409.0pt>
-File: figures/2D-BPCAIH-analysis/comparison plots/SA.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/comparison plots/SA.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/SA.png  used on input line 131.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
- [24] [25 <./figures/2D-BPCAIH-analysis/comparison plots/size.png> <./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png> <./figures/2D-BPCAIH-analysis/comparison plots/δλ.png> <./figures/2D-BPCAIH-analysis/comparison plots/SA.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 145.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 145.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
-
-<figures/2D-BPCAIH-analysis/m-plots/m-center-32.png, id=620, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/m-plots/m-center-32.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/m-plots/m-center-32.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/m-plots/m-center-32.png  used on input line 158.
-(pdftex.def)             Requested size: 173.44534pt x 115.62334pt.
-<figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png, id=621, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png  used on input line 159.
-(pdftex.def)             Requested size: 173.44534pt x 115.62334pt.
-<figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png, id=622, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png  used on input line 160.
-(pdftex.def)             Requested size: 173.44534pt x 115.62334pt.
-<figures/2D-BPCAIH-analysis/m-plots/m-random-96.png, id=623, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/m-plots/m-random-96.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/m-plots/m-random-96.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/m-plots/m-random-96.png  used on input line 161.
-(pdftex.def)             Requested size: 173.44534pt x 115.62334pt.
-<figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png, id=624, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png  used on input line 162.
-(pdftex.def)             Requested size: 173.44534pt x 115.62334pt.
-[26] [27 <./figures/2D-BPCAIH-analysis/m-plots/m-center-32.png> <./figures/2D-BPCAIH-analysis/m-plots/m-outer_corner-48.png> <./figures/2D-BPCAIH-analysis/m-plots/m-inner_corner-64.png> <./figures/2D-BPCAIH-analysis/m-plots/m-random-96.png> <./figures/2D-BPCAIH-analysis/m-plots/m-traditional-128.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 174.
-
-<figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png, id=640, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png  used on input line 186.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-96.png, id=641, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-96.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-96.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-96.png  used on input line 187.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-48.png, id=642, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-48.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-48.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-48.png  used on input line 188.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-96.png, id=643, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-96.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-96.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-96.png  used on input line 189.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/t-plots/t-traditional-48.png, id=644, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/t-plots/t-traditional-48.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/t-plots/t-traditional-48.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/t-plots/t-traditional-48.png  used on input line 190.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/t-plots/t-traditional-96.png, id=645, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/t-plots/t-traditional-96.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/t-plots/t-traditional-96.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/t-plots/t-traditional-96.png  used on input line 191.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png, id=646, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png  used on input line 199.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png, id=647, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png  used on input line 200.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-64.png, id=648, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-64.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-64.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-64.png  used on input line 201.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-96.png, id=649, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-96.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-96.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-96.png  used on input line 202.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png, id=650, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png  used on input line 203.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-[28] [29 <./figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-48.png> <./figures/2D-BPCAIH-analysis/t-plots/t-outer_corner-96.png> <./figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-48.png> <./figures/2D-BPCAIH-analysis/t-plots/t-inner_corner-96.png> <./figures/2D-BPCAIH-analysis/t-plots/t-traditional-48.png> <./figures/2D-BPCAIH-analysis/t-plots/t-traditional-96.png>] [30 <./figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-32.png> <./figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-48.png> <./figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-64.png> <./figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-96.png> <./figures/2D-BPCAIH-analysis/rho-t ribbon plots/rho-t-ribbon-128.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 213.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 213.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 213.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 213.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delta' on input line 213.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 213.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 213.
-
-<figures/2D-BPCAIH-analysis/dl-t plots/dl-t-32.png, id=678, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/dl-t plots/dl-t-32.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/dl-t plots/dl-t-32.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/dl-t plots/dl-t-32.png  used on input line 224.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-<figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png, id=679, 1806.75pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png  used on input line 225.
-(pdftex.def)             Requested size: 212.47617pt x 141.64822pt.
-[31 <./figures/2D-BPCAIH-analysis/dl-t plots/dl-t-32.png> <./figures/2D-BPCAIH-analysis/dl-t plots/dl-t-128.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 235.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 235.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 235.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 235.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 235.
-
-<figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.0.png, id=692, 2007.5pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.0.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.0.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.0.png  used on input line 245.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-<figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.1.png, id=693, 2007.5pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.1.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.1.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.1.png  used on input line 246.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-<figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.2.png, id=694, 2007.5pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.2.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.2.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.2.png  used on input line 247.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-<figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.3.png, id=695, 2007.5pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.3.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.3.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.3.png  used on input line 248.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-<figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.4.png, id=696, 2007.5pt x 1204.5pt>
-File: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.4.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.4.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.4.png  used on input line 249.
-(pdftex.def)             Requested size: 212.47617pt x 127.47789pt.
-[32] [33 <./figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.0.png> <./figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.1.png> <./figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.2.png> <./figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.3.png> <./figures/2D-BPCAIH-analysis/n-t plots/n-t-plot-0.4.png>]) (./4mixedModels.tex [34]
-Chapter 4.
-) (./5summaryAndConclusions.tex [35
-
-]
-Chapter 5.
-) (./appendix.tex [36
-
-]
-Appendix A.
-
-Overfull \hbox (24.62773pt too wide) in paragraph at lines 46--49
-  \OT1/cmr/m/n/12 You don't need to worry about equa-tions within the ap-pendix since L[]T[]Xautomatically
- []
-
-[37
-
-]
-File: "codes/newC.cpp"  (verbatim)
- [38] [39]) (./main.bbl [40]) [41
-
-] (./main.aux)
- ***********
-LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-08-29>
- ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C8C4DC768BD7802D6C8AADBA55645432;8218.
- ) 
-Here is how much of TeX's memory you used:
- 12148 strings out of 474928
- 212622 string characters out of 5763562
- 1943785 words of memory out of 5000000
- 33316 multiletter control sequences out of 15000+600000
- 571559 words of font info for 93 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,13n,79p,1177b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (50 pages, 9920393 bytes).
-PDF statistics:
- 880 PDF objects out of 1000 (max. 8388607)
- 715 compressed objects within 8 object streams
- 192 named destinations out of 1000 (max. 500000)
- 632 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/size.png  used on input line 128
