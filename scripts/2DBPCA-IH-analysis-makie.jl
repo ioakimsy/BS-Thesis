@@ -86,10 +86,10 @@ begin
 
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
-    lengths = [32, 48, 64, 96, 128]
-    SAs = ["traditional", "inner_corner"]
-    δλs = collect(0.0:0.2:0.4)
-    Ρs = [0.3, 0.5, 0.7]
+    # lengths = [32, 48, 64, 96, 128]
+    # SAs = ["traditional", "inner_corner"]
+    # δλs = collect(0.0:0.2:0.4)
+    # Ρs = [0.3, 0.5, 0.7]
 end
 
 begin #* Ribbon plot for different ρ₀. Ribbon for range of δλ
@@ -239,7 +239,8 @@ begin #* Plots for different ρ₀. Ribbon for ±σ
             subtitlesize=16,
             xticklabelsize=16,
             yticklabelsize=16,
-            yscale=log10
+            yscale=log10,
+            xscale=log10,
         )
 
         for seat_config in SAs
@@ -252,8 +253,11 @@ begin #* Plots for different ρ₀. Ribbon for ±σ
                 scatter!(ax, subset.class_size .^ 2, Measurements.value.(subset.ttl),
                     label="$(SA_label_dict[seat_config]), δλ=0.5±$δλ ",
                     marker=SA_ms_dict[seat_config],
-                    color=(color[δλ_color_dict[δλ]], 1.0)
+                    color=(color[δλ_color_dict[δλ]], 1.0),
+                    markersize = 16,
                 )
+
+                # ylims!(ax, 10^1, 10^3)
 
                 lines!(ax, subset.class_size .^ 2, Measurements.value.(subset.ttl),
                     # label="$(SA_label_dict[seat_config]), δλ=0.5±$δλ ",
@@ -278,7 +282,7 @@ begin #* Plots for different ρ₀. Ribbon for ±σ
 
         save(savepath * filename * ".png", fig)
     end
-    fig
+    # fig
 end
 
 begin #* Plots for different δλ. Ribbon for ±σ
