@@ -1,5 +1,5 @@
 % !TEX root =  main.tex
-\chapter{Conclusions and Recommendations}
+\chapter{Conclusion and Recommendations}
 % \begin{itemize}
 %     \item Traditional instruction is more scalable and is less dependent on class size.
 %     \item PI performs better than traditional instruction in smaller classes with slower learners.
@@ -9,18 +9,17 @@
 %     \item If instructors had to choose only one method, peer instruction would be the better choice. The advantage of PI over traditional instruction can be higher than the advantage of traditional instruction over PI.
 % \end{itemize}
 
-In our attempt to propose a new way to model classroom learning dynamics through the use of probabilistic cellular automata, we were able to incorporate and investigate the effects of different factors that can be seen in the classroom as well as two very different intruction methods - traditional instruction and peer instruction (PI).
+We proposed a probabilistic cellular automata model as a new way of investigating classroom learning dynamics.
+We are able to investigate the effects of different factors governing two very different methods of instruction - traditional instruction and peer instruction (PI).
 
 We found traditional instruction to be more scalable and less dependent on class size than PI.
-This is because the teacher is the only source of information in traditional instruction but is also able to teach all the students at the same time.
-In contrast, PI is more efficient in smaller classes because students have more sources of information (ie their seatmates). 
+On the one hand, the teacher is the only source of information in traditional instruction and is also able to teach all the students at the same time.
+On the other hand, PI is more efficient in smaller classes because students have more sources of information (i.e. their seatmates). 
 This offsets the all-at-once teaching advantage of traditional instruction.
 
-Considering this difference on the effect of class size, we also investigated different seating arrangements (SA) for PI and found that the inner corner SA is the most efficient among the setups we considered.
-This is in contrast to a previous study where they found that the outer corner SA is the most efficient \cite{roxas2010seating}.
-This difference in results can be attributed to the simplifications made in our model that may not reflect real world factors.
-The factor that we believe lead to this difference is that we did not consider that students can learn better from other students of the same aptitude level regardless of their actual aptitude \cite{smith2009peer}.
-
+We investigated different seating arrangements (SA) for PI and found that the inner corner SA is the most efficient setup from all SAs considered.
+This optimal SA differs from a previous study where the outer corner SA is found to be the most efficient~\cite{roxas2010seating}.
+The current model used in this work does not incorporate the effect of aptitude similarity~\cite{smith2009peer} between students in PI and isotropy in the learning direction.
 
 To improve our model in reflecting real world factors, we also introduced heterogeneity in students' learning rates.
 In doing this, it further emphasized one of the advantages of PI over traditional instruction - that PI is less affected by heterogeneity in students' learning rates.
@@ -28,14 +27,14 @@ In traditional instruction, the students with fast learning rates learn in the f
 This causes a two-stage learning process in traditional instruction.
 The effect of heterogeneity in PI is less pronounced, only affecting the shape of the "wave of learning" but generally leaving the relevant trends and metrics unaffected.
 These dynamics lead to PI performing better than traditional instruction in cases where class heterogeneity is high.
-Additionally, we found that classes with slower learners, whether because of the assigned positional learning factor $\rho_0$ or learning rate $\lambda$, generally do better in PI than in traditional instruction.
+Additionally, we found that classes with slower learners, due to either the assigned positional learning factor $\rho_0$ or the learning rate $\lambda$, generally do better in PI than in traditional instruction.
 
 Most previous studies focused on students' pre- and post-test scores to assess the advantages of PI over traditional instruction. 
 That was not something we could do in this study because of the binary-state nature of our model.
-However, we seem to have landed on the same results as previous studies - that PI can perform either similarly or better than traditional isntruction \cite{crouch2001peer,lasry2008peer,thacker1994comparing,smith2009peer}.
-We also found similar results regarding class heterogeneity - that both methods of instruction is more effective with homogenous classrooms \cite{roxas2010seating}.
+However, we have confirmed results of experimental studies done before --- that PI can perform either similarly or better than traditional instruction \cite{crouch2001peer,lasry2008peer,thacker1994comparing,smith2009peer}.
+We also found similar results regarding class heterogeneity --- that both methods of instruction is more effective with homogenous classrooms \cite{roxas2010seating}.
 
-It is important to note that our model does not fully model the process of PI, if anything, it only models part of the PI process where students get to discuss the concept test questions with their seatmates.
-We recommend that future researchers who want to delve deeper into this topic consider the effect of aptitude similarity in PI as described by Smith et al. \cite{smith2009peer}.
-Along with that, future researchers should also consider transitioning to a continuous-state model to better reflect the real world.
-Considering that our study suggests that the optimal method of instruction would be to have a short segment of traditional instruction followed by PI, which is similar to actual process of PI in the classroom (ie reading and short lecture, concept test, sharing), future researchers who plan to model the classroom learning similarly should investigate the time delay between the two methods of instruction.
+It is important to note that our model does not fully model the process of PI in real-world scenarios since it only models part of the PI process where students get to discuss the concept test questions with their seatmates.
+We recommend that future researchers who want to delve deeper into this topic consider the effect of aptitude similarity in PI as described by Smith et al. (2009)~\cite{smith2009peer}.
+Future works could also consider transitioning to a continuous-state model to better reflect real world situations.
+Considering that our study suggests that the optimal method of instruction would be to have a short segment of traditional instruction followed by PI, which is similar to actual process of PI in the classroom (i.e. reading and short lecture, concept test, sharing), future researchers who plan to model the classroom learning similarly should investigate the time delay between the two methods of instruction.

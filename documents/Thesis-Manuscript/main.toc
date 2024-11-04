@@ -1,0 +1,34 @@
+\contentsline {chapter}{Abstract}{iii}{Doc-Start}%
+\contentsline {chapter}{List of Figures}{v}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Peer Instruction and Traditional Models of Teaching}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Difference of Peer Instruction from Traditional Models}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Benefits of Peer Instruction}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Drawbacks of Peer Instruction}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Existing mathematical models of PI}{6}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Problem statement}{7}{section.1.5}%
+\contentsline {chapter}{\numberline {2}The Classroom as a PCA}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Cellular Automata and its use in modelling complex systems}{8}{section.2.1}%
+\contentsline {section}{\numberline {2.2}PCA model for classroom dynamics}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Traditional Instruction}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Peer instruction (PI)}{11}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Results: Homogenous PI vs Traditional}{16}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Time to learn $t_{max}$ vs positional learning factor $\rho _0$}{16}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Class learning rate $m$ vs positional learning factor $\rho _0$}{18}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Time to learn $t_{max}$ vs class size $N$}{20}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Conclusions}{21}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Heterogeneous Learning Rates}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Effects on classroom evolution}{23}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Peer Instruction (PI)}{23}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Traditional Instruction}{27}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Comparing temporal learning dynamics of different classroom configurations}{27}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Class learning rate $m$ vs positional learning factor $\rho _0$}{31}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Time to learn $t_{max}$ vs positional learning factor $\rho _0$}{33}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Time to learn $t_{max}$ vs heterogeneity $\delta \lambda $}{36}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Time to learn $t_{max}$ vs class size $N$}{37}{section.3.5}%
+\contentsline {section}{\numberline {3.6}An overview of the different parameters that affect time to learn $t_{max}$}{39}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Conclusions}{41}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Conclusion and Recommendations}{42}{chapter.4}%
+\contentsline {chapter}{\numberline {A}Appendix}{44}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Derivation of Equation \ref {eq:BPCA PI learning probability}}{44}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Julia packages used}{45}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Codes as appendix}{45}{section.A.3}%
