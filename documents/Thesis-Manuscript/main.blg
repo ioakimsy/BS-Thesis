@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: ieeetr.bst
+Database file #1: biblio.bib
+Warning--empty journal in PlotsJL
+You've used 23 entries,
+            1876 wiz_defined-function locations,
+            642 strings with 7863 characters,
+and the built_in function-call counts, 6590 in all, are:
+= -- 689
+> -- 221
+< -- 0
++ -- 83
+- -- 60
+* -- 452
+:= -- 904
+add.period$ -- 25
+call.type$ -- 23
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 24
+duplicate$ -- 358
+empty$ -- 603
+format.name$ -- 60
+if$ -- 1635
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 25
+newline$ -- 74
+num.names$ -- 23
+pop$ -- 57
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 274
+stack$ -- 0
+substring$ -- 455
+swap$ -- 170
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 67
+width$ -- 25
+write$ -- 237
+(There was 1 warning)
