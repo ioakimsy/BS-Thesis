@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {1.1}Difference of Peer Instruction from Traditional Models}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Benefits of Peer Instruction}{3}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Drawbacks of Peer Instruction}{5}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Existing mathematical models of PI}{6}{section.1.4}%
+\contentsline {section}{\numberline {1.4}Existing mathematical models of PI}{5}{section.1.4}%
 \contentsline {section}{\numberline {1.5}Problem statement}{7}{section.1.5}%
 \contentsline {chapter}{\numberline {2}The Classroom as a PCA}{8}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Cellular Automata and its use in modelling complex systems}{8}{section.2.1}%
@@ -31,4 +31,4 @@
 \contentsline {chapter}{\numberline {A}Appendix}{44}{appendix.A}%
 \contentsline {section}{\numberline {A.1}Derivation of Equation \ref {eq:BPCA PI learning probability}}{44}{section.A.1}%
 \contentsline {section}{\numberline {A.2}Julia packages used}{45}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Codes as appendix}{45}{section.A.3}%
+\contentsline {section}{\numberline {A.3}GitHub repository}{45}{section.A.3}%
