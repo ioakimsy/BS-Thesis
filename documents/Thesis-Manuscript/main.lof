@@ -6,86 +6,87 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=2$}}}{12}{figure.2.2}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=10$}}}{12}{figure.2.2}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=18$}}}{12}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Peer instruction simulation flowchart}}{13}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Peer instruction seating arrangements.}}{14}{figure.2.4}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Example classroom evolution for the homogenous PI set up}}{15}{figure.2.5}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=1$}}}{15}{figure.2.5}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=9$}}}{15}{figure.2.5}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=17$}}}{15}{figure.2.5}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=23$}}}{15}{figure.2.5}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Positional learning factor $\rho _0$ dependence of time to learn $t_{max}$ for the homogenous classroom model}}{17}{figure.2.6}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{17}{figure.2.6}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{17}{figure.2.6}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{17}{figure.2.6}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{17}{figure.2.6}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{17}{figure.2.6}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Positional learning factor $\rho _0$ dependence of class learning rate $m$ for homogenous classroom model}}{19}{figure.2.7}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{19}{figure.2.7}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{19}{figure.2.7}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{19}{figure.2.7}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{19}{figure.2.7}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{19}{figure.2.7}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Class size $N$ dependence of time to learn $t_{max}$ in homogenous classroom models}}{20}{figure.2.8}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Distance $d_{max}$ of any student to a high aptitude or learned student for different seating arrangements.}}{22}{figure.2.9}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Peer instruction simulation flowchart}}{14}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Peer instruction seating arrangements.}}{15}{figure.2.4}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Example classroom evolution for the homogenous PI set up}}{16}{figure.2.5}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=1$}}}{16}{figure.2.5}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=9$}}}{16}{figure.2.5}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=17$}}}{16}{figure.2.5}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=23$}}}{16}{figure.2.5}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Positional learning factor $\rho _0$ dependence of time to learn $t_{max}$ for the homogenous classroom model}}{18}{figure.2.6}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{18}{figure.2.6}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{18}{figure.2.6}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{18}{figure.2.6}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{18}{figure.2.6}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{18}{figure.2.6}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Positional learning factor $\rho _0$ dependence of class learning rate $m$ for homogenous classroom model}}{20}{figure.2.7}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{20}{figure.2.7}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{20}{figure.2.7}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{20}{figure.2.7}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{20}{figure.2.7}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{20}{figure.2.7}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Class size $N$ dependence of time to learn $t_{max}$ in homogenous classroom models}}{21}{figure.2.8}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Distance $d_{max}$ of any student to a high aptitude or learned student for different seating arrangements.}}{23}{figure.2.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Example classroom evolution for heterogeneous PI set up with low positional learning factor $\rho _0$ and high heterogeneity $\delta \lambda $}}{24}{figure.3.1}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=48$}}}{24}{figure.3.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=69$}}}{24}{figure.3.1}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=128$}}}{24}{figure.3.1}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=200$}}}{24}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example classroom evolution for heterogeneous PI set up with high positional learning factor $\rho _0$ and low heterogeneity $\delta \lambda $}}{25}{figure.3.2}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=5$}}}{25}{figure.3.2}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=16$}}}{25}{figure.3.2}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=30$}}}{25}{figure.3.2}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=36$}}}{25}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Example classroom evolution for heterogeneous PI set up with high positional learning factor $\rho _0$ and high heterogeneity $\delta \lambda $}}{26}{figure.3.3}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=5$}}}{26}{figure.3.3}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=13$}}}{26}{figure.3.3}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=19$}}}{26}{figure.3.3}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=29$}}}{26}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Example classroom evolution for the heterogeneous traditional instruction set up}}{28}{figure.3.4}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=2$}}}{28}{figure.3.4}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=13$}}}{28}{figure.3.4}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=50$}}}{28}{figure.3.4}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=80$}}}{28}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Comparison of time to learn $t_{max}$ and fraction of learned students $f$ for different representative heterogeneous classroom configurations}}{30}{figure.3.5}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Size comparison}}}{30}{figure.3.5}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\rho _0$ comparison}}}{30}{figure.3.5}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$\delta \lambda $ comparison}}}{30}{figure.3.5}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {SA comparison}}}{30}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Positional learning factor $\rho _0$ dependence of class learning rate $m$ for the heterogeneous classroom model}}{32}{figure.3.6}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Center $L=32$}}}{32}{figure.3.6}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Outer corner $L=48$}}}{32}{figure.3.6}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Inner corner $L=64$}}}{32}{figure.3.6}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Random $L=96$}}}{32}{figure.3.6}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Traditional $L=128$}}}{32}{figure.3.6}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Positional learning factor $\rho _0$ dependence of time to learn $t_{max}$ for the heterogeneous classroom model for representative SAs and heterogeneity $\delta \lambda $}}{34}{figure.3.7}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Outer corner $L=48$}}}{34}{figure.3.7}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Outer corner $L=96$}}}{34}{figure.3.7}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Inner corner $L=48$}}}{34}{figure.3.7}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Inner corner $L=96$}}}{34}{figure.3.7}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Traditional $L=48$}}}{34}{figure.3.7}%
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Traditional $L=96$}}}{34}{figure.3.7}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Positional learning factor $\rho _0$ dependence of time to learn $t_{max}$ for the heterogeneous classroom model for all SAs and classroom lengths $L$}}{35}{figure.3.8}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{35}{figure.3.8}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{35}{figure.3.8}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{35}{figure.3.8}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{35}{figure.3.8}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{35}{figure.3.8}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Heterogeneity $\delta \lambda $ dependence of time to learn $t_{max}$ for the heterogeneous classroom model}}{36}{figure.3.9}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{36}{figure.3.9}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=128$}}}{36}{figure.3.9}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Class size $N$ dependence of time to learn $t_{max}$ for the heterogeneous classroom model}}{38}{figure.3.10}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$\delta \lambda =0.0$}}}{38}{figure.3.10}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\delta \lambda =0.1$}}}{38}{figure.3.10}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$\delta \lambda =0.2$}}}{38}{figure.3.10}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$\delta \lambda =0.3$}}}{38}{figure.3.10}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$\delta \lambda =0.4$}}}{38}{figure.3.10}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces 3D plots for the dependence of time to learn $t_{max}$ on both the positional learning factor $\rho _0$ and heterogeneity $\delta \lambda $}}{40}{figure.3.11}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{40}{figure.3.11}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{40}{figure.3.11}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{40}{figure.3.11}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{40}{figure.3.11}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{40}{figure.3.11}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Example classroom evolution for heterogeneous PI set up with low positional learning factor $\rho _0$ and high heterogeneity $\delta \lambda $}}{26}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=48$}}}{26}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=69$}}}{26}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=128$}}}{26}{figure.3.1}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=200$}}}{26}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example classroom evolution for heterogeneous PI set up with high positional learning factor $\rho _0$ and low heterogeneity $\delta \lambda $}}{27}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=5$}}}{27}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=16$}}}{27}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=30$}}}{27}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=36$}}}{27}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Example classroom evolution for heterogeneous PI set up with high positional learning factor $\rho _0$ and high heterogeneity $\delta \lambda $}}{28}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=5$}}}{28}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=13$}}}{28}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=19$}}}{28}{figure.3.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=29$}}}{28}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Example classroom evolution for the heterogeneous traditional instruction set up}}{30}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$t=2$}}}{30}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$t=13$}}}{30}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$t=50$}}}{30}{figure.3.4}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$t=80$}}}{30}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Comparison of time to learn $t_{max}$ and fraction of learned students $f$ for different representative heterogeneous classroom configurations}}{32}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Size comparison}}}{32}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\rho _0$ comparison}}}{32}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$\delta \lambda $ comparison}}}{32}{figure.3.5}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {SA comparison}}}{32}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Positional learning factor $\rho _0$ dependence of class learning rate $m$ for the heterogeneous classroom model}}{34}{figure.3.6}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Center $L=32$}}}{34}{figure.3.6}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Outer corner $L=48$}}}{34}{figure.3.6}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Inner corner $L=64$}}}{34}{figure.3.6}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Random $L=96$}}}{34}{figure.3.6}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Traditional $L=128$}}}{34}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Positional learning factor $\rho _0$ dependence of time to learn $t_{max}$ for the heterogeneous classroom model for representative SAs and heterogeneity $\delta \lambda $}}{36}{figure.3.7}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Outer corner $L=48$}}}{36}{figure.3.7}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Outer corner $L=96$}}}{36}{figure.3.7}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Inner corner $L=48$}}}{36}{figure.3.7}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Inner corner $L=96$}}}{36}{figure.3.7}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Traditional $L=48$}}}{36}{figure.3.7}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Traditional $L=96$}}}{36}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Positional learning factor $\rho _0$ dependence of time to learn $t_{max}$ for the heterogeneous classroom model for all SAs and classroom lengths $L$}}{37}{figure.3.8}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{37}{figure.3.8}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{37}{figure.3.8}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{37}{figure.3.8}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{37}{figure.3.8}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{37}{figure.3.8}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Heterogeneity $\delta \lambda $ dependence of time to learn $t_{max}$ for the heterogeneous classroom model}}{38}{figure.3.9}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{38}{figure.3.9}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=128$}}}{38}{figure.3.9}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Class size $N$ dependence of time to learn $t_{max}$ for the heterogeneous classroom model}}{40}{figure.3.10}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$\delta \lambda =0.0$}}}{40}{figure.3.10}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\delta \lambda =0.1$}}}{40}{figure.3.10}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$\delta \lambda =0.2$}}}{40}{figure.3.10}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$\delta \lambda =0.3$}}}{40}{figure.3.10}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$\delta \lambda =0.4$}}}{40}{figure.3.10}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces 3D plots for the dependence of time to learn $t_{max}$ on both the positional learning factor $\rho _0$ and heterogeneity $\delta \lambda $}}{42}{figure.3.11}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$L=32$}}}{42}{figure.3.11}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$L=48$}}}{42}{figure.3.11}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$L=64$}}}{42}{figure.3.11}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$L=96$}}}{42}{figure.3.11}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$L=128$}}}{42}{figure.3.11}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces QR code for the GitHub repository}}{48}{figure.A.1}%

@@ -324,7 +324,9 @@ Diliman, Quezon City\\[6pt]
    \if@draft
       \commentsp \newpage %%include one-page for reader comment(s)
    \else
+    \includepdf[pages={1,2}]{01 Misc pages.pdf} \newpage
       \signaturep \newpage
+      \includepdf[pages={3,4}]{01 Misc pages.pdf} \newpage
       \if@dedicate \dedicationp \newpage \fi
       \if@acknowledge \acknowledgmentsp \newpage \fi%
       %\if@withcv \cv \fi%

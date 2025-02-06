@@ -166,15 +166,17 @@ function plot_m_data(data, lengths, SAs, δλs)
                 _plot = scatter(x_data[i], y_data[i], 
                     label=labels[i], 
                     xlabel="Learning coefficient (ρ)", 
-                    ylabel="Learning rate (m)", 
+                    ylabel="Class learning rate (m)", 
                     title = "Inhomogenous " * seat_config * " L=$class_size",
                     #yscale = :log10,
                     color = i,
-                    dpi=300
+                    dpi=300,
+                    ylims = (0.25, 3)
                 )
                 _plot = plot!(0.1:0.01:1, lin_interp(0.1:0.01:1), 
                     label = false,
                     linestyle = :dash,
+                    linewidth = 2,
                     color = i
                 )
 
@@ -316,7 +318,7 @@ begin
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials; n_learned = n_learned, λ₀ = λ₀, update = false)
 
     # plot_t_data(data, sizes, seat_configs, δλs)
-    # plot_m_data(data, sizes, seat_configs, δλs)
+    plot_m_data(data, sizes, seat_configs, δλs)
     # plot_t_data_ribbon(data, sizes, seat_configs, δλs)
-    plot_dl_t_data(data, sizes; SAs = ["traditional", "inner_corner"], Ρs = [0.3, 0.5, 0.7])
+    # plot_dl_t_data(data, sizes; SAs = ["traditional", "inner_corner"], Ρs = [0.3, 0.5, 0.7])
 end

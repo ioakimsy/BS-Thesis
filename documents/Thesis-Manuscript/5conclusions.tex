@@ -26,15 +26,15 @@ In doing this, it further emphasized one of the advantages of PI over traditiona
 In traditional instruction, the students with fast learning rates learn in the first few time steps, while the rest of the time it takes for the class to learn is waiting for the slow learners to learn.
 This causes a two-stage learning process in traditional instruction.
 The effect of heterogeneity in PI is less pronounced, only affecting the shape of the "wave of learning" but generally leaving the relevant trends and metrics unaffected.
-These dynamics lead to PI performing better than traditional instruction in cases where class heterogeneity is high.
+These dynamics lead to PI having better learning efficiency than traditional instruction in cases where class heterogeneity is high.
 Additionally, we found that classes with slower learners, due to either the assigned positional learning factor $\rho_0$ or the learning rate $\lambda$, generally do better in PI than in traditional instruction.
 
 Most previous studies focused on students' pre- and post-test scores to assess the advantages of PI over traditional instruction. 
 That was not something we could do in this study because of the binary-state nature of our model.
-However, we have confirmed results of experimental studies done before --- that PI can perform either similarly or better than traditional instruction \cite{crouch2001peer,lasry2008peer,thacker1994comparing,smith2009peer}.
+However, we have confirmed results of experimental studies done before --- that PI can yield either similarly or better learning efficiency than traditional instruction \cite{crouch2001peer,lasry2008peer,thacker1994comparing,smith2009peer}.
 We also found similar results regarding class heterogeneity --- that both methods of instruction are more effective with homogenous classrooms \cite{roxas2010seating}.
 
 It is important to note that our model does not fully model the process of PI in real-world scenarios since it only models part of the PI process where students get to discuss the concept test questions with their seatmates.
 We recommend that future researchers who want to delve deeper into this topic consider the effect of aptitude similarity in PI as described by Smith et al. (2009)~\cite{smith2009peer}.
-Future works could also consider transitioning to a continuous-state model to better reflect real world situations.
+Future works could also consider transitioning to a continuous-state model and adding other phenomena such as memory or misconceptions to better reflect real world situations.
 Considering that our study suggests that the optimal method of instruction would be to have a short segment of traditional instruction followed by PI, which is similar to the actual process of PI in the classroom (i.e. reading and short lecture, concept test, sharing), future researchers who plan to model the classroom learning similarly should investigate the time delay between the two methods of instruction.

@@ -209,8 +209,8 @@ begin #* Plots for different ρ₀. Ribbon for ±σ
     )
 
     SA_ms_dict = Dict(
-        "traditional" => :circle,
-        "inner_corner" => :rect,
+        "traditional" => :rect,
+        "inner_corner" => :circle,
         "outer_corner" => 3,
         "center" => 4,
         "random" => 5,
@@ -302,8 +302,8 @@ begin #* Plots for different δλ. Ribbon for ±σ
     )
 
     SA_ms_dict = Dict(
-        "traditional" => :circle,
-        "inner_corner" => :rect,
+        "traditional" => :rect,
+        "inner_corner" => :circle,
         "outer_corner" => :diamond,
         "center" => :hexagon,
         "random" => :xcross,
@@ -341,7 +341,8 @@ begin #* Plots for different δλ. Ribbon for ±σ
             xticklabelsize=16,
             yticklabelsize=16,
             yscale=log10,
-            xscale=log10
+            xscale=log2,
+            limits = (nothing, nothing, 10^1, 10^3)
         )
 
         for seat_config in SAs
@@ -381,6 +382,5 @@ begin #* Plots for different δλ. Ribbon for ±σ
 
         save(savepath * filename * ".png", fig)
     end
-    fig
 end
 
