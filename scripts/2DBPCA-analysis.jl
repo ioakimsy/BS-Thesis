@@ -81,8 +81,8 @@ function plot_data(data, sizes)
 
         m_plot = scatter(λs[1],ms[1], 
             label = labels[1],
-            ylabel = "Characteristic variable (m)",
-            xlabel = "Positional Learning factor (ρ₀)",
+            ylabel = "Class learning rate (m)",
+            xlabel = "Positional Learning coefficient (ρ₀)",
             labelfontsize = 14,
             titlefontsize = 16,
             title = "Classroom length: $class_size",
@@ -95,6 +95,7 @@ function plot_data(data, sizes)
 
             m_plot = scatter!(λs[i],ms[i], 
                     label = labels[i],
+                    title = "L= $class_size, λ=1",
                 )
 
             if labels[i] == "traditional"
@@ -116,13 +117,14 @@ function plot_data(data, sizes)
         t_plot = scatter(λs[1],num_generations_list[1], 
             label = labels[1],
             ylabel = "Time to learn (tₘₐₓ)",
-            xlabel = "Positional Learning factor (ρ₀)",
+            xlabel = "Positional Learning coefficient (ρ₀)",
             labelfontsize = 14,
             titlefontsize = 16,
-            title = "Classroom length: $class_size",
+            title = "L= $class_size, λ=1",
             yscale = :log10,
             legend = :bottomleft,
             dpi = 300,
+            ylims = (1, 10^(2.5))
             #fontfamily = "Times"
         )
 
@@ -339,7 +341,8 @@ function scale_factor_analysis1(data, class_configs, λs)
                     label = seat_config * " ρ = $(λs[i])",
                     xlabel = "Class size (N)",
                     ylabel = "Time to learn (tₘₐₓ)",
-                    scale = :log10,
+                    xscale = :log2,
+                    yscale = :log10,
                     markershape = markers[j],
                     markercolor = i,
                     dpi = 300,
@@ -352,7 +355,8 @@ function scale_factor_analysis1(data, class_configs, λs)
                     label = seat_config * " ρ = $(λs[i])",
                     xlabel = "Class size (N)",
                     ylabel = "Time to learn (tₘₐₓ)",
-                    scale = :log10,
+                    xscale = :log2,
+                    yscale = :log10,
                     markershape = markers[j],
                     markercolor = i,
                     #fontfamily = "Times"
@@ -397,21 +401,21 @@ begin
     data = read_data(lengths, seat_configs, Λs, n_trials; n_learned = 4)
     
     # Plot the data
-    plot_data(data,lengths)
+    # plot_data(data,lengths)
     
-    # Perform scale factor analysis on the data for specific configurations and λs
-    # fit coefs follow the same order as the graph legend
+    # # Perform scale factor analysis on the data for specific configurations and λs
+    # # fit coefs follow the same order as the graph legend
     new_data, as, bs = scale_factor_analysis1(data,["inner_corner","traditional"], [0.1,0.5,0.9])
     
-    # Split the 'a' coefficients for the two seating configurations
-    as_inner_corner = [as[i] for i in 1:Int(length(as)//2)]
-    as_traditional = [as[i] for i in Int(length(as)//2)+1:length(as)]
+    # # Split the 'a' coefficients for the two seating configurations
+    # as_inner_corner = [as[i] for i in 1:Int(length(as)//2)]
+    # as_traditional = [as[i] for i in Int(length(as)//2)+1:length(as)]
     
-    # Split the 'b' coefficients for the two seating configurations
-    bs_inner_corner = [bs[i] for i in 1:Int(length(bs)//2)]
-    bs_traditional = [bs[i] for i in Int(length(bs)//2)+1:length(bs)]
+    # # Split the 'b' coefficients for the two seating configurations
+    # bs_inner_corner = [bs[i] for i in 1:Int(length(bs)//2)]
+    # bs_traditional = [bs[i] for i in Int(length(bs)//2)+1:length(bs)]
     
-    # Calculate the mean and standard error of the 'b' coefficients for the two seating configurations
-    bs_inner_corner_mean = mean(bs_inner_corner) ± std(bs_inner_corner)/sqrt(length(bs_inner_corner))
-    bs_traditional_mean = mean(bs_traditional) ± std(bs_traditional)/sqrt(length(bs_traditional))
+    # # Calculate the mean and standard error of the 'b' coefficients for the two seating configurations
+    # bs_inner_corner_mean = mean(bs_inner_corner) ± std(bs_inner_corner)/sqrt(length(bs_inner_corner))
+    # bs_traditional_mean = mean(bs_traditional) ± std(bs_traditional)/sqrt(length(bs_traditional))
 end

@@ -37,8 +37,8 @@
     \end{equation}
 \end{subequations}
 
-\section{Julia packages used}
-This study used the following \verb$Julia$ packages and their hash codes:
+\section{Julia version packages used}
+This study used \verb$Julia 1.11.0$ \cite{Julia-2017} with the following \verb$Julia$ packages and their hash codes:
 
 % \begin{enumerate}
 %     \item \verb$Alert.jl$ % can't find citation
@@ -68,8 +68,31 @@ This study used the following \verb$Julia$ packages and their hash codes:
     \item \verb+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"+
 \end{enumerate}
 
+\section{Computer specifications and simulation time estimates}
+
+\begin{itemize}
+    \item CPU: Intel Core i7-10750H CPU
+    \item Memory: 16 GB DDR4 RAM at 2933 MHz
+    \item Storage: Samsung MZVLB1T0HBLR-000H1
+    \item GPU: NVIDIA GeForce GTX 1650 Ti with Max-Q Design
+    \item Operating system: Windows 11 Home Version 23H2
+\end{itemize}
+
+The simulation time estimates for the different scenarios are as follows:
+\begin{itemize}
+    \item Homogenous binary state PCA (1250 individual runs): 5 minutes
+    \item Heterogeneous binary state PCA (6250 individual runs): 45 minutes
+\end{itemize}
+
 \section{GitHub repository}
 The GitHub repository containing the codes and datasets used for the study can be found here: \url{https://github.com/ioakimsy/BS-Thesis}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/qr-code.png}
+    \caption{QR code for the GitHub repository}
+    \label{fig:qr-code}
+\end{figure}
 
 % \hspace{\parindent}Include your codes when necessary to your
 % thesis/dissertation. To do this, you may use \verb+verbatim+

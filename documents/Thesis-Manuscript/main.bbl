@@ -52,6 +52,9 @@ C.~M. Bordogna and E.~V. Albano, ``Simulation of social processes: application t
 \bibitem{pritchard2008mathematical}
 D.~E. Pritchard, Y.-J. Lee, and L.~Bao, ``Mathematical learning models that depend on prior knowledge and instructional strategies,'' {\em Physical Review Special Topics—Physics Education Research}, vol.~4, no.~1, p.~010109, 2008.
 
+\bibitem{SelfSPP}
+C.~I.~T. Sy, R.~X.~A. Ramos, and J.~Y. Bantang, ``Learning dynamics in a cellular automata model of classroom peer-to-peer interactions,'' in {\em Proceedings of the Samahang Pisika ng Pilipinas}, vol.~42, pp.~SPP--2024--1E--04, 2024.
+
 \bibitem{arciaga2009experimental}
 M.~Arciaga, M.~Pastor, R.~Batac, J.~Bantang, and C.~Monterola, ``Experimental observation and an empirical model of enhanced heap stability resulting from the mixing of granular materials,'' {\em Journal of Statistical Mechanics: Theory and Experiment}, vol.~2009, no.~07, p.~P07040, 2009.
 
@@ -61,6 +64,9 @@ R.~X. Ramos, ``Dynamics of a nonlinear cellular automata model of biological neu
 \bibitem{louis2018probabilistic}
 P.-Y. Louis and F.~R. Nardi, {\em Probabilistic Cellular Automata: Theory, Applications and Future Perspectives}, vol.~27.
 \newblock Springer, 2018.
+
+\bibitem{Julia-2017}
+J.~Bezanson, A.~Edelman, S.~Karpinski, and V.~B. Shah, ``Julia: A fresh approach to numerical computing,'' {\em SIAM {R}eview}, vol.~59, no.~1, pp.~65--98, 2017.
 
 \bibitem{MakieJL}
 S.~Danisch and J.~Krumbiegel, ``{Makie.jl}: Flexible high-performance data visualization for {Julia},'' {\em Journal of Open Source Software}, vol.~6, no.~65, p.~3349, 2021.

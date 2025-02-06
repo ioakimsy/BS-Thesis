@@ -42,11 +42,13 @@
 \usepackage[svgnames]{xcolor}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{pdfpages}
 
 \hypersetup{
     colorlinks,
-    linkcolor={blue!80!black},
     urlcolor={blue!80!black},
+   %  linkcolor={blue!80!black},
+    linkcolor={black},
     citecolor=black
 }
 
@@ -60,21 +62,22 @@
 %\coadviser{Another A. Adviser}{Ph.D.}%% replace "\coadviser" with "\secondReader" if no co-adviser
 \director{Wilson O. Garcia}{Ph.D.}%% required
 \dean{Giovanni A. Tapang}{Ph.D.} %%required
-\gradyear{2025} \gradmonth{July} %%graduation month and year
-\defenseDate{xx December 2024}
+\gradyear{2025} \gradmonth{January} %%graduation month and year
+\defenseDate{12 December 2024}
 \degreelevel{Bachelor of Science}
-\course{Applied Physics}
+\course{Applied Physics (Instrumentation)}
+
 
 %% Preliminary pages' contents input here..
 \dedication{ \input{dedication.tex} }%% optional, see dedication.tex for sample content.
-% \acknowledgments{ \input{acknowledgments.tex} } %% optional, see acknowledgment.tex for sample content.
+\acknowledgments{ \input{acknowledgments.tex} } %% optional, see acknowledgment.tex for sample content.
 \abstract{ \input{0abstract.tex} } %% see abstract.tex
 \pacs{
    01.40.Ha Learning in education,
    05.45.Pq Numerical simulations,
    89.75.-k Complex systems
-}
-
+   }
+   
 %% Main document section
 \begin{document}
 \maketitle %% creates title page, do not remove this line.

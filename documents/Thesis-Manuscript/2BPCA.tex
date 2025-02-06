@@ -26,7 +26,9 @@ where
     
     \itemC $\lbrace c = {i,j} \mid i \in \lbrace 1,2,3,\dots,L_1 \rbrace, j \in \lbrace 1,2,3,\dots,L_2\ \rbrace \text{s.t. } L_1 \times L_2 = N \rbrace$ is the set of identifiers for each cell in the automaton where $N$ is the total number of cells and $L_1$ and $L_2$ are the lengths of each side of the automaton space. The cells can then be identified by their position in the automaton $(i,j)$. So, the state of cell $c \in \mathcal{C}$ can be written as $s_c = s_{i,j} \in \mathcal{S}$
     
-    \itemL defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i-1,j-1), (i-1, j), (i-1, j+1), (i, j-1), \dots, (i,j)$. Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
+    \itemL defines the lattice neighborhood which is generally a mapping $f : \mathcal{C} \rightarrow C^M$ where $M$ is the number of neighbors of a cell $c \in \mathcal{C}$. 
+    Any given cell $c$ is mapped to another tuple of cells: $L_{i,j} = \lbrace (i-1,j-1), (i-1, j), (i-1, j+1), (i, j-1), \dots, (i,j) \rbrace$. 
+    Where $r$ is the radius of the Moore neighborhood. We then say that $\mathcal{L}_{i,j}$ contains the set of neighboring cell for $c_{i,j}$.
     
     \itemN $\mathcal{S}^M$, the set of neighborhood states. Thus, $N_c = N_{i,j} \in \mathcal{N}$ such that each $\mathcal{N}$ is in the form of the $M$-tuple $\lbrace s_{i-1,j-1}, s_{i-1, j}, s_{i-1. j+1}, s_{i, j-1}, \dots, s_{i,j} \rbrace$.
     
@@ -43,8 +45,7 @@ $\mathcal{R}$ can also be affected by other factors such as whether the rules ar
 An automaton with deterministic rules will always produce the same output given the same input, while an automaton with probabilistic rules will produce different outputs given the same input. 
 In Conway's Game of Life, a cell dies when it has three live neighbors, while a cell is born when it has two or three live neighbors. 
 This is an example of a deterministic rule. An example of a probabilistic rule would be a cell dying with a probability of $0.25$ when it has three live neighbors. 
-An automaton with synchronous rules will update all cells simultaneously, while an automaton with asynchronous rules will update cells one at a time. 
-(something explanation something about sync vs async)
+An automaton with synchronous rules will update all cells simultaneously, while an automaton with asynchronous rules will update cells one at a time.
 
 
 Due to the flexibility of cellular automata, they can be used to model a wide variety of complex systems.
@@ -56,17 +57,21 @@ Thus, we have chosen to use a two-state probabilistic cellular automata to simul
 \section{PCA model for classroom dynamics}
 We used a two-dimensional binary probabilistic cellular automata (PCA) model to simulate the learning process in a classroom. 
 In this PCA model, each cell in the automaton represents a student and the state of each cell represents their aptitude $S=\lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$. 
-We assign the neighborhood to be an outer-totalistic Moore neighborhood of radius $r=1$ and define the boundary conditions to be fixed wherein the grid does not wrap around itself and $s_{i,j} = 0$ for ${i,j \notin [1,L]}$. 
-How the automaton updates depends on the learning setup of the classroom. In this study we tackle two learning setups: traditional and peer instruction (PI). 
+We assign the neighborhood to be an outer-totalistic Moore neighborhood of radius $r=1$ and define the boundary conditions to be fixed wherein the grid does not wrap around itself and $s_{i,j} = 0$ for ${i,j \notin [1,L]}$.
+
+How the automaton updates depends on the learning setup of the classroom. 
+In this study we tackle two learning setups: traditional and peer instruction (PI). 
 We take the traditional instruction to be the case where the teacher is the only source of information for the students --- which is typical for classes where the time is mostly spent on lectures. 
 In the PI setup, we consider that the students learn from each other but only when the students of interest already know the lesson or is in the learned state.
 
 \subsection{Traditional Instruction}
-To model the learning process in a classroom with the traditional instruction setup, we set the probability for the student to learn in each time $P_{ij}$ to be dependent only on their individual learning rates $\lambda_{i,j}$, which describes how receptive they are to learning, and the probability for the student to learn from the teacher $\rho_0$. $\rho_0$ can be varied per individual based on where they are seated, but for simplicity, we set it to be the same for all students.
+To model the learning process in a classroom with the traditional instruction setup, we set the probability for the student to learn in each time $P_{ij}$ to be dependent only on their individual learning rates $\lambda_{i,j}$, which describes how receptive they are to learning, and the probability for the student to learn from the teacher $\rho_0$.
+$\rho_0$ can be varied per individual based on where they are seated. 
+For example, if we want to model a classroom such that students in the front row are more likely to learn from the teacher than students in the back row, we can set $\rho_{i,j}$ to be different for each student based on which row they are in.
 
 \begin{equation}
     \label{eq:BPCA traditional learning probability}
-        P_{ij} = \lambda_{ij} \rho_{0}
+        P_{i,j} = \lambda_{i,j} \rho_{0}
 \end{equation}
 
 where
@@ -118,16 +123,21 @@ Figure~\ref{fig:2DBPCA traditional classroom evolution} shows an example of a cl
     \label{fig:2DBPCA traditional classroom evolution}
  \end{figure}
 
+ \newpage
+
 \subsection{Peer instruction (PI)}
-To model the learning process in a PI set up, we set the probability for the student to learn in each time $P_{ij}$ to be dependent on three factors.
+To model the peer discussion learning process in a PI set up, we set the probability for the student to learn in each time $P_{ij}$ to be dependent on three factors.
 First (1), their learning rate $\lambda_{i,j}$. 
-Secondly (2), the positional learning factor $\rho_{i+\delta i, j+\delta j}$ which describes how likely it is to learn from the neighbor $c_{i+\delta i, j+\delta j}$ based solely on their relative position with respect to $c_{i,j}$. 
-Lastly (3), the aptitude level of the neighbor $s_{i+\delta i, j+\delta j}$ which dictates whether student $c_{i,j}$ can learn from them. 
+Secondly (2), the aptitude level of the neighbor $s_{i+\delta i, j+\delta j}$ which dictates whether student $c_{i,j}$ can learn from them.
+Lastly (3), the positional learning factor $\rho_{\delta i, \delta j}$ which describes how likely it is to learn from the neighbor $c_{i+\delta i, j+\delta j}$ based solely on their relative position with respect to $c_{i,j}$.
+Having a positional learning factor $\rho_{i,j}$ allows us to model the classroom such that students can learn more effectively from students who are seated beside them than students seated behind them, with whom they might have a harder time communicating.
+To do this, we would change the value of $\rho_{\delta i, \delta j}$ when $\delta i \in \lbrace -1,1 \rbrace$ to be higher than when $(\delta i, \delta j) = (0, -1)$.
+
 The probability for a student to learn in each time step is then determined by the following equation:
 
 \begin{equation}
     \label{eq:BPCA PI learning probability}
-        P_{ij} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{ij})(\rho_{i+\delta i, j+\delta j})(s_{i+\delta i, j+\delta j})}\rbrack
+        P_{ij} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{ij})(\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}\rbrack
 \end{equation}
 
 where
@@ -145,8 +155,14 @@ The derivation of Equation~\ref{eq:BPCA PI learning probability} is shown in App
 %\newpage
 
 The numerical procedure is outlined in Figure~\ref{fig:2DBPCA PI Flowchart}. 
-Each simulation starts the classroom with four learned students $n_0 = 4$ placed in different seats in the classroom. 
+Each simulation starts the classroom with four learned students $n_0 = 4$ placed in different seats in the classroom.
+We chose to only have 4 learned students at the beginning of the simulation to simulate the worst-case scenario where only a few students learned the lesson before the discussion.
+It is also the minimum number of learned students needed to set up the different seating arrangements (SA) for the PI model.
 The simulation is considered finished once all the students have learned.
+
+This model can be easily modified to consider bigger neighborhoods where we can even consider a different $\rho$ value for neighbors further from the student of interest.
+We expect that increasing the size of the neighborhood without changing the other parameters will result in a faster learning process as the students can learn from more neighbors.
+However, in this study, we only consider the outer-totalistic Moore neighborhood of radius $r=1$ for simplicity.
 
 \begin{figure}[htbp!]
     \centering
@@ -158,7 +174,7 @@ The simulation is considered finished once all the students have learned.
 The seating arrangement (SA) were chosen from a previous study that shows that the SA can affect the learning process \cite{roxas2010seating}. 
 These SA's are namely: inner corner, outer corner, center, and random. The different SA's are shown in Figure~\ref{fig:PI SAs}.
 
- \begin{figure}[htbp!]
+\begin{figure}[htbp!]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/PI SAs.png}
     \caption[Peer instruction seating arrangements.]{ Peer instruction seating arrangements. 
@@ -171,6 +187,8 @@ These SA's are namely: inner corner, outer corner, center, and random. The diffe
  \end{figure}
 
  Figure~\ref{fig:Sample classroom evolution} shows an example of classroom's evolution over time. The sample classroom is set with $L=64$, $\lambda_0 = 1$, and $\rho_0 = 0.5$ with the inner corner SA.
+
+\newpage
 
  \begin{figure}[htbp!]
     \centering
@@ -187,18 +205,21 @@ These SA's are namely: inner corner, outer corner, center, and random. The diffe
  \end{figure}
 
 \section{Results: Homogenous PI vs Traditional}
-In this chapter, we only consider the case where all students have the same learning rate $\lambda_{i,j} = \lambda_0 = 1$ and an isotropic positional learning factor $\rho_{i,j} = \rho_0 \space ~\forall~ (\delta i \land \delta j),  \delta i, \delta j \in \lbrace -1,0,1 \rbrace $. 
-From the simulations, we compared both the average number of time steps $\langle t_{max} \rangle$ it takes for all the students in the classroom to learn and the average learning rate $\langle m \rangle$ across different configurations over 5 independent runs.
- The class learning rate $m$ for each trial was obtained by using a Levenberg-Marquardt algorithm to fit a power law ($y = ax^m$) to the fraction of learned students as a function of time step. 
- We only considered the first $50\%$ of the data for the PI model and the first $25\%$ of the data for the traditional model. 
+In this chapter, we only consider the case where all students have the same learning rate $\lambda_{i,j} = \lambda_0 = 1$,  an isotropic positional learning factor $\rho_{i,j} = \rho_0 \space ~\forall~ (\delta i \land \delta j),  \delta i, \delta j \in \lbrace -1,0,1 \rbrace $ for PI, and $\rho_{i,j}=\rho_0 \space ~\forall~ i,j$ for traditional instruction.
+For each set of parameter, we ran 5 independent simulations to obtain the averages and uncertainties of time to learn $t_{max}$ and class learning rate $m$.
+Time to learn $t_{max}$ is the average number of time steps it takes for all the students in the classroom to learn.
+The class learning rate $m$ for each trial was obtained by using a Levenberg-Marquardt algorithm to fit a power law ($y = ax^m$) to the fraction of learned students as a function of time step.
+We chose to fit the data to a power law because it was the best fit for the data of both PI and traditional instruction compared to other functions such as exponential and logarithmic functions.
+It is important that we use the same fitting function for both models to ensure that the comparison is fair and valid.
+Additionally, we only considered the first $50\%$ of the data for the PI model and the first $25\%$ of the data for the traditional model. 
 This truncation was done so that we only fit the part of the data before the finite size effect starts to affect the simulation.
 
 \subsection{Time to learn $t_{max}$ vs positional learning factor $\rho_0$} \label{subsec: 2DBPCA tmax vs rho}
 
 The data in Figure~\ref{fig:2DBPCA tmax vs rho} shows that the time to learn $t_{max}$ decreases with increasing positional learning factor $\rho_0$ for all classroom sizes for both traditional instruction and PI. 
 Among PI SAs, the inner corner SA has the lowest $t_{max}$ for all classroom sizes. 
-The outer corner and center SAs performed similarly, while the random SA has the highest $t_{max}$. 
-The traditional model performs situationally better than even the inner corner PI model, something we will investigate in Section~\ref{subsec: 2DBPCA tmax vs N}.
+The outer corner and center SAs have similar learning efficiency, while the random SA has the highest $t_{max}$. 
+The traditional model's efficiency is situationally better than even the inner corner PI model, something we will investigate in Section~\ref{subsec: 2DBPCA tmax vs N}.
 
 \begin{figure}[htbp!]
     \centering
@@ -208,7 +229,7 @@ The traditional model performs situationally better than even the inner corner P
     \subfigure[$L=96$]{\label{fig:2DBPCA tmax vs rho 96}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/t-96.png}}
     \subfigure[$L=128$]{\label{fig:2DBPCA tmax vs rho 128}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/t-128.png}}
     \caption[Positional learning factor $\rho_0$ dependence of time to learn $t_{max}$ for the homogenous classroom model]{Time to learn $t_{max}$ as a function of positional learning factor $\rho_0$ for different classroom sizes $L \in \lbrace 32,48,64,96,128 \rbrace$. 
-    Lower time to learn $t_{max}$ indicate better performance.}
+    Lower time to learn $t_{max}$ indicate higher learning efficiencyance.}
     \label{fig:2DBPCA tmax vs rho}
 \end{figure}
 
@@ -219,14 +240,17 @@ The traditional model performs situationally better than even the inner corner P
 The data in Figure~\ref{fig:2DBPCA m vs rho} shows that the class learning rate $m$ does not generally change for different positional learning factors $\rho_0$ when compared against similar SAs for PI. 
 In traditional instruction, however, there is an increase in class learning rate $m$ with increasing $\rho_0$ for all classroom sizes. 
 Similar to the findings in Section~\ref{subsec: 2DBPCA tmax vs rho}, the inner corner SA has the highest learning rate $m$ for all classroom sizes. 
-The outer corner and center SA's performed similarly, while the random SA has the lowest class learning rate $m$. We still find that the traditional model performs situationally better than even the inner corner PI model. 
+The outer corner and center SA's have similar learning efficiency, while the random SA has the lowest class learning rate $m$. We still find that the traditional model shows situationally better learning efficiency than even the inner corner PI model. 
+
+For PI, we see that the class learning rate $m \approx 2$. This makes sense seeing that the learning spreads out from the learned students in a radially symmetric manner.
+This is analogous to the area of a circle increasing with the square of the radius, where the area is the number of learned students.
 
 The sudden decrease in class learning rate $m$ for the traditional model at $\rho_0 = 1.0$ is due to the improper truncation and fitting of the data. 
 In cases of traditional instruction where $\rho_0 = 1.0$, all the students will transition from unlearned to learned in one time step, so fitting the power law to the first 25\% of the data would yield a class learning rate $m$ that poorly represents the simulations' dynamics.
 
-The results in this section show that traditional instruction performs better than PI in terms of class learning rate $m$ for all classroom sizes at low $\rho_0$. 
-This is in contrast to the results in Section~\ref{subsec: 2DBPCA tmax vs rho} where PI performed better only in small classrooms with low positional learning factor $\rho_0$. 
-This discrepancy is likely due to the different metrics used to evaluate the performance of the models. The class learning rate $m$ is a measure of how quickly the students learn, while the time to learn $t_{max}$ is a measure of how long it takes for all the students to learn. 
+The results in this section show that traditional instruction has higher learning efficiency than PI in terms of class learning rate $m$ for all classroom sizes at low $\rho_0$. 
+This is in contrast to the results in Section~\ref{subsec: 2DBPCA tmax vs rho} where PI shows higher learning efficiency only in small classrooms with low positional learning factor $\rho_0$. 
+This discrepancy is likely due to the different metrics used to evaluate the learning efficiency of the models. The class learning rate $m$ is a measure of how quickly the students learn, while the time to learn $t_{max}$ is a measure of how long it takes for all the students to learn. 
 In cases when the classroom is large and positional learning factor $\rho_0$ is small, using traditional instruction enables the teacher to teach all the students in a shorter amount of time despite PI being able to teach the students more effectively. 
 
 \begin{figure}[htbp!]
@@ -237,7 +261,7 @@ In cases when the classroom is large and positional learning factor $\rho_0$ is 
     \subfigure[$L=96$]{\label{fig:2DBPCA m vs rho 96}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/m-96.png}}
     \subfigure[$L=128$]{\label{fig:2DBPCA m vs rho 128}\includegraphics[width=0.45\textwidth]{figures/2D-BPCA-analysis/m-128.png}}
     \caption[Positional learning factor $\rho_0$ dependence of class learning rate $m$ for homogenous classroom model]{Class learning rate $m$ as a function of positional learning factor $\rho_0$ for different classroom sizes $L \in \lbrace 32,48,64,96,128 \rbrace$. 
-    Higher class learning rate $m$ values indicate better performance.}
+    Higher class learning rate $m$ values indicate higher learning efficiency.}
     \label{fig:2DBPCA m vs rho}
 \end{figure}
 
@@ -251,7 +275,7 @@ In cases when the classroom is large and positional learning factor $\rho_0$ is 
     Circles and squares denote data points for PI (inner corner SA) and traditional instruction, respectively. 
     The dash lines are the corresponding power law fit of the form $t_{max}=a \cdot N^b$ using $\rho \in \lbrace 0.1, 0.5, 0.9 \rbrace$. 
     The fitted parameters are shown in the table with an average of $\langle b \rangle = 0.4532 \pm 0.019$ for the inner corner and $\langle b \rangle = 0.087\pm0.021$ for the traditional model.
-    Lower time to learn $t_{max}$ indicate better performance.
+    Lower time to learn $t_{max}$ indicate higher learning efficiency.
     }
     \label{fig:Traditional vs PI tmax vs N}
 \end{figure}
@@ -280,8 +304,8 @@ The inner corner SA has higher $b$ values than traditional instruction, indicati
 
 \section{Conclusions}
 In this chapter, we have shown that between different seating arrangements for PI, the inner corner SA is the most efficient in terms of time to learn $t_{max}$ and class learning rate $m$. 
-The outer corner and center SAs performed similarly worse than the inner corner SA, while the random SA performed the worst. 
-This is different from what existing literature has shown, where the outer corner SA performed the best \cite{roxas2010seating}. 
+The outer corner and center SAs showed similarly worse learning efficiency than the inner corner SA, while the random SA showed the worst learning efficiency. 
+This is different from what existing literature has shown, where the outer corner SA yielded the best learning efficiency \cite{roxas2010seating}. 
 This is likely because of the simplifications made in our model. 
 Our model does not incorporate factors such as the similarity effect mentioned in previous studies \cite{roxas2010seating,smith2009peer}. 
 This effect is the phenomenon wherein students of similar aptitude levels tend to learn from each other better when seated together regardless of their actual aptitude. 
@@ -292,7 +316,7 @@ Introducing these factors, some of which we will explore in the next chapters, m
 The nature of our model lends itself to be heavily influenced by geometric factors. 
 The most impactful factor in this case is then the distance $d_{max}$ of any student to a high aptitude or learned student as shown in figure \ref{fig:SA dmax}. 
 The inner corner SA minimizes $d_{max}$, which is why it is the most efficient. 
-The outer corner and center SAs have equal $d_{max}$ higher than the inner corner SA, which explains why they performed very similarly albeit worse than the inner corner SA.
+The outer corner and center SAs have equal $d_{max}$ higher than the inner corner SA, which explains why they have very similarly albeit worse learning efficiency than the inner corner SA.
 
 \begin{figure}[htbp!]
     \centering
@@ -301,11 +325,11 @@ The outer corner and center SAs have equal $d_{max}$ higher than the inner corne
     \label{fig:SA dmax}
 \end{figure}
 
-Our analysis on the dependence of $t_{max}$ on $N$ explains why the traditional model performed better than the PI model in most cases. 
+Our analysis on the dependence of $t_{max}$ on $N$ explains why the traditional model has better learning efficiency than the PI model in most cases. 
 With lower $b$-values, the traditional model is less affected by class size than the PI models are. 
-Because of this, the traditional model performed better in cases with larger classrooms. 
+Because of this, the traditional model had better learning efficiency in cases with larger classrooms. 
 
-Regarding the performance of PI methods with traditional teaching methods, we found that classrooms with higher $\rho_0$ values performed better in traditional instruction, while classrooms with lower $\rho_0$ values performed better in PI. 
+Regarding the performance of PI methods with traditional teaching methods, we found that classrooms with higher $\rho_0$ values had better learning efficiency in traditional instruction, while classrooms with lower $\rho_0$ values had  better learning efficiency in PI. 
 A previous similar study \cite{roxas2010seating} found that classes with lower aptitude levels were the ones who benefited the most from the PI methods.
 Although we cannot directly conclude this from our model, we were able to show that students with a lower probability of learning or students who learn slower, can benefit as much from PI as in traditional setups. 
 This reinforces other studies' findings \cite{lasry2008peer} that show that PI methods can be effective even regardless of the students' actual aptitude levels.
