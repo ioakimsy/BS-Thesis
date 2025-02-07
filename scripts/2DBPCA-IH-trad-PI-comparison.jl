@@ -67,6 +67,34 @@ function read_time_series_data(class_size, SA, ρ₀, λ₀, δλ; n_learned=4)
     # end
 end
 
+function read_time_series_data_raw(class_size, SA, ρ₀, λ₀, δλ; n_learned=4)
+
+    learned_raw = []
+
+    # println("Reading data for $(SA) $(class_size) $(ρ₀) $(λ₀) $(δλ)")
+
+    for trial in 1:5
+        if SA == "random"
+            path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)-$(n_learned)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-$(SA)-$(class_size)-$(n_learned)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
+        else
+            path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-$(SA)-$(class_size)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
+        end
+
+        params_df = CSV.read(path * "fit_params.csv", DataFrame)
+        learned = params_df[!,"learned_per_gen"]
+
+        push!(learned_raw, learned)
+    end
+
+    return learned_raw
+    
+    # learned_dom = 1:length(learned)
+    # if SA == "traditional"
+    #         learned = learned[begin+1:end]
+    #         learned_dom = 2:length(learned)+1
+    # end
+end
+
 function plot_comparison(initial_conditions)
 
     color = ColorSchemes.seaborn_colorblind.colors
@@ -185,14 +213,79 @@ function plot_comparison(initial_conditions)
     return fig
 end
 
+function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
+    # return_map_params = [64, "traditional", 0.5, 0.5, 0.2]
+    
+    color = ColorSchemes.seaborn_colorblind.colors
+
+    fig = Figure(size=(1000,1000*0.7); dpi = 300)
+
+    ax = Axis(fig[1, 1];
+        xlabel = "f(t-1)",
+        ylabel = "f(t)",
+        # xscale = log10,
+        # yscale = log10,
+        title = "Return map of learned fraction",
+        subtitle = "L=$(return_map_params[1]), SA=$(return_map_params[2]), ρ₀=$(return_map_params[3]), λ=$(return_map_params[4]), δλ=$(return_map_params[5])",
+        # xminorgridvisible = false,
+        # yminorgridvisible = false,
+        xlabelsize = 24,
+        ylabelsize = 24,
+        titlesize = 24,
+        subtitlesize = 16,
+        xticklabelsize = 16,
+        yticklabelsize = 16,
+    )
+
+    
+    learned_data = read_time_series_data_raw(return_map_params...)
+    
+    f_t_data = []
+    f_t1_data = []
+
+    for i in eachindex(learned_data)
+        f_t = learned_data[i][2:end]
+        f_t_1 = learned_data[i][1:end-1]
+
+        push!(f_t_data, f_t...)
+        push!(f_t1_data, f_t_1...)
+        
+        scatter!(ax, f_t_1, f_t,
+        label = "Trial $i",
+        color = (color[i], 0.5),
+        marker = [:circle, :rect, :hexagon, :utriangle, :diamond][i],
+        markersize = 10,
+        )
+    end
+
+    @. logistic_model(x) = x + x * (1 - x)
+
+    @. quad_model(x,p) = p[1] * x^2 + p[2] * x + p[3]
+    quad_fit = curve_fit(quad_model, f_t1_data, f_t_data, [0.0, 1.0, 0.0])
+    quad_fit_params = quad_fit.param
+
+    lines!(ax, 0:0.01:1, logistic_model(0:0.01:1), label = "fₜ = fₜ₋₁ + fₜ₋₁ (1 - fₜ₋₁)", color = :red)
+
+    lines!(ax, 0:0.01:1, quad_model(0:0.01:1, quad_fit_params), label = "fₜ = $(round(quad_fit_params[1], digits=3)) fₜ₋₁² + $(round(quad_fit_params[2], digits=3)) fₜ₋₁ + $(round(quad_fit_params[3], digits=3))", color = :blue)
+    
+    lines!(ax, 0:0.01:1, 0:0.01:1, label = "y=x", color = :black, linestyle = :dash)
+    
+    axislegend(ax, position = :rb)
+    fig
+
+    savepath = "./output/2D-Binary-PCA-IH/analysis/plots/return-map/"
+    filename = "return-map-$(return_map_params[2])-$(return_map_params[1])-$(return_map_params[3])-$(return_map_params[4])-$(return_map_params[5])"
+
+    save(savepath * filename * ".png", fig)
+end
 
 begin
 
     comparison = [
-        "size",
+        # "size",
         # "SA",
         "ρ₀",
-        # "δλ",
+        "δλ",
     ]
 
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
@@ -204,7 +297,16 @@ begin
     for class_config in SAs, size in sizes, ρ₀ in Ρs, δλ in δλ
         push!(initial_conditions, [size, class_config, ρ₀, 0.5, δλ])
     end
-        
+    initial_conditions
+end
+
+begin
+    for i in eachindex(initial_conditions)
+        return_map(initial_conditions[i])
+    end
+end
+
+begin #* Comparing time series traditional with PI
     comparison_plot = plot_comparison(initial_conditions)
 
     savepath = "./output/2D-Binary-PCA-IH/analysis/plots/trad-PI-learned-t-comparison/"
