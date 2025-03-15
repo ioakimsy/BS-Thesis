@@ -99,7 +99,7 @@ function plot_comparison(initial_conditions)
 
     color = ColorSchemes.seaborn_colorblind.colors
 
-    fig = Figure(size=(1000,1000*0.6); dpi = 300)
+    fig = Figure(size=(1000,1000 ÷ sqrt(2)); dpi = 300)
 
     ax = Axis(fig[1, 1];
         xlabel = "Time step",
@@ -202,13 +202,13 @@ function plot_comparison(initial_conditions)
 
     # colsize!(fig.layout, 1, Aspect(1,1.5))
 
-    # axislegend(ax, position = :rb)
+    axislegend("Legend", position = :lt, labelsize = 20, titlesize = 20)
 
-    Legend(fig[1,2], ax,
-        "Legend",
-        titlesize = 16,
-        labelsize = 16
-    )
+    # Legend(fig[1,2], ax,
+    #     "Legend",
+    #     titlesize = 16,
+    #     labelsize = 16
+    # )
 
     return fig
 end
@@ -282,10 +282,10 @@ end
 begin
 
     comparison = [
-        # "size",
+        "size",
         # "SA",
-        "ρ₀",
-        "δλ",
+        # "ρ₀",
+        # "δλ",
     ]
 
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
