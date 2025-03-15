@@ -1,0 +1,320 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  10 MAR 2025 22:51
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/apsguide4-2.tex"
+(c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/apsguide4-2.tex
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-29>
+(c:/texlive/2023/texmf-dist/tex/latex/revtex/revtex4-2.cls
+Document Class: revtex4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+ Copyright (c) 2019 American Physical Society.
+ mailto:revtex@aps.org
+ Licensed under the LPPL:
+http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt
+ Arthur Ogawa <arthur_ogawa at sbcglobal dot net>
+ Based on work by David Carlisle <david at dcarlisle.demon.co.uk>
+ Version (4.2d--4.2f): Modified by Mark Doyle and Phelype Oleinik
+ .
+ltxutil[2022/06/05 4.2f utilities package (portions licensed from W. E. Baxter web at superscript.com)]
+LaTeX Info: Redefining \@centercr on input line 356.
+Class revtex4-2 Info: Repairing broken LaTeX eqnarray on input line 417.
+\eqncolsep=\skip48
+Class revtex4-2 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfootnote on input line 492.
+Class revtex4-2 Info: Repairing broken LateX \@sect on input line 814.
+\intertabularlinepenalty=\count185
+\@tbpen=\count186
+\@arstrutbox@hline=\box51
+Class revtex4-2 Info: Repairing broken LaTeX \@xbitor on input line 1845.
+Class revtex4-2 Info: Making \typeout \long on input line 2110.
+ltxfront[2022/06/05 4.2f frontmatter package (AO,DPC,MD)]
+\c@affil=\count187
+\c@collab=\count188
+\absbox=\box52
+ltxgrid[2022/06/05 4.2f page grid package (portions licensed from W. E. Baxter web at superscript.com)]
+\c@linecount=\count189
+\output@latex=\toks17
+\box@size@1=\box53
+\box@size@2=\box54
+\@protection@box=\box55
+\@topmark@saved=\toks18
+\footins@saved=\box56
+\footins@recovered=\box57
+\column@recovered=\box58
+\pagesofar=\box59
+\footsofar=\box60
+\pagegrid@col=\count190
+Class revtex4-2 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and \\  on input line 5676.
+\c@part=\count191
+\c@section=\count192
+\c@subsection=\count193
+\c@subsubsection=\count194
+\c@paragraph=\count195
+\c@subparagraph=\count196
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\c@figure=\count197
+\fbox@1=\box61
+\c@table=\count198
+\fbox@2=\box62
+\c@video=\count199
+\fbox@4=\box63
+\@bibdataout=\write3
+\widetext@top=\box64
+\widetext@bot=\box65
+Class revtex4-2 Info: Selecting society aps on input line 7669.
+(c:/texlive/2023/texmf-dist/tex/latex/revtex/aps4-2.rtx
+File: aps4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+Class revtex4-2 Info: RevTeX society APS selected on input line 40.
+)
+Class revtex4-2 Info: Selecting journal prd on input line 7671.
+Class revtex4-2 Info: APS journal PRD selected on input line 7672.
+
+
+Class revtex4-2 Warning: No type size specified, using default 10.
+
+(c:/texlive/2023/texmf-dist/tex/latex/revtex/aps10pt4-2.rtx
+File: aps10pt4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+Class revtex4-2 Info: RevTeX pointsize 10pt selected on input line 39.
+) (c:/texlive/2023/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2023/07/27 v1.04 Text only upper/lower case changing (DPC)
+Package textcase Info: Defining Legacy names on input line 20.
+) (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks19
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/texlive/2023/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count266
+)
+Class revtex4-2 Info: Repairing natbib's \BibitemShut on input line 7676.
+ (c:/texlive/2023/texmf-dist/tex/latex/revtex/revsymb4-2.sty
+Package: revsymb4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+LaTeX Info: Redefining \frak on input line 104.
+LaTeX Info: Redefining \Bbb on input line 120.
+LaTeX Info: Redefining \REV@mathfrak on input line 128.
+)) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen140
+\Gin@req@width=\dimen141
+) (c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip53
+\subfigcapskip=\skip54
+\subfigcaptopadj=\dimen142
+\subfigbottomskip=\skip55
+\subfigcapmargin=\dimen143
+\subfiglabelskip=\skip56
+\c@subfigure=\count267
+\c@lofdepth=\count268
+\c@subtable=\count269
+\c@lotdepth=\count270
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip57
+\subfig@bottom=\skip58
+)
+Class revtex4-2 Info: Unrecognized LaTeX tabular. Please update this document class! (Proceeding with fingers crossed.) on input line 21.
+Class revtex4-2 Info: cite was not loaded (OK!) on input line 21.
+Class revtex4-2 Info: mcite was not loaded (OK!) on input line 21.
+Class revtex4-2 Info: multicol was not loaded (OK!) on input line 21.
+ (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count271
+\l__pdf_internal_box=\box66
+) (./apsguide4-2.aux)
+\openout1 = `apsguide4-2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+ (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count272
+\scratchdimen=\dimen144
+\scratchbox=\box67
+\nofMPsegments=\count273
+\nofMParguments=\count274
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count275
+\MPscratchDim=\dimen145
+\MPnumerator=\count276
+\makeMPintoPDFobject=\count277
+\everyMPtoPDFconversion=\toks22
+) (c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+\openout3 = `apsguide4-2Notes.bib'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (./apsguide4-2.toc)
+\tf@toc=\write4
+\openout4 = `apsguide4-2.toc'.
+
+ [1{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<figures/PI SAs.png, id=17, 474.135pt x 525.162pt>
+File: figures/PI SAs.png Graphic file (type png)
+<use figures/PI SAs.png>
+Package pdftex.def Info: figures/PI SAs.png  used on input line 112.
+(pdftex.def)             Requested size: 203.99689pt x 225.95148pt.
+ [2 <./figures/PI SAs.png>]
+<figures/2DBPCA TI Flowchart.png, id=24, 1411.893pt x 600.936pt>
+File: figures/2DBPCA TI Flowchart.png Graphic file (type png)
+<use figures/2DBPCA TI Flowchart.png>
+Package pdftex.def Info: figures/2DBPCA TI Flowchart.png  used on input line 195.
+(pdftex.def)             Requested size: 229.49844pt x 97.67386pt.
+ [3]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 211.
+
+<figures/2DBPCA PI Flowchart.png, id=30, 1526.649pt x 602.688pt>
+File: figures/2DBPCA PI Flowchart.png Graphic file (type png)
+<use figures/2DBPCA PI Flowchart.png>
+Package pdftex.def Info: figures/2DBPCA PI Flowchart.png  used on input line 225.
+(pdftex.def)             Requested size: 229.49844pt x 90.5924pt.
+<figures/2D-BPCAIH-analysis/comparison plots/size.png, id=31, 4015.0pt x 2838.605pt>
+File: figures/2D-BPCAIH-analysis/comparison plots/size.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/comparison plots/size.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/size.png  used on input line 262.
+(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
+<figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png, id=32, 4015.0pt x 2838.605pt>
+File: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png  used on input line 274.
+(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
+[4{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figures/2DBPCA TI Flowchart.png> <./figures/2DBPCA PI Flowchart.png> <./figures/2D-BPCAIH-analysis/comparison plots/size.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 282.
+
+<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=40, 4015.0pt x 2838.605pt>
+File: figures/2D-BPCAIH-analysis/comparison plots/δλ.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/comparison plots/δλ.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  used on input line 285.
+(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
+<figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=41, 4015.0pt x 2838.605pt>
+File: figures/2D-BPCAIH-analysis/comparison plots/SA.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/comparison plots/SA.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/SA.png  used on input line 296.
+(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png, id=42, 873.2625pt x 873.2625pt>
+File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png  used on input line 318.
+(pdftex.def)             Requested size: 117.29782pt x 117.28572pt.
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png, id=43, 873.2625pt x 873.2625pt>
+File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png  used on input line 319.
+(pdftex.def)             Requested size: 117.29782pt x 117.28572pt.
+<figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=44, 2509.375pt x 1774.63pt>
+File: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png  used on input line 329.
+(pdftex.def)             Requested size: 239.70062pt x 169.51227pt.
+[5 <./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png> <./figures/2D-BPCAIH-analysis/comparison plots/δλ.png> <./figures/2D-BPCAIH-analysis/comparison plots/SA.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png>] (./apsguide4-2.bbl
+Underfull \hbox (badness 4792) in paragraph at lines 57--58
+ []\OT1/cmr/m/n/9 E. Mazur and M. D. Somers, Peer In-struc-tion:
+ []
+
+
+Underfull \hbox (badness 6910) in paragraph at lines 57--58
+ \OT1/cmr/m/n/9 A User's Man-ual, Amer-i-can Jour-nal of Physics
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+ []\OT1/cmr/m/n/9 R. R. Hake, Interactive-engagement ver-sus tra-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+ \OT1/cmr/m/n/9 di-tional meth-ods: A six-thousand-student sur-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+ \OT1/cmr/m/n/9 vey of me-chan-ics test data for in-tro-duc-tory
+ []
+
+
+Underfull \hbox (badness 3000) in paragraph at lines 87--88
+ \OT1/cmr/m/n/9 physics courses, Amer-i-can Jour-nal of Physics \OT1/cmr/bx/n/9 66\OT1/cmr/m/n/9 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+ \OT1/cmr/m/n/9 64 (1998), https://pubs.aip.org/aapt/ajp/article-
+ []
+
+) [6 <./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>] (./apsguide4-2.aux)
+ ***********
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-29>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 4276 strings out of 474928
+ 64692 string characters out of 5763562
+ 1941785 words of memory out of 5000000
+ 25802 multiletter control sequences out of 15000+600000
+ 566352 words of font info for 68 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,8n,65p,894b,324s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on apsguide4-2.pdf (6 pages, 3354044 bytes).
+PDF statistics:
+ 130 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+

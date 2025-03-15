@@ -1,0 +1,103 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{17}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Mazur}(1997)}]{mazur1997peer}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Mazur}},\ }\href@noop {} {\emph {\bibinfo {title} {Peer instruction: A User's Manual}}}\ (\bibinfo  {publisher} {Benjamin Cummings},\ \bibinfo {year} {1997})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mazur}\ and\ \citenamefont {Somers}(1999)}]{mazur1999}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Mazur}}\ and\ \bibinfo {author} {\bibfnamefont {M.~D.}\ \bibnamefont {Somers}},\ }\bibfield  {title} {\bibinfo {title} {{Peer Instruction: A User’s Manual}},\ }\href {https://doi.org/10.1119/1.19265} {\bibfield  {journal} {\bibinfo  {journal} {American Journal of Physics}\ }\textbf {\bibinfo {volume} {67}},\ \bibinfo {pages} {359} (\bibinfo {year} {1999})},\ \Eprint {https://arxiv.org/abs/https://pubs.aip.org/aapt/ajp/article-pdf/67/4/359/7528058/359\_2\_online.pdf} {https://pubs.aip.org/aapt/ajp/article-pdf/67/4/359/7528058/359\_2\_online.pdf} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Johnson}\ and\ \citenamefont {Johnson}(2008)}]{johnson2008active}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~T.}\ \bibnamefont {Johnson}}\ and\ \bibinfo {author} {\bibfnamefont {D.~W.}\ \bibnamefont {Johnson}},\ }\bibfield  {title} {\bibinfo {title} {Active learning: Cooperation in the classroom},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {The annual report of educational psychology in Japan}\ }\textbf {\bibinfo {volume} {47}},\ \bibinfo {pages} {29} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fagen}\ \emph {et~al.}(2000)\citenamefont {Fagen}, \citenamefont {Crouch}, \citenamefont {Yang},\ and\ \citenamefont {Mazur}}]{fagen2000factors}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~P.}\ \bibnamefont {Fagen}}, \bibinfo {author} {\bibfnamefont {C.~H.}\ \bibnamefont {Crouch}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Yang}},\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Mazur}},\ }\bibfield  {title} {\bibinfo {title} {Factors that make peer instruction work: A 700-user survey},\ }in\ \href@noop {} {\emph {\bibinfo {booktitle} {talk given at the 2000 AAPT Winter Meeting, Kissimmee, FL}}}\ (\bibinfo {year} {2000})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fagen}\ \emph {et~al.}(2002)\citenamefont {Fagen}, \citenamefont {Crouch},\ and\ \citenamefont {Mazur}}]{fagen2002peer}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~P.}\ \bibnamefont {Fagen}}, \bibinfo {author} {\bibfnamefont {C.~H.}\ \bibnamefont {Crouch}},\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Mazur}},\ }\bibfield  {title} {\bibinfo {title} {Peer instruction: Results from a range of classrooms},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {The physics teacher}\ }\textbf {\bibinfo {volume} {40}},\ \bibinfo {pages} {206} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Crouch}\ and\ \citenamefont {Mazur}(2001)}]{crouch2001peer}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~H.}\ \bibnamefont {Crouch}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Mazur}},\ }\bibfield  {title} {\bibinfo {title} {Peer instruction: Ten years of experience and results},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {American journal of physics}\ }\textbf {\bibinfo {volume} {69}},\ \bibinfo {pages} {970} (\bibinfo {year} {2001})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Smith}\ \emph {et~al.}(2009)\citenamefont {Smith}, \citenamefont {Wood}, \citenamefont {Adams}, \citenamefont {Wieman}, \citenamefont {Knight}, \citenamefont {Guild},\ and\ \citenamefont {Su}}]{smith2009peer}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~K.}\ \bibnamefont {Smith}}, \bibinfo {author} {\bibfnamefont {W.~B.}\ \bibnamefont {Wood}}, \bibinfo {author} {\bibfnamefont {W.~K.}\ \bibnamefont {Adams}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Wieman}}, \bibinfo {author} {\bibfnamefont {J.~K.}\ \bibnamefont {Knight}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Guild}},\ and\ \bibinfo {author} {\bibfnamefont {T.~T.}\ \bibnamefont {Su}},\ }\bibfield  {title} {\bibinfo {title} {Why peer discussion improves student performance on in-class concept questions},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume} {323}},\ \bibinfo {pages} {122} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lasry}\ \emph {et~al.}(2008)\citenamefont {Lasry}, \citenamefont {Mazur},\ and\ \citenamefont {Watkins}}]{lasry2008peer}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Lasry}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Mazur}},\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Watkins}},\ }\bibfield  {title} {\bibinfo {title} {Peer instruction: From harvard to the two-year college},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {American journal of Physics}\ }\textbf {\bibinfo {volume} {76}},\ \bibinfo {pages} {1066} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Thacker}\ \emph {et~al.}(1994)\citenamefont {Thacker}, \citenamefont {Kim}, \citenamefont {Trefz},\ and\ \citenamefont {Lea}}]{thacker1994comparing}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Thacker}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Kim}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Trefz}},\ and\ \bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont {Lea}},\ }\bibfield  {title} {\bibinfo {title} {Comparing problem solving performance of physics students in inquiry-based and traditional introductory physics courses},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {American Journal of Physics}\ }\textbf {\bibinfo {volume} {62}},\ \bibinfo {pages} {627} (\bibinfo {year} {1994})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tobias}(1990)}]{tobias1990they}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Tobias}},\ }\bibfield  {title} {\bibinfo {title} {They're not dumb. they're different.: A new “tier of talent” for science},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Change: The Magazine of Higher Learning}\ }\textbf {\bibinfo {volume} {22}},\ \bibinfo {pages} {11} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Roxas}\ \emph {et~al.}(2010)\citenamefont {Roxas}, \citenamefont {Carreon-Monterola},\ and\ \citenamefont {Monterola}}]{roxas2010seating}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Roxas}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Carreon-Monterola}},\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Monterola}},\ }\bibfield  {title} {\bibinfo {title} {Seating arrangement, group composition and competition-driven interaction: Effects on students’ performance in physics},\ }in\ \href@noop {} {\emph {\bibinfo {booktitle} {AIP Conference Proceedings}}},\ Vol.\ \bibinfo {volume} {1263}\ (\bibinfo {organization} {American Institute of Physics},\ \bibinfo {year} {2010})\ pp.\ \bibinfo {pages} {155--158}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hake}(1998)}]{hake1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~R.}\ \bibnamefont {Hake}},\ }\bibfield  {title} {\bibinfo {title} {{Interactive-engagement versus traditional methods: A six-thousand-student survey of mechanics test data for introductory physics courses}},\ }\href {https://doi.org/10.1119/1.18809} {\bibfield  {journal} {\bibinfo  {journal} {American Journal of Physics}\ }\textbf {\bibinfo {volume} {66}},\ \bibinfo {pages} {64} (\bibinfo {year} {1998})},\ \Eprint {https://arxiv.org/abs/https://pubs.aip.org/aapt/ajp/article-pdf/66/1/64/12040304/64\_1\_online.pdf} {https://pubs.aip.org/aapt/ajp/article-pdf/66/1/64/12040304/64\_1\_online.pdf} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nitta}(2019)}]{nitta2019mathematical}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Nitta}},\ }\bibfield  {title} {\bibinfo {title} {A mathematical model of peer instruction and its applications},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Upgrading Physics Education to Meet the Needs of Society}\ ,\ \bibinfo {pages} {87}} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bordogna}\ and\ \citenamefont {Albano}(2001)}]{bordogna2001theoretical}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont {Bordogna}}\ and\ \bibinfo {author} {\bibfnamefont {E.~V.}\ \bibnamefont {Albano}},\ }\bibfield  {title} {\bibinfo {title} {Theoretical description of teaching-learning processes: A multidisciplinary approach},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume} {87}},\ \bibinfo {pages} {118701} (\bibinfo {year} {2001})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bordogna}\ and\ \citenamefont {Albano}(2003)}]{bordogna2003simulation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~M.}\ \bibnamefont {Bordogna}}\ and\ \bibinfo {author} {\bibfnamefont {E.~V.}\ \bibnamefont {Albano}},\ }\bibfield  {title} {\bibinfo {title} {Simulation of social processes: application to social learning},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Physica A: Statistical Mechanics and its Applications}\ }\textbf {\bibinfo {volume} {329}},\ \bibinfo {pages} {281} (\bibinfo {year} {2003})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pritchard}\ \emph {et~al.}(2008)\citenamefont {Pritchard}, \citenamefont {Lee},\ and\ \citenamefont {Bao}}]{pritchard2008mathematical}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~E.}\ \bibnamefont {Pritchard}}, \bibinfo {author} {\bibfnamefont {Y.-J.}\ \bibnamefont {Lee}},\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Bao}},\ }\bibfield  {title} {\bibinfo {title} {Mathematical learning models that depend on prior knowledge and instructional strategies},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Physical Review Special Topics—Physics Education Research}\ }\textbf {\bibinfo {volume} {4}},\ \bibinfo {pages} {010109} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sy}\ \emph {et~al.}(2024)\citenamefont {Sy}, \citenamefont {Ramos},\ and\ \citenamefont {Bantang}}]{SelfSPP}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~I.~T.}\ \bibnamefont {Sy}}, \bibinfo {author} {\bibfnamefont {R.~X.~A.}\ \bibnamefont {Ramos}},\ and\ \bibinfo {author} {\bibfnamefont {J.~Y.}\ \bibnamefont {Bantang}},\ }\bibfield  {title} {\bibinfo {title} {Learning dynamics in a cellular automata model of classroom peer-to-peer interactions},\ }in\ \href {https://proceedings.spp-online.org/article/view/SPP-2024-1E-04} {\emph {\bibinfo {booktitle} {Proceedings of the Samahang Pisika ng Pilipinas}}},\ Vol.~\bibinfo {volume} {42}\ (\bibinfo {year} {2024})\ pp.\ \bibinfo {pages} {SPP--2024--1E--04}\BibitemShut {NoStop}%
+\end{thebibliography}%
