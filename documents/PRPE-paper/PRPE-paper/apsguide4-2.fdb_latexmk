@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex apsguide4-2"] 1741618270 "apsguide4-2.aux" "apsguide4-2.bbl" "apsguide4-2" 1741618283 0
-  "./apsguide4-2Notes.bib" 1741618281 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex apsguide4-2"] 1742093147 "apsguide4-2.aux" "apsguide4-2.bbl" "apsguide4-2" 1742093168 0
+  "./apsguide4-2Notes.bib" 1742093165 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "./biblio.bib" 1735971404 12093 b884b582119e14169026dc8129401b5e ""
-  "apsguide4-2.aux" 1741618281 6493 87897ff9bf47156d83a0e1f2b31815f7 "pdflatex"
+  "apsguide4-2.aux" 1742093165 6493 be7228e761beb2bf6c887e15ff80c7c8 "pdflatex"
   "c:/texlive/2023/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1696367718 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
   (generated)
   "apsguide4-2.bbl"
   "apsguide4-2.blg"
   (rewritten before read)
-["pdflatex"] 1741618271 "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/apsguide4-2.tex" "apsguide4-2.pdf" "apsguide4-2" 1741618283 0
-  "apsguide4-2.aux" 1741618281 6493 87897ff9bf47156d83a0e1f2b31815f7 "pdflatex"
-  "apsguide4-2.bbl" 1741618271 13368 e12f13823025055c6d4704dd706c9f1e "bibtex apsguide4-2"
-  "apsguide4-2.tex" 1741618254 26562 1e6e26affce53e414260dea659af5a76 ""
-  "apsguide4-2.toc" 1741618281 1637 b811316ef911a9857af1a0870138fb8b "pdflatex"
-  "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/apsguide4-2.tex" 1741618254 26562 1e6e26affce53e414260dea659af5a76 ""
+["pdflatex"] 1742093148 "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/apsguide4-2.tex" "apsguide4-2.pdf" "apsguide4-2" 1742093168 0
+  "apsguide4-2.aux" 1742093165 6493 be7228e761beb2bf6c887e15ff80c7c8 "pdflatex"
+  "apsguide4-2.bbl" 1742093148 13368 e12f13823025055c6d4704dd706c9f1e "bibtex apsguide4-2"
+  "apsguide4-2.tex" 1742093125 27192 a559b061e63c3415e2cf7dff46c4c4e8 ""
+  "apsguide4-2.toc" 1742093165 1637 b811316ef911a9857af1a0870138fb8b "pdflatex"
+  "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/apsguide4-2.tex" 1742093125 27192 a559b061e63c3415e2cf7dff46c4c4e8 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1696356010 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1696359370 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1696358097 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -89,7 +89,7 @@
   "figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png" 1741263445 89875 0409725f65732fcee24469c622c0ae57 ""
   "figures/2D-BPCAIH-analysis/comparison plots/SA.png" 1741613594 505348 37603b3649979ef42428cb2c6456bba8 ""
   "figures/2D-BPCAIH-analysis/comparison plots/size.png" 1741613611 538757 374a421b0807ec14582e637db36e34c2 ""
-  "figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png" 1741617855 401875 263da073c4be80902e63d39d3070c8a5 ""
+  "figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png" 1742093078 401815 5c85f86d1d598097c5638a61301cface ""
   "figures/2DBPCA PI Flowchart.png" 1733883316 455029 a0db73922f90794c7c42befd996d3c3c ""
   "figures/2DBPCA TI Flowchart.png" 1733461874 410146 5eb506c7b7164028696a0a793cf4384b ""
   "figures/PI SAs.png" 1715907867 121723 881d3305891e6715c3a058db0d610b85 ""
