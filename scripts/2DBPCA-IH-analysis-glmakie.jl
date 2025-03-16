@@ -383,12 +383,12 @@ begin
         # rowgap!(fig.layout, 1, Relative(0))
         rowgap!(fig.layout, 2, Relative(0))
 
-        elem_TI = PolyElement(color = ColorSchemes.seaborn_colorblind[1])
-        elem_PI = PolyElement(color = ColorSchemes.seaborn_colorblind[2])
+        elem_PI = PolyElement(color = ColorSchemes.seaborn_colorblind[1])
+        elem_TI = PolyElement(color = ColorSchemes.seaborn_colorblind[2])
 
         Legend(fig[3,:],
-            [elem_TI, elem_PI],
-            ["Traditional Instruction", "Inner Corner SA"],
+            [elem_PI, elem_TI],
+            ["Inner Corner SA", "Traditional Instruction"],
             "Legend",
             orientation = :horizontal,
             titlesize = 20,

@@ -324,12 +324,18 @@
 
     \subsection{Summary of effects of class size $N$, positional learning factor $\rho_0$, and learning rate heterogeneity $\delta\lambda$}
 
+    When we compare the plot of time to learn $t_{max}$ as a function of positional learning factor $\rho_0$, and learning rate heterogeneity $\delta\lambda$ for both TI and the inner corner SA for PI, we can see that PI performs best for low values of positional learning factor $\rho_0$ and high values of learning rate heterogeneity $\delta\lambda$.
+    As we vary the size of the classroom $N=L^2$, we see that breakpoints start to appear where PI performs better than TI.
+    For $L=32$, PI always peforms better than TI.
+    However as the classroom size increases, cases start to appear where TI performs better than PI.
+
     \begin{figure}[htbp!]
         \centering
         \includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png}
         \caption{Summary}
         \label{fig:Params effect summary}
     \end{figure}
+
     
     \subsection{Return map}
 
