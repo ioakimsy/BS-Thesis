@@ -186,86 +186,98 @@ end
 #     end
 # end
 
-# #! Generate -> view and explore plot for t
-# begin
-#     sizes = [32, 48, 64, 96, 128]
-#     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
-#     Ρs = collect(0.1:0.1:1.0)
-#     δλs = collect(0.0:0.1:0.4)
-#     n_trials = 5
-#     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
+#! Generate -> view and explore plot for t
+begin
+    sizes = [32, 48, 64, 96, 128]
+    seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
+    Ρs = collect(0.1:0.1:1.0)
+    δλs = collect(0.0:0.1:0.4)
+    n_trials = 5
+    data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
-#     valid_SA = ["inner_corner", "traditional"]
+    valid_SA = ["inner_corner", "traditional"]
 
-#     valid_class_size = 128
-#     _subset = data[(data.class_size.==valid_class_size) .& in.(data.seat_config, Ref(valid_SA)), :]
-#     SA_subset = groupby(_subset, :seat_config)
+    valid_class_size = 128
+    _subset = data[(data.class_size.==valid_class_size) .& in.(data.seat_config, Ref(valid_SA)), :]
+    SA_subset = groupby(_subset, :seat_config)
 
-#     SA_label_dict = Dict(
-#         "traditional" => "T",
-#         "inner_corner" => "IC",
-#         "outer_corner" => "OC",
-#         "center" => "C",
-#         "random" => "R",
-#     )
+    SA_label_dict = Dict(
+        "traditional" => "T",
+        "inner_corner" => "IC",
+        "outer_corner" => "OC",
+        "center" => "C",
+        "random" => "R",
+    )
 
-#     fig = Figure(size = (768,768),
-#         # fonts = (; regular = "Times New Roman", italic = "Times New Roman", bold = "Times New Roman"),
-#     ;)
-#     ax = Axis3(fig[1, 1], 
-#         xlabel="ρ₀", 
-#         ylabel = "δλ",
-#         zlabel="Time to learn (tₘₐₓ)", 
-#         # zlabel = [],
-#         title="Inhomogenous Classroom Model L=$valid_class_size", 
-#         # subtitle="class_size = $valid_class_size",
-#         aspect = (1,1,1),
-#         # zticklabelsvisible = false,
-#         titlesize = 32,
-#         zticks = 0 : 100 : maximum(Measurements.value.(_subset.ttl))
-#     )
+    fig = Figure(size = (768,768),
+        # fonts = (; regular = "Times New Roman", italic = "Times New Roman", bold = "Times New Roman"),
+    ;)
+    ax = Axis3(fig[1, 1], 
+        xlabel="ρ₀", 
+        ylabel = "δλ",
+        zlabel="Time to learn (tₘₐₓ)", 
+        # zlabel = [],
+        title="Inhomogenous Classroom Model L=$valid_class_size", 
+        # subtitle="class_size = $valid_class_size",
+        aspect = (1,1,1),
+        # zticklabelsvisible = false,
+        titlesize = 32,
+        zticks = 0 : 100 : maximum(Measurements.value.(_subset.ttl))
+    )
 
-#     for i in 1:length(SA_subset)
-#         ρ_data = SA_subset[i][!, "ρ"]
-#         δλ_data = SA_subset[i][!, "δλ"]
-#         t_data = Measurements.value.(SA_subset[i][!, "ttl"])
+    for i in 1:length(SA_subset)
+        ρ_data = SA_subset[i][!, "ρ"]
+        δλ_data = SA_subset[i][!, "δλ"]
+        t_data = Measurements.value.(SA_subset[i][!, "ttl"])
+        t_lower = Measurements.value.(SA_subset[i][!, "ttl"]) - Measurements.uncertainty.(SA_subset[i][!, "ttl"])
+        t_upper = Measurements.value.(SA_subset[i][!, "ttl"]) + Measurements.uncertainty.(SA_subset[i][!, "ttl"])
 
-#         points = Point3f.(ρ_data,δλ_data,t_data)
-#         # t_data = reshape(t_data, 10, 5)'
-#         # t_σ = Measurements.uncertainty.(SA_subset[1][!, "ttl"])
+        points = Point3f.(ρ_data,δλ_data,t_data)
+        # t_data = reshape(t_data, 10, 5)'
+        # t_σ = Measurements.uncertainty.(SA_subset[1][!, "ttl"])
         
-#         # scatter!(ax, points,
-#         #     markersize = 5,
-#         #     color = ColorSchemes.seaborn_colorblind[i],
-#         #     label = "$(SA_label_dict[valid_SA[i]])",
-#         #     strokewidth = 0,
-#         # )
+        # scatter!(ax, points,
+        #     markersize = 5,
+        #     color = ColorSchemes.seaborn_colorblind[i],
+        #     label = "$(SA_label_dict[valid_SA[i]])",
+        #     strokewidth = 0,
+        # )
 
-#         surface!(ax, ρ_data, δλ_data, t_data,
-#             # alpha = 0.5,
-#             color = fill((ColorSchemes.seaborn_colorblind[i], 1), 1:10, 1:5),
-#             shading = FastShading
-#         )
+        # surface!(ax, ρ_data, δλ_data, t_data,
+        #     # alpha = 0.5,
+        #     color = fill((ColorSchemes.seaborn_colorblind[i], 1), 1:length(ρ_data), 1:length(δλ_data)),
+        #     shading = FastShading
+        # )
+
+        surface!(ax, ρ_data, δλ_data, t_lower,
+            color = fill((ColorSchemes.seaborn_colorblind[i], 0.5), 1:length(ρ_data), 1:length(δλ_data)),
+        )
 
         
-#         # errorbars!(ax, ρ_data, δλ_data, t_data, t_σ)
-#     end
-#     ax.viewmode = :fit
+        # mesh!(ax, ρ_data, δλ_data, t_upper,
+        #     color = fill((ColorSchemes.seaborn_colorblind[i], 0.5), 1:length(ρ_data), 1:length(δλ_data)),
+        # )
+        
 
-#     elem_TI = PolyElement(color = ColorSchemes.seaborn_colorblind[1])
-#     elem_PI = PolyElement(color = ColorSchemes.seaborn_colorblind[2])
+        
+        # errorbars!(ax, ρ_data, δλ_data, t_data, t_σ)
+    end
+    ax.viewmode = :fit
+
+    elem_TI = PolyElement(color = ColorSchemes.seaborn_colorblind[1])
+    elem_PI = PolyElement(color = ColorSchemes.seaborn_colorblind[2])
     
-#     Legend(fig[2,:],
-#             [elem_TI, elem_PI],
-#             ["Traditional Instruction", "Inner Corner SA"],
-#             "Legend",
-#             orientation = :horizontal,
-#             titlesize = 20,
-#             labelsize = 20
-#         )
+    Legend(fig[2,:],
+            [elem_TI, elem_PI],
+            ["Traditional Instruction", "Inner Corner SA"],
+            "Legend",
+            orientation = :horizontal,
+            titlesize = 20,
+            labelsize = 20
+        )
 
-#     display(fig)
-# end
+    display(fig)
+end
 
 #! 32-128 comparison for tmax
 begin
