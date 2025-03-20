@@ -2,8 +2,8 @@ PWD c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper
 INPUT c:/texlive/2023/texmf.cnf
 INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/apsguide4-2.tex
-OUTPUT apsguide4-2.log
+INPUT c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex
+OUTPUT PRPE_Classroom_dynamics.log
 INPUT c:/texlive/2023/texmf-dist/tex/latex/revtex/revtex4-2.cls
 INPUT c:/texlive/2023/texmf-dist/tex/latex/revtex/revtex4-2.cls
 INPUT c:/texlive/2023/texmf-dist/tex/latex/revtex/aps4-2.rtx
@@ -45,10 +45,10 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.cfg
 INPUT c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.cfg
 INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./apsguide4-2.aux
-INPUT ./apsguide4-2.aux
-INPUT apsguide4-2.aux
-OUTPUT apsguide4-2.aux
+INPUT ./PRPE_Classroom_dynamics.aux
+INPUT ./PRPE_Classroom_dynamics.aux
+INPUT PRPE_Classroom_dynamics.aux
+OUTPUT PRPE_Classroom_dynamics.aux
 INPUT c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -57,7 +57,7 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-OUTPUT apsguide4-2Notes.bib
+OUTPUT PRPE_Classroom_dynamicsNotes.bib
 INPUT c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
@@ -90,12 +90,12 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
-INPUT ./apsguide4-2.toc
-INPUT ./apsguide4-2.toc
-INPUT apsguide4-2.toc
-OUTPUT apsguide4-2.toc
+INPUT ./PRPE_Classroom_dynamics.toc
+INPUT ./PRPE_Classroom_dynamics.toc
+INPUT PRPE_Classroom_dynamics.toc
+OUTPUT PRPE_Classroom_dynamics.toc
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
-OUTPUT apsguide4-2.pdf
+OUTPUT PRPE_Classroom_dynamics.pdf
 INPUT c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT ./figures/PI SAs.png
 INPUT ./figures/PI SAs.png
@@ -164,10 +164,10 @@ INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png
-INPUT ./apsguide4-2.bbl
-INPUT ./apsguide4-2.bbl
-INPUT apsguide4-2.bbl
-INPUT apsguide4-2.aux
+INPUT ./PRPE_Classroom_dynamics.bbl
+INPUT ./PRPE_Classroom_dynamics.bbl
+INPUT PRPE_Classroom_dynamics.bbl
+INPUT PRPE_Classroom_dynamics.aux
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

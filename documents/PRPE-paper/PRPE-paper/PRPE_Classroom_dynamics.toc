@@ -3,8 +3,8 @@
 \tocdepth@munge 
 \contentsline {section}{\numberline {}Contents}{1}{}
 \tocdepth@restore 
-\contentsline {section}{\numberline {I}Peer Instruction and Traditional Models of Instruction}{1}{}
-\contentsline {subsection}{\numberline {I.1}Difference of Peer Instruction from Traditional Instruction}{2}{}
+\contentsline {section}{\numberline {I}Introduction}{1}{}
+\contentsline {subsection}{\numberline {I.1}Difference of Peer Instruction from Traditional Instruction}{1}{}
 \contentsline {subsection}{\numberline {I.2}Benefits of PI}{2}{}
 \contentsline {section}{\numberline {II}Existing Mathematical Models of PI}{2}{}
 \contentsline {section}{\numberline {III}Modelling The Classroom As A Probabilistic Cellular Automaton}{3}{}
