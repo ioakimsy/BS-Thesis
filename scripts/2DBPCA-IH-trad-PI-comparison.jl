@@ -106,10 +106,11 @@ function plot_comparison(initial_conditions)
         ylabel = "Fraction of learned",
         xscale = log10,
         # yscale = log10,
-        title = "Comparison between different class parameters",
-        subtitle = "Comparing: $(join(comparison, ", "))",
+        # title = "Comparison between different class parameters",
+        # subtitle = "Comparing: $(join(comparison, ", "))",
         # xminorgridvisible = false,
         # yminorgridvisible = false,
+        # limits = (nothing, 10^3, nothing, nothing),
         xlabelsize = 24,
         ylabelsize = 24,
         titlesize = 24,
@@ -202,7 +203,13 @@ function plot_comparison(initial_conditions)
 
     # colsize!(fig.layout, 1, Aspect(1,1.5))
 
-    axislegend("Legend", position = :lt, labelsize = 20, titlesize = 20)
+    axislegend(ax,
+        position = :rb,
+        labelsize = 24,
+        background_color = :transparent,
+        framevisible = false
+    )
+    fig
 
     # Legend(fig[1,2], ax,
     #     "Legend",
@@ -297,9 +304,9 @@ end
 begin
 
     comparison = [
-        "size",
+        # "size",
         # "SA",
-        "ρ₀",
+        # "ρ₀",
         "δλ",
     ]
 
