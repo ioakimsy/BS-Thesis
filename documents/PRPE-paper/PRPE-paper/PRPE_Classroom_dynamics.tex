@@ -10,6 +10,7 @@
 \documentclass[twocolumn,secnumarabic,amssymb, nobibnotes, aps, prd]{revtex4-2}
 \usepackage{graphicx}
 \usepackage{subfigure}
+\usepackage{hyperref}
 %\usepackage{acrofont}%NOTE: Comment out this line for the release version!
 \newcommand{\revtex}{REV\TeX\ }
 \newcommand{\classoption}[1]{\texttt{#1}}
@@ -23,22 +24,23 @@
 \title{Classroom learning dynamics using a cellular automata spatiotemporal model comparing peer instruction and traditional instruction}%
 
 \author{Clarence Ioakim T. Sy}%
-\email[Corresponding author: ]{ctsy@up.edu.ph}
 \affiliation{National Institute of Physics, University of the Philippines Diliman, Quezon City, Philippines}%
 
 \author{Ranzivelle Marianne L. Roxas-Villanueva}%
 \affiliation{Institute of Physics, University of the Philippines Los Ba\~{n}os, Laguna, Philippines}%
 
 \author{Johnrob Y. Bantang}%
+\email[Corresponding author: ]{jybantang@up.edu.ph}
 \affiliation{National Institute of Physics, University of the Philippines Diliman, Quezon City, Philippines}%
 
 \date{June 2025}%
 
 \begin{abstract}
-
-    Peer instruction (PI) has emerged as a popular alternative to traditional lecture-based methods in Physics Education, emphasizing active student engagement over passive learning.
+    Peer instruction (PI) has recently become one of the popular means of classroom instruction in Physics Education.
+    Such instruction method is vastly different from how classes are traditionally handled where the instructor conducts a lecture for the entire duration of the class.
     In this study, we model the transfer of knowledge within the class as a probabilistic cellular automata model and investigate the effects of different factors such as seating arrangements, size, learning rate, and heterogeneity on the classes' overall learning efficiency in peer instruction.
-    Upon comparison between PI and traditional election (TI), we found that larger class sizes sway the advantage towards traditional instruction, while increased learning rate heterogeneity favors PI.
+    We compared the learning efficiency between traditional instruction (TI) and peer instruction (PI). 
+    We found that larger class sizes sway the advantage towards traditional instruction, while increased learning rate heterogeneity favors PI.
     Additionally, an increase in the students' effective learning rate benefits both TI and PI but in different ways.
     Classes under traditional instruction were found to have two stages of learning when heterogeneity was introduced: a fast initial stage and a slow final stage.
     On the other hand, learning trends in PI were generally unaffected by heterogeneity, having similar effects with the other factors we considered.
@@ -56,52 +58,61 @@
 
 \section{Introduction}
 
-    Literature discussing peer instruction, especially for physics often cites Mazur's work \textit{Peer Instruction: A User's Manual}~\cite{mazur1997peer,mazur1999}.
-    In this book, Mazur recounts how he observed a disconnect between students' ability to answer quantitative and conceptual questions in physics.
-    He concluded that this resulted from the students' approach of memorizing problem solving algorithms, even if they might not always apply to a given problem.
-    Peer Instruction (PI) as a method of instruction aims to address this issue.
-    PI forces students to think for themselves and engage with the learning material instead of simply absorbing the information from lectures given by the instructor.
-    Engaging with the material allows students to develop a deeper understanding of the concepts and apply them to different problems.
-    This has been shown to not only apply in high school physics, but also in other disciplines and higher education~\cite{johnson2008active,fagen2000factors,fagen2002peer}.
+%    Literature discussing peer instruction, especially for physics often cites Mazur's work \textit{Peer Instruction: A User's Manual} .
+%    In this book, Mazur recounts how he observed a disconnect between students' ability to answer quantitative and conceptual questions in physics.
+    Peer instruction (PI)--an increasingly popular method of instruction--attempts to solve a disconnect between students' ability to answer quantitative and conceptual questions, particularly in physics subject matters~\cite{mazur1997peer,mazur1999}.
+%    He concluded that this resulted from the students' approach of memorizing problem solving algorithms, even if they might not always apply to a given problem.
+	Such disconnect is said to be attributed to the typical approach of memorizing physics problem patterns and applying the same solution patterns regardless of their potential non-applicability.
+%    Peer Instruction (PI) as a method of instruction aims to address this issue.
+    The PI method forces students to think critically and to engage with peers guided by the learning material as opposed to simply absorbing the information from lectures given by the instructor as in the traditional mode of instruction (TI).
+    The method's effectivity has been shown not only in high school physics settings, but also in other disciplines and higher education settings~\cite{johnson2008active,fagen2000factors,fagen2002peer}.
 
-    \subsection{Difference of Peer Instruction from Traditional Instruction}
+%%%%%%%%%%%%%%%
+%%    \subsection{Difference of Peer Instruction from Traditional Instruction}
 
-    There are many ways to implement PI in the classroom.
-    The method outlined by Mazur~\cite{mazur1997peer} involves the instructor giving a short lecture on a topic, followed by a multiple choice question (MCQ) that the students answer individually.
-    The students then discuss their answers with their peers before answering an MCQ again.
-    Variations can be made depending on the class set up and the instructor.
+%    There are many ways to implement PI in the classroom.
+%    The method outlined by Mazur~\cite{mazur1997peer} involves the instructor giving a short lecture on a topic, followed by a multiple choice question (MCQ) that the students answer individually.
+%    The students then discuss their answers with their peers before answering an MCQ again.
+%    Variations can be made depending on the class set up and the instructor.
     
-    This is in stark contrast with how traditional instruction (TI) is conducted where the instructor often just gives a lecture for the entire duration of the class.
-    PI is meant to be student centric, meaning that the instructor is expected to make differences to the steps outlined above to adjust to the class's needs.
-    The MCQs can be graded or ungraded~\cite{crouch2001peer}, the instructor can choose to give multiple MCQs and peer discussion opportunities during one class, or the instructor can choose to give a different MCQ after the discussion as long as it still tackles the same learning objective~\cite{smith2009peer}.
-    If only a few students answer the MCQ correctly, the instructor can even give a short lecture to clarify the concept~\cite{lasry2008peer}.
+    The PI method as outlined by Mazur and Somers~\cite{mazur1997peer} typically involves an instructor giving a short lecture on the topic, followed by a multiple-choice question (MCQ) that the student answer individually.
+    PI emphasizes on the next phases of instruction which involve repeated cycle of students sharing their answers to the MCQ and discussing them with peers, usually until they get the concepts right.
+    This part makes PI method student centric requiring the instructor to intervene with slightly modified steps to adjust to the needs of the class.
+    As long as the same learning objectives are tackled, the instructor can choose variations in the method~\cite{smith2009peer} such as the multiplicity of the peer sharing and discussion phase, decide levels of requirements and/or evaluation~\cite{crouch2001peer}, provide different MCQ sets, or even give a short lecture to ensure clarity of concepts~\cite{lasry2008peer}.
+    The PI thus contrasts highly against the traditional method (TI) with which the instructor giving a lecture for the entire duration of the class with minimal opportunity of in-class peer interactions among the students.
+    
+%    This is in stark contrast with how traditional instruction (TI) is conducted where the instructor often just gives a lecture for the entire duration of the class.
+%    PI is meant to be student centric, meaning that the instructor is expected to make differences to the steps outlined above to adjust to the class's needs.
+%    The MCQs can be graded or ungraded \cite{crouch2001peer}, the instructor can choose to give multiple MCQs and peer discussion opportunities during one class, or the instructor can choose to give a different MCQ after the discussion as long as it still tackles the same learning objective \cite{smith2009peer}.
+%    If only a few students answer the MCQ correctly, the instructor can even give a short lecture to clarify the concept \cite{lasry2008peer}.
 
-    \subsection{Benefits of PI}
+%%%%%%%%%%%%%%%
+%%    \subsection{Benefits of PI}
 
     Despite the de-emphasis on problem-solving in PI lectures, students' quantitative problem-solving skills were not compromised and was even improved compared to traditional instruction in some cases.
-    PI was also find to significantly decrease the number of of students with extremely low scores~\cite{crouch2001peer}.
-    This is consistent with findings of other studies~\cite{lasry2008peer,thacker1994comparing}.
+    PI was also shown to significantly decrease the number of of students with extremely low scores \cite{crouch2001peer}.
+    This is consistent with findings of other studies \cite{lasry2008peer,thacker1994comparing}.
     Similarly, students' conceptual understanding of the lessons also improved.
-    This holds true for both in-class concept tests and end-of-semester exams~\cite{crouch2001peer}.
+    This holds true for both in-class concept tests and end-of-semester exams \cite{crouch2001peer}.
 
-    Smith, et. al~\cite{smith2009peer} modified the PI method to make sure that students were not copying off of each other. After the first MCQ, he did not show the class's answer statistics and used a pair of isomorphic questions for the MCQs before and after the peer discussion section. Isomorphic questions are questions that tackle the same learning objectives but have different "cover stories".
+    Smith, et. al \cite{smith2009peer} modified the PI method to make sure that students were not copying off of each other. After the first MCQ, he did not show the class's answer statistics and used a pair of isomorphic questions for the MCQs before and after the peer discussion section. Isomorphic questions are questions that tackle the same learning objectives but have different "cover stories".
     They also found that even in groups whose members were not able to answer the first MCQ, students were able to get the correct answer for the second MCQ.
     This contradicts the transmissionist view of PI where students only learn from other students who already know the lesson.
     The study provides evidence that PI can be viewed as constructivist where students learn on their own through discussion and not simply from hearing the correct answer.
 
-    In addition to those mentioned above Lasry, et. al.~\cite{lasry2008peer} showed that PI is not necessarily dependent on background knowledge. They found that students in under PI performed as well as or better than those under TI despite the former having less background knowledge.
+    In addition to those mentioned above Lasry, et. al. \cite{lasry2008peer} showed that PI is not necessarily dependent on background knowledge. They found that students in under PI performed as well as or better than those under TI despite the former having less background knowledge.
     They also found the PI greatly reduced the number of students who dropped the course.
-    An older paper by Tobias~\cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
+    An older paper by Tobias \cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
 
 
 \section{Existing Mathematical Models of PI}
 
     Although there are some mathematical models for learning, the ones that describe learning in the classroom are few and far in between - even more so for those that model PI.
 
-    Roxas et al.~\cite{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
+    Roxas et al. \cite{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
     Using this neural network, they were able to characterize information transfer and investigate the effects of group homogeneity. 
     Their study also investigated the optimal seating arrangement for students under PI methods based on their aptitude.
-    In their paper, the measure of students' improvement was calculated via the Hake gain as shown in Equation~\ref{eq: hake gain}~\cite{hake1998}.
+    In their paper, the measure of students' improvement was calculated via the Hake gain as shown in Equation~\ref{eq: hake gain} \cite{hake1998}.
     They also used the output/input ratio (O/I), which was the ratio of second assessment scores vs first assessment scores, to gauge student improvement.
     However, it should be noted that O/I values tend to be biased towards low-scoring students.
     \begin{equation}
@@ -120,35 +131,33 @@
         \label{fig:PI SAs}
     \end{figure}
 
-    Nitta~\cite{nitta2019mathematical} gives us a few existing models that model PI. 
-    One of the models that was presented is a generalized Ising Model by Bordogna and Albano~\cite{bordogna2001theoretical,bordogna2003simulation} where they consider three sources of information for the student to learn from: teacher instruction, peer interaction, and bibliographic materials (books, lecture notes, etc.)
+    Nitta \cite{nitta2019mathematical} gives us a few existing models that model PI. 
+    One of the models that was presented is a generalized Ising Model by Bordogna and Albano \cite{bordogna2001theoretical,bordogna2003simulation} where they consider three sources of information for the student to learn from: teacher instruction, peer interaction, and bibliographic materials (books, lecture notes, etc.)
     Their model shows that students learn more when they engage discussions with their peers than those who only listen to lectures.
     They also show that group structure affects student learning, and that low aptitude students may learn at the expense of high aptitude peers - a transmissionist view of PI.
 
-    Nitta also presents a model by Pritchard et al~\cite{pritchard2008mathematical} where PI is modeled as a set differential equations that is dependent on the probability of students learning to stick (memory model, Equation~\ref{eq:memory model}) and the ability for students to associate new learnings from old knowledge via logistic differential equation (connectedness model, Equation~\ref{eq:connectedness model}.)
-
-    Memory model:
+    Nitta also presents a model by Pritchard et al \cite{pritchard2008mathematical} where PI is modeled as a set differential equations that is dependent on the probability of students learning to stick (memory model, Equation~\ref{eq:memory model}) and the ability for students to associate new learnings from old knowledge via logistic differential equation (connectedness model, Equation~\ref{eq:connectedness model}.)
+%%
+    The Memory model requires
     \begin{equation}
         \label{eq:memory model}
         \frac{dU_T(t)}{dt} = -\alpha_m U_T(t)
     \end{equation}
-
-    Connectedness model:
+%%
+    while the Connectedness model requires
     \begin{equation}
         \label{eq:connectedness model}
-        \frac{dU_T(t)}{dt} = -\alpha_c U_T(t)K_T(t)
+        \frac{dU_T(t)}{dt} = -\alpha_c U_T(t)K_T(t),
     \end{equation}
-
-    where knowledge is taken to grow at a uniform rate, as in the tutoring model:
-    \begin{equation}
-        \label{eq:tutoring model}
-        K_T(t) = \alpha_{tu}t + K_T(0)
-    \end{equation}
-    \begin{equation}
-        U(t) + K(T) = 1
-    \end{equation}
-
-    In these equations $U(T)$ and $K(T)$ are the unknown and known knowledge domains respectively. $\alpha_m$, $\alpha_c$, and $\alpha_{tu}$ are the corresponding rates for the memory model, connectedness model, and tutoring model 
+%%
+    where knowledge is taken to grow at a uniform rate, as in the Tutoring model:
+    \begin{eqnarray}
+        K_T(t) &=& \alpha_{tu}t + K_T(0) \label{eq:tutoring model} \\
+        U(t) + K(T) &=& 1
+    \end{eqnarray}
+%%
+    In these equations $U(T)$ and $K(T)$ are the unknown and known knowledge domains respectively.
+    The parameters $\alpha_m$, $\alpha_c$, and $\alpha_{tu}$ are the corresponding rates for the memory model, connectedness model, and tutoring model 
 
     In deriving their own model of PI, Nitta arrived at analytic equations similar to the Hake gain (Equation~\ref{eq: hake gain}) to evaluate the effectiveness of PI for a concept test question (Equation~\ref{eq: PIE}) and Pritchard's connectedness model (Equation~\ref{eq:connectedness model}) to model students' learning after each MCQ (Equation~\ref{eq: nitta model}).
 
@@ -165,11 +174,11 @@
     Comparing their equations to data, they concluded that these metrics and equations roughly agree with the data and could give us insights on the learning dynamics of the classroom.
 
     The process of PI is complex, with many interacting components.
-    Existing models are either predictive, as in the case of the neural network modeling of Roxas et al.~\cite{roxas2010seating} or lack the spatial aspect of the process as with the differential equations of Pritchard~\cite{pritchard2008mathematical} and Nitta~\cite{nitta2019mathematical}.
-    While Bordogna et al.~\cite{bordogna2001theoretical,bordogna2003simulation} present to us a dynamical model in their generalized Ising model, it lacks some of the aspects of PI we'd like to consider like seating arrangements, students' learning rate, and heterogeneity.
+    Existing models are either predictive, as in the case of the neural network modeling of Roxas et al. \cite{roxas2010seating} or lack the spatial aspect of the process as with the differential equations of Pritchard \cite{pritchard2008mathematical} and Nitta \cite{nitta2019mathematical}.
+    While Bordogna et al. \cite{bordogna2001theoretical,bordogna2003simulation} present to us a dynamical model in their generalized Ising model, it lacks some of the aspects of PI we'd like to consider like seating arrangements, students' learning rate, and heterogeneity.
 
     We propose that a probabilistic cellular automata model can be used to study the spatiotemporal dynamics of both PI and traditional instruction when incorporating these different aspects into the model.
-    We previously used a probabilistic cellular automata to model the classroom~\cite{SelfSPP}, the results of which were presented in the 42$^{\text{nd}}$ Samahang Pisika ng Pilipinas Conference in July 2024.
+    We previously used a probabilistic cellular automata to model the classroom \cite{SelfSPP}, the results of which were presented in the 42$^{\text{nd}}$ Samahang Pisika ng Pilipinas Conference in July 2024.
     The findings presented in the paper are also presented in this study as part of the results.
 
 \section{Modelling The Classroom As A Probabilistic Cellular Automaton}
@@ -352,7 +361,7 @@
     \end{figure}
 
     These findings suggests that to optimize the learning in the classroom, it would be best to perform TI at the start of the class to take advantage of the fast initial learning stage, then switch to PI where the time to learn $t_{max}$ is lower than TI for the same set of parameters.
-    This is consistent with current practices as outlined by Mazur~\cite{mazur1997peer} and modified by others~\cite{smith2009peer,roxas2010seating,lasry2008peer}, where the students are expected to have read up on the material in advance and the instructor gives a short lecture before the students engage in peer discussion.
+    This is consistent with current practices as outlined by Mazur \cite{mazur1997peer} and modified by others \cite{smith2009peer,roxas2010seating,lasry2008peer}, where the students are expected to have read up on the material in advance and the instructor gives a short lecture before the students engage in peer discussion.
 
     \subsection{Summary of effects of class size $N$, positional learning factor $\rho_0$, and learning rate heterogeneity $\delta\lambda$}
         
@@ -376,7 +385,7 @@
 
     \subsection{Comparison with existing research/data}
         
-        Comparing our data to Nitta's model (Equation~\ref{eq: nitta model})~\cite{nitta2019mathematical}, as in Figure~\ref{fig:Return map}, only our data for PI approaches their model --- this is expected since their model is for PI and not TI.
+        Comparing our data to Nitta's model (Equation~\ref{eq: nitta model}) \cite{nitta2019mathematical}, as in Figure~\ref{fig:Return map}, only our data for PI approaches their model --- this is expected since their model is for PI and not TI.
         Furthermore, PI only approaches their model when the conditions are favorable for PI.
         Considering that their model has been shown to agree with experimental data, it suggests that real world students' behavior and learning dynamics are better represented by the values of high positional learning factor $\rho_0$ and small class sizes $N$.
         It should also be noted that Nitta's model and data tracks individual students' learning while our model tracks the class's learning as a whole.
@@ -394,9 +403,9 @@
             \label{fig:Return map}
         \end{figure}
         
-        Comparing our data to Roxas' work~\cite{roxas2010seating}, we find that the inner corner seating arrangement performs the best in our model, which is different from their findings where the outer corner seating arrangement performed the best.
+        Comparing our data to Roxas' work \cite{roxas2010seating}, we find that the inner corner seating arrangement performs the best in our model, which is different from their findings where the outer corner seating arrangement performed the best.
         This difference can be attributed to the simplifications made in our model.
-        We were not able to consider the aptitude similarity effect that happens where students of similar aptitude learn better when grouped together regardless of their actual aptitude level~\cite{smith2009peer}.
+        We were not able to consider the aptitude similarity effect that happens where students of similar aptitude learn better when grouped together regardless of their actual aptitude level \cite{smith2009peer}.
         The implementation of this phenomenon is better suited for a continuous-state model rather than a binary-state model.
         Additionally, we did not consider the orientation of the students in the classroom, resulting in an isotropic system.
         In addition to the findings regarding seating arrangements, our model also agrees with their findings that homogenous classes find better improvements compared to heterogeneous classes.
@@ -409,14 +418,14 @@
     On the other hand, PI performs better in smaller classes and when the students have high learning rate heterogeneity.
     To be more precise, class size, heterogeneity, and low positional learning factor affect both TI and PI negatively, but TI is not as affected by class size compared to PI and PI is not as affected by heterogeneity compared to TI.
 
-    We also found that when a highly heterogeneous class is under TI, the class exhibits a two-stage learning process where majority of the fast students learn in the first few time steps and the rest of the time is spend waiting for slower students to learn. Our findings regarding class heterogeneity are in line with those of Roxas, et al. (2010)~\cite{roxas2010seating}.
+    We also found that when a highly heterogeneous class is under TI, the class exhibits a two-stage learning process where majority of the fast students learn in the first few time steps and the rest of the time is spend waiting for slower students to learn. Our findings regarding class heterogeneity are in line with those of Roxas, et al. (2010) \cite{roxas2010seating}.
     However, our findings regarding seating arrangement differ from theirs where they found that the outer corner seating arrangement perform best while we found that the inner corner seating arrangement perform best.
     This difference is likely because of the simplifications made in our model --- namely learning isotropy and non-implementation of an aptitude similarity effect.
     These simplifications are from the limitations of having a binary-state model.
 
     Another limitation of having a binary-state model is that we there is not much insight to be gained from tracking individual students' learning.
     Hence, we chose to track the class's learning as a whole.
-    Despite having a different way to assess the methods of instruction effectiveness, our findings are consistent with the existing works like that of Nitta, et al.~\cite{nitta2019mathematical} which is backed by real-world data.
+    Despite having a different way to assess the methods of instruction effectiveness, our findings are consistent with the existing works like that of Nitta, et al. \cite{nitta2019mathematical} which is backed by real-world data.
 
     While our model can be a good approximation of the real world, there are still improvements that can be made.
     The current model only considers the peer discussion part of a whole PI session.
