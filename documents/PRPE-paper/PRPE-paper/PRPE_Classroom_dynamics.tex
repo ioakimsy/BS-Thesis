@@ -119,7 +119,7 @@
 %    An older paper by Tobias \cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
 
 
-\section{Existing Mathematical Models of PI}
+\section{Mathematical models}
 
     Although there are some mathematical models for learning, the ones that describe learning in the classroom are few and far in between - even more so for those that model PI.
 
@@ -191,14 +191,13 @@
     Existing models are either predictive, as in the case of the neural network modeling of Roxas et al. \cite{roxas2010seating} or lack the spatial aspect of the process as with the differential equations of Pritchard \cite{pritchard2008mathematical} and Nitta \cite{nitta2019mathematical}.
     While Bordogna et al. \cite{bordogna2001theoretical,bordogna2003simulation} present to us a dynamical model in their generalized Ising model, it lacks some of the aspects of PI we'd like to consider like seating arrangements, students' learning rate, and heterogeneity.
 
-    We propose that a probabilistic cellular automata model can be used to study the spatiotemporal dynamics of both PI and traditional instruction when incorporating these different aspects into the model.
+\section{A probabilistic cellular automata model}
+
+    Here, we show that a probabilistic cellular automata model can be used to study the spatiotemporal dynamics of both PI and traditional instruction when incorporating these different aspects into the model.
     We previously used a probabilistic cellular automata to model the classroom \cite{SelfSPP}, the results of which were presented in the 42$^{\text{nd}}$ Samahang Pisika ng Pilipinas Conference in July 2024.
     The findings presented in the paper are also presented in this study as part of the results.
 
-\section{Modelling The Classroom As A Probabilistic Cellular Automaton}
-
-    We use a probabilistic cellular automata (PCA) model to simulate the learning process in the classroom.
-    In this PCA model, each cell in the automaton represents a student where each student is assigned a learning rate $\lambda_{i,j}$ to describe how fast they learn as an individual.
+    For the PCA model, each cell in the automaton represents a student where each student is assigned a learning rate $\lambda_{i,j}$ to describe how fast they learn as an individual.
     The state of each cell represents their aptitude $s_{i,j}=\lbrace\text{unlearned},\text{learned}\rbrace=\lbrace0,1\rbrace$.
     We assign the neighborhood to be an outer totalistic Moore neighborhood of radius $r=1$ and define the boundary conditions to be fixed wherein the grid does not wrap around itself and $s_{i,j}=0 \text{ for }i,j\notin[1,L]$.
     For each time step, we find the probability of a student to learn and update the state of the student based on this probability.
@@ -207,17 +206,17 @@
     \subsection{Update Rules for Traditional Instruction (TI)}
 
         For traditional instruction, the probability of a student to learn in each time step ($P_{i,j}$) is given by:
-
+        %%
         \begin{equation}
             P_{i,j} = \lambda_{i,j}\rho_0
         \end{equation}
-
+        %%
         where
-
+        %%
         $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, 
-
-        $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$
-
+        %%
+        $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$, and
+        %%
         $\rho_{0} \in [0,1]$ is the probability of $c_{i,j}$ to learn from the teacher based on their relative position from the teacher.
 
         We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
@@ -228,7 +227,7 @@
 
         The numerical procedure is outlined in Figure~\ref{fig:TI flowchart}.
         Each simulation for the TI model starts with all students unlearned.
-
+        %%
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2DBPCA TI Flowchart.png}
@@ -239,25 +238,26 @@
     \subsection{Update Rules for Peer Instruction (PI)}
 
         In contrast to TI, the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
-
+        %%
         \begin{equation}
             \label{eq:BPCA PI learning probability}
                 P_{i,j} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{i,j})(\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}\rbrack
         \end{equation}
-        
+        %%
         where
-        
-        $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, 
-        
-        $\lambda_{i,j} \in  [0,1]$ is the learning rate of student $c_{i,j}$. We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
-        
-        $\rho_{\delta i, \delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
-        
+        %%
+        $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, and
+        %%
+        $\lambda_{i,j} \in  [0,1]$ is the learning rate of student $c_{i,j}$.
+        We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
+        %%
+        The variables $\rho_{\delta i, \delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
+        %%
         $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors' aptitude level.
 
         The numerical procedure is outlined in Figure~\ref{fig:PI flowchart}.
         Each simulation for the PI model starts with only four learned students $n_0 = 4$.
-
+        %%
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2DBPCA PI Flowchart.png}

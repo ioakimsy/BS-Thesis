@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.30)  21 MAR 2025 00:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.30)  21 MAR 2025 00:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -396,7 +396,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `PRPE_Classroom_dynamics.toc'.
 
  [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figures/PI SAs.png, id=121, 474.135pt x 525.162pt>
+<figures/PI SAs.png, id=120, 474.135pt x 525.162pt>
 File: figures/PI SAs.png Graphic file (type png)
 <use figures/PI SAs.png>
 Package pdftex.def Info: figures/PI SAs.png  used on input line 143.
@@ -406,15 +406,19 @@ Package pdftex.def Info: figures/PI SAs.png  used on input line 143.
 File: figures/2DBPCA TI Flowchart.png Graphic file (type png)
 <use figures/2DBPCA TI Flowchart.png>
 Package pdftex.def Info: figures/2DBPCA TI Flowchart.png  used on input line 23
-4.
+3.
 (pdftex.def)             Requested size: 229.49844pt x 100.58466pt.
- [3 <./figures/2DBPCA TI Flowchart.png>]
-<figures/2DBPCA PI Flowchart.png, id=177, 1705.791pt x 625.902pt>
+<figures/2DBPCA PI Flowchart.png, id=164, 1705.791pt x 625.902pt>
 File: figures/2DBPCA PI Flowchart.png Graphic file (type png)
 <use figures/2DBPCA PI Flowchart.png>
 Package pdftex.def Info: figures/2DBPCA PI Flowchart.png  used on input line 26
 3.
 (pdftex.def)             Requested size: 229.49844pt x 84.2066pt.
+ [3 <./figures/2DBPCA TI Flowchart.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
+ on input line 271.
+
 <figures/2D-BPCAIH-analysis/comparison plots/size.png, id=179, 2007.5pt x 1419.
 3025pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/size.png Graphic file (type p
@@ -431,10 +435,7 @@ png)
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png 
  used on input line 316.
 (pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
- [4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.en
-c} <./figures/2DBPCA PI Flowchart.png> <./figures/2D-BPCAIH-analysis/comparison
- plots/size.png> <./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png>]
-<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=196, 2007.5pt x 1419.
+<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=183, 2007.5pt x 1419.
 3025pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/δλ.png Graphic file (type p
 ng)
@@ -442,6 +443,13 @@ ng)
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  
 used on input line 331.
 (pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
+[4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+} <./figures/2DBPCA PI Flowchart.png> <./figures/2D-BPCAIH-analysis/comparison 
+plots/size.png> <./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
+ on input line 343.
+
 <figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=198, 2007.5pt x 1419.30
 25pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/SA.png Graphic file (type png
@@ -470,7 +478,6 @@ Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low r
 ho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png  used on input
  line 371.
 (pdftex.def)             Requested size: 117.29782pt x 99.08621pt.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 380.
@@ -516,7 +523,7 @@ H-analysis/comparison plots/SA.png> <./figures/2D-BPCAIH-analysis/class evoluti
 ons/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png> 
 <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH
 -traditional-64-0.3-0.5-0.4-trial_3-13.png>]
-<figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=220, 1254.
+<figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=219, 1254.
 6875pt x 887.315pt>
 File: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png Graphic f
 ile (type png)
@@ -524,7 +531,7 @@ ile (type png)
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 compa
 rison.png  used on input line 393.
 (pdftex.def)             Requested size: 239.70062pt x 169.51227pt.
-<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=224
+<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=223
 , 4015.0pt x 2838.605pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png Gr
 aphic file (type png)
@@ -532,7 +539,7 @@ aphic file (type png)
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-128
 -0.1-0.5-0.4.png  used on input line 411.
 (pdftex.def)             Requested size: 239.70062pt x 169.44267pt.
-<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=225,
+<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=224,
  4015.0pt x 2838.605pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png Gra
 phic file (type png)
@@ -586,13 +593,13 @@ L3 programming layer <2024-05-08>
  ***********
 Package rerunfilecheck Info: File `PRPE_Classroom_dynamics.out' has not changed
 .
-(rerunfilecheck)             Checksum: 4E354E029FDF37E9B48EFEA196F969F2;3994.
+(rerunfilecheck)             Checksum: 1642847CB154B777682BE4E1C0D83570;3791.
  ) 
 Here is how much of TeX's memory you used:
- 11438 strings out of 473993
- 177149 string characters out of 5741034
+ 11439 strings out of 473993
+ 177157 string characters out of 5741034
  1952904 words of memory out of 5000000
- 33731 multiletter control sequences out of 15000+600000
+ 33732 multiletter control sequences out of 15000+600000
  566006 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,852b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -616,10 +623,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf
 ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/
 fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on PRPE_Classroom_dynamics.pdf (8 pages, 3560387 bytes).
+Output written on PRPE_Classroom_dynamics.pdf (8 pages, 3559466 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 291 compressed objects within 3 object streams
+ 362 PDF objects out of 1000 (max. 8388607)
+ 290 compressed objects within 3 object streams
  63 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

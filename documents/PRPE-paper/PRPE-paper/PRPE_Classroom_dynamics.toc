@@ -4,8 +4,8 @@
 \contentsline {section}{\numberline {}Contents}{1}{section*.3}%
 \tocdepth@restore 
 \contentsline {section}{\numberline {I}Introduction}{1}{section*.4}%
-\contentsline {section}{\numberline {II}Existing Mathematical Models of PI}{2}{section*.5}%
-\contentsline {section}{\numberline {III}Modelling The Classroom As A Probabilistic Cellular Automaton}{3}{section*.6}%
+\contentsline {section}{\numberline {II}Mathematical models}{2}{section*.5}%
+\contentsline {section}{\numberline {III}A probabilistic cellular automata model}{3}{section*.6}%
 \contentsline {subsection}{\numberline {III.1}Update Rules for Traditional Instruction (TI)}{3}{section*.7}%
 \contentsline {subsection}{\numberline {III.2}Update Rules for Peer Instruction (PI)}{3}{section*.8}%
 \contentsline {subsection}{\numberline {III.3}Model parameters}{4}{section*.9}%
