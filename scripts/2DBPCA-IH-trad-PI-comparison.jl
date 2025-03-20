@@ -218,15 +218,15 @@ function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
     
     color = ColorSchemes.seaborn_colorblind.colors
 
-    fig = Figure(size=(1000,1000*0.7); dpi = 300)
+    fig = Figure(size=(1000,1000÷√2); dpi = 300)
 
     ax = Axis(fig[1, 1];
-        xlabel = "f(t-1)",
-        ylabel = "f(t)",
+        xlabel = L"f(t-1)",
+        ylabel = L"f(t)",
         # xscale = log10,
         # yscale = log10,
-        title = "Return map of learned fraction",
-        subtitle = "L=$(return_map_params[1]), SA=$(return_map_params[2]), ρ₀=$(return_map_params[3]), λ=$(return_map_params[4]), δλ=$(return_map_params[5])",
+        # title = "Return map of learned fraction",
+        # subtitle = "L=$(return_map_params[1]), ρ₀=$(return_map_params[3]), λ=$(return_map_params[4]), δλ=$(return_map_params[5])",
         # xminorgridvisible = false,
         # yminorgridvisible = false,
         xlabelsize = 24,
@@ -237,44 +237,59 @@ function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
         yticklabelsize = 16,
     )
 
-    
-    learned_data = read_time_series_data_raw(return_map_params...)
-    
-    f_t_data = []
-    f_t1_data = []
+    ti_params = [Int(return_map_params[1]), "traditional", return_map_params[3], return_map_params[4], return_map_params[5]]
+    pi_params = [Int(return_map_params[1]), "inner_corner", return_map_params[3], return_map_params[4], return_map_params[5]]
 
-    for i in eachindex(learned_data)
-        f_t = learned_data[i][2:end]
-        f_t_1 = learned_data[i][1:end-1]
+    learned_data_ti = read_time_series_data_raw(ti_params...)
+    learned_data_pi = read_time_series_data_raw(pi_params...)
 
-        push!(f_t_data, f_t...)
-        push!(f_t1_data, f_t_1...)
-        
-        scatter!(ax, f_t_1, f_t,
-        label = "Trial $i",
-        color = (color[i], 0.5),
-        marker = [:circle, :rect, :hexagon, :utriangle, :diamond][i],
-        markersize = 10,
+    for j in 1:2
+        learned_data = j == 1 ? learned_data_ti : learned_data_pi
+        f_t_data = []
+        f_t1_data = []
+
+        for i in eachindex(learned_data)
+            f_t = learned_data[i][2:end]
+            f_t_1 = learned_data[i][1:end-1]
+
+            push!(f_t_data, f_t...)
+            push!(f_t1_data, f_t_1...)
+        end
+
+        scatter!(ax, f_t1_data, f_t_data,
+        label = j == 1 ? "Traditional" : "Inner corner",
+        color = (color[j], 0.5),
+        marker = [:circle, :rect, :hexagon, :utriangle, :diamond][j],
+        markersize = 16,
         )
-    end
 
+        
+
+        @. quad_model(x,p) = p[1] * x^2 + p[2] * x + p[3]
+        quad_fit = curve_fit(quad_model, f_t1_data, f_t_data, [0.0, 1.0, 0.0])
+        quad_fit_params = quad_fit.param
+
+        # lines!(ax, 0:0.01:1, logistic_model(0:0.01:1), label = "fₜ = fₜ₋₁ + fₜ₋₁ (1 - fₜ₋₁)", color = :red)
+
+        
+        lines!(ax, 0:0.01:1, quad_model(0:0.01:1, quad_fit_params), 
+        label = L"f_t=%$(round(quad_fit_params[1], digits=3))f_{t-1}^2+%$(round(quad_fit_params[2], digits=3))f_{t-1}+%$(round(quad_fit_params[3], digits=3))", 
+        color = ColorSchemes.seaborn_colorblind[j],
+        linestyle = :dash
+        )
+        
+    end
     @. logistic_model(x) = x + x * (1 - x)
 
-    @. quad_model(x,p) = p[1] * x^2 + p[2] * x + p[3]
-    quad_fit = curve_fit(quad_model, f_t1_data, f_t_data, [0.0, 1.0, 0.0])
-    quad_fit_params = quad_fit.param
-
-    lines!(ax, 0:0.01:1, logistic_model(0:0.01:1), label = "fₜ = fₜ₋₁ + fₜ₋₁ (1 - fₜ₋₁)", color = :red)
-
-    lines!(ax, 0:0.01:1, quad_model(0:0.01:1, quad_fit_params), label = "fₜ = $(round(quad_fit_params[1], digits=3)) fₜ₋₁² + $(round(quad_fit_params[2], digits=3)) fₜ₋₁ + $(round(quad_fit_params[3], digits=3))", color = :blue)
+    lines!(ax, 0:0.01:1, logistic_model(0:0.01:1), label = L"f_t=f_{t-1}+f_{t-1}\dot(1-f_{t-1})", color = ColorSchemes.seaborn_colorblind[3], linestyle = :solid)
     
-    lines!(ax, 0:0.01:1, 0:0.01:1, label = "y=x", color = :black, linestyle = :dash)
+    lines!(ax, 0:0.01:1, 0:0.01:1, label = L"y=x", color = ColorSchemes.seaborn_colorblind[8], linestyle = :solid)
     
-    axislegend(ax, position = :rb)
+    axislegend(ax, position = :rb, labelsize = 24, background_color = :transparent, framevisible = false)
     fig
 
     savepath = "./output/2D-Binary-PCA-IH/analysis/plots/return-map/"
-    filename = "return-map-$(return_map_params[2])-$(return_map_params[1])-$(return_map_params[3])-$(return_map_params[4])-$(return_map_params[5])"
+    filename = "return-map-$(return_map_params[1])-$(return_map_params[3])-$(return_map_params[4])-$(return_map_params[5])"
 
     save(savepath * filename * ".png", fig)
 end
@@ -284,8 +299,8 @@ begin
     comparison = [
         "size",
         # "SA",
-        # "ρ₀",
-        # "δλ",
+        "ρ₀",
+        "δλ",
     ]
 
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
@@ -300,7 +315,26 @@ begin
     initial_conditions
 end
 
-begin
+begin #! Return map
+    comparison = [
+        "size",
+        # "SA",
+        "ρ₀",
+        "δλ",
+    ]
+
+    sizes = in("size", comparison) ? [32, 64, 128] : [64]
+    SAs = in("SA", comparison) ? ["traditional", "inner_corner", "outer_corner", "center", "random"] : [ "traditional", "inner_corner"]
+    Ρs = in("ρ₀", comparison) ? [0.1, 0.5, 0.9] : [0.5]
+    δλ = in("δλ", comparison) ? [0.0, 0.2, 0.4] : [0.2]
+
+    initial_conditions = []
+    for size in sizes, ρ₀ in Ρs, δλ in δλ
+        push!(initial_conditions, [size, "_" , ρ₀, 0.5, δλ])
+    end
+
+    initial_conditions
+
     for i in eachindex(initial_conditions)
         return_map(initial_conditions[i])
     end
@@ -316,4 +350,3 @@ begin #* Comparing time series traditional with PI
 
     comparison_plot
 end
-
