@@ -98,17 +98,17 @@
 %%    \subsection{Benefits of PI}
 
     Despite the de-emphasis on problem-solving in PI lectures, students' quantitative problem-solving skills were not compromised and was even improved compared to traditional instruction in some cases.
-    PI was also shown to significantly decrease the number of of students with extremely low scores \cite{crouch2001peer}.
+    % PI was also shown to significantly decrease the number of students with extremely low scores \cite{crouch2001peer}.
     This is consistent with findings of other studies \cite{lasry2008peer,thacker1994comparing}.
     Similarly, students' conceptual understanding of the lessons also improved.
     This holds true for both in-class concept tests and end-of-semester exams \cite{crouch2001peer}.
 
-    Smith, et. al \cite{smith2009peer} modified the PI method to make sure that students were not copying off of each other. After the first MCQ, he did not show the class's answer statistics and used a pair of isomorphic questions for the MCQs before and after the peer discussion section. Isomorphic questions are questions that tackle the same learning objectives but have different "cover stories".
+    Smith, et al. \cite{smith2009peer} modified the PI method to make sure that students were not copying off of each other. After the first MCQ, he did not show the class's answer statistics and used a pair of isomorphic questions for the MCQs before and after the peer discussion section. Isomorphic questions are questions that tackle the same learning objectives but have different "cover stories".
     They also found that even in groups whose members were not able to answer the first MCQ, students were able to get the correct answer for the second MCQ.
     This contradicts the transmissionist view of PI where students only learn from other students who already know the lesson.
     The study provides evidence that PI can be viewed as constructivist where students learn on their own through discussion and not simply from hearing the correct answer.
 
-    In addition to those mentioned above Lasry, et. al. \cite{lasry2008peer} showed that PI is not necessarily dependent on background knowledge. They found that students in under PI performed as well as or better than those under TI despite the former having less background knowledge.
+    In addition to those mentioned above Lasry, et al. \cite{lasry2008peer} showed that PI is not necessarily dependent on background knowledge. They found that students in under PI performed as well as or better than those under TI despite the former having less background knowledge.
     They also found the PI greatly reduced the number of students who dropped the course.
     An older paper by Tobias \cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
 
@@ -144,7 +144,7 @@
     Their model shows that students learn more when they engage discussions with their peers than those who only listen to lectures.
     They also show that group structure affects student learning, and that low aptitude students may learn at the expense of high aptitude peers - a transmissionist view of PI.
 
-    Nitta also presents a model by Pritchard et al \cite{pritchard2008mathematical} where PI is modeled as a set differential equations that is dependent on the probability of students learning to stick (memory model, Equation~\ref{eq:memory model}) and the ability for students to associate new learnings from old knowledge via logistic differential equation (connectedness model, Equation~\ref{eq:connectedness model}.)
+    Nitta also presents a model by Pritchard et al. \cite{pritchard2008mathematical} where PI is modeled as a set of differential equations that is dependent on the probability of students learning to stick (memory model, Equation~\ref{eq:memory model}) and the ability for students to associate new learnings from old knowledge via logistic differential equation (connectedness model, Equation~\ref{eq:connectedness model}.)
 %%
     The Memory model requires
     \begin{equation}
@@ -183,7 +183,7 @@
 
     The process of PI is complex, with many interacting components.
     Existing models are either predictive, as in the case of the neural network modeling of Roxas et al. \cite{roxas2010seating} or lack the spatial aspect of the process as with the differential equations of Pritchard \cite{pritchard2008mathematical} and Nitta \cite{nitta2019mathematical}.
-    While Bordogna et al. \cite{bordogna2001theoretical,bordogna2003simulation} present to us a dynamical model in their generalized Ising model, it lacks some of the aspects of PI we'd like to consider like seating arrangements, students' learning rate, and heterogeneity.
+    While Bordogna et al. \cite{bordogna2001theoretical,bordogna2003simulation} present to us a dynamical model in their generalized Ising model, it lacks some aspects of PI we'd like to consider like seating arrangements, students' learning rate, and heterogeneity.
 
     We propose that a probabilistic cellular automata model can be used to study the spatiotemporal dynamics of both PI and traditional instruction when incorporating these different aspects into the model.
     We previously used a probabilistic cellular automata to model the classroom \cite{SelfSPP}, the results of which were presented in the 42$^{\text{nd}}$ Samahang Pisika ng Pilipinas Conference in July 2024.
@@ -295,7 +295,7 @@
             \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for class size $N$.
             Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
             Different class sizes correspond to different line widths where bigger classroom sizes are represented by thicker lines.
-            The bands around each line show the standard deviation of the daya over 5 trials.
+            The bands around each line show the standard deviation of the data over 5 trials.
             Higher fraction of learned students indicate better learning.}
             \label{fig:comparison size}
         \end{figure}
@@ -310,7 +310,7 @@
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png}
             \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for positional learning factor $\rho_0$.
             Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
-            Different $\rho_0$ values correspond to different line transparancies where darker lines represent higher $\rho_0$ values.
+            Different $\rho_0$ values correspond to different line transparencies where darker lines represent higher $\rho_0$ values.
             The bands around each line show the standard deviation of the daya over 5 trials.
             Higher fraction of learned students indicate better learning.}
             \label{fig:comparison ρ₀}
@@ -326,7 +326,7 @@
             \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for different learning rate heterogeneity $\delta\lambda$.
             Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
             Different $\delta\lambda$ values correspond to different line styles where $\delta\lambda=0,0.2,0.4$ are represented by dashed lines, alternating dots and dashes, and two dots and a dash respectively.
-            The bands around each line show the standard deviation of the daya over 5 trials.
+            The bands around each line show the standard deviation of the data over 5 trials.
             Higher fraction of learned students indicate better learning.}
             \label{fig:comparison δλ}
         \end{figure}
@@ -340,7 +340,7 @@
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/SA.png}
             \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for different SAs.
             Each SA corresponds to a different color --- blue for traditional, orange for inner corner, green for outer corner, orange for center, and pink for random.
-            The bands around each line show the standard deviation of the daya over 5 trials.
+            The bands around each line show the standard deviation of the data over 5 trials.
             Higher fraction of learned students indicate better learning.}
             \label{fig:comparison SA}
         \end{figure}
@@ -375,7 +375,7 @@
         
         As we vary the different parameters, as shown in Figure~\ref{fig:Params effect summary t}, we are able to identify which cases are more favorable for TI or PI.
         We find that PI suffers more than TI when handling larger class sizes $N$, and that TI suffers more from increased learning rate heterogeneity $\delta\lambda$ compared to PI.
-        However, low poisitonal learning factor $\rho_0$ affects both TI and PI similarly.
+        However, low positional learning factor $\rho_0$ affects both TI and PI similarly.
 
         The same figure also shows us the magnitude of the advantage of one method of instruction over the other.
         We find that when TI is advantageous, like in cases of big classrooms and low learning rate heterogeneity, the advantage over PI is not that large.
@@ -426,12 +426,12 @@
     On the other hand, PI performs better in smaller classes and when the students have high learning rate heterogeneity.
     To be more precise, class size, heterogeneity, and low positional learning factor affect both TI and PI negatively, but TI is not as affected by class size compared to PI and PI is not as affected by heterogeneity compared to TI.
 
-    We also found that when a highly heterogeneous class is under TI, the class exhibits a two-stage learning process where majority of the fast students learn in the first few time steps and the rest of the time is spend waiting for slower students to learn. Our findings regarding class heterogeneity are in line with those of Roxas, et al. (2010) \cite{roxas2010seating}.
+    We also found that when a highly heterogeneous class is under TI, the class exhibits a two-stage learning process where majority of the fast students learn in the first few time steps and the rest of the time is spent waiting for slower students to learn. Our findings regarding class heterogeneity are in line with those of Roxas, et al. (2010) \cite{roxas2010seating}.
     However, our findings regarding seating arrangement differ from theirs where they found that the outer corner seating arrangement perform best while we found that the inner corner seating arrangement perform best.
     This difference is likely because of the simplifications made in our model --- namely learning isotropy and non-implementation of an aptitude similarity effect.
     These simplifications are from the limitations of having a binary-state model.
 
-    Another limitation of having a binary-state model is that we there is not much insight to be gained from tracking individual students' learning.
+    Another limitation of having a binary-state model is that there are not much insight to be gained from tracking individual students' learning.
     Hence, we chose to track the class's learning as a whole.
     Despite having a different way to assess the methods of instruction effectiveness, our findings are consistent with the existing works like that of Nitta, et al. \cite{nitta2019mathematical} which is backed by real-world data.
 
