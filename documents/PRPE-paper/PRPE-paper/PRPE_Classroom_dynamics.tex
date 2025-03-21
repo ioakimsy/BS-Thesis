@@ -86,8 +86,10 @@
     The PI method as outlined by Mazur and Somers~\cite{mazur1997peer} typically involves an instructor giving a short lecture on the topic, followed by a multiple-choice question (MCQ) that the student answer individually.
     PI emphasizes on the next phases of instruction which involve repeated cycle of students sharing their answers to the MCQ and discussing them with peers, usually until they get the concepts right.
     This part makes PI method student centric requiring the instructor to intervene with slightly modified steps to adjust to the needs of the class.
-    As long as the same learning objectives are tackled, the instructor can choose variations in the method~\cite{smith2009peer} such as the multiplicity of the peer sharing and discussion phase, decide levels of requirements and/or evaluation~\cite{crouch2001peer}, provide different MCQ sets, or even give a short lecture to ensure clarity of concepts~\cite{lasry2008peer}.
-    The PI thus contrasts highly against the traditional method (TI) with which the instructor giving a lecture for the entire duration of the class with minimal opportunity of in-class peer interactions among the students.
+    As long as the same learning objectives are tackled, the instructor can choose variations in the method~\cite{smith2009peer}.
+    The instructor may often decide on: increasing the multiplicity of the peer sharing and discussion phase; having different kinds of requirements and/or levels of evaluation~\cite{crouch2001peer}; providing different MCQ sets; or giving another short lecture to ensure clarity of concepts involved~\cite{lasry2008peer}.
+    Modifications to the PI method have also been reported to minimize some undesired behavioral patterns such as just copying off each other~\cite{smith2009peer}.
+    The PI therefore contrasts significantly against the traditional method (TI) with which the instructor simply gives a lecture for the entire duration, typically with minimal peer interactions among the students during class time.
     
 %    This is in stark contrast with how traditional instruction (TI) is conducted where the instructor often just gives a lecture for the entire duration of the class.
 %    PI is meant to be student centric, meaning that the instructor is expected to make differences to the steps outlined above to adjust to the class's needs.
@@ -96,24 +98,28 @@
 
 %%%%%%%%%%%%%%%
 %%    \subsection{Benefits of PI}
-
-    Despite the de-emphasis on problem-solving in PI lectures, students' quantitative problem-solving skills were not compromised and was even improved compared to traditional instruction in some cases.
-    % PI was also shown to significantly decrease the number of students with extremely low scores \cite{crouch2001peer}.
-    This is consistent with findings of other studies \cite{lasry2008peer,thacker1994comparing}.
-    Similarly, students' conceptual understanding of the lessons also improved.
-    This holds true for both in-class concept tests and end-of-semester exams \cite{crouch2001peer}.
-
-    Smith, et al. \cite{smith2009peer} modified the PI method to make sure that students were not copying off of each other. After the first MCQ, he did not show the class's answer statistics and used a pair of isomorphic questions for the MCQs before and after the peer discussion section. Isomorphic questions are questions that tackle the same learning objectives but have different "cover stories".
-    They also found that even in groups whose members were not able to answer the first MCQ, students were able to get the correct answer for the second MCQ.
-    This contradicts the transmissionist view of PI where students only learn from other students who already know the lesson.
-    The study provides evidence that PI can be viewed as constructivist where students learn on their own through discussion and not simply from hearing the correct answer.
-
-    In addition to those mentioned above Lasry, et al. \cite{lasry2008peer} showed that PI is not necessarily dependent on background knowledge. They found that students in under PI performed as well as or better than those under TI despite the former having less background knowledge.
-    They also found the PI greatly reduced the number of students who dropped the course.
-    An older paper by Tobias \cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
+%
+%    Despite the de-emphasis on problem-solving in PI lectures, students' quantitative problem-solving skills were not compromised and was even improved compared to traditional instruction in some cases.
+%    PI was also shown to significantly decrease the number of students with extremely low scores \cite{crouch2001peer}.
+%    This is consistent with findings of other studies \cite{lasry2008peer,thacker1994comparing}.
+%    Similarly, students' conceptual understanding of the lessons also improved.
+%    This holds true for both in-class concept tests and end-of-semester exams \cite{crouch2001peer}.
+    
+    Despite the unique approach of de-emphasizing actual problem-solving during the PI lecture phase, quantitative problem-solving skills have been consistently shown to remain not compromised, and in few cases even improved, relative to TI.
+    Several advantages were pointed out in favor of the PI method in relation to the following dimensions: decrease in the number of students with extremely low scores~\cite{crouch2001peer,lasry2008peer,thacker1994comparing}, improved conceptual understanding~\cite{crouch2001peer}, as well as being independent of the background knowledge~\cite{lasry2008peer,tobias1990they}.
 
 
-\section{Existing Mathematical Models of PI}
+%    Smith, et. al \cite{smith2009peer} modified the PI method to make sure that students were not copying off of each other. After the first MCQ, he did not show the class's answer statistics and used a pair of isomorphic questions for the MCQs before and after the peer discussion section. Isomorphic questions are questions that tackle the same learning objectives but have different "cover stories".
+%    They also found that even in groups whose members were not able to answer the first MCQ, students were able to get the correct answer for the second MCQ.
+%    This contradicts the transmissionist view of PI where students only learn from other students who already know the lesson.
+%    The study provides evidence that PI can be viewed as constructivist where students learn on their own through discussion and not simply from hearing the correct answer.
+
+%    In addition to those mentioned above Lasry, et. al. \cite{lasry2008peer} showed that PI is not necessarily dependent on background knowledge. They found that students in under PI performed as well as or better than those under TI despite the former having less background knowledge.
+%    They also found the PI greatly reduced the number of students who dropped the course.
+%    An older paper by Tobias \cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
+
+
+\section{Mathematical models}
 
     Although there are some mathematical models for learning, the ones that describe learning in the classroom are few and far in between - even more so for those that model PI.
 
@@ -146,7 +152,7 @@
 
     Nitta also presents a model by Pritchard et al. \cite{pritchard2008mathematical} where PI is modeled as a set of differential equations that is dependent on the probability of students learning to stick (memory model, Equation~\ref{eq:memory model}) and the ability for students to associate new learnings from old knowledge via logistic differential equation (connectedness model, Equation~\ref{eq:connectedness model}.)
 %%
-    The Memory model requires
+    The Memory model requires that
     \begin{equation}
         \label{eq:memory model}
         \frac{dU_T(t)}{dt} = -\alpha_m U_T(t)
@@ -183,16 +189,15 @@
 
     The process of PI is complex, with many interacting components.
     Existing models are either predictive, as in the case of the neural network modeling of Roxas et al. \cite{roxas2010seating} or lack the spatial aspect of the process as with the differential equations of Pritchard \cite{pritchard2008mathematical} and Nitta \cite{nitta2019mathematical}.
-    While Bordogna et al. \cite{bordogna2001theoretical,bordogna2003simulation} present to us a dynamical model in their generalized Ising model, it lacks some aspects of PI we'd like to consider like seating arrangements, students' learning rate, and heterogeneity.
+    While Bordogna et al. \cite{bordogna2001theoretical,bordogna2003simulation} present to us a dynamical model in their generalized Ising model, it lacks some of the aspects of PI we'd like to consider like seating arrangements, students' learning rate, and heterogeneity.
 
-    We propose that a probabilistic cellular automata model can be used to study the spatiotemporal dynamics of both PI and traditional instruction when incorporating these different aspects into the model.
+\section{A probabilistic cellular automata model}
+
+    Here, we show that a probabilistic cellular automata model can be used to study the spatiotemporal dynamics of both PI and traditional instruction when incorporating these different aspects into the model.
     We previously used a probabilistic cellular automata to model the classroom \cite{SelfSPP}, the results of which were presented in the 42$^{\text{nd}}$ Samahang Pisika ng Pilipinas Conference in July 2024.
     The findings presented in the paper are also presented in this study as part of the results.
 
-\section{Modelling The Classroom As A Probabilistic Cellular Automaton}
-
-    We use a probabilistic cellular automata (PCA) model to simulate the learning process in the classroom.
-    In this PCA model, each cell in the automaton represents a student where each student is assigned a learning rate $\lambda_{i,j}$ to describe how fast they learn as an individual.
+    For the PCA model, each cell in the automaton represents a student where each student is assigned a learning rate $\lambda_{i,j}$ to describe how fast they learn as an individual.
     The state of each cell represents their aptitude $s_{i,j}=\lbrace\text{unlearned},\text{learned}\rbrace=\lbrace0,1\rbrace$.
     We assign the neighborhood to be an outer totalistic Moore neighborhood of radius $r=1$ and define the boundary conditions to be fixed wherein the grid does not wrap around itself and $s_{i,j}=0 \text{ for }i,j\notin[1,L]$.
     For each time step, we find the probability of a student to learn and update the state of the student based on this probability.
@@ -201,17 +206,17 @@
     \subsection{Update Rules for Traditional Instruction (TI)}
 
         For traditional instruction, the probability of a student to learn in each time step ($P_{i,j}$) is given by:
-
+        %%
         \begin{equation}
             P_{i,j} = \lambda_{i,j}\rho_0
         \end{equation}
-
+        %%
         where
-
+        %%
         $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, 
-
-        $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$
-
+        %%
+        $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$, and
+        %%
         $\rho_{0} \in [0,1]$ is the probability of $c_{i,j}$ to learn from the teacher based on their relative position from the teacher.
 
         We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
@@ -222,7 +227,7 @@
 
         The numerical procedure is outlined in Figure~\ref{fig:TI flowchart}.
         Each simulation for the TI model starts with all students unlearned.
-
+        %%
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2DBPCA TI Flowchart.png}
@@ -233,25 +238,26 @@
     \subsection{Update Rules for Peer Instruction (PI)}
 
         In contrast to TI, the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
-
+        %%
         \begin{equation}
             \label{eq:BPCA PI learning probability}
                 P_{i,j} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{i,j})(\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}\rbrack
         \end{equation}
-        
+        %%
         where
-        
-        $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, 
-        
-        $\lambda_{i,j} \in  [0,1]$ is the learning rate of student $c_{i,j}$. We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
-        
-        $\rho_{\delta i, \delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
-        
+        %%
+        $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, and
+        %%
+        $\lambda_{i,j} \in  [0,1]$ is the learning rate of student $c_{i,j}$.
+        We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
+        %%
+        The variables $\rho_{\delta i, \delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
+        %%
         $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors' aptitude level.
 
         The numerical procedure is outlined in Figure~\ref{fig:PI flowchart}.
         Each simulation for the PI model starts with only four learned students $n_0 = 4$.
-
+        %%
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2DBPCA PI Flowchart.png}
