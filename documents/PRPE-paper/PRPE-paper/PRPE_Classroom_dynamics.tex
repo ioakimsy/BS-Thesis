@@ -46,19 +46,21 @@
 \begin{abstract}
     Peer instruction (PI) has recently become one of the popular means of classroom instruction in Physics Education.
     Such instruction method is vastly different from how classes are traditionally handled where the instructor conducts a lecture for the entire duration of the class.
-    In this study, we model the transfer of knowledge within the class as a probabilistic cellular automata model and investigate the effects of different factors such as seating arrangements, size, learning rate, and heterogeneity on the classes' overall learning efficiency in peer instruction.
-    We compared the learning efficiency between traditional instruction (TI) and peer instruction (PI). 
-    We found that larger class sizes sway the advantage towards traditional instruction, while increased learning rate heterogeneity favors PI.
-    Additionally, an increase in the students' effective learning rate benefits both TI and PI but in different ways.
-    Classes under traditional instruction were found to have two stages of learning when heterogeneity was introduced: a fast initial stage and a slow final stage.
-    On the other hand, learning trends in PI were generally unaffected by heterogeneity, having similar effects with the other factors we considered.
-    Among the seating arrangements (SAs) we considered for PI, the inner corner SA performed the best.
-    This result differs from previous studies where they found that the outer corner SA performed the best.
-    The difference stems from the simplifications made in this model.
-    We did not consider the orientation factor of each student, resulting in an isotropic system.
-    Our model also uses binary values and does not consider the effect of aptitude similarity that have been described in previous studies. 
-    Despite these simplifications, our findings generally agree with previous studies and existing practices that PI performs similarly or better than traditional instruction and that a mix of traditional instruction and PI would be the optimal method of instruction.
-    We offer insights based on the qualitative results of the model.
+    In this study, we model the transfer of knowledge within classes of students as a probabilistic cellular automata model 
+    and investigate the effects of different factors such as seating arrangements, class size $N$, average learning rate ${\lambda}$, and heterogeneity $\delta{\lambda}$ on the class overall learning efficiency.
+    The learning efficiency of the class is measured in terms of the overall class rate using the initial rate trend and the total learning time $t_{\rm max}$ for the whole class.
+    PI mode appears to be more applicable with heterogenous classes (in-class high learning rate max difference $\delta{\lambda}$).
+    As commonly known TI mode is shown to be more advantageous for large $N$ and homogenous class aptitude (low $\delta{\lambda}$).
+    % High learning rate of students benefits both TI and PI but in different ways.
+    We show that the learning curves of highly heterogenous classes with TI mode have two stages of learning: a fast initial stage and a slow final stage.
+    The slow final state class learning rate is due to the late learners with lower $\lambda$-values and have general shape dependent on other model parameters as well.
+    Such curves are absent with PI which consistently shifts depending on the other factors.
+    Differing from a previous empirical data for the PI mode, classes perform best when the best in the class are situated within the inner corner.
+    The model we used for this study currently ignores the actual non-isotropic seating orientation with which students do not share knowledge readily in all neighboring seating directions.
+    Our model simplified the student capabilities to binary values and does not consider the effect of aptitude similarity during peer interactions as described in previous studies.
+    We therefore find that PI performs at better than, of not similar to, traditional instruction.
+    A mix of TI and PI would be the optimal mode of instruction taking advantage of TI for fast learning in the initial stage and the robust learning curve of PI in the later stages of class learning.
+    Despite these simplifications, our model is able to provide general insights that are in agreement with previous studies and existing practices.
 \end{abstract}
 
 \maketitle
@@ -275,9 +277,9 @@
             \item $\delta\lambda=\lbrace0.0, 0.1, 0.2, 0.3, 0.4\rbrace$
         \end{itemize}
 
-        To assess how well the class performed, we used the time it took for all the students to learn $t_{max}$.
+        To assess how well the class performed, we used the time it took for all the students to learn $t_{\rm max}$.
         For both TI and PI, the simulation ends when all students have learned.
-        Each set of parameters was run 5 independent times to get the average and standard deviation of $t_{max}$ for each set of parameters.
+        Each set of parameters was run 5 independent times to get the average and standard deviation of $t_{\rm max}$ for each set of parameters.
 
 
         %! Further investigation:
@@ -293,7 +295,7 @@
         
         For TI, varying the different model parameters yield different dynamics.
         As shown in Figure~\ref{fig:comparison size}, the progression of the fraction of learned students was not affected with increasing class size $N$.
-        The time to learn $t_{max}$, however, increased with class size $N$.
+        The time to learn $t_{\rm max}$, however, increased with class size $N$.
         This is expected as TI is set up such that the students can all learn at the same time from the teacher --- so the dynamics are independent of class size $N$.
         Positional learning factor $\rho_0$ changes the initial number of learned students and the rate at which students learn throughout the simulation (Figure~\ref{fig:comparison ρ₀}).
         Upon initial inspection of Figure~\ref{fig:comparison δλ} for the effects of learning rate heterogeneous, we see that it has a similar effect to that of positional learning factor $\rho_0$ without changing the initial number of learned students.
@@ -307,14 +309,14 @@
         In this case, we see at $t=2$ that majority of the students that are learned are fast students and at $t=13$ the slower students have started to learn, but the rate of learning has slowed down significantly.
         Despite the promising-looking start to this simulation, it will spend up to $t=232$ waiting for all the students to learn.
 
-        % When we vary class size $N$, as shown in Figure~\ref{fig:comparison size}, we see that in TI remains constant with only time to learn $t_{max}$ increasing with class size $N$.
+        % When we vary class size $N$, as shown in Figure~\ref{fig:comparison size}, we see that in TI remains constant with only time to learn $t_{\rm max}$ increasing with class size $N$.
         % For PI, increasing class size $N$ adds a time delay to when the learning starts to speed up. Despite the added time delay, the shape of the learning curve remains the same.
-        % The increase in time to learn $t_{max}$ is also less pronounced in PI compared to TI.
+        % The increase in time to learn $t_{\rm max}$ is also less pronounced in PI compared to TI.
 
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/size.png}
-            \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for class size $N$.
+            \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for class size $N$.
             Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
             Different class sizes correspond to different line widths where bigger classroom sizes are represented by thicker lines.
             The bands around each line show the standard deviation of the data over 5 trials.
@@ -330,7 +332,7 @@
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png}
-            \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for positional learning factor $\rho_0$.
+            \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for positional learning factor $\rho_0$.
             Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
             Different $\rho_0$ values correspond to different line transparencies where darker lines represent higher $\rho_0$ values.
             The bands around each line show the standard deviation of the daya over 5 trials.
@@ -345,7 +347,7 @@
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/δλ.png}
-            \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for different learning rate heterogeneity $\delta\lambda$.
+            \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for different learning rate heterogeneity $\delta\lambda$.
             Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
             Different $\delta\lambda$ values correspond to different line styles where $\delta\lambda=0,0.2,0.4$ are represented by dashed lines, alternating dots and dashes, and two dots and a dash respectively.
             The bands around each line show the standard deviation of the data over 5 trials.
@@ -386,20 +388,20 @@
     As shown in Figure~\ref{fig:comparison size}, Figure~\ref{fig:comparison ρ₀}, and Figure~\ref{fig:comparison δλ}, increasing class size $N$ and learning rate heterogeneity $\delta\lambda$, and decreasing positional learning factor $\rho_0$ all increase this time delay.
     A combination of these factors may affect to the slope of classes' progression over time once learning speeds up, but these factors individually do not noticeably affect the progression.
     Additionally, we see in Figure~\ref{fig:comparison SA} that different SAs perform differently even with the same set of parameters with the inner corner SA performed the best.
-    The random SA may outperform the center and outer corner SAs in the middle of the simulation but still ends up having the highest time to learn $t_{max}$.
+    The random SA may outperform the center and outer corner SAs in the middle of the simulation but still ends up having the highest time to learn $t_{\rm max}$.
 
 
     \begin{figure}[htbp!]
         \centering
         \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/SA.png}
-        \caption{Comparison of time to learn $t_{max}$ and fraction of learned students for different SAs.
+        \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for different SAs.
         Each SA corresponds to a different color --- blue for traditional, orange for inner corner, green for outer corner, orange for center, and pink for random.
         The bands around each line show the standard deviation of the data over 5 trials.
         Higher fraction of learned students indicate better learning.}
         \label{fig:comparison SA}
     \end{figure}
 
-    The plots in this section show that classes under TI have more students learning in the earlier time steps, but has lower time to learn $t_{max}$ when compared to classes under PI with the same set of parameters.
+    The plots in this section show that classes under TI have more students learning in the earlier time steps, but has lower time to learn $t_{\rm max}$ when compared to classes under PI with the same set of parameters.
     These findings suggest that to optimize the learning in the classroom, it would be best to perform TI at the start of the class to take advantage of the fast initial learning stage, then switch to PI where having learned students spread throughout the classroom benefit those who have yet to learn.
     This is consistent with current practices \cite{mazur1997peer,smith2009peer,lasry2008peer,roxas2010seating}, where the students are expected to have read up on the material in advance and the instructor gives a short lecture before the students engage in peer discussion.
 
@@ -417,7 +419,7 @@
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png}
-            \caption{Time to learn $t_{max}$ as a function of positional learning factor $\rho_0$ and heterogeneity $\delta\lambda$ of PI (inner corner SA) and TI for different class sizes $N=L^2$.
+            \caption{Time to learn $t_{\rm max}$ as a function of positional learning factor $\rho_0$ and heterogeneity $\delta\lambda$ of PI (inner corner SA) and TI for different class sizes $N=L^2$.
             The blue surface represent TI and the orange surface represents PI.
             Lower time to learn indicates better learning.}
             \label{fig:Params effect summary t}
