@@ -191,9 +191,23 @@
         \label{fig:PI-SAs}
     \end{figure}
 
-    It lacks some aspects of PI that we would like to consider like seating arrangements, students' learning rate, and aptitude heterogeneity.
+    \citet{nitta2019mathematical} also presented their own model of PI:
+%
+    \begin{equation}
+        \label{eq:nitta_model}
+        \rho_2 = \rho_1 +\rho_1(1-\rho_1)
+    \end{equation}
+%
+    where $\rho_1$ and $\rho_2$ are the normalized number of students who answered the first and second MCQ correctly respectively. Combining Equation~\ref{eq:nitta_model} with their formulation of gain similar in form to Equation~\ref{eq:hake-gain}, the gain is equal to $\rho_2$.
+%
+    \begin{equation}
+        \label{eq:nitta_gain}
+        g = \rho_2
+    \end{equation}
 
+    There are others whose gain are derived from their own models like that of \citet{pritchard2008mathematical} where the equation is much more complicated.
 
+    Despite the diversity of the models that we found, current models of PI lack some aspects of PI that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity.
     
 \section{A probabilistic cellular automata model}
 
@@ -429,8 +443,8 @@
 
     \subsection{Comparison with existing research/data}
         
-        Comparing our data to Nitta's model (Equation~\ref{eq: nitta model})~\cite{nitta2019mathematical}, as in Figure~\ref{fig:Return map}, only our data for PI approaches their model --- this is expected since their model is for PI and not TI.
-        Furthermore, PI only approaches their model when the conditions are favorable for PI.
+        Comparing our data to Nitta's model (Equation~\ref{eq:nitta_model})~\cite{nitta2019mathematical}, as in Figure~\ref{fig:Return map}, only our data for PI approaches their model --- this is expected since their model is for PI and not TI.
+        Furthermore, PI only approaches their model when the conditions are favorable for PI (Figure~\ref{fig:return_map_fav}).
         Considering that their model has been shown to agree with experimental data, it suggests that real world students' behavior and learning dynamics are better represented by the values of high positional learning factor $\rho_0$ and small class sizes $N$.
         It should also be noted that Nitta's model and data tracks individual students' learning while our model tracks the class's learning as a whole.
         We chose to track learning this way because there is not much insight to be gained from tracking individual students' learning in a binary-state model.
@@ -438,15 +452,46 @@
 
         \begin{figure}[htbp!]
             \centering
-            \subfigure[$L=128,\space\rho_0=1,\space\lambda=0.5\pm0.4$]{\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png}}
-            \subfigure[$L=32,\space\rho_0=9,\space\lambda=0.5\pm0.0$]{\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png}}
+            \subfigure[$L=128,\space\rho_0=0.1,\space\lambda=0.5\pm0.4$]{\label{fig:return_map_unfav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png}}
+            \subfigure[$L=32,\space\rho_0=0.9,\space\lambda=0.5\pm0.0$]{\label{fig:return_map_fav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png}}
             \caption{Return map for selected parameter sets for both TI and PI.
             Blue circles represent the data points for TI and orange squares represent the data points for PI.
             The corresponding best-fit quadratic function obtained using the Levenberg-Marquardt algorithm for each set of data points are shown in blue and orange dashed lines respectively.
-            The green line represents Nitta's theoretical model (Equation~\ref{eq: nitta model}) and the gray line represents $y=x$.}
+            The green line represents Nitta's theoretical model (Equation~\ref{eq:nitta_model}) and the gray line represents $y=x$.}
             \label{fig:Return map}
         \end{figure}
-        
+
+        Following Nitta's model and equation for gain (Equation~\ref{eq:nitta_model} and \ref{eq:nitta_gain}), we can see for our PI model where
+%
+        \begin{equation}
+            \label{eq:PI_ft_eq}
+            f_{t+1} \approx a + bf_t + cf_t^2
+        \end{equation}
+%
+        $b$ is expected to be $b=1-c$ and the gain $g$ is
+%
+        \begin{equation}
+            \label{eq:PI_g_eq}
+            g \approx a + cf_t
+        \end{equation}
+
+        Doing the same for our TI model which was best modeled by a linear function
+%
+        \begin{equation}
+            \label{eq:TI_ft_eq}
+            f_{t+1} \approx f_t + g(1-f_t) \approx m_0 + m_1f_t
+        \end{equation}
+%
+        and noting that the coefficients $m_0$ and $m_1$ approximately sums to $1$ (Figure~\ref{fig:Return map}) gives us the equation for gain:
+%
+       \begin{equation}
+            \label{eq:TI_g_eq}
+            g \approx m_0
+       \end{equation}
+
+       These values for gain $g$ shows us that gains for TI are constant while gains for PI are linearly proportional to the fraction of learned students $f_t$.
+       We find these values reasonable since TI is set up such that all students learn at the same time from the teacher while PI is set up such that students learn from each other.
+
         Compared to Roxas' work~\cite{roxas2010seating} which found the outer corner SA to perform the best, we found the inner corner SA to perform the best.
         This difference can be attributed to the simplifications made in our model.
         We were not able to consider the aptitude similarity effect that happens where students of similar aptitude learn better when grouped together regardless of their actual aptitude level~\cite{smith2009peer}.

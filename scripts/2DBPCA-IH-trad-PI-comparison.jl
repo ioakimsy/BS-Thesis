@@ -222,7 +222,6 @@ end
 
 function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
     # return_map_params = [64, "traditional", 0.5, 0.5, 0.2]
-    
     color = ColorSchemes.seaborn_colorblind.colors
 
     fig = Figure(size=(1000,1000÷√2); dpi = 300)
@@ -270,21 +269,34 @@ function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
         markersize = 16,
         )
 
-        
+        if j == 1
+            @. lin_model(x,p) = p[1] * x + p[2]
+            lin_fit = curve_fit(lin_model, f_t1_data, f_t_data, [1.0, 0.0])
+            lin_fit_params = lin_fit.param
 
-        @. quad_model(x,p) = p[1] * x^2 + p[2] * x + p[3]
-        quad_fit = curve_fit(quad_model, f_t1_data, f_t_data, [0.0, 1.0, 0.0])
-        quad_fit_params = quad_fit.param
+            fit_label = L"f_t=%$(round(lin_fit_params[1], digits=3))f_{t-1}+%$(round(lin_fit_params[2], digits=3))"
+            fit_y = lin_model(0:0.01:1, lin_fit_params)
 
-        # lines!(ax, 0:0.01:1, logistic_model(0:0.01:1), label = "fₜ = fₜ₋₁ + fₜ₋₁ (1 - fₜ₋₁)", color = :red)
+            lines!(ax, 0:0.01:1, fit_y, 
+            label = fit_label, 
+            color = ColorSchemes.seaborn_colorblind[j],
+            linestyle = :dash
+            )
 
-        
-        lines!(ax, 0:0.01:1, quad_model(0:0.01:1, quad_fit_params), 
-        label = L"f_t=%$(round(quad_fit_params[1], digits=3))f_{t-1}^2+%$(round(quad_fit_params[2], digits=3))f_{t-1}+%$(round(quad_fit_params[3], digits=3))", 
-        color = ColorSchemes.seaborn_colorblind[j],
-        linestyle = :dash
-        )
-        
+        elseif j == 2
+            @. quad_model(x,p) = p[1] * x^2 + p[2] * x + p[3]
+            quad_fit = curve_fit(quad_model, f_t1_data, f_t_data, [0.0, 1.0, 0.0])
+            quad_fit_params = quad_fit.param
+
+            fit_label = L"f_t=%$(round(quad_fit_params[1], digits=3))f_{t-1}^2+%$(round(quad_fit_params[2], digits=3))f_{t-1}+%$(round(quad_fit_params[3], digits=3))"
+            fit_y = quad_model(0:0.01:1, quad_fit_params)
+
+            lines!(ax, 0:0.01:1, fit_y, 
+            label = fit_label, 
+            color = ColorSchemes.seaborn_colorblind[j],
+            linestyle = :dash
+            )
+        end        
     end
     @. logistic_model(x) = x + x * (1 - x)
 
