@@ -4,14 +4,13 @@
 \contentsline {section}{\numberline {}Contents}{1}{section*.3}%
 \tocdepth@restore 
 \contentsline {section}{\numberline {I}Introduction}{1}{section*.4}%
-\contentsline {section}{\numberline {II}Mathematical models}{2}{section*.5}%
-\contentsline {section}{\numberline {III}A probabilistic cellular automata model}{3}{section*.6}%
-\contentsline {subsection}{\numberline {III.1}Update Rules for Traditional Instruction (TI)}{3}{section*.7}%
-\contentsline {subsection}{\numberline {III.2}Update Rules for Peer Instruction (PI)}{3}{section*.8}%
-\contentsline {subsection}{\numberline {III.3}Model parameters}{4}{section*.9}%
-\contentsline {section}{\numberline {IV}Results and Discussion}{4}{section*.10}%
-\contentsline {subsection}{\numberline {IV.1}Different Dynamics of Traditional and Peer Instruction}{4}{section*.11}%
-\contentsline {subsection}{\numberline {IV.2}Summary of effects of class size $N$, positional learning factor $\rho _0$, and learning rate heterogeneity $\delta \lambda $}{5}{section*.12}%
-\contentsline {subsection}{\numberline {IV.3}Comparison with existing research/data}{6}{section*.13}%
-\contentsline {section}{\numberline {V}Summary and Conclusion}{6}{section*.14}%
-\contentsline {section}{\numberline {}References}{7}{section*.15}%
+\contentsline {section}{\numberline {II}A probabilistic cellular automata model}{2}{section*.5}%
+\contentsline {subsection}{\numberline {II.1}Update Rules for Traditional Instruction (TI)}{3}{section*.6}%
+\contentsline {subsection}{\numberline {II.2}Update Rules for Peer Instruction (PI)}{3}{section*.7}%
+\contentsline {subsection}{\numberline {II.3}Model parameters}{3}{section*.8}%
+\contentsline {section}{\numberline {III}Results and Discussion}{3}{section*.9}%
+\contentsline {subsection}{\numberline {III.1}Different Dynamics of Traditional and Peer Instruction}{3}{section*.10}%
+\contentsline {subsection}{\numberline {III.2}Summary of effects of class size $N$, positional learning factor $\rho _0$, and learning rate heterogeneity $\delta \lambda $}{5}{section*.11}%
+\contentsline {subsection}{\numberline {III.3}Comparison with existing research/data}{5}{section*.12}%
+\contentsline {section}{\numberline {IV}Summary and Conclusion}{6}{section*.13}%
+\contentsline {section}{\numberline {}References}{6}{section*.14}%
