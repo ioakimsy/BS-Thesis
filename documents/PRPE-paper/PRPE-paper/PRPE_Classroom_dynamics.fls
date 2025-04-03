@@ -188,42 +188,43 @@ INPUT ./figures/2DBPCA PI Flowchart.png
 INPUT ./figures/2DBPCA PI Flowchart.png
 INPUT ./figures/2DBPCA PI Flowchart.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
+INPUT ./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
+INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
 INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
 INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
 INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
 INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
 INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png
@@ -240,6 +241,7 @@ INPUT PRPE_Classroom_dynamics.bbl
 INPUT PRPE_Classroom_dynamics.aux
 INPUT ./PRPE_Classroom_dynamics.out
 INPUT ./PRPE_Classroom_dynamics.out
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

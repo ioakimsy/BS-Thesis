@@ -120,69 +120,64 @@
 %    They also found the PI greatly reduced the number of students who dropped the course.
 %    An older paper by Tobias~\cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
 
-
-\section{Mathematical models}
-
-    The process of PI is complex, with many interacting components.
-    Existing models are either predictive such as with the case of the neural network models~\cite{roxas2010seating} or lack the spatial aspect of the process as with the differential equations~\cite{pritchard2008mathematical,nitta2019mathematical}.
-    In between these models is a more dynamical model using the Ising model~\cite{bordogna2001theoretical,bordogna2003simulation}.
-    It lacks some aspects of PI that we would like to consider like seating arrangements, students' learning rate, and aptitude heterogeneity.
-
-    Mathematical models for learning via PI mode, we have not found a model to compares PI and TI.
-    The work of \citet{nitta2019mathematical} surveys known models for learning under PI mode.
-    The model of \citet{pritchard2008mathematical} for example uses the quantities that correspond to the levels that each student knows about the given knowledge domain.
-    Representing the portions of known as $K$ and unknown as $U$, we have $K+U=1$.
-    % Pritchard et al.~\cite{pritchard2008mathematical} uses a set of differential equations that is dependent on the probability of students learning to stick (memory model, Equation~\ref{eq:memory model}) and the ability for students to associate new learnings from old knowledge via logistic differential equation (connectedness model, Equation~\ref{eq:connectedness model}.)
-%%
-    They proceed using a memory model such that the portion of unknown over time follows
-    \begin{equation}
-        \label{eq:memory model}
-        \frac{dU(t)}{dt} = -m U(t)
-    \end{equation}
-%%
-    and with the assumption of a connectedness model gives
-    \begin{equation}
-        \label{eq:connectedness model}
-        \frac{dU(t)}{dt} = -c U(t)K(t),
-    \end{equation}
-%%
-    where knowledge is taken to grow at a uniform rate, as in the Tutoring model:
-    \begin{eqnarray}
-        K(t) &=& {\alpha}t + K_0 \label{eq:tutoring model} \\
-        U(t) + K(T) &=& 1
-    \end{eqnarray}
-%%
-    Where $U(t)$ and $K(t)$ are the unknown and known knowledge domains respectively.
-    The parameters $\alpha_m$, $\alpha_c$, and $\alpha_{tu}$ are the corresponding rates for the memory model, connectedness model, and tutoring model ....
-
-    In deriving their own model of PI, Nitta arrived at analytic equations similar to the Hake gain (Equation~\ref{eq:hake-gain}) to evaluate the effectiveness of PI for a concept test question (Equation~\ref{eq: PIE}) and Pritchard's connectedness model (Equation~\ref{eq:connectedness model}) to model students' learning after each MCQ (Equation~\ref{eq: nitta model}).
-
-    \begin{equation}
-        \label{eq: PIE}
-        \eta(q) \equiv \frac{\rho_2(q;c)-\rho_1(q;c)}{1-\rho_1(q;c)}
-    \end{equation}
-
-    \begin{equation}
-        \label{eq: nitta model}
-        \rho_2 = \rho_1 +\rho_1(1-\rho_1)
-    \end{equation}
-
-    Comparing their equations to data, they concluded that these metrics and equations roughly agree with the data and could give us insights on the learning dynamics of the classroom.
-
-    Another model that was presented is a generalized Ising Model by Bordogna and Albano~\cite{bordogna2001theoretical,bordogna2003simulation} where they consider three sources of information for the student to learn from: teacher instruction, peer interaction, and bibliographic materials (books, lecture notes, etc.)
+    The dynamics involved during PI is complex resulting from the interacting components during the peer discussion.
+    Existing mathematical models for this are either predictive such as with the case of the artificial neural network (ANN) models~\cite{roxas2010seating} or lack the spatial aspect of the process such as utilizing differential equations~\cite{pritchard2008mathematical,nitta2019mathematical} and those surveyed in \citet{nitta2019mathematical}.
+    Somewhat in between these is a generalized Ising model by Bordogna and Albano~\cite{bordogna2001theoretical,bordogna2003simulation} that considers three sources of information for the student to learn from: teacher instruction, peer interaction, and bibliographic materials (books, lecture notes, etc.).
     Their model shows that students learn more when they engage discussions with their peers than those who only listen to lectures.
-    They also show that group structure affects student learning, and that low aptitude students may learn at the expense of high aptitude peers - a transmissionist view of PI.
+    They also show that group structure affects student learning, and that low aptitude students may learn at the expense of high aptitude peers---a transmissionist view of PI.
+    We are yet to find mathematical models for learning that compares PI with TI.
 
-    Roxas et al.~\cite{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
-    Using this neural network, they were able to characterize information transfer and investigate the effects of group homogeneity. 
-    Their study also investigated the optimal seating arrangement for students under PI methods based on their aptitude.
+
+    % The work of \citet{nitta2019mathematical} surveys known models for learning under PI mode.
+    % The model of \citet{pritchard2008mathematical} for example uses the quantities that correspond to the levels that each student knows about the given knowledge domain.
+    % Representing the portions of known as $K$ and unknown as $U$, we have $K+U=1$.
+    % Pritchard et al.~\cite{pritchard2008mathematical} uses a set of differential equations that is dependent on the probability of students learning to stick (memory model, Equation~\ref{eq:memory model}) and the ability for students to associate new learnings from old knowledge via logistic differential equation (connectedness model, Equation~\ref{eq:connectedness model}.)
+% %%
+%     They proceed using a memory model such that the portion of unknown over time follows
+%     \begin{equation}
+%         \label{eq:memory model}
+%         \frac{dU(t)}{dt} = -m U(t)
+%     \end{equation}
+% %%
+%     and with the assumption of a connectedness model gives
+%     \begin{equation}
+%         \label{eq:connectedness model}
+%         \frac{dU(t)}{dt} = -c U(t)K(t),
+%     \end{equation}
+% %%
+%     where knowledge is taken to grow at a uniform rate, as in the Tutoring model:
+%     \begin{eqnarray}
+%         K(t) &=& {\alpha}t + K_0 \label{eq:tutoring model} \\
+%         U(t) + K(T) &=& 1
+%     \end{eqnarray}
+% %%
+%     Where $U(t)$ and $K(t)$ are the unknown and known knowledge domains respectively.
+%     The parameters $\alpha_m$, $\alpha_c$, and $\alpha_{tu}$ are the corresponding rates for the memory model, connectedness model, and tutoring model ....
+
+%     In deriving their own model of PI, Nitta arrived at analytic equations similar to the Hake gain (Equation~\ref{eq:hake-gain}) to evaluate the effectiveness of PI for a concept test question (Equation~\ref{eq: PIE}) and Pritchard's connectedness model (Equation~\ref{eq:connectedness model}) to model students' learning after each MCQ (Equation~\ref{eq: nitta model}).
+
+%     \begin{equation}
+%         \label{eq: PIE}
+%         \eta(q) \equiv \frac{\rho_2(q;c)-\rho_1(q;c)}{1-\rho_1(q;c)}
+%     \end{equation}
+
+%     \begin{equation}
+%         \label{eq: nitta model}
+%         \rho_2 = \rho_1 +\rho_1(1-\rho_1)
+%     \end{equation}
+
+%     Comparing their equations to data, they concluded that these metrics and equations roughly agree with the data and could give us insights on the learning dynamics of the classroom.
+
+    Actual assessment results by \citet{roxas2010seating} is used to train their ANN to predict expected second assessment scores of students depending on seating arrangements.
+% The artificial neural network (ANN) model by \citet{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
+    Using this neural network, they were also able to characterize information transfer and investigate the effects of group homogeneity. 
+    Their study revealed that an optimal seating arrangement for students under PI methods based on their final aptitude.
     In their paper, the measure of students' improvement was calculated via the Hake gain as follows~\cite{hake1998}.
     \begin{equation}
         \label{eq:hake-gain}
         \langle g \rangle = \frac{\langle 2^{\text{nd}}\text{ assessment} - 1^{\text{st}}\text{ assessment} \rangle}{\langle 1 - 1^{\text{st}}\text{ assessment} \rangle}
     \end{equation}
-    This normalized differential improvement tend to be biased towards low-scoring classes.
-    % They also used the output/input ratio (O/I), which was the ratio of second assessment scores vs first assessment scores, to gauge student improvement.
+    They also used the output/input ratio (O/I), which was the ratio of second assessment scores vs first assessment scores, to gauge student improvement.
     % However, it should be noted that O/I values tend to be biased towards low-scoring students.
 
     The results of their study show that the outer corner seating arrangement (SA) performed the best using both the Hake gain~(Eq.~\ref{eq:hake-gain}), followed by inner corner, then random, then center (see Fig.~\ref{fig:PI-SAs} for SA visualizations).
@@ -195,6 +190,9 @@
         \caption{Seating arrangements considered for PI. Dots represent position of high aptitude students.}
         \label{fig:PI-SAs}
     \end{figure}
+
+    It lacks some aspects of PI that we would like to consider like seating arrangements, students' learning rate, and aptitude heterogeneity.
+
 
     
 \section{A probabilistic cellular automata model}
