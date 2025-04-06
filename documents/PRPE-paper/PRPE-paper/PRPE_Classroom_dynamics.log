@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  6 APR 2025 11:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  6 APR 2025 13:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -372,12 +372,12 @@ Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  u
 File: figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png  used on input line 393.
-(pdftex.def)             Requested size: 234.60342pt x 45.43881pt.
+(pdftex.def)             Requested size: 484.49844pt x 93.8385pt.
 <figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png, id=157, 2834.517pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png  used on input line 394.
-(pdftex.def)             Requested size: 234.60342pt x 44.85986pt.
+(pdftex.def)             Requested size: 484.49844pt x 92.64754pt.
 <figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=162, 766.719pt x 486.18pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/SA.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/SA.png>
@@ -385,88 +385,85 @@ Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/SA.png  use
 (pdftex.def)             Requested size: 229.49844pt x 145.52129pt.
  [4 <./figures/2D-BPCAIH-analysis/comparison plots/size.png> <./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png> <./figures/2D-BPCAIH-analysis/comparison plots/δλ.png>]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 422.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 423.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 423.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 423.
+(hyperref)                removing `\rho' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 423.
+(hyperref)                removing `subscript' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 423.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 423.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 423.
+(hyperref)                removing `\delta' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delta' on input line 423.
+(hyperref)                removing `\lambda' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 423.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 423.
+(hyperref)                removing `math shift' on input line 425.
 
 <figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=178, 1254.6875pt x 887.315pt>
 File: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png  used on input line 436.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png  used on input line 438.
 (pdftex.def)             Requested size: 239.70062pt x 169.51227pt.
 
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 445.
+LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 447.
 
 
-Underfull \hbox (badness 5832) in paragraph at lines 445--451
+Underfull \hbox (badness 5832) in paragraph at lines 447--453
 []\OT1/cmr/m/n/10 Comparing our data to Nitta's model (Equa-
  []
 
-<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=182, 4015.0pt x 2838.605pt>
+[5 <./figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png> <./figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png> <./figures/2D-BPCAIH-analysis/comparison plots/SA.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 453.
+
+<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=196, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png  used on input line 454.
-(pdftex.def)             Requested size: 239.70062pt x 169.44267pt.
-<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=183, 4015.0pt x 2838.605pt>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png  used on input line 456.
+(pdftex.def)             Requested size: 239.70062pt x 169.49818pt.
+<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=197, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png  used on input line 455.
-(pdftex.def)             Requested size: 239.70062pt x 169.44267pt.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png  used on input line 457.
+(pdftex.def)             Requested size: 239.70062pt x 169.49818pt.
 
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 459.
-
-
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 459.
+LaTeX Warning: Reference `eq:nitta_model' on page 6 undefined on input line 461.
 
 
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 463.
+LaTeX Warning: Reference `eq:nitta_model' on page 6 undefined on input line 461.
 
 
-LaTeX Warning: Reference `eq:nitta_gain' on page 5 undefined on input line 463.
+LaTeX Warning: Reference `eq:nitta_model' on page 6 undefined on input line 465.
 
-[5 <./figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png> <./figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png> <./figures/2D-BPCAIH-analysis/comparison plots/SA.png> <./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 482.
+LaTeX Warning: Reference `eq:nitta_gain' on page 6 undefined on input line 465.
 
-[6 <./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png>] (./PRPE_Classroom_dynamics.bbl
+[6 <./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png>] (./PRPE_Classroom_dynamics.bbl
 Underfull \hbox (badness 4792) in paragraph at lines 57--58
  []\OT1/cmr/m/n/9 E. Mazur and M. D. Somers, Peer In-struc-tion:
  []
@@ -514,17 +511,17 @@ Package rerunfilecheck Info: File `PRPE_Classroom_dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: DF4F6647453634E74F2D8358B7C2DE59;2848.
  ) 
 Here is how much of TeX's memory you used:
- 11331 strings out of 474928
- 173542 string characters out of 5763562
- 1946785 words of memory out of 5000000
- 32689 multiletter control sequences out of 15000+600000
+ 11336 strings out of 474928
+ 173670 string characters out of 5763562
+ 1950785 words of memory out of 5000000
+ 32694 multiletter control sequences out of 15000+600000
  566660 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,79p,906b,506s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on PRPE_Classroom_dynamics.pdf (7 pages, 10557170 bytes).
+Output written on PRPE_Classroom_dynamics.pdf (7 pages, 10606435 bytes).
 PDF statistics:
- 339 PDF objects out of 1000 (max. 8388607)
+ 341 PDF objects out of 1000 (max. 8388607)
  263 compressed objects within 3 object streams
  57 named destinations out of 1000 (max. 500000)
  144 words of extra memory for PDF output out of 10000 (max. 10000000)
