@@ -218,12 +218,12 @@
     
 \section{A probabilistic CA model}
 
-    Here, we use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata) to study the spatiotemporal dynamics of learning that provides a more direct implementation of any instructional mode.
+    We use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata) to study the spatiotemporal dynamics of learning for a more direct implementation of any instructional mode.
     For this pCA model, each cell in the automaton represents a student arranged in such a way each student is adjacent to (a CA {\it neighbor} of) four others resulting to the usual rectangular lattice configuration.
     For the rectangular lattice, we assign the unique position $(i,j)$ to each student such that $i,j\in[1,L]$ and the classroom size is $N=L^2$.
     The students at the edges and corners have less number of neighbors as in the real situations.
 
-    Each student at each lattice position $(i,j)$ in this CA model is then assigned a learning rate
+    Each student at every lattice position $(i,j)$ is then assigned a learning rate
     $\lambda_{i,j} \in \mathcal{R}$ 
     as a quantification of how fast they learn as an individual with
     $0{\leq}\lambda_{i,j}{\leq}1$
@@ -233,7 +233,7 @@
     for a two-level distinction we made for this work between {\it learned} (or high-scoring student, $s_{i,j}=1$) and {\it unlearned} (low-scoring, $0$).
     A state with more number of levels is not considered for simplicity.
 
-    For each time step, $t{\leftarrow}t+1$ and each student's state $s_{i,j}$ is updated depending on the mode of instruction described in the following.
+    For each time step, $t{\leftarrow}t+1$, each student's state $s_{i,j}$ is updated depending on the mode of instruction described in the following.
     A summary of the overall algorithm is shown in Fig.~\ref{fig:pCA-flowchart}.
     %%%
     \begin{figure}[htb]
@@ -241,37 +241,32 @@
         \includegraphics[width=0.45\textwidth]{figures/2DBPCA Flowchart.png}
         \caption{%%
             Flowchart for the pCA algorithm.
-            The PI and TI differ on how the probability $P_{i,j}$ is computed as described in the text.
+            The PI and TI differ on how the probability $P_{i,j}$ is obtained as described in the text.
         }\label{fig:pCA-flowchart}
     \end{figure}
-    
+
     %%%%TRADITIONAL INSTRUCTION%%%%%
 
-    For traditional instruction, the probability of a student to learn in each time step ($P_{i,j}$) is given by:
+    For traditional instruction (TI) mode, the probability of a student to learn in each time step ($P_{i,j}$) is then
     %%
     \begin{equation}
-        P_{i,j} = \lambda_{i,j}\rho_0
+        P_{i,j} = \lambda_{i,j}\rho_{\delta i,\delta j}
     \end{equation}
     %%
-    where
-    %%
-    $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, 
-    %%
-    $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$, and
-    %%
-    $\rho_{0} \in [0,1]$ is the probability of $c_{i,j}$ to learn from the teacher based on their relative position from the teacher.
+    with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of learning transfer efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$.
+    The relative position of the student may matter since instructors in TI mode, for example, may be dependent on the row $i$ since usually students near the front ($i=1$) tend to be more attentive and engaged in discussions than those in the last row ($i=L$).
+    To futher simplify for TI, we fix $\rho_{\delta i,\delta j}=\rho_{0}$ as the probability of the students to learn from the teacher directly as if during an efficient plenary (or broadcast) lecture throughout the class such that we simply have $P_{i,j} = \lambda_{i,j}\rho_0$.
 
-    We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
-    This allows us to investigate the effects of student heterogeneity on the classroom's learning dynamics.
-
-    Having a positional learning coefficient $\rho_{i,j}$ allows us to model a classroom where students closer to the teacher in front learn faster than those farther away or vice versa.
-    However, for this research, we only consider the case such that $\rho_{i,j} = \rho_0 \forall i,j$.
-
+    Our model incorporates class heterogeneity with different students' learning rates by varying $\lambda_{i,j}$.
+    In particular we used a variation about a fixed rate $\lambda_0$ such that $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$.
+    We used $\lambda_0=0.5$ and varied $\delta\lambda$ as heterogeneity parameter that increases the degree of class heterogeneity as it is tuned from $0$ to $0.5$ (we are limited by the probability range ${0}\leq\lambda_{i,j}\leq{1}$).
+    In this particular case, having $\delta\lambda=0.5$ would make some $\rho$-values zero implicating impossible zero learning rates.
+    
     %%%%%PEER INSTRUCTION%%%%%%
 
     In contrast to TI, the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
     %%
-    \begin{equation}
+    \begin{equation} 
         \label{eq:BPCA PI learning probability}
             P_{i,j} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{i,j})(\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}\rbrack
     \end{equation}
