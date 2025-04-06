@@ -107,7 +107,7 @@
 %    Similarly, students' conceptual understanding of the lessons also improved.
 %    This holds true for both in-class concept tests and end-of-semester exams~\cite{crouch2001peer}.
     
-    Despite the unique approach of de-emphasizing actual problem-solving during the PI lecture phase, quantitative problem-solving skills have been consistently shown to remain not compromised, and in few cases even improved, relative to TI.
+    Despite the unique approach of de-emphasizing actual problem-solving during the PI lecture phase, quantitative problem-solving skills have been consistently shown to remain not compromised, and in many cases even improved, relative to TI.
     Several advantages were pointed out in favor of the PI method in relation to the following dimensions: decrease in the number of students with extremely low scores~\cite{crouch2001peer,lasry2008peer,thacker1994comparing}, improved conceptual understanding~\cite{crouch2001peer}, as well as being independent of the background knowledge~\cite{lasry2008peer,tobias1990they}.
 
 
@@ -120,14 +120,14 @@
 %    They also found the PI greatly reduced the number of students who dropped the course.
 %    An older paper by Tobias~\cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
 
-    The dynamics involved during PI is complex resulting from the interacting components during the peer discussion.
-    Existing mathematical models for this are either predictive such as with the case of the artificial neural network (ANN) models~\cite{roxas2010seating} or lack the spatial aspect of the process such as utilizing differential equations~\cite{pritchard2008mathematical,nitta2019mathematical} and those surveyed in \citet{nitta2019mathematical}.
+    The dynamics of the learning process involved during PI is complex resulting from the forced interaction during the peer discussion stage.
+    Existing mathematical models for this are either predictive such as with the case of the artificial neural network (ANN) models~\cite{roxas2010seating} or lack the spatial aspect of the process such as utilizing differential equations~\cite{pritchard2008mathematical,nitta2019mathematical}.
     Somewhat in between these is a generalized Ising model by Bordogna and Albano~\cite{bordogna2001theoretical,bordogna2003simulation} that considers three sources of information for the student to learn from: teacher instruction, peer interaction, and bibliographic materials (books, lecture notes, etc.).
     Their model shows that students learn more when they engage discussions with their peers than those who only listen to lectures.
     They also show that group structure affects student learning, and that low aptitude students may learn at the expense of high aptitude peers---a transmissionist view of PI.
+    A survey of many other mathematical techniques are found in the work of \citet{nitta2019mathematical}.
     We are yet to find mathematical models for learning that compares PI with TI.
-
-
+    
     % The work of \citet{nitta2019mathematical} surveys known models for learning under PI mode.
     % The model of \citet{pritchard2008mathematical} for example uses the quantities that correspond to the levels that each student knows about the given knowledge domain.
     % Representing the portions of known as $K$ and unknown as $U$, we have $K+U=1$.
@@ -154,7 +154,7 @@
 %     Where $U(t)$ and $K(t)$ are the unknown and known knowledge domains respectively.
 %     The parameters $\alpha_m$, $\alpha_c$, and $\alpha_{tu}$ are the corresponding rates for the memory model, connectedness model, and tutoring model ....
 
-%     In deriving their own model of PI, Nitta arrived at analytic equations similar to the Hake gain (Equation~\ref{eq:hake-gain}) to evaluate the effectiveness of PI for a concept test question (Equation~\ref{eq: PIE}) and Pritchard's connectedness model (Equation~\ref{eq:connectedness model}) to model students' learning after each MCQ (Equation~\ref{eq: nitta model}).
+%     In deriving their own model of PI, Nitta arrived at analytic equations similar to the Hake gain to evaluate the effectiveness of PI for a concept test question (Equation~\ref{eq: PIE}) and Pritchard's connectedness model (Equation~\ref{eq:connectedness model}) to model students' learning after each MCQ (Equation~\ref{eq: nitta model}).
 
 %     \begin{equation}
 %         \label{eq: PIE}
@@ -171,121 +171,125 @@
     Actual assessment results by \citet{roxas2010seating} is used to train their ANN to predict expected second assessment scores of students depending on seating arrangements.
 % The artificial neural network (ANN) model by \citet{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
     Using this neural network, they were also able to characterize information transfer and investigate the effects of group homogeneity. 
-    Their study revealed that an optimal seating arrangement for students under PI methods based on their final aptitude.
-    In their paper, the measure of students' improvement was calculated via the Hake gain as follows~\cite{hake1998}.
-    \begin{equation}
-        \label{eq:hake-gain}
-        \langle g \rangle = \frac{\langle 2^{\text{nd}}\text{ assessment} - 1^{\text{st}}\text{ assessment} \rangle}{\langle 1 - 1^{\text{st}}\text{ assessment} \rangle}
-    \end{equation}
-    They also used the output/input ratio (O/I), which was the ratio of second assessment scores vs first assessment scores, to gauge student improvement.
-    % However, it should be noted that O/I values tend to be biased towards low-scoring students.
+    Their study revealed that an optimal seating arrangement exists for students under PI methods based on their final aptitude.
+    In their paper, the measure of each students' improvement was calculated via the Hake gain~\cite{hake1998} as 
+    %%
+    $g \equiv (S_2 - S_1) / (1 - S_1)$
+    %%
+    where $S_1$ and $S_2$ are scores for respectively first and second assessment.
+    They also used the output/input ratio ($O/I = S_2/S_1$) to gauge student improvement.
+    Class improvement is the average of any of the scores.
+    % However, it should be noted that $O/I$-values tend to be biased towards low-scoring students.
 
-    The results of their study show that the outer corner seating arrangement (SA) performed the best using both the Hake gain~(Eq.~\ref{eq:hake-gain}), followed by inner corner, then random, then center (see Fig.~\ref{fig:PI-SAs} for SA visualizations).
-    In simulated classrooms, each with $64$ students and $10$ classrooms in total, they found that homogenous classrooms with low aptitudes have significantly higher O/I values.
+    The results of their study show that the outer corner seating arrangement (SA) performed the best using both the Hake gain and the $O/I$, followed by inner corner, then random, then center.
+    The seating arrangements are illustrated in Fig.~\ref{fig:PI-SAs}.
+    In simulated classrooms (ANN system), each with $64$ students and $10$ classrooms in total, they found that homogenous classrooms with low aptitudes have significantly higher $O/I$-values.
     This means that low aptitude students benefit the most from being grouped together.
-%%
-    \begin{figure}[htbp!]
+    %%
+    \begin{figure}[htb]
         \centering
-        \includegraphics[width=0.40\textwidth]{figures/PI SAs.png}
-        \caption{Seating arrangements considered for PI. Dots represent position of high aptitude students.}
+        \includegraphics[width=0.30\textwidth]{figures/PI SAs.png}
+        \caption{%%
+        Seating arrangements considered for PI.
+        Dots represent position of high aptitude students.
+        The position of other students are typically arranged in rectangular pattern across the room (here square for brevity).
+        The random case is just one of the many possible arrangements.
+        }
         \label{fig:PI-SAs}
     \end{figure}
 
-    \citet{nitta2019mathematical} also presented their own model of PI:
-%
+    Hake gain predicts the following expression for the expected score $S_2$ during the assessment after the first such that when done iteratively, every next assessment $S_2$ is dependent on the first assessment score $S_1$ as follows.
+    %%
     \begin{equation}
-        \label{eq:nitta_model}
-        \rho_2 = \rho_1 +\rho_1(1-\rho_1)
+        S_2 = S_1 + g\cdot(1-S_1)
     \end{equation}
-%
-    where $\rho_1$ and $\rho_2$ are the normalized number of students who answered the first and second MCQ correctly respectively. Combining Equation~\ref{eq:nitta_model} with their formulation of gain similar in form to Equation~\ref{eq:hake-gain}, the gain is equal to $\rho_2$.
-%
+    %%
+    where $g$ may be a function of $S_1$.
+    \citet{nitta2019mathematical} presented a model of PI learning that relates the probabilities that the students answers the MCQ correctly (effectively, post- and pre-test).
+    Such probabilities would then imply that the Nitta Model predicts that the gain is dependent on the previous score such that:
+    %%
     \begin{equation}
-        \label{eq:nitta_gain}
-        g = \rho_2
+        g = g(S_1) = S_1.
     \end{equation}
+    %%
+    Other models provide Hake gain expressions (e.g. \citet{pritchard2008mathematical}) resulting to more complex formulation for the function $g(S_1)$.
 
-    There are others whose gain are derived from their own models like that of \citet{pritchard2008mathematical} where the equation is much more complicated.
-
-    Despite the diversity of the models that we found, current models of PI lack some aspects of PI that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity.
+    Despite the diversity of the models that we found, current models of PI lack some aspects that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity with which the introduction of PI from TI are typically founded on.
     
-\section{A probabilistic cellular automata model}
+\section{A probabilistic CA model}
 
-    Here, we show that a probabilistic cellular automata (PCA) model can be used to study the spatiotemporal dynamics of both PI and traditional instruction when incorporating these different aspects into the model.
-    We previously used a probabilistic cellular automata to model the classroom~\cite{SelfSPP}, the results of which were presented in the 42$^{\text{nd}}$ Samahang Pisika ng Pilipinas Conference in July 2024.
-    The findings presented in the paper are also presented in this study as part of the results.
+    Here, we use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata) to study the spatiotemporal dynamics of learning that provides a more direct implementation of any instructional mode.
+    For this pCA model, each cell in the automaton represents a student arranged in such a way each student is adjacent to (a CA {\it neighbor} of) four others resulting to the usual rectangular lattice configuration.
+    For the rectangular lattice, we assign the unique position $(i,j)$ to each student such that $i,j\in[1,L]$ and the classroom size is $N=L^2$.
+    The students at the edges and corners have less number of neighbors as in the real situations.
 
-    For the PCA model, each cell in the automaton represents a student where each student is assigned a learning rate $\lambda_{i,j}$ to describe how fast they learn as an individual.
-    The state of each cell represents their aptitude $s_{i,j}=\lbrace\text{unlearned},\text{learned}\rbrace=\lbrace0,1\rbrace$.
-    We assign the neighborhood to be an outer totalistic Moore neighborhood of radius $r=1$ and define the boundary conditions to be fixed wherein the grid does not wrap around itself and $s_{i,j}=0 \text{ for }i,j\notin[1,L]$.
-    For each time step, we find the probability of a student to learn and update the state of the student based on this probability.
-    The probability of a student to learn is calculated differently for traditional instruction and peer instruction.
+    Each student at each lattice position $(i,j)$ in this CA model is then assigned a learning rate
+    $\lambda_{i,j} \in \mathcal{R}$ 
+    as a quantification of how fast they learn as an individual with
+    $0{\leq}\lambda_{i,j}{\leq}1$
+    (or a probability to learn from any other neighbor).
+    We also introduce the state $s_{i,j}$ representing the level of aptitude of each student so that
+    $s_{i,j}\in\lbrace{0,1}\rbrace$
+    for a two-level distinction we made for this work between {\it learned} (or high-scoring student, $s_{i,j}=1$) and {\it unlearned} (low-scoring, $0$).
+    A state with more number of levels is not considered for simplicity.
 
-    \subsection{Update Rules for Traditional Instruction (TI)}
+    For each time step, $t{\leftarrow}t+1$ and each student's state $s_{i,j}$ is updated depending on the mode of instruction described in the following.
+    A summary of the overall algorithm is shown in Fig.~\ref{fig:pCA-flowchart}.
+    %%%
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.45\textwidth]{figures/2DBPCA TI Flowchart.png}
+        \caption{%%
+            Flowchart for the pCA algorithm.
+            The PI and TI differ on how the probability $P_{i,j}$ is computed as described in the text.
+        }\label{fig:pCA-flowchart}
+    \end{figure}
+    
+    %%%%TRADITIONAL INSTRUCTION%%%%%
 
-        For traditional instruction, the probability of a student to learn in each time step ($P_{i,j}$) is given by:
-        %%
-        \begin{equation}
-            P_{i,j} = \lambda_{i,j}\rho_0
-        \end{equation}
-        %%
-        where
-        %%
-        $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, 
-        %%
-        $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$, and
-        %%
-        $\rho_{0} \in [0,1]$ is the probability of $c_{i,j}$ to learn from the teacher based on their relative position from the teacher.
+    For traditional instruction, the probability of a student to learn in each time step ($P_{i,j}$) is given by:
+    %%
+    \begin{equation}
+        P_{i,j} = \lambda_{i,j}\rho_0
+    \end{equation}
+    %%
+    where
+    %%
+    $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, 
+    %%
+    $\lambda_{i,j} \in [0,1]$ is the learning rate of student $c_{i,j}$, and
+    %%
+    $\rho_{0} \in [0,1]$ is the probability of $c_{i,j}$ to learn from the teacher based on their relative position from the teacher.
 
-        We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
-        This allows us to investigate the effects of student heterogeneity on the classroom's learning dynamics.
+    We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
+    This allows us to investigate the effects of student heterogeneity on the classroom's learning dynamics.
 
-        Having a positional learning coefficient $\rho_{i,j}$ allows us to model a classroom where students closer to the teacher in front learn faster than those farther away or vice versa.
-        However, for this research, we only consider the case such that $\rho_{i,j} = \rho_0 \forall i,j$.
+    Having a positional learning coefficient $\rho_{i,j}$ allows us to model a classroom where students closer to the teacher in front learn faster than those farther away or vice versa.
+    However, for this research, we only consider the case such that $\rho_{i,j} = \rho_0 \forall i,j$.
 
-        The numerical procedure is outlined in Figure~\ref{fig:TI flowchart}.
-        Each simulation for the TI model starts with all students unlearned.
-        %%
-        \begin{figure}[htbp!]
-            \centering
-            \includegraphics[width=0.45\textwidth]{figures/2DBPCA TI Flowchart.png}
-            \caption[Traditional instruction simulation flowchart]{Numerical process for simulation of 2D BPCA for traditional instruction.}
-            \label{fig:TI flowchart}
-        \end{figure}
+    %%%%%PEER INSTRUCTION%%%%%%
 
-    \subsection{Update Rules for Peer Instruction (PI)}
+    In contrast to TI, the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
+    %%
+    \begin{equation}
+        \label{eq:BPCA PI learning probability}
+            P_{i,j} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{i,j})(\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}\rbrack
+    \end{equation}
+    %%
+    where
+    %%
+    $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, and
+    %%
+    $\lambda_{i,j} \in  [0,1]$ is the learning rate of student $c_{i,j}$.
+    We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
+    %%
+    The variables $\rho_{\delta i, \delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
+    %%
+    $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors' aptitude level.
+    
+    %%%%MODEL PARAMETERS%%%%
 
-        In contrast to TI, the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
-        %%
-        \begin{equation}
-            \label{eq:BPCA PI learning probability}
-                P_{i,j} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{i,j})(\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}\rbrack
-        \end{equation}
-        %%
-        where
-        %%
-        $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, and
-        %%
-        $\lambda_{i,j} \in  [0,1]$ is the learning rate of student $c_{i,j}$.
-        We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
-        %%
-        The variables $\rho_{\delta i, \delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
-        %%
-        $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors' aptitude level.
-
-        The numerical procedure is outlined in Figure~\ref{fig:PI flowchart}.
-        Each simulation for the PI model starts with only four learned students $n_0 = 4$.
-        %%
-        \begin{figure}[htbp!]
-            \centering
-            \includegraphics[width=0.45\textwidth]{figures/2DBPCA PI Flowchart.png}
-            \caption[Peer instruction simulation flowchart]{Numerical process for simulation of 2D BPCA for peer instruction.}
-            \label{fig:PI flowchart}
-        \end{figure}
-
-
-    \subsection{Model parameters}
-        The values of the model input parameters we considered for the class size $N=L^2$, the positional learning coefficient $\rho_0$, and the learning rate heterogeneity $\delta\lambda$ are as follows:
+    The values of the model input parameters we considered for the class size $N=L^2$, the positional learning coefficient $\rho_0$, and the learning rate heterogeneity $\delta\lambda$ are as follows:
 
         \begin{itemize}
             \item $L=\lbrace32,48,64,96,128\rbrace$
