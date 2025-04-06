@@ -99,7 +99,7 @@ function plot_comparison(initial_conditions)
 
     color = ColorSchemes.seaborn_colorblind.colors
 
-    fig = Figure(size=(1000,1000 ÷ sqrt(2)); dpi = 300)
+    fig = Figure(size=(1000, 1000 ÷ sqrt(2)); dpi = 300)
 
     ax = Axis(fig[1, 1];
         xlabel = "Time step",
@@ -111,12 +111,12 @@ function plot_comparison(initial_conditions)
         # xminorgridvisible = false,
         # yminorgridvisible = false,
         # limits = (nothing, 10^3, nothing, nothing),
-        xlabelsize = 24,
-        ylabelsize = 24,
-        titlesize = 24,
-        subtitlesize = 16,
-        xticklabelsize = 16,
-        yticklabelsize = 16,
+        xlabelsize = 28,
+        ylabelsize = 28,
+        titlesize = 28,
+        subtitlesize = 24,
+        xticklabelsize = 24,
+        yticklabelsize = 24,
     )
 
     SA_label_dict = Dict(
@@ -144,11 +144,11 @@ function plot_comparison(initial_conditions)
     )
     
     size_width_dict = Dict(
-        32 => 1,
-        48 => 1.5,
-        64 => 2,
-        96 => 2.5,
-        128 => 3,
+        32 => 2,
+        48 => 3,
+        64 => 4,
+        96 => 5,
+        128 => 6,
     )
 
     δλ_ls_dict = Dict(
@@ -192,7 +192,7 @@ function plot_comparison(initial_conditions)
         )
 
         lines!(ax, learned_μ_dom, learned_μ,
-            label = "$(SA_label_dict[SA])$(class_size), ρ₀=$(ρ₀), λ=$(λ₀)±$(δλ)",
+            label = "ρ=$(ρ₀)",
             color = (color[SA_color_dict[SA]], rho_alpha_dict[ρ₀]),
             # marker = SA_symbol_dict[SA],
             linewidth = size_width_dict[class_size],
@@ -201,21 +201,29 @@ function plot_comparison(initial_conditions)
 
     end
 
+            # label = 
+            #     "
+            #         $(SA_label_dict[SA])
+            #         $(class_size), 
+            #         ρ₀=$(ρ₀), 
+            #         λ=$(λ₀)±$(δλ)
+            #     ",
+
     # colsize!(fig.layout, 1, Aspect(1,1.5))
 
-    axislegend(ax,
-        position = :rb,
-        labelsize = 24,
-        background_color = :transparent,
-        framevisible = false
-    )
+    # axislegend(ax,
+    #     position = :rb,
+    #     labelsize = 24,
+    #     background_color = :transparent,
+    #     framevisible = false
+    # )
     fig
 
-    # Legend(fig[1,2], ax,
-    #     "Legend",
-    #     titlesize = 16,
-    #     labelsize = 16
-    # )
+    Legend(fig[2,1], ax,
+        titlesize = 28,
+        labelsize = 28,
+        orientation = :horizontal,
+    )
 
     return fig
 end
@@ -318,8 +326,8 @@ begin
     comparison = [
         # "size",
         # "SA",
-        # "ρ₀",
-        "δλ",
+        "ρ₀",
+        # "δλ",
     ]
 
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
@@ -332,6 +340,17 @@ begin
         push!(initial_conditions, [size, class_config, ρ₀, 0.5, δλ])
     end
     initial_conditions
+end
+
+begin #* Comparing time series traditional with PI
+    comparison_plot = plot_comparison(initial_conditions)
+
+    savepath = "./output/2D-Binary-PCA-IH/analysis/plots/trad-PI-learned-t-comparison/"
+    filename = join(comparison, "-")
+
+    save(savepath * filename * ".png", comparison_plot)
+
+    comparison_plot
 end
 
 begin #! Return map
@@ -359,13 +378,4 @@ begin #! Return map
     end
 end
 
-begin #* Comparing time series traditional with PI
-    comparison_plot = plot_comparison(initial_conditions)
 
-    savepath = "./output/2D-Binary-PCA-IH/analysis/plots/trad-PI-learned-t-comparison/"
-    filename = join(comparison, "-")
-
-    save(savepath * filename * ".png", comparison_plot)
-
-    comparison_plot
-end
