@@ -177,11 +177,11 @@ INPUT ./figures/PI SAs.png
 INPUT ./figures/PI SAs.png
 INPUT ./figures/PI SAs.png
 INPUT ./figures/PI SAs.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
-INPUT ./figures/2DBPCA TI Flowchart.png
+INPUT ./figures/2DBPCA Flowchart.png
+INPUT ./figures/2DBPCA Flowchart.png
+INPUT ./figures/2DBPCA Flowchart.png
+INPUT ./figures/2DBPCA Flowchart.png
+INPUT ./figures/2DBPCA Flowchart.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
