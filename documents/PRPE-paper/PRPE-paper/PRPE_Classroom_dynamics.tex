@@ -238,7 +238,7 @@
     %%%
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=0.45\textwidth]{figures/2DBPCA TI Flowchart.png}
+        \includegraphics[width=0.45\textwidth]{figures/2DBPCA Flowchart.png}
         \caption{%%
             Flowchart for the pCA algorithm.
             The PI and TI differ on how the probability $P_{i,j}$ is computed as described in the text.
@@ -395,9 +395,11 @@
         
     \begin{figure}[htbp!]
         \centering
-        \subfigure[$t=2$]{\includegraphics[width=0.23\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png}}
-        \subfigure[$t=13$]{\includegraphics[width=0.23\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png}}
-        \caption{Example classroom evolution for TI with $L=64$, $\rho_0=0.3$, and $\delta\lambda=0.4$ at different time steps $t$ showing a two-stage learning process.
+        \subfigure[$t=2$]{\includegraphics[width=0.23\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-2.png}}
+        \subfigure[$t=8$]{\includegraphics[width=0.23\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-8.png}}
+        \subfigure[$t=32$]{\includegraphics[width=0.23\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-32.png}}
+        \subfigure[$t=161$]{\includegraphics[width=0.23\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-161.png}}
+        \caption{Example classroom evolution for TI with $L=32$, $\rho_0=0.3$, and $\delta\lambda=0.4$ at different time steps $t$ showing a two-stage learning process.
         Dark blue cells represent learned students with learning rate $\lambda=\lambda_0+\delta\lambda$, blue cells represent learned students with learning rate $\lambda=\lambda_0-\delta\lambda$, and light blue cells represent unlearned students.}
         \label{fig:two stage learning}
     \end{figure}
