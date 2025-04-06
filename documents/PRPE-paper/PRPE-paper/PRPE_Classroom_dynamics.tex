@@ -255,14 +255,13 @@
     %%
     with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of learning transfer efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$.
     The relative position of the student may matter since instructors in TI mode, for example, may be dependent on the row $i$ since usually students near the front ($i=1$) tend to be more attentive and engaged in discussions than those in the last row ($i=L$).
-    To futher simplify for TI, we fix $\rho_{\delta i,\delta j}=\rho_{0}$ as the probability of the students to learn from the teacher directly as if during an efficient plenary (or broadcast) lecture throughout the class.
+    To futher simplify for TI, we fix $\rho_{\delta i,\delta j}=\rho_{0}$ as the probability of the students to learn from the teacher directly as if during an efficient plenary (or broadcast) lecture throughout the class such that we simply have $P_{i,j} = \lambda_{i,j}\rho_0$.
 
-    We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
-    This allows us to investigate the effects of student heterogeneity on the classroom's learning dynamics.
-
-    Having a positional learning coefficient $\rho_{i,j}$ allows us to model a classroom where students closer to the teacher in front learn faster than those farther away or vice versa.
-    However, for this research, we only consider the case such that $\rho_{i,j} = \rho_0 \forall i,j$.
-
+    Our model incorporates class heterogeneity with different students' learning rates by varying $\lambda_{i,j}$.
+    In particular we used a variation about a fixed rate $\lambda_0$ such that $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$.
+    We used $\lambda_0=0.5$ and varied $\delta\lambda$ as heterogeneity parameter that increases the degree of class heterogeneity as it is tuned from $0$ to $0.5$ (we are limited by the probability range ${0}\leq\lambda_{i,j}\leq{1}$).
+    In this particular case, having $\delta\lambda=0.5$ would make some $\rho$-values zero implicating impossible zero learning rates.
+    
     %%%%%PEER INSTRUCTION%%%%%%
 
     In contrast to TI, the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
