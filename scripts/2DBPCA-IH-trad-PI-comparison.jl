@@ -243,12 +243,12 @@ function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
         # subtitle = "L=$(return_map_params[1]), ρ₀=$(return_map_params[3]), λ=$(return_map_params[4]), δλ=$(return_map_params[5])",
         # xminorgridvisible = false,
         # yminorgridvisible = false,
-        xlabelsize = 24,
-        ylabelsize = 24,
-        titlesize = 24,
-        subtitlesize = 16,
-        xticklabelsize = 16,
-        yticklabelsize = 16,
+        xlabelsize = 28,
+        ylabelsize = 28,
+        titlesize = 28,
+        subtitlesize = 24,
+        xticklabelsize = 24,
+        yticklabelsize = 24,
     )
 
     ti_params = [Int(return_map_params[1]), "traditional", return_map_params[3], return_map_params[4], return_map_params[5]]
