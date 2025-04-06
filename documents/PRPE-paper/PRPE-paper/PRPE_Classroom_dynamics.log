@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.3)  4 APR 2025 23:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.3)  6 APR 2025 11:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -351,118 +351,126 @@ File: figures/2DBPCA Flowchart.png Graphic file (type png)
 Package pdftex.def Info: figures/2DBPCA Flowchart.png  used on input line 241.
 (pdftex.def)             Requested size: 229.49844pt x 100.58466pt.
  [3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figures/2DBPCA Flowchart.png>]
-<figures/2D-BPCAIH-analysis/comparison plots/size.png, id=153, 2007.5pt x 1419.3025pt>
+<figures/2D-BPCAIH-analysis/comparison plots/size.png, id=153, 766.719pt x 485.085pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/size.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/size.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/size.png  used on input line 334.
-(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
-<figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png, id=154, 2007.5pt x 1419.3025pt>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/size.png  used on input line 333.
+(pdftex.def)             Requested size: 229.49844pt x 145.19354pt.
+<figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png, id=154, 766.719pt x 485.961pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png  used on input line 350.
-(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
-<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=155, 2007.5pt x 1419.3025pt>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png  used on input line 349.
+(pdftex.def)             Requested size: 229.49844pt x 145.45573pt.
+<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=155, 766.5pt x 485.523pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/δλ.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/δλ.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  used on input line 365.
-(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
-<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png, id=156, 873.2625pt x 737.75626pt>
-File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png  used on input line 394.
-(pdftex.def)             Requested size: 117.29782pt x 99.08621pt.
-<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png, id=157, 873.2625pt x 737.75626pt>
-File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png Graphic file (type png)
-<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png  used on input line 395.
-(pdftex.def)             Requested size: 117.29782pt x 99.08621pt.
-<figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=162, 2007.5pt x 1419.3025pt>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  used on input line 364.
+(pdftex.def)             Requested size: 229.49844pt x 145.36908pt.
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-2.png, id=156, 859.71187pt x 712.91344pt>
+File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-2.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-2.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-2.png  used on input line 393.
+(pdftex.def)             Requested size: 117.29782pt x 97.2617pt.
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-8.png, id=157, 858.20625pt x 712.91344pt>
+File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-8.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-8.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-8.png  used on input line 394.
+(pdftex.def)             Requested size: 117.29782pt x 97.43576pt.
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-32.png, id=158, 846.16125pt x 707.64375pt>
+File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-32.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-32.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-32.png  used on input line 395.
+(pdftex.def)             Requested size: 117.29782pt x 98.08685pt.
+<figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-161.png, id=159, 840.89156pt x 710.655pt>
+File: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-161.png Graphic file (type png)
+<use figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-161.png>
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-161.png  used on input line 396.
+(pdftex.def)             Requested size: 117.29782pt x 99.12233pt.
+<figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=164, 766.719pt x 486.18pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/SA.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/SA.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/SA.png  used on input line 412.
-(pdftex.def)             Requested size: 229.49844pt x 162.25262pt.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/SA.png  used on input line 413.
+(pdftex.def)             Requested size: 229.49844pt x 145.52129pt.
  [4 <./figures/2D-BPCAIH-analysis/comparison plots/size.png> <./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png> <./figures/2D-BPCAIH-analysis/comparison plots/δλ.png>]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 423.
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 424.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 424.
+(hyperref)                removing `\rho' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 424.
+(hyperref)                removing `subscript' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+(hyperref)                removing `math shift' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delta' on input line 424.
+(hyperref)                removing `\delta' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 424.
+(hyperref)                removing `\lambda' on input line 425.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 424.
+(hyperref)                removing `math shift' on input line 425.
 
-<figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=175, 1254.6875pt x 887.315pt>
+<figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=180, 1254.6875pt x 887.315pt>
 File: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png  used on input line 437.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png  used on input line 438.
 (pdftex.def)             Requested size: 239.70062pt x 169.51227pt.
 
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 446.
+LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 447.
 
 
-Underfull \hbox (badness 5832) in paragraph at lines 446--452
+Underfull \hbox (badness 5832) in paragraph at lines 447--453
 []\OT1/cmr/m/n/10 Comparing our data to Nitta's model (Equa-
  []
 
-<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=179, 4015.0pt x 2838.605pt>
+[5 <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-2.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-8.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-32.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-32-0.3-0.5-0.4-trial_1-161.png> <./figures/2D-BPCAIH-analysis/comparison plots/SA.png> <./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>]
+<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=203, 4015.0pt x 2838.605pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png  used on input line 455.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png  used on input line 456.
 (pdftex.def)             Requested size: 239.70062pt x 169.44267pt.
-<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=180, 4015.0pt x 2838.605pt>
+<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=204, 4015.0pt x 2838.605pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png  used on input line 456.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png  used on input line 457.
 (pdftex.def)             Requested size: 239.70062pt x 169.44267pt.
 
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 460.
+
+LaTeX Warning: Reference `eq:nitta_model' on page 6 undefined on input line 461.
 
 
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 460.
+LaTeX Warning: Reference `eq:nitta_model' on page 6 undefined on input line 461.
 
 
-LaTeX Warning: Reference `eq:nitta_model' on page 5 undefined on input line 464.
+LaTeX Warning: Reference `eq:nitta_model' on page 6 undefined on input line 465.
 
 
-LaTeX Warning: Reference `eq:nitta_gain' on page 5 undefined on input line 464.
-
-[5 <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-2.png> <./figures/2D-BPCAIH-analysis/class evolutions/trad low rho high delta/2DBPCAIH-traditional-64-0.3-0.5-0.4-trial_3-13.png> <./figures/2D-BPCAIH-analysis/comparison plots/SA.png> <./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 480.
+LaTeX Warning: Reference `eq:nitta_gain' on page 6 undefined on input line 465.
 
 [6 <./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png>] (./PRPE_Classroom_dynamics.bbl
 Underfull \hbox (badness 4792) in paragraph at lines 57--58
@@ -512,18 +520,18 @@ Package rerunfilecheck Info: File `PRPE_Classroom_dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: DF4F6647453634E74F2D8358B7C2DE59;2848.
  ) 
 Here is how much of TeX's memory you used:
- 11437 strings out of 473190
- 177196 string characters out of 5715801
+ 11453 strings out of 473190
+ 178972 string characters out of 5715801
  598518 words of memory out of 5000000
- 34503 multiletter control sequences out of 15000+600000
+ 34517 multiletter control sequences out of 15000+600000
  567428 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,79p,936b,509s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on PRPE_Classroom_dynamics.pdf (7 pages, 2868879 bytes).
+Output written on PRPE_Classroom_dynamics.pdf (7 pages, 3921134 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 345 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 
