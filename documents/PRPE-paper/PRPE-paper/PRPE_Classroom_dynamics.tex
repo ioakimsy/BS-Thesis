@@ -292,8 +292,8 @@
             \item $\delta\lambda=\lbrace0.0, 0.1, 0.2, 0.3, 0.4\rbrace$
         \end{itemize}
 
-        To assess how well the class performed, we used the time it took for all the students to learn $t_{\rm max}$.
-        For both TI and PI, the simulation ends when all students have learned.
+        To assess how well the class performed, we used the time it took for the class to reach a steady state $t_{\rm max}$.
+        For both TI and PI, the simulation is considered to have reached a steady state when no new students learn for $20$ consecutive time steps or when all students have learned.
         Each set of parameters was run 5 independent times to get the average and standard deviation of $t_{\rm max}$ for each set of parameters.
 
 
@@ -320,9 +320,9 @@
         Upon further inspection, we notice that TI classes with high learning rate heterogeneity $\delta\lambda$ have a two-stage learning process.
         The first stage is characterized by a sharp increase in the number of learned students caused by the majority of fast students ($\lambda=\lambda_0 + \delta\lambda$) learning in the first few time steps.
         The second stage is characterized by a much slower increase in the number of learned students caused by waiting for the slower students ($\lambda=\lambda_0 - \delta\lambda$) to learn.
-        An example case where this phenomenon is observable is shown in Figure~\ref{fig:two stage learning}.
+        An example case where this phenomenon is observable is shown in Figure~\ref{fig:TI_evolution}.
         In this case, we see at $t=2$ that majority of the students that are learned are fast students and at $t=13$ the slower students have started to learn, but the rate of learning has slowed down significantly.
-        Despite the promising-looking start to this simulation, it will spend up to $t=232$ waiting for all the students to learn.
+        Despite the promising-looking start to this simulation, it will spend up to $t=161$ waiting for all the students to learn.
 
         % When we vary class size $N$, as shown in Figure~\ref{fig:comparison size}, we see that in TI remains constant with only time to learn $t_{\rm max}$ increasing with class size $N$.
         % For PI, increasing class size $N$ adds a time delay to when the learning starts to speed up. Despite the added time delay, the shape of the learning curve remains the same.
@@ -388,20 +388,20 @@
         % By $t=13$, the slower students have started to learn, but the rate of learning has slowed down significantly as the majority of students with higher learning rate have already learned.
         % This simulation will spend up to $t=232$ waiting for the slower students to learn.
         
-    \begin{figure}[htbp!]
+    \begin{figure*}[htbp!]
         \centering
-        \subfigure[Traditional Instruction (TI)]{\includegraphics[width=0.46\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png}}
-        \subfigure[Peer Instruction (PI)]{\includegraphics[width=0.46\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png}}
+        \subfigure[Traditional Instruction (TI)]{\includegraphics[width=0.95\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png}\label{fig:TI_evolution}}
+        \subfigure[Peer Instruction (PI)]{\includegraphics[width=0.95\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png}\label{fig:PI_evolution}}
         \caption{Example classroom evolution for with $L=32$, $\rho_0=0.3$, and $\delta\lambda=0.4$ at different time steps $t=2,8,16,32,54$.
         Dark blue cells represent learned students with learning rate $\lambda=\lambda_0+\delta\lambda$, blue cells represent learned students with learning rate $\lambda=\lambda_0-\delta\lambda$, and light blue cells represent unlearned students.}
-        \label{fig:two stage learning}
-    \end{figure}
+        \label{fig:class_evolution}
+    \end{figure*}
 
     As for PI, varying the different parameters do not lead to as varied dynamics as TI.
     The progression of the fraction of learned students are affected the same way when varying class size $N$, positional learning factor $\rho_0$, and learning rate heterogeneity $\delta\lambda$.
     Generally, there is a time delay before the learning starts to speed up.
     As shown in Figure~\ref{fig:comparison size}, Figure~\ref{fig:comparison ρ₀}, and Figure~\ref{fig:comparison δλ}, increasing class size $N$ and learning rate heterogeneity $\delta\lambda$, and decreasing positional learning factor $\rho_0$ all increase this time delay.
-    A combination of these factors may affect to the slope of classes' progression over time once learning speeds up, but these factors individually do not noticeably affect the progression.
+    A combination of these factors may affect to the rate of classes' progression over time once learning speeds up, but these factors individually do not noticeably affect the progression.
     Additionally, we see in Figure~\ref{fig:comparison SA} that different SAs perform differently even with the same set of parameters with the inner corner SA performed the best.
     The random SA may outperform the center and outer corner SAs in the middle of the simulation but still ends up having the highest time to learn $t_{\rm max}$.
 
@@ -417,7 +417,9 @@
     \end{figure}
 
     The plots in this section show that classes under TI have more students learning in the earlier time steps, but has lower time to learn $t_{\rm max}$ when compared to classes under PI with the same set of parameters.
-    These findings suggest that to optimize the learning in the classroom, it would be best to perform TI at the start of the class to take advantage of the fast initial learning stage, then switch to PI where having learned students spread throughout the classroom benefit those who have yet to learn.
+    However, we found that for cases of extremely high heterogeneity $\delta\lambda$ and low positional learning factor $\rho_0$, some simulations of TI did not finish with all students learned while PI did.
+    For these cases, the time for all students to learn might be longer than the $t_{\rm max}$ value we obtained.
+    Nevertheless, these findings suggest that to optimize the learning in the classroom, it would be best to perform TI at the start of the class to take advantage of the fast initial learning stage, then switch to PI where having learned students spread throughout the classroom benefit those who have yet to learn.
     This is consistent with current practices~\cite{mazur1997peer,smith2009peer,lasry2008peer,roxas2010seating}, where the students are expected to have read up on the material in advance and the instructor gives a short lecture before the students engage in peer discussion.
 
     \subsection{Summary of effects of class size $N$, positional learning factor $\rho_0$, and learning rate heterogeneity $\delta\lambda$}

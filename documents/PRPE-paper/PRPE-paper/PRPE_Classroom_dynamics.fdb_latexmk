@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex PRPE_Classroom_dynamics"] 1743910238 "PRPE_Classroom_dynamics.aux" "PRPE_Classroom_dynamics.bbl" "PRPE_Classroom_dynamics" 1743910272 0
-  "./PRPE_Classroom_dynamicsNotes.bib" 1743910268 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex PRPE_Classroom_dynamics"] 1743917589 "PRPE_Classroom_dynamics.aux" "PRPE_Classroom_dynamics.bbl" "PRPE_Classroom_dynamics" 1743917612 0
+  "./PRPE_Classroom_dynamicsNotes.bib" 1743917607 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "./biblio.bib" 1743661783 12452 fa508adbb73c39fbc7f1f254388db5f7 ""
-  "PRPE_Classroom_dynamics.aux" 1743910268 14322 e40091f0d30b83d324929ec0fb62b147 "pdflatex"
+  "PRPE_Classroom_dynamics.aux" 1743917607 14627 f227cb96f9866e7e743fa46f6dcf12ce "pdflatex"
   "c:/texlive/2023/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1696367718 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
   (generated)
   "PRPE_Classroom_dynamics.bbl"
   "PRPE_Classroom_dynamics.blg"
   (rewritten before read)
-["pdflatex"] 1743910240 "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" "PRPE_Classroom_dynamics.pdf" "PRPE_Classroom_dynamics" 1743910272 0
-  "PRPE_Classroom_dynamics.aux" 1743910268 14322 e40091f0d30b83d324929ec0fb62b147 "pdflatex"
-  "PRPE_Classroom_dynamics.bbl" 1743910240 13368 987db00c55a6232d453a3a2239c2dd91 "bibtex PRPE_Classroom_dynamics"
-  "PRPE_Classroom_dynamics.out" 1743910268 2848 df4f6647453634e74f2d8358b7c2de59 "pdflatex"
-  "PRPE_Classroom_dynamics.tex" 1743910152 46283 969fe502c938ac2fe70608ffdbc4e1b9 ""
-  "PRPE_Classroom_dynamics.toc" 1743910268 1109 e24024124442a55dc10301aa7cc792a6 "pdflatex"
-  "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" 1743910152 46283 969fe502c938ac2fe70608ffdbc4e1b9 ""
+["pdflatex"] 1743917590 "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" "PRPE_Classroom_dynamics.pdf" "PRPE_Classroom_dynamics" 1743917612 0
+  "PRPE_Classroom_dynamics.aux" 1743917607 14627 f227cb96f9866e7e743fa46f6dcf12ce "pdflatex"
+  "PRPE_Classroom_dynamics.bbl" 1743917590 13368 987db00c55a6232d453a3a2239c2dd91 "bibtex PRPE_Classroom_dynamics"
+  "PRPE_Classroom_dynamics.out" 1743917607 2848 df4f6647453634e74f2d8358b7c2de59 "pdflatex"
+  "PRPE_Classroom_dynamics.tex" 1743917565 46771 bcb765552a97d983979b1249c91daf19 ""
+  "PRPE_Classroom_dynamics.toc" 1743917607 1109 e24024124442a55dc10301aa7cc792a6 "pdflatex"
+  "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" 1743917565 46771 bcb765552a97d983979b1249c91daf19 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1696356010 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1696359370 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1696358097 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -126,8 +126,8 @@
   "figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png" 1743909676 4748903 c1046089656abc4af8b7ce06b436173c ""
   "figures/2D-BPCAIH-analysis/comparison plots/SA.png" 1743904522 523803 8f5f632bc5a1f4f86e19de28e56f3df3 ""
   "figures/2D-BPCAIH-analysis/comparison plots/size.png" 1743905362 526315 efdc57950ea0d0bc93ec1bbfb71a0838 ""
-  "figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png" 1743906691 454176 f11af39fa24aa9e4c7918ec8259ddb5f ""
-  "figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png" 1743906675 368584 9b2faab0b71da601786d3a35ab48c012 ""
+  "figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png" 1743917387 556082 d60843595f8154ce05f4842379e42969 ""
+  "figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png" 1743917359 403458 b9fc3a544bc01c196ab4fedf81f4d47f ""
   "figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png" 1742097915 193970 6e1b60e62815deddfdf0871fa8fa6456 ""
   "figures/2DBPCA Flowchart.png" 1743733321 724160 29fc4a48054f6295a695451ecad63dd4 ""
   "figures/PI SAs.png" 1715907867 121723 881d3305891e6715c3a058db0d610b85 ""
