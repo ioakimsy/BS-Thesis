@@ -218,7 +218,7 @@
     
 \section{A probabilistic CA model}
 
-    We use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata) to study the spatiotemporal dynamics of learning for a more direct implementation of any instructional mode.
+    We use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata~\cite{arciaga2009experimental,Batac2009,louis2018probabilistic,Fernandez2018}) to study the spatiotemporal dynamics of learning for a more direct implementation of any instructional mode.
     For this pCA model, each cell in the automaton represents a student arranged in such a way each student is adjacent to (a CA {\it neighbor} of) four others resulting to the usual rectangular lattice configuration.
     For the rectangular lattice, we assign the unique position $(i,j)$ to each student such that $i,j\in[1,L]$ and the classroom size is $N=L^2$.
     The students at the edges and corners have less number of neighbors as in the real situations.
@@ -233,7 +233,7 @@
     for a two-level distinction we made for this work between {\it learned} (or high-scoring student, $s_{i,j}=1$) and {\it unlearned} (low-scoring, $0$).
     A state with more number of levels is not considered for simplicity.
 
-    For each time step, $t{\leftarrow}t+1$, each student's state $s_{i,j}$ is updated depending on the mode of instruction described in the following.
+    For each time step, $t\;{\leftarrow}\;(t+1)$, each student's state $s_{i,j}$ is updated depending on the mode of instruction described in the following.
     A summary of the overall algorithm is shown in Fig.~\ref{fig:pCA-flowchart}.
     %%%
     \begin{figure}[htb]
@@ -264,7 +264,12 @@
     
     %%%%%PEER INSTRUCTION%%%%%%
 
-    In contrast to TI, the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
+    Different from TI, the Peer Instruction mode involves some learning during interaction with peers.
+    Such interaction happens with the nearest neighbor unless specific instructions say different.
+    We consider the simple case such that the probability $P_{i,j}$ is dependent also on the states of the nearest neighbor.
+    In this case, we have a compounded probabilities resulting to
+    
+    the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
     %%
     \begin{equation} 
         \label{eq:BPCA PI learning probability}
