@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{17}%
+\begin{thebibliography}{21}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -100,4 +100,16 @@
 \bibitem [{\citenamefont {Sy}\ \emph {et~al.}(2024)\citenamefont {Sy}, \citenamefont {Ramos},\ and\ \citenamefont {Bantang}}]{SelfSPP}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~I.~T.}\ \bibnamefont {Sy}}, \bibinfo {author} {\bibfnamefont {R.~X.~A.}\ \bibnamefont {Ramos}},\ and\ \bibinfo {author} {\bibfnamefont {J.~Y.}\ \bibnamefont {Bantang}},\ }\bibfield  {title} {\bibinfo {title} {Learning dynamics in a cellular automata model of classroom peer-to-peer interactions},\ }in\ \href {https://proceedings.spp-online.org/article/view/SPP-2024-1E-04} {\emph {\bibinfo {booktitle} {Proceedings of the Samahang Pisika ng Pilipinas}}},\ Vol.~\bibinfo {volume} {42}\ (\bibinfo {year} {2024})\ pp.\ \bibinfo {pages} {SPP--2024--1E--04}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Arciaga}\ \emph {et~al.}(2009)\citenamefont {Arciaga}, \citenamefont {Pastor}, \citenamefont {Batac}, \citenamefont {Bantang},\ and\ \citenamefont {Monterola}}]{arciaga2009experimental}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Arciaga}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Pastor}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Batac}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Bantang}},\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Monterola}},\ }\bibfield  {title} {\bibinfo {title} {Experimental observation and an empirical model of enhanced heap stability resulting from the mixing of granular materials},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Journal of Statistical Mechanics: Theory and Experiment}\ }\textbf {\bibinfo {volume} {2009}},\ \bibinfo {pages} {P07040} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Batac}\ \emph {et~al.}(2009)\citenamefont {Batac}, \citenamefont {Pastor}, \citenamefont {Arciaga}, \citenamefont {Bantang},\ and\ \citenamefont {Monterola}}]{Batac2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Batac}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Pastor}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Arciaga}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Bantang}},\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Monterola}},\ }\bibfield  {title} {\bibinfo {title} {Kinks, logarithmic tails, and super-stability in bi-disperse granular media},\ }\href {https://doi.org/https://doi.org/10.1016/j.physa.2009.04.001} {\bibfield  {journal} {\bibinfo  {journal} {Physica A: Statistical Mechanics and its Applications}\ }\textbf {\bibinfo {volume} {388}},\ \bibinfo {pages} {3072} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Louis}\ and\ \citenamefont {Nardi}(2018)}]{louis2018probabilistic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.-Y.}\ \bibnamefont {Louis}}\ and\ \bibinfo {author} {\bibfnamefont {F.~R.}\ \bibnamefont {Nardi}},\ }\href@noop {} {\emph {\bibinfo {title} {Probabilistic Cellular Automata: Theory, Applications and Future Perspectives}}},\ Vol.~\bibinfo {volume} {27}\ (\bibinfo  {publisher} {Springer},\ \bibinfo {year} {2018})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fern{\'a}ndez}\ \emph {et~al.}(2018)\citenamefont {Fern{\'a}ndez}, \citenamefont {Louis},\ and\ \citenamefont {Nardi}}]{Fernandez2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Fern{\'a}ndez}}, \bibinfo {author} {\bibfnamefont {P.-Y.}\ \bibnamefont {Louis}},\ and\ \bibinfo {author} {\bibfnamefont {F.~R.}\ \bibnamefont {Nardi}},\ }\bibinfo {title} {Overview: Pca models and issues},\ in\ \href {https://doi.org/10.1007/978-3-319-65558-1_1} {\emph {\bibinfo {booktitle} {Probabilistic Cellular Automata: Theory, Applications and Future Perspectives}}},\ \bibinfo {editor} {edited by\ \bibinfo {editor} {\bibfnamefont {P.-Y.}\ \bibnamefont {Louis}}\ and\ \bibinfo {editor} {\bibfnamefont {F.~R.}\ \bibnamefont {Nardi}}}\ (\bibinfo  {publisher} {Springer International Publishing},\ \bibinfo {address} {Cham},\ \bibinfo {year} {2018})\ pp.\ \bibinfo {pages} {1--30}\BibitemShut {NoStop}%
 \end{thebibliography}%
