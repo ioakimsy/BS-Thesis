@@ -202,6 +202,7 @@
     %%
     \begin{equation}
         S_2 = S_1 + g\cdot(1-S_1)
+        \label{eq:nitta_model}
     \end{equation}
     %%
     where $g$ may be a function of $S_1$.
@@ -210,6 +211,7 @@
     %%
     \begin{equation}
         g = g(S_1) = S_1.
+        \label{eq:nitta_gain}
     \end{equation}
     %%
     Other models provide Hake gain expressions (e.g. \citet{pritchard2008mathematical}) resulting to more complex formulation for the function $g(S_1)$.
@@ -393,14 +395,13 @@
         % By $t=13$, the slower students have started to learn, but the rate of learning has slowed down significantly as the majority of students with higher learning rate have already learned.
         % This simulation will spend up to $t=232$ waiting for the slower students to learn.
         
-    \begin{figure*}[htbp!]
+    \begin{figure}[htbp!]
         \centering
-        \subfigure[Traditional Instruction (TI)]{\includegraphics[width=0.95\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/TI class evolution.png}\label{fig:TI_evolution}}
-        \subfigure[Peer Instruction (PI)]{\includegraphics[width=0.95\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/PI class evolution.png}\label{fig:PI_evolution}}
+        \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png}
         \caption{Example classroom evolution for with $L=32$, $\rho_0=0.3$, and $\delta\lambda=0.4$ at different time steps $t=2,8,16,32,54$.
         Dark blue cells represent learned students with learning rate $\lambda=\lambda_0+\delta\lambda$, blue cells represent learned students with learning rate $\lambda=\lambda_0-\delta\lambda$, and light blue cells represent unlearned students.}
         \label{fig:class_evolution}
-    \end{figure*}
+    \end{figure}
 
     As for PI, varying the different parameters do not lead to as varied dynamics as TI.
     The progression of the fraction of learned students are affected the same way when varying class size $N$, positional learning factor $\rho_0$, and learning rate heterogeneity $\delta\lambda$.
@@ -454,6 +455,7 @@
         Considering that their model has been shown to agree with experimental data, it suggests that real world students' behavior and learning dynamics are better represented by the values of high positional learning factor $\rho_0$ and small class sizes $N$.
         It should also be noted that Nitta's model and data tracks individual students' learning while our model tracks the class's learning as a whole.
         We chose to track learning this way because there is not much insight to be gained from tracking individual students' learning in a binary-state model.
+        Hence, we used the fraction of learned students $f_t$ in place of Nitta's usage of students' test scores for $S_t$.
         Nevertheless, the agreement of our model to theirs and to experimental data suggests that our model can be a good approximation of the real world with further improvements.
 
         \begin{figure}[htbp!]

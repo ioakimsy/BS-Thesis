@@ -111,12 +111,12 @@ function plot_comparison(initial_conditions)
         # xminorgridvisible = false,
         # yminorgridvisible = false,
         # limits = (nothing, 10^3, nothing, nothing),
-        xlabelsize = 28,
-        ylabelsize = 28,
-        titlesize = 28,
-        subtitlesize = 24,
-        xticklabelsize = 24,
-        yticklabelsize = 24,
+        xlabelsize = 32,
+        ylabelsize = 32,
+        titlesize = 32,
+        subtitlesize = 28,
+        xticklabelsize = 28,
+        yticklabelsize = 28,
     )
 
     SA_label_dict = Dict(
@@ -144,11 +144,11 @@ function plot_comparison(initial_conditions)
     )
     
     size_width_dict = Dict(
-        32 => 1,
-        48 => 2,
-        64 => 3,
-        96 => 4,
-        128 => 5,
+        32 => 1 * 1.5,
+        48 => 2 * 1.5,
+        64 => 3 * 1.5,
+        96 => 4 * 1.5,
+        128 => 5 * 1.5,
     )
 
     δλ_ls_dict = Dict(
@@ -211,10 +211,10 @@ function plot_comparison(initial_conditions)
     # )
     fig
 
-    Legend(fig[2,1], ax,
-        titlesize = 24,
-        labelsize = 24
-    )
+    # Legend(fig[2,1], ax,
+    #     titlesize = 24,
+    #     labelsize = 24
+    # )
 
     return fig
 end
@@ -234,12 +234,12 @@ function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
         # subtitle = "L=$(return_map_params[1]), ρ₀=$(return_map_params[3]), λ=$(return_map_params[4]), δλ=$(return_map_params[5])",
         # xminorgridvisible = false,
         # yminorgridvisible = false,
-        xlabelsize = 28,
-        ylabelsize = 28,
-        titlesize = 28,
-        subtitlesize = 24,
-        xticklabelsize = 24,
-        yticklabelsize = 24,
+        xlabelsize = 32,
+        ylabelsize = 32,
+        titlesize = 32,
+        subtitlesize = 28,
+        xticklabelsize = 28,
+        yticklabelsize = 28,
     )
 
     ti_params = [Int(return_map_params[1]), "traditional", return_map_params[3], return_map_params[4], return_map_params[5]]
@@ -320,13 +320,13 @@ function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
     save(savepath * filename * ".png", fig)
 end
 
-begin
+begin #* Comparing time series traditional with PI
 
     comparison = [
-        # "size",
+        "size",
         # "SA",
         # "ρ₀",
-        "δλ",
+        # "δλ",
     ]
 
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
@@ -339,6 +339,15 @@ begin
         push!(initial_conditions, [size, class_config, ρ₀, 0.5, δλ])
     end
     initial_conditions
+
+    comparison_plot = plot_comparison(initial_conditions)
+
+    savepath = "./output/2D-Binary-PCA-IH/analysis/plots/trad-PI-learned-t-comparison/"
+    filename = join(comparison, "-")
+
+    save(savepath * filename * ".png", comparison_plot)
+
+    comparison_plot
 end
 
 begin #! Return map
@@ -366,13 +375,6 @@ begin #! Return map
     end
 end
 
-begin #* Comparing time series traditional with PI
-    comparison_plot = plot_comparison(initial_conditions)
-
-    savepath = "./output/2D-Binary-PCA-IH/analysis/plots/trad-PI-learned-t-comparison/"
-    filename = join(comparison, "-")
-
-    save(savepath * filename * ".png", comparison_plot)
-
-    comparison_plot
+begin 
+    
 end
