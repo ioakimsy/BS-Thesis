@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {}Contents}{1}{section*.3}%
 \tocdepth@restore 
 \contentsline {section}{\numberline {I}Introduction}{1}{section*.4}%
-\contentsline {section}{\numberline {II}A probabilistic CA model}{2}{section*.5}%
+\contentsline {section}{\numberline {II}Methods}{2}{section*.5}%
 \contentsline {section}{\numberline {III}Results and Discussion}{3}{section*.6}%
 \contentsline {subsection}{\numberline {III.1}Different Dynamics of Traditional and Peer Instruction}{3}{section*.7}%
 \contentsline {subsection}{\numberline {III.2}Summary of effects of class size $N$, positional learning factor $\rho _0$, and learning rate heterogeneity $\delta \lambda $}{5}{section*.8}%
