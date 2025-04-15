@@ -12,6 +12,9 @@
 \usepackage{subfigure}
 \usepackage{hyperref}
 %\usepackage{acrofont}%NOTE: Comment out this line for the release version!
+\usepackage{amssymb}
+\usepackage{xcolor}
+
 \newcommand{\revtex}{REV\TeX\ }
 \newcommand{\classoption}[1]{\texttt{#1}}
 \newcommand{\macro}[1]{\texttt{\textbackslash#1}}
@@ -218,7 +221,7 @@
 
     Despite the diversity of the models that we found, current models of PI lack some aspects that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity with which the introduction of PI from TI are typically founded on.
     
-\section{A probabilistic CA model}
+\section{Methods}
 
     We use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata~\cite{arciaga2009experimental,Batac2009,louis2018probabilistic,Fernandez2018}) to study the spatiotemporal dynamics of learning for a more direct implementation of any instructional mode.
     For this pCA model, each cell in the automaton represents a student arranged in such a way each student is adjacent to (a CA {\it neighbor} of) four others resulting to the usual rectangular lattice configuration.
@@ -230,13 +233,15 @@
     as a quantification of how fast they learn as an individual with
     $0{\leq}\lambda_{i,j}{\leq}1$
     (or a probability to learn from any other neighbor).
-    We also introduce the state $s_{i,j}$ representing the level of aptitude of each student so that
+    This parameter is directly related to the learning aptitude of the students such that we consider the fast learners to have {\it high aptitude score} ($\lambda{\gg}0$).
+    We also introduce the state $s_{i,j}$ representing degree of knowledge of the student such that in this work we use
     $s_{i,j}\in\lbrace{0,1}\rbrace$
-    for a two-level distinction we made for this work between {\it learned} (or high-scoring student, $s_{i,j}=1$) and {\it unlearned} (low-scoring, $0$).
-    A state with more number of levels is not considered for simplicity.
+    as a two-level distinction between {\it learned} (or high-scoring student, $s_{i,j}=1$) and {\it unlearned} (low-scoring, $0$).
+    The choice of two-level state should not prevent the possibility of having more levels as long as they can be quantitatively discriminated.
 
     For each time step, $t\;{\leftarrow}\;(t+1)$, each student's state $s_{i,j}$ is updated depending on the mode of instruction described in the following.
-    A summary of the overall algorithm is shown in Fig.~\ref{fig:pCA-flowchart}.
+    We use an algorithm (see Fig.~\ref{fig:pCA-flowchart}) general enough to contain various modes of instructions.
+    The mode of instructions defines how $P_{i,j}$ is obtained.
     %%%
     \begin{figure}[htb]
         \centering
@@ -249,69 +254,69 @@
 
     %%%%TRADITIONAL INSTRUCTION%%%%%
 
-    For traditional instruction (TI) mode, the probability of a student to learn in each time step ($P_{i,j}$) is then
+    For traditional instruction (TI) mode, the probability of a student to learn in each time step ($P_{i,j}$) is
     %%
     \begin{equation}
-        P_{i,j} = \lambda_{i,j}\rho_{\delta i,\delta j}
+        P_{i,j} = \lambda_{i,j}\;\rho_{\delta i,\delta j}
     \end{equation}
     %%
     with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of learning transfer efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$.
     The relative position of the student may matter since instructors in TI mode, for example, may be dependent on the row $i$ since usually students near the front ($i=1$) tend to be more attentive and engaged in discussions than those in the last row ($i=L$).
     To futher simplify for TI, we fix $\rho_{\delta i,\delta j}=\rho_{0}$ as the probability of the students to learn from the teacher directly as if during an efficient plenary (or broadcast) lecture throughout the class such that we simply have $P_{i,j} = \lambda_{i,j}\rho_0$.
 
-    Our model incorporates class heterogeneity with different students' learning rates by varying $\lambda_{i,j}$.
-    In particular we used a variation about a fixed rate $\lambda_0$ such that $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$.
-    We used $\lambda_0=0.5$ and varied $\delta\lambda$ as heterogeneity parameter that increases the degree of class heterogeneity as it is tuned from $0$ to $0.5$ (we are limited by the probability range ${0}\leq\lambda_{i,j}\leq{1}$).
-    In this particular case, having $\delta\lambda=0.5$ would make some $\rho$-values zero implicating impossible zero learning rates.
-    
     %%%%%PEER INSTRUCTION%%%%%%
 
     Different from TI, the Peer Instruction mode involves some learning during interaction with peers.
     Such interaction happens with the nearest neighbor unless specific instructions say different.
     We consider the simple case such that the probability $P_{i,j}$ is dependent also on the states of the nearest neighbor.
     In this case, we have a compounded probabilities resulting to
-    
-    the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
+    % the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
     %%
     \begin{equation} 
         \label{eq:BPCA PI learning probability}
-            P_{i,j} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack1-(\lambda_{i,j})(\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}\rbrack
+            P_{i,j} = 1 - \prod_{\forall \delta i, \delta j}{\lbrack
+                1-(\lambda_{i,j}\;\rho_{\delta i, \delta j})(s_{i+\delta i, j+\delta j})}
+            \rbrack
     \end{equation}
     %%
-    where
-    %%
-    $P_{i,j} \in [0,1]$ is the probability of student $c_{i,j}$ to learn in each time step, and
-    %%
-    $\lambda_{i,j} \in  [0,1]$ is the learning rate of student $c_{i,j}$.
-    We consider the case that students have heterogeneous learning rates $\lambda_{i,j}=\lambda_0 \pm \delta\lambda$ where $\lambda_0=0.5$.
-    %%
-    The variables $\rho_{\delta i, \delta j} \in [0,1]$ is the probability of $c_{i,j}$ to learn from their neighbors in seats $\lbrace c_{i+\delta i, j+\delta j} \forall \delta i, \delta j \in \lbrace -1,0,1 \rbrace \rbrace$ solely based from their relative positions with each other, and
-    %%
-    $s_{i+\delta i, j+\delta j} = \lbrace\text{unlearned, learned}\rbrace=\lbrace 0,1 \rbrace$ are the neighbors' aptitude level.
-    
+    where we now have dependence on the state
+    $s_{i',j'}$ ($i'=i+\delta i$ and $j'=j+\delta j$) factored in every probability of learning transmission.
+    We also consider the simplified case such that $\rho_{\delta i, \delta j} = 0$ 
+    for $|\delta i| > 1$ and $|\delta j| > 1$ and $\rho_{\delta i,\delta j}=\rho_0$ (fixed, isotropic).
+    This assumption translates to the class maintaining their seat arrangement in a lattice pattern and that peer instruction can be modelled as essentially nearest-neighbor interaction only (we use Moore neighborhood).
+    {\color{red}
+    [PLEASE LOOK FOR REFERENCES FOR NEAREST-NEIGHBOR INTERACTION AND MOORE NEIGHBORHOOD.]
+    }
+
+    The model allows incorporation of class heterogeneity due to variation in the learning rates of the students such as by specifying the distribution function for random assignment of $\lambda$-values.
+    A variation about a fixed rate $\lambda_0=0.5$ is chosen for this work such that $\lambda_{i,j}=\lambda_0 \pm \delta\!\lambda$ (two-level heterogeneity).
+    The value of $\delta\!\lambda$ acts as the parameter that determines the degree of class heterogeneity as it is tuned from $0$ to less than $0.5$ (we are limited by the probability range ${0}<\lambda_{i,j}<{1}$).
+    We have to remove the case $\delta\lambda=0.5$ that makes the model unrealistic (having $\lambda=0$).
+
     %%%%MODEL PARAMETERS%%%%
 
     The values of the model input parameters we considered for the class size $N=L^2$, the positional learning coefficient $\rho_0$, and the learning rate heterogeneity $\delta\lambda$ are as follows:
 
-        \begin{itemize}
-            \item $L=\lbrace32,48,64,96,128\rbrace$
-            \item $\rho_0=\lbrace0.1, 0.2, 0.3,\dots, 0.8, 0.9, 1.0\rbrace$
-            \item $\delta\lambda=\lbrace0.0, 0.1, 0.2, 0.3, 0.4\rbrace$
-        \end{itemize}
-
-        To assess how well the class performed, we used the time it took for the class to reach a steady state $t_{\rm max}$.
-        For both TI and PI, the simulation is considered to have reached a steady state when no new students learn for $20$ consecutive time steps or when all students have learned.
-        Each set of parameters was run 5 independent times to get the average and standard deviation of $t_{\rm max}$ for each set of parameters.
+    \begin{itemize}
+    \item $L=\lbrace32,48,64,96,128\rbrace$
+    \item $\rho_0=\lbrace0.1, 0.2, 0.3,\dots, 0.8, 0.9, 1.0\rbrace$
+    \item $\delta\lambda=\lbrace0.0, 0.1, 0.2, 0.3, 0.4\rbrace$
+    \end{itemize}
 
 
-        %! Further investigation:
-        %! When comparing learning rate of TI vs PI, TI is lower - wrong based on observation. The way we obtained learning rate m does not capture the two-stage learning process of TI. Will omit on this paper because I don't know how to fix that.
-        %! TLDR: obtaining m leads to some kind of sampling error. Not the first time.
 
-        % The class's average learning rate $m$ was calculated by taking the fraction of learned students as a function of time then fitting a power law ($y=ax^m$) to a fraction of the data using the Levenberg-Marquardt algorithm.
-        % We chose to fit the power law only to the first half or quarter of the data for peer instruction and traditional instruction respectively so that we obtain the class learning rate before the finite size effect become significant.
+    %! Further investigation:
+    %! When comparing learning rate of TI vs PI, TI is lower - wrong based on observation. The way we obtained learning rate m does not capture the two-stage learning process of TI. Will omit on this paper because I don't know how to fix that.
+    %! TLDR: obtaining m leads to some kind of sampling error. Not the first time.
+
+    % The class's average learning rate $m$ was calculated by taking the fraction of learned students as a function of time then fitting a power law ($y=ax^m$) to a fraction of the data using the Levenberg-Marquardt algorithm.
+    % We chose to fit the power law only to the first half or quarter of the data for peer instruction and traditional instruction respectively so that we obtain the class learning rate before the finite size effect become significant.
 
 \section{Results and Discussion}
+
+    To assess how well the class performed, we used the time it took for the class to reach a steady state $t_{\rm max}$.
+    The simulation is considered to have reached a steady state the moment that no new students learn for the last $20$ consecutive time steps, or when all students have learned.
+    Each set of parameters was run five(5) independent times to get the average and standard deviation of $t_{\rm max}$ for each set of parameters.
 
     \subsection{Different Dynamics of Traditional and Peer Instruction}
         
@@ -320,14 +325,17 @@
         The time to learn $t_{\rm max}$, however, increased with class size $N$.
         This is expected as TI is set up such that the students can all learn at the same time from the teacher --- so the dynamics are independent of class size $N$.
         Positional learning factor $\rho_0$ changes the initial number of learned students and the rate at which students learn throughout the simulation (Figure~\ref{fig:comparison ρ₀}).
+        
         Upon initial inspection of Figure~\ref{fig:comparison δλ} for the effects of learning rate heterogeneous, we see that it has a similar effect to that of positional learning factor $\rho_0$ without changing the initial number of learned students.
         However, we notice that the effect is on the rate of which students learn is not linear.
         The difference between $\delta\lambda=0.4$ and $\delta\lambda=0.2$ is greater than that of $\delta\lambda=0.2$ and $\delta\lambda=0.0$.
         This is consistent with the nonlinear effect of $\rho_0$ on the learning rate.
+        
         Upon further inspection, we notice that TI classes with high learning rate heterogeneity $\delta\lambda$ have a two-stage learning process.
         The first stage is characterized by a sharp increase in the number of learned students caused by the majority of fast students ($\lambda=\lambda_0 + \delta\lambda$) learning in the first few time steps.
         The second stage is characterized by a much slower increase in the number of learned students caused by waiting for the slower students ($\lambda=\lambda_0 - \delta\lambda$) to learn.
-        An example case where this phenomenon is observable is shown in Figure~\ref{fig:TI_evolution}.
+        
+        An example case where this phenomenon is observable is shown in Figure~\ref{fig:class_evolution}(a).
         In this case, we see at $t=2$ that majority of the students that are learned are fast students and at $t=13$ the slower students have started to learn, but the rate of learning has slowed down significantly.
         Despite the promising-looking start to this simulation, it will spend up to $t=161$ waiting for all the students to learn.
 
@@ -398,9 +406,10 @@
     \begin{figure}[htbp!]
         \centering
         \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png}
-        \caption{Example classroom evolution for with $L=32$, $\rho_0=0.3$, and $\delta\lambda=0.4$ at different time steps $t=2,8,16,32,54$.
-        Dark blue cells represent learned students with learning rate $\lambda=\lambda_0+\delta\lambda$, blue cells represent learned students with learning rate $\lambda=\lambda_0-\delta\lambda$, and light blue cells represent unlearned students.}
-        \label{fig:class_evolution}
+        \caption{
+            Example classroom evolution for with $L=32$, $\rho_0=0.3$, and $\delta\lambda=0.4$ at different time steps $t=2,8,16,32,54$.
+            Dark blue cells represent learned students with learning rate $\lambda=\lambda_0+\delta\lambda$, blue cells represent learned students with learning rate $\lambda=\lambda_0-\delta\lambda$, and light blue cells represent unlearned students.
+        }\label{fig:class_evolution}
     \end{figure}
 
     As for PI, varying the different parameters do not lead to as varied dynamics as TI.

@@ -184,6 +184,7 @@ INPUT ./figures/2DBPCA Flowchart.png
 INPUT ./figures/2DBPCA Flowchart.png
 INPUT ./figures/2DBPCA Flowchart.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
 INPUT ./figures/2D-BPCAIH-analysis/comparison plots/size.png
@@ -231,6 +232,7 @@ INPUT PRPE_Classroom_dynamics.bbl
 INPUT PRPE_Classroom_dynamics.aux
 INPUT ./PRPE_Classroom_dynamics.out
 INPUT ./PRPE_Classroom_dynamics.out
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
