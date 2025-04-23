@@ -178,7 +178,7 @@ begin
 	Ρs = collect(0.1:0.1:1)
     δλs = collect(0.0:0.1:0.4)
 	steady_state_tolerance = 20
-	n_trials = 5
+	n_trials = 20
     λ₀ = 0.5
 
 	generate_directories(lengths,
