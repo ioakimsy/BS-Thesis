@@ -221,7 +221,7 @@
 
     Despite the diversity of the models that we found, current models of PI lack some aspects that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity with which the introduction of PI from TI are typically founded on.
     
-\section{Methods}
+\section{Cellular Automata Method}
 
     We use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata~\cite{arciaga2009experimental,Batac2009,louis2018probabilistic,Fernandez2018}) to study the spatiotemporal dynamics of learning for a more direct implementation of any instructional mode.
     For this pCA model, each cell in the automaton represents a student arranged in such a way each student is adjacent to (a CA {\it neighbor} of) four others resulting to the usual rectangular lattice configuration.
@@ -292,16 +292,16 @@
     A variation about a fixed rate $\lambda_0=0.5$ is chosen for this work such that $\lambda_{i,j}=\lambda_0 \pm \delta\!\lambda$ (two-level heterogeneity).
     The value of $\delta\!\lambda$ acts as the parameter that determines the degree of class heterogeneity as it is tuned from $0$ to less than $0.5$ (we are limited by the probability range ${0}<\lambda_{i,j}<{1}$).
     We have to remove the case $\delta\lambda=0.5$ that makes the model unrealistic (having $\lambda=0$).
-
+%%
     %%%%MODEL PARAMETERS%%%%
-
-    The values of the model input parameters we considered for the class size $N=L^2$, the positional learning coefficient $\rho_0$, and the learning rate heterogeneity $\delta\lambda$ are as follows:
-
-    \begin{itemize}
-    \item $L=\lbrace32,48,64,96,128\rbrace$
-    \item $\rho_0=\lbrace0.1, 0.2, 0.3,\dots, 0.8, 0.9, 1.0\rbrace$
-    \item $\delta\lambda=\lbrace0.0, 0.1, 0.2, 0.3, 0.4\rbrace$
-    \end{itemize}
+%%
+%     The values of the model input parameters we considered for the class size $N=L^2$, the positional learning coefficient $\rho_0$, and the learning rate heterogeneity $\delta\lambda$ are as follows:
+% %%
+%     \begin{itemize}
+%     \item $L=\lbrace32,48,64,96,128\rbrace$
+%     \item $\rho_0=\lbrace0.1, 0.2, 0.3,\dots, 0.8, 0.9, 1.0\rbrace$
+%     \item $\delta\lambda=\lbrace0.0, 0.1, 0.2, 0.3, 0.4\rbrace$
+%     \end{itemize}
 
 
 
@@ -313,14 +313,24 @@
     % We chose to fit the power law only to the first half or quarter of the data for peer instruction and traditional instruction respectively so that we obtain the class learning rate before the finite size effect become significant.
 
 \section{Results and Discussion}
+    
+    All simulations start with four($4$) students
+    Class performance is measured as the speed of learning.
+    Differences in the dynamical development over time of the class overall state is also observed.
+    Here, we use the time $t_{\rm max}$ (in arbitrary units, a.u.) it takes for the entire class to reach a steady state.
+    This steady state is considered reached during the numerical experiments when no new student is recorded to have transitioned from {\it unlearned} ($s=0$) to {\it learned} ($s=1$).
+    This consideration prevents us from having unnecessary waiting time for the student of very low learning rate $\lambda$ to have $s=1$.
+    {\color{red}
+        The average quantities and standard errors are based on five($5$) independent randomized runs.
+    }
 
-    To assess how well the class performed, we used the time it took for the class to reach a steady state $t_{\rm max}$.
-    The simulation is considered to have reached a steady state the moment that no new students learn for the last $20$ consecutive time steps, or when all students have learned.
-    Each set of parameters was run five(5) independent times to get the average and standard deviation of $t_{\rm max}$ for each set of parameters.
+    \subsection{Dynamical Difference between TI and PI}
+        Figure~\ref{fig:comparison size} shows the different monotonic increase in the fraction of students in the learned state starting with an unlearned class (all students in {\it unlearned} state).
+        For the PI mode, we set to have four($4$) learned students to initiate the spread.
+        These are the first four students with highest aptitude in the class.
+        In the TI mode, they will also be the first four to transition to $s=1$.
 
-    \subsection{Different Dynamics of Traditional and Peer Instruction}
-        
-        For TI, varying the different model parameters yield different dynamics.
+    For TI, varying the different model parameters yield different dynamics.
         As shown in Figure~\ref{fig:comparison size}, the progression of the fraction of learned students was not affected with increasing class size $N$.
         The time to learn $t_{\rm max}$, however, increased with class size $N$.
         This is expected as TI is set up such that the students can all learn at the same time from the teacher --- so the dynamics are independent of class size $N$.
@@ -457,7 +467,7 @@
             \label{fig:Params effect summary t}
         \end{figure}
 
-    \subsection{Comparison with existing research/data}
+    \subsection{Existing research data}
         
         Comparing our data to Nitta's model (Equation~\ref{eq:nitta_model})~\cite{nitta2019mathematical}, as in Figure~\ref{fig:Return map}, only our data for PI approaches their model --- this is expected since their model is for PI and not TI.
         Furthermore, PI only approaches their model when the conditions are favorable for PI (Figure~\ref{fig:return_map_fav}).
