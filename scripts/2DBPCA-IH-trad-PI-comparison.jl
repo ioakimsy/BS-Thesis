@@ -30,7 +30,7 @@ function read_time_series_data(class_size, SA, ρ₀, λ₀, δλ; n_learned=4)
 
     # println("Reading data for $(SA) $(class_size) $(ρ₀) $(λ₀) $(δλ)")
 
-    for trial in 1:5
+    for trial in 1:20
         if SA == "random"
             path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)-$(n_learned)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-$(SA)-$(class_size)-$(n_learned)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
         else
@@ -43,11 +43,12 @@ function read_time_series_data(class_size, SA, ρ₀, λ₀, δλ; n_learned=4)
         push!(learned_raw, learned)
     end
 
-    trial_1, trial_2, trial_3, trial_4, trial_5 = learned_raw
+    maximum_length = 0
+    for i in eachindex(learned_raw)
+        maximum_length = maximum_length > length(learned_raw[i]) ? maximum_length : length(learned_raw[i])
+    end
 
-    maximum_length = maximum([length(trial_1), length(trial_2), length(trial_3), length(trial_4), length(trial_5)])
-
-    for i in 1:5
+    for i in 1:20
         learned_raw[i] = append!(learned_raw[i], ones(maximum_length - length(learned_raw[i])))
     end
 
@@ -73,7 +74,7 @@ function read_time_series_data_raw(class_size, SA, ρ₀, λ₀, δλ; n_learned
 
     # println("Reading data for $(SA) $(class_size) $(ρ₀) $(λ₀) $(δλ)")
 
-    for trial in 1:5
+    for trial in 1:20
         if SA == "random"
             path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)-$(n_learned)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-$(SA)-$(class_size)-$(n_learned)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
         else
@@ -323,10 +324,10 @@ end
 begin #* Comparing time series traditional with PI
 
     comparison = [
-        "size",
+        # "size",
         # "SA",
         # "ρ₀",
-        # "δλ",
+        "δλ",
     ]
 
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
@@ -375,6 +376,3 @@ begin #! Return map
     end
 end
 
-begin 
-    
-end

@@ -82,7 +82,7 @@ begin
     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
     Ρs = collect(0.1:0.1:1.0)
     δλs = collect(0.0:0.1:0.4)
-    n_trials = 5
+    n_trials = 20
 
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
