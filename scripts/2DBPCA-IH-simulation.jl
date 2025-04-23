@@ -157,7 +157,7 @@ function generate_directories(sizes::Vector{Int}, seat_configs::Vector{String},�
         size in sizes,
         ρ in Ρs,
         folder in folders,
-        trial in 1:n_trials,
+        trial in 1+5:n_trials+5,
         δλ in δλs
 
         if seat_config == "random"
@@ -177,7 +177,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Ρs::
     
     @. model(x,p) = p[1] * x ^ p[2]
 
-   for trial in 1:n_trials
+   for trial in 1+5:n_trials+5
         for seat_config in seat_configs, ρ₀ in Ρs, class_size in sizes, δλ in δλs#, trial in 1:n_trials
 
             #println("$seat_config 	$ρ₀ 	$class_size 	$trial")
@@ -246,12 +246,12 @@ begin
 	# List of parameters
     #TODO: move list of parameters to external file to be read to sync across the scripts
 	# List of parameters
-    sizes = [32,64,128]
+    sizes = [48,96]
 	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
 	Ρs = collect(0.1:0.1:1)
     δλs = collect(0.0:0.1:0.4)
 	steady_state_tolerance = 20
-	n_trials = 20
+	n_trials = 15
     n_learned = 4
     λ₀ = 0.5
 

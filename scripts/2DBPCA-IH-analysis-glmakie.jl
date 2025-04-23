@@ -91,100 +91,100 @@ end
 #     SA_subset = groupby(subset, :seat_config)
 # end
 
-# #! Generate -> save plots and animations for t
-# begin
-#     sizes = [32, 48, 64, 96, 128]
-#     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
-#     Ρs = collect(0.1:0.1:1.0)
-#     δλs = collect(0.0:0.1:0.4)
-#     n_trials = 5
-#     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
+#! Generate -> save plots and animations for t
+begin
+    sizes = [32, 48, 64, 96, 128]
+    seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
+    Ρs = collect(0.1:0.1:1.0)
+    δλs = collect(0.0:0.1:0.4)
+    n_trials = 5
+    data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
-#     valid_SA = ["inner_corner", "traditional"]
+    valid_SA = ["traditional", "inner_corner"]
 
-#     for valid_class_size in sizes
-#         subset = data[(data.class_size.==valid_class_size) .& in.(data.seat_config, Ref(valid_SA)), :]
-#         SA_subset = groupby(subset, :seat_config)
+    for valid_class_size in sizes
+        subset = data[(data.class_size.==valid_class_size) .& in.(data.seat_config, Ref(valid_SA)), :]
+        SA_subset = groupby(subset, :seat_config)
 
-#         SA_label_dict = Dict(
-#             "traditional" => "Traditional Instruction",
-#             "inner_corner" => "Inner Corner SA",
-#             "outer_corner" => "OC",
-#             "center" => "C",
-#             "random" => "R",
-#         )
+        SA_label_dict = Dict(
+            "traditional" => "Traditional Instruction",
+            "inner_corner" => "Inner Corner SA",
+            "outer_corner" => "OC",
+            "center" => "C",
+            "random" => "R",
+        )
 
-#         fig = Figure(size = (1000,900);)
-#         ax = Axis3(fig[1, 1], 
-#             xlabel="ρ₀", 
-#             ylabel = "δλ",
-#             zlabel="Time to learn (tₘₐₓ)", 
-#             # zlabel = [],
-#             title="Inhomogenous Classroom Model L=$valid_class_size", 
-#             # subtitle="class_size = $valid_class_size",
-#             aspect = (1,1,1),
-#             # zticklabelsvisible = false,
-#             titlesize = 32,
-#             zticks = 0 : 100 : maximum(Measurements.value.(subset.ttl))
-#         )
+        fig = Figure(size = (1000,900);)
+        ax = Axis3(fig[1, 1], 
+            xlabel="ρ₀", 
+            ylabel = "δλ",
+            zlabel="Time to learn (tₘₐₓ)", 
+            # zlabel = [],
+            title="Inhomogenous Classroom Model L=$valid_class_size", 
+            # subtitle="class_size = $valid_class_size",
+            aspect = (1,1,1),
+            # zticklabelsvisible = false,
+            titlesize = 32,
+            zticks = 0 : 100 : maximum(Measurements.value.(subset.ttl))
+        )
 
-#         for i in 1:length(SA_subset)
-#             ρ_data = SA_subset[i][!, "ρ"]
-#             δλ_data = SA_subset[i][!, "δλ"]
-#             t_data = Measurements.value.(SA_subset[i][!, "ttl"])
+        for i in 1:length(SA_subset)
+            ρ_data = SA_subset[i][!, "ρ"]
+            δλ_data = SA_subset[i][!, "δλ"]
+            t_data = Measurements.value.(SA_subset[i][!, "ttl"])
 
-#             points = Point3f.(ρ_data,δλ_data,t_data)
-#             # t_data = reshape(t_data, 10, 5)'
-#             # t_σ = Measurements.uncertainty.(SA_subset[1][!, "ttl"])
+            points = Point3f.(ρ_data,δλ_data,t_data)
+            # t_data = reshape(t_data, 10, 5)'
+            # t_σ = Measurements.uncertainty.(SA_subset[1][!, "ttl"])
             
-#             # scatter!(ax, points,
-#             #     markersize = 5,
-#             #     color = ColorSchemes.seaborn_colorblind[i],
-#             #     label = "$(SA_label_dict[valid_SA[i]])",
-#             #     strokewidth = 0,
-#             # )
+            # scatter!(ax, points,
+            #     markersize = 5,
+            #     color = ColorSchemes.seaborn_colorblind[i],
+            #     label = "$(SA_label_dict[valid_SA[i]])",
+            #     strokewidth = 0,
+            # )
 
-#             surface!(ax, ρ_data, δλ_data, t_data,
-#                 # alpha = 0.5,
-#                 color = fill((ColorSchemes.seaborn_colorblind[i], 1), 1:10, 1:5),
-#                 shading = NoShading
-#             )
+            surface!(ax, ρ_data, δλ_data, t_data,
+                # alpha = 0.5,
+                color = fill((ColorSchemes.seaborn_colorblind[i], 1), 1:10, 1:5),
+                shading = NoShading
+            )
 
             
-#             # errorbars!(ax, ρ_data, δλ_data, t_data, t_σ)
-#         end
-#         ax.viewmode = :fit
-#         # axislegend("Legend", labelsize = 20, titlesize = 20)
-#         elem_TI = PolyElement(color = ColorSchemes.seaborn_colorblind[1])
-#         elem_PI = PolyElement(color = ColorSchemes.seaborn_colorblind[2])
-#         Legend(fig[2,:],
-#             [elem_TI, elem_PI],
-#             ["Traditional Instruction", "Inner Corner SA"],
-#             "Legend",
-#             orientation = :horizontal,
-#             titlesize = 20,
-#             labelsize = 20
-#         )
-#         # display(fig)
+            # errorbars!(ax, ρ_data, δλ_data, t_data, t_σ)
+        end
+        ax.viewmode = :fit
+        # axislegend("Legend", labelsize = 20, titlesize = 20)
+        elem_TI = PolyElement(color = ColorSchemes.seaborn_colorblind[1])
+        elem_PI = PolyElement(color = ColorSchemes.seaborn_colorblind[2])
+        Legend(fig[2,:],
+            [elem_TI, elem_PI],
+            ["Traditional Instruction", "Inner Corner SA"],
+            "Legend",
+            orientation = :horizontal,
+            titlesize = 20,
+            labelsize = 20
+        )
+        # display(fig)
 
-#         #* Animation
-#         println("Generating animation: $valid_class_size")
-#         start_angle = 1.275 * π
-#         n_frames = 300
-#         anim_savepath = "./output/2D-Binary-PCA-IH/analysis/plots/rho-dl-t-anim/"
-#         anim_filename = "$valid_class_size"
-#         record(fig, anim_savepath * anim_filename * ".mp4", 1:n_frames; framerate = 30) do frame
-#             ax.azimuth[] = start_angle + 2pi * frame / n_frames
-#         end
+        #* Animation
+        println("Generating animation: $valid_class_size")
+        start_angle = 1.275 * π
+        n_frames = 300
+        anim_savepath = "./output/2D-Binary-PCA-IH/analysis/plots/rho-dl-t-anim/"
+        anim_filename = "$valid_class_size"
+        record(fig, anim_savepath * anim_filename * ".mp4", 1:n_frames; framerate = 30) do frame
+            ax.azimuth[] = start_angle + 2pi * frame / n_frames
+        end
 
-#         #* Save the plot
-#         println("Generating plots: $valid_class_size")
-#         ax.azimuth = 1.275 * π
-#         plot_savepath = "./output/2D-Binary-PCA-IH/analysis/plots/rho-dl-t-plots/"
-#         plot_filename = "$valid_class_size"
-#         save(plot_savepath * plot_filename * ".png", fig)
-#     end
-# end
+        #* Save the plot
+        println("Generating plots: $valid_class_size")
+        ax.azimuth = 1.275 * π
+        plot_savepath = "./output/2D-Binary-PCA-IH/analysis/plots/rho-dl-t-plots/"
+        plot_filename = "$valid_class_size"
+        save(plot_savepath * plot_filename * ".png", fig)
+    end
+end
 
 #! Generate -> view and explore plot for t
 begin
@@ -250,7 +250,7 @@ begin
         # )
 
         surface!(ax, ρ_data, δλ_data, t_lower,
-            color = fill((ColorSchemes.seaborn_colorblind[i], 0.5), 1:length(ρ_data), 1:length(δλ_data)),
+            color = fill((ColorSchemes.seaborn_colorblind[i]), 1:length(ρ_data), 1:length(δλ_data)),
         )
 
         
@@ -279,16 +279,25 @@ begin
     display(fig)
 end
 
+begin
+    sizes = [32,48,64,96,128]
+    seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
+    Ρs = collect(0.1:0.1:1.0)
+    δλs = collect(0.0:0.1:0.4)
+    n_trials = 20
+    data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
+end
+
 #! 32-128 comparison for tmax
 begin
     sizes = [32,128]
     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
     Ρs = collect(0.1:0.1:1.0)
     δλs = collect(0.0:0.1:0.4)
-    n_trials = 5
+    n_trials = 20
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
-    valid_SA = ["inner_corner","traditional", ]
+    valid_SA = ["traditional","inner_corner", ]
 
     # for valid_class_size in sizes
         _subset = data[(data.class_size.==32) .& in.(data.seat_config, Ref(valid_SA)), :]
