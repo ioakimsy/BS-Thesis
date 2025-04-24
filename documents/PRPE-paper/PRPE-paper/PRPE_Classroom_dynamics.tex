@@ -260,7 +260,7 @@
         P_{i,j} = \lambda_{i,j}\;\rho_{\delta i,\delta j}
     \end{equation}
     %%
-    with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of learning transfer efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$.
+    with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of learning transfer efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$~\cite{dong2021influence}.
     The relative position of the student may matter since instructors in TI mode, for example, may be dependent on the row $i$ since usually students near the front ($i=1$) tend to be more attentive and engaged in discussions than those in the last row ($i=L$).
     To futher simplify for TI, we fix $\rho_{\delta i,\delta j}=\rho_{0}$ as the probability of the students to learn from the teacher directly as if during an efficient plenary (or broadcast) lecture throughout the class such that we simply have $P_{i,j} = \lambda_{i,j}\rho_0$.
 
@@ -283,10 +283,7 @@
     $s_{i',j'}$ ($i'=i+\delta i$ and $j'=j+\delta j$) factored in every probability of learning transmission.
     We also consider the simplified case such that $\rho_{\delta i, \delta j} = 0$ 
     for $|\delta i| > 1$ and $|\delta j| > 1$ and $\rho_{\delta i,\delta j}=\rho_0$ (fixed, isotropic).
-    This assumption translates to the class maintaining their seat arrangement in a lattice pattern and that peer instruction can be modelled as essentially nearest-neighbor interaction only (we use Moore neighborhood) \cite{kari2005catheory, zaitsev2017generalized,louis2018probabilistic, dong2021influence}.
-    {\color{red}
-    [PLEASE LOOK FOR REFERENCES FOR NEAREST-NEIGHBOR INTERACTION AND MOORE NEIGHBORHOOD.]
-    }
+    This assumption translates to the class maintaining their seat arrangement in a lattice pattern and that peer instruction can be modelled as essentially nearest-neighbor interaction only (we use Moore neighborhood)~\cite{kari2005catheory, zaitsev2017generalized,louis2018probabilistic}, although higher degree neighborhood interactions are possible~\cite{dong2021influence}.
 
     The model allows incorporation of class heterogeneity due to variation in the learning rates of the students such as by specifying the distribution function for random assignment of $\lambda$-values.
     A variation about a fixed rate $\lambda_0=0.5$ is chosen for this work such that $\lambda_{i,j}=\lambda_0 \pm \delta\!\lambda$ (two-level heterogeneity).
@@ -314,7 +311,7 @@
 
 \section{Results and Discussion}
     
-    All simulations start with four($4$) students
+    All TI simulations start with no learned students, while PI simulations start with four ($4$) learned students.
     Class performance is measured as the speed of learning.
     Differences in the dynamical development over time of the class overall state is also observed.
     Here, we use the time $t_{\rm max}$ (in arbitrary units, a.u.) it takes for the entire class to reach a steady state.
@@ -325,19 +322,32 @@
     \subsection{Dynamical Difference between TI and PI}
         Figure~\ref{fig:comparison size} shows the different monotonic increase in the fraction of students in the learned state starting with an unlearned class (all students in {\it unlearned} state).
         For the PI mode, we set to have four($4$) learned students to initiate the spread.
-        These are the first four students with highest aptitude in the class.
-        In the TI mode, they will also be the first four to transition to $s=1$.
+        These are the first four students with the highest aptitude in the class.
+        The effect of increasing size of the class $N$ for PI is to delay the time it takes for the class to speed up learning.
+        As for the TI mode, an increase in class size $N$ does not affect the dynamics of the learning process.
+        This is expected since each student independently and simultaneously learns from the teacher.
 
-    For TI, varying the different model parameters yield different dynamics.
-        As shown in Figure~\ref{fig:comparison size}, the progression of the fraction of learned students was not affected with increasing class size $N$.
-        The time to learn $t_{\rm max}$, however, increased with class size $N$.
-        This is expected as TI is set up such that the students can all learn at the same time from the teacher --- so the dynamics are independent of class size $N$.
-        Positional learning factor $\rho_0$ changes the initial number of learned students and the rate at which students learn throughout the simulation (Figure~\ref{fig:comparison ρ₀}).
+        Figure~\ref{fig:comparison ρ₀} shows the same for varying the positional learning factor $\rho_0$.
+        A high value for $\rho_0$ increase the initial number of learned students in TI mode.
+        In TI mode, the rate of learning is also affected by $\rho_0$ such that the higher the value, the faster the class learns.
+        However, in PI mode, the shape of the learning curve remains the same for different values of $\rho_0$, only adding a time delay to when the learning starts to speed up.
+        The effect of varying $\rho_0$ is nonlinear for both models.
+        The difference between $\rho_0=0.1$ and $\rho_0=0.5$ is greater than that of $\rho_0=0.5$ and $\rho_0=0.9$.
         
-        Upon initial inspection of Figure~\ref{fig:comparison δλ} for the effects of learning rate heterogeneous, we see that it has a similar effect to that of positional learning factor $\rho_0$ without changing the initial number of learned students.
-        However, we notice that the effect is on the rate of which students learn is not linear.
-        The difference between $\delta\lambda=0.4$ and $\delta\lambda=0.2$ is greater than that of $\delta\lambda=0.2$ and $\delta\lambda=0.0$.
-        This is consistent with the nonlinear effect of $\rho_0$ on the learning rate.
+        Figure~\ref{fig:comparison δλ} shows the effect of varying the learning rate heterogeneity $\delta\lambda$.
+        The effect of $\delta\lambda$ is similar to that of $\rho_0$ in its effects on the dynamics of the learning process and the rate at which students learn throughout the simulation.
+        As with $\rho_0$, the effect of $\delta\lambda$ is nonlinear --- the difference between $\delta\lambda=0.4$ and $\delta\lambda=0.2$ is greater than that of $\delta\lambda=0.2$ and $\delta\lambda=0.0$.
+
+    % For TI, varying the different model parameters yield different dynamics.
+    %     As shown in Figure~\ref{fig:comparison size}, the progression of the fraction of learned students was not affected with increasing class size $N$.
+    %     The time to learn $t_{\rm max}$, however, increased with class size $N$.
+    %     This is expected as TI is set up such that the students can all learn at the same time from the teacher --- so the dynamics are independent of class size $N$.
+    %     Positional learning factor $\rho_0$ changes the initial number of learned students and the rate at which students learn throughout the simulation (Figure~\ref{fig:comparison ρ₀}).
+        
+        % Upon initial inspection of Figure~\ref{fig:comparison δλ} for the effects of learning rate heterogeneous, we see that it has a similar effect to that of positional learning factor $\rho_0$ without changing the initial number of learned students.
+        % However, we notice that the effect is on the rate of which students learn is not linear.
+        % The difference between $\delta\lambda=0.4$ and $\delta\lambda=0.2$ is greater than that of $\delta\lambda=0.2$ and $\delta\lambda=0.0$.
+        % This is consistent with the nonlinear effect of $\rho_0$ on the learning rate.
         
         Upon further inspection, we notice that TI classes with high learning rate heterogeneity $\delta\lambda$ have a two-stage learning process.
         The first stage is characterized by a sharp increase in the number of learned students caused by the majority of fast students ($\lambda=\lambda_0 + \delta\lambda$) learning in the first few time steps.
@@ -354,10 +364,11 @@
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/size.png}
-            \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for class size $N$.
-            Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
+            \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for different class sizes $N$.
+            Each method of instruction corresponds to a different color --- blue for traditional, orange for inner corner.
             Different class sizes correspond to different line widths where bigger classroom sizes are represented by thicker lines.
-            The bands around each line show the standard deviation of the data over 5 trials.
+            Other parameters are fixed at $\rho_0=0.5$ and $\delta\lambda=0.2$.
+            The bands around each line show the standard deviation of the data over $20$ trials.
             Higher fraction of learned students indicate better learning.}
             \label{fig:comparison size}
         \end{figure}
@@ -370,10 +381,11 @@
         \begin{figure}[htbp!]
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png}
-            \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for positional learning factor $\rho_0$.
-            Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
+            \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for different values of positional learning factor $\rho_0$.
+            Each method of instruction corresponds to a different color --- blue for traditional, orange for inner corner.
             Different $\rho_0$ values correspond to different line transparencies where darker lines represent higher $\rho_0$ values.
-            The bands around each line show the standard deviation of the daya over 5 trials.
+            Other parameters are fixed at $N=64$ and $\delta\lambda=0.2$.
+            The bands around each line show the standard deviation of the data over $20$ trials.
             Higher fraction of learned students indicate better learning.}
             \label{fig:comparison ρ₀}
         \end{figure}
@@ -386,9 +398,10 @@
             \centering
             \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/δλ.png}
             \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for different learning rate heterogeneity $\delta\lambda$.
-            Each SA corresponds to a different color --- blue for traditional, orange for inner corner.
+            Each method of instruction corresponds to a different color --- blue for traditional, orange for inner corner.
             Different $\delta\lambda$ values correspond to different line styles where $\delta\lambda=0,0.2,0.4$ are represented by dashed lines, alternating dots and dashes, and two dots and a dash respectively.
-            The bands around each line show the standard deviation of the data over 5 trials.
+            Other parameters are fixed at $N=64$ and $\rho_0=0.5$.
+            The bands around each line show the standard deviation of the data over $20$ trials.
             Higher fraction of learned students indicate better learning.}
             \label{fig:comparison δλ}
         \end{figure}
@@ -434,7 +447,7 @@
         \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/SA.png}
         \caption{Comparison of time to learn $t_{\rm max}$ and fraction of learned students for different SAs.
         Each SA corresponds to a different color --- blue for traditional, orange for inner corner, green for outer corner, orange for center, and pink for random.
-        The bands around each line show the standard deviation of the data over 5 trials.
+        The bands around each line show the standard deviation of the data over 20 trials.
         Higher fraction of learned students indicate better learning.}
         \label{fig:comparison SA}
     \end{figure}
