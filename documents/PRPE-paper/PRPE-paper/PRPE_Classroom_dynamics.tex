@@ -47,9 +47,9 @@
 \date{June 2025}%
 
 \begin{abstract}
-    Peer instruction (PI) has recently become one of the popular means of classroom instruction in Physics Education.
+    Peer instruction (PI) has become one of the popular means of classroom instruction in Physics Education.
     Such instruction method is vastly different from how classes are traditionally handled where the instructor conducts a lecture for the entire duration of the class.
-    In this study, we model the transfer of knowledge within classes of students as a probabilistic cellular automata model 
+    In this study, we model the \textcolor{red}{transfer of knowledge} within classes of students as a probabilistic cellular automata model 
     and investigate the effects of different factors such as seating arrangements, class size $N$, average learning rate ${\lambda}$, and heterogeneity $\delta{\lambda}$ on the class overall learning efficiency.
     The learning efficiency of the class is measured in terms of the overall class rate using the initial rate trend and the total learning time $t_{\rm max}$ for the whole class.
     PI mode appears to be more applicable with heterogenous classes (in-class high learning rate max difference $\delta{\lambda}$).
@@ -173,7 +173,7 @@
 
     Actual assessment results by \citet{roxas2010seating} is used to train their ANN to predict expected second assessment scores of students depending on seating arrangements.
 % The artificial neural network (ANN) model by \citet{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
-    Using this neural network, they were also able to characterize information transfer and investigate the effects of group homogeneity. 
+    Using this neural network, they were also able to characterize \textcolor{red}{information transfer} and investigate the effects of group homogeneity. 
     Their study revealed that an optimal seating arrangement exists for students under PI methods based on their final aptitude.
     In their paper, the measure of each students' improvement was calculated via the Hake gain~\cite{hake1998} as 
     %%
@@ -217,7 +217,7 @@
         \label{eq:nitta_gain}
     \end{equation}
     %%
-    Other models provide Hake gain expressions (e.g. \citet{pritchard2008mathematical}) resulting to more complex formulation for the function $g(S_1)$.
+    \textcolor{red}{Other models provide Hake gain expressions} (e.g. \citet{pritchard2008mathematical}) resulting to more complex formulation for the function $g(S_1)$.
 
     Despite the diversity of the models that we found, current models of PI lack some aspects that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity with which the introduction of PI from TI are typically founded on.
     
@@ -260,7 +260,7 @@
         P_{i,j} = \lambda_{i,j}\;\rho_{\delta i,\delta j}
     \end{equation}
     %%
-    with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of learning transfer efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$~\cite{dong2021influence}.
+    with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of \textcolor{red}{learning transfer} efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$~\cite{dong2021influence}.
     The relative position of the student may matter since instructors in TI mode, for example, may be dependent on the row $i$ since usually students near the front ($i=1$) tend to be more attentive and engaged in discussions than those in the last row ($i=L$).
     To futher simplify for TI, we fix $\rho_{\delta i,\delta j}=\rho_{0}$ as the probability of the students to learn from the teacher directly as if during an efficient plenary (or broadcast) lecture throughout the class such that we simply have $P_{i,j} = \lambda_{i,j}\rho_0$.
 
