@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex PRPE_Classroom_dynamics"] 1745480724 "PRPE_Classroom_dynamics.aux" "PRPE_Classroom_dynamics.bbl" "PRPE_Classroom_dynamics" 1745480742 0
-  "./PRPE_Classroom_dynamicsNotes.bib" 1745480737 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex PRPE_Classroom_dynamics"] 1745911498 "PRPE_Classroom_dynamics.aux" "PRPE_Classroom_dynamics.bbl" "PRPE_Classroom_dynamics" 1745912511 0
+  "./PRPE_Classroom_dynamicsNotes.bib" 1745912506 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "./biblio.bib" 1745463431 15774 322e8197b56b64020ae8910308b1a07e ""
-  "PRPE_Classroom_dynamics.aux" 1745480737 15516 195de501efbe0cd66bb9938d7515668c "pdflatex"
+  "PRPE_Classroom_dynamics.aux" 1745912506 15516 195de501efbe0cd66bb9938d7515668c "pdflatex"
   "c:/texlive/2023/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1696367718 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
   (generated)
   "PRPE_Classroom_dynamics.bbl"
   "PRPE_Classroom_dynamics.blg"
   (rewritten before read)
-["pdflatex"] 1745480725 "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" "PRPE_Classroom_dynamics.pdf" "PRPE_Classroom_dynamics" 1745480742 0
-  "PRPE_Classroom_dynamics.aux" 1745480737 15516 195de501efbe0cd66bb9938d7515668c "pdflatex"
-  "PRPE_Classroom_dynamics.bbl" 1745480725 18389 fe66d3a42a358c62545420cd89142f4d "bibtex PRPE_Classroom_dynamics"
-  "PRPE_Classroom_dynamics.out" 1745480737 2679 d7ef11639945dfaa4f7cf0bba9aa7937 "pdflatex"
-  "PRPE_Classroom_dynamics.tex" 1745480701 50289 e3c2af8c95cfaa589b73d21e092793c5 ""
-  "PRPE_Classroom_dynamics.toc" 1745480737 1077 cd02e7ce3efaa6838c66e5753a6ba969 "pdflatex"
-  "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" 1745480701 50289 e3c2af8c95cfaa589b73d21e092793c5 ""
+["pdflatex"] 1745912488 "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" "PRPE_Classroom_dynamics.pdf" "PRPE_Classroom_dynamics" 1745912511 0
+  "PRPE_Classroom_dynamics.aux" 1745912506 15516 195de501efbe0cd66bb9938d7515668c "pdflatex"
+  "PRPE_Classroom_dynamics.bbl" 1745911499 18389 fe66d3a42a358c62545420cd89142f4d "bibtex PRPE_Classroom_dynamics"
+  "PRPE_Classroom_dynamics.out" 1745912506 2679 d7ef11639945dfaa4f7cf0bba9aa7937 "pdflatex"
+  "PRPE_Classroom_dynamics.tex" 1745912029 50348 eedf28643e361dc4b2ff400320cbef7d ""
+  "PRPE_Classroom_dynamics.toc" 1745912506 1077 cd02e7ce3efaa6838c66e5753a6ba969 "pdflatex"
+  "c:/School/BS Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" 1745912029 50348 eedf28643e361dc4b2ff400320cbef7d ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1696359370 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1696353102 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1696353102 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -120,10 +120,10 @@
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1696372383 8183291 983c1f80d178d4cdc3789f8ba798d6cf ""
   "c:/texlive/2023/texmf.cnf" 1696372104 713 e69b156964470283e0530f5060668171 ""
   "figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png" 1744274062 427349 fb304613f67d60582a397bbfa02f05ea ""
-  "figures/2D-BPCAIH-analysis/comparison plots/SA.png" 1745391634 581812 de341efe5d11a4634af5ed4b49f1f4ae ""
-  "figures/2D-BPCAIH-analysis/comparison plots/size.png" 1745391646 583637 66d78896e13c2ace61a97b0c4327a019 ""
+  "figures/2D-BPCAIH-analysis/comparison plots/SA.png" 1745912452 578935 421ff7ac1961cac71420739719e5acac ""
+  "figures/2D-BPCAIH-analysis/comparison plots/size.png" 1745912486 581259 c15642600bc5d4614f2a8797b9ff9f0b ""
   "figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png" 1745392253 591391 6a09eea1b13a331e26892d6c88f8d024 ""
-  "figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png" 1745392265 539788 6e9b2dd8cda9144594a00f1bc73ee6d5 ""
+  "figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png" 1745912030 504893 ed2bf087b69b770327b1138007fcd371 ""
   "figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png" 1745392938 191794 9afdaeba2911d9a1f2a53d1904c53038 ""
   "figures/2DBPCA Flowchart.png" 1743733321 724160 29fc4a48054f6295a695451ecad63dd4 ""
   "figures/PI SAs.png" 1715907867 121723 881d3305891e6715c3a058db0d610b85 ""

@@ -103,7 +103,7 @@ function plot_comparison(initial_conditions)
     fig = Figure(size=(1000,1000 ÷ sqrt(2)); dpi = 300)
 
     ax = Axis(fig[1, 1];
-        xlabel = "Time step",
+        xlabel = "Iteration",
         ylabel = "Fraction of learned",
         xscale = log10,
         # yscale = log10,
@@ -324,10 +324,10 @@ end
 begin #* Comparing time series traditional with PI
 
     comparison = [
-        # "size",
+        "size",
         # "SA",
         # "ρ₀",
-        "δλ",
+        # "δλ",
     ]
 
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
