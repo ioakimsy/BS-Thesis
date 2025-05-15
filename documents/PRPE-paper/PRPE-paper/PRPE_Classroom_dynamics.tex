@@ -47,21 +47,21 @@
 \date{June 2025}%
 
 \begin{abstract}
-    Peer instruction (PI) has become one of the popular means of classroom instruction in Physics Education.
+    Peer instruction (PI) has become \textcolor{red}{one of the popular means} of classroom instruction in Physics Education.
     Such instruction method is vastly different from how classes are traditionally handled where the instructor conducts a lecture for the entire duration of the class.
-    In this study, we model the \textcolor{red}{transfer of knowledge} within classes of students as a probabilistic cellular automata model 
+    In this study, we model the \textcolor{red}{learning} within classes of students as a probabilistic cellular automata model 
     and investigate the effects of different factors such as seating arrangements, class size $N$, average learning rate ${\lambda}$, and heterogeneity $\delta{\lambda}$ on the class overall learning efficiency.
-    The learning efficiency of the class is measured in terms of the overall class rate using the initial rate trend and the total learning time $t_{\rm max}$ for the whole class.
-    PI mode appears to be more applicable with heterogenous classes (in-class high learning rate max difference $\delta{\lambda}$).
+    The learning efficiency of the class is measured in terms of the overall class rate \textcolor{red}{using the total learning time $t_{\rm max}$} for the whole class.
+    PI mode appears to be more applicable with heterogeneous classes (in-class high learning rate max difference $\delta{\lambda}$).
     As commonly known TI mode is shown to be more advantageous for large $N$ and homogenous class aptitude (low $\delta{\lambda}$).
     % High learning rate of students benefits both TI and PI but in different ways.
-    We show that the learning curves of highly heterogenous classes with TI mode have two stages of learning: a fast initial stage and a slow final stage.
+    We show that the learning curves of highly heterogeneous classes with TI mode have two stages of learning: a fast initial stage and a slow final stage.
     The slow final state class learning rate is due to the late learners with lower $\lambda$-values and have general shape dependent on other model parameters as well.
     Such curves are absent with PI which consistently shifts depending on the other factors.
     Differing from a previous empirical data for the PI mode, classes perform best when the best in the class are situated within the inner corner.
     The model we used for this study currently ignores the actual non-isotropic seating orientation with which students do not share knowledge readily in all neighboring seating directions.
-    Our model simplified the student capabilities to binary values and does not consider the effect of aptitude similarity during peer interactions as described in previous studies.
-    We therefore find that PI performs at better than, of not similar to, traditional instruction.
+    Our model simplified the student capabilities to binary values and does not consider the \textcolor{red}{positive} effect of aptitude similarity during peer interactions as described in previous studies.
+    We therefore find that PI \textcolor{red}{performs better than, or similar to,} traditional instruction.
     A mix of TI and PI would be the optimal mode of instruction taking advantage of TI for fast learning in the initial stage and the robust learning curve of PI in the later stages of class learning.
     Despite these simplifications, our model is able to provide general insights that are in agreement with previous studies and existing practices.
 \end{abstract}
@@ -90,7 +90,7 @@
     
     The PI method as outlined by Mazur and Somers~\cite{mazur1997peer} typically involves an instructor giving a short lecture on the topic, followed by a multiple-choice question (MCQ) that the student answer individually.
     PI emphasizes on the next phases of instruction which involve repeated cycle of students sharing their answers to the MCQ and discussing them with peers, usually until they get the concepts right.
-    This part makes PI method student centric requiring the instructor to intervene with slightly modified steps to adjust to the needs of the class.
+    This part makes the PI method student centric requiring the instructor to intervene with slightly modified steps to adjust to the needs of the class.
     As long as the same learning objectives are tackled, the instructor can choose variations in the method~\cite{smith2009peer}.
     The instructor may often decide on: increasing the multiplicity of the peer sharing and discussion phase; having different kinds of requirements and/or levels of evaluation~\cite{crouch2001peer}; providing different MCQ sets; or giving another short lecture to ensure clarity of concepts involved~\cite{lasry2008peer}.
     Modifications to the PI method have also been reported to minimize some undesired behavioral patterns such as just copying off each other~\cite{smith2009peer}.
@@ -110,7 +110,7 @@
 %    Similarly, students' conceptual understanding of the lessons also improved.
 %    This holds true for both in-class concept tests and end-of-semester exams~\cite{crouch2001peer}.
     
-    Despite the unique approach of de-emphasizing actual problem-solving during the PI lecture phase, quantitative problem-solving skills have been consistently shown to remain not compromised, and in many cases even improved, relative to TI.
+    Despite the unique approach of de-emphasizing actual problem-solving during the PI lecture phase, quantitative problem-solving skills have been consistently shown to remain uncompromised, and in many cases even improved, relative to TI.
     Several advantages were pointed out in favor of the PI method in relation to the following dimensions: decrease in the number of students with extremely low scores~\cite{crouch2001peer,lasry2008peer,thacker1994comparing}, improved conceptual understanding~\cite{crouch2001peer}, as well as being independent of the background knowledge~\cite{lasry2008peer,tobias1990they}.
 
 
@@ -173,7 +173,7 @@
 
     Actual assessment results by \citet{roxas2010seating} is used to train their ANN to predict expected second assessment scores of students depending on seating arrangements.
 % The artificial neural network (ANN) model by \citet{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
-    Using this neural network, they were also able to characterize \textcolor{red}{information transfer} and investigate the effects of group homogeneity. 
+    Using this neural network, they were also able to characterize \textcolor{red}{students' learning} and investigate the effects of group homogeneity. 
     Their study revealed that an optimal seating arrangement exists for students under PI methods based on their final aptitude.
     In their paper, the measure of each students' improvement was calculated via the Hake gain~\cite{hake1998} as 
     %%
@@ -186,7 +186,7 @@
 
     The results of their study show that the outer corner seating arrangement (SA) performed the best using both the Hake gain and the $O/I$, followed by inner corner, then random, then center.
     The seating arrangements are illustrated in Fig.~\ref{fig:PI-SAs}.
-    In simulated classrooms (ANN system), each with $64$ students and $10$ classrooms in total, they found that homogenous classrooms with low aptitudes have significantly higher $O/I$-values.
+    In simulated classrooms (ANN system), each with $64$ students and $10$ classrooms in total, they found that homogenous classrooms with low aptitudes have significantly higher $O/I$-values \textcolor{red}{under PI}.
     This means that low aptitude students benefit the most from being grouped together.
     %%
     \begin{figure}[htb]
@@ -195,7 +195,7 @@
         \caption{%%
         Seating arrangements considered for PI.
         Dots represent position of high aptitude students.
-        The position of other students are typically arranged in rectangular pattern across the room (here square for brevity).
+        The position of other students \textcolor{red}{is} typically arranged in rectangular pattern across the room (here square for brevity).
         The random case is just one of the many possible arrangements.
         }
         \label{fig:PI-SAs}
@@ -217,13 +217,22 @@
         \label{eq:nitta_gain}
     \end{equation}
     %%
-    \textcolor{red}{Other models provide Hake gain expressions} (e.g. \citet{pritchard2008mathematical}) resulting to more complex formulation for the function $g(S_1)$.
+    \textcolor{red}{
+        Other models provide Hake gain expressions (e.g. \citet{pritchard2008mathematical} \ref{eq:pritchard_connectedness_gain}) resulting to more complex formulation for the function $g(S_1)$.
+        This model considers other factors that may affect the learning process.
+        $K_{ext}$ is knoweldge that students have that did were not part of the assessment and $\alpha_{memory}$ and $\alpha_{connected}$ are probabilities of learning and information being retained respectively.
+        %%
+        \begin{equation}
+            g = 1 - \exp{ \lbrace - \lbrack \alpha_{memory} (1-\beta) + \alpha_{connected} \beta K_{ext} \rbrack  t \rbrace}
+            \label{eq:pritchard_connectedness_gain}
+        \end{equation}
+    }
 
     Despite the diversity of the models that we found, current models of PI lack some aspects that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity with which the introduction of PI from TI are typically founded on.
     
 \section{Cellular Automata Method}
 
-    We use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata~\cite{arciaga2009experimental,Batac2009,louis2018probabilistic,Fernandez2018}) to study the spatiotemporal dynamics of learning for a more direct implementation of any instructional mode.
+    We use a probabilistic cellular automata (pCA) model~\cite{SelfSPP} (also known as stochastic cellular automata~\cite{arciaga2009experimental,Batac2009,louis2018probabilistic,Fernandez2018}) to study the spatio-temporal dynamics of learning for a more direct implementation of any instructional mode.
     For this pCA model, each cell in the automaton represents a student arranged in such a way each student is adjacent to (a CA {\it neighbor} of) four others resulting to the usual rectangular lattice configuration.
     For the rectangular lattice, we assign the unique position $(i,j)$ to each student such that $i,j\in[1,L]$ and the classroom size is $N=L^2$.
     The students at the edges and corners have less number of neighbors as in the real situations.
@@ -260,7 +269,7 @@
         P_{i,j} = \lambda_{i,j}\;\rho_{\delta i,\delta j}
     \end{equation}
     %%
-    with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of \textcolor{red}{learning transfer} efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$~\cite{dong2021influence}.
+    with $\rho_{\delta i,\delta j}\in[0,1]$ as the potential dependence of \textcolor{red}{learning} efficiency on the relative position $(\delta i, \delta j)$ of the source of learning (inspiration, input, interaction, discussion, etc.) with respect to the student position $(i,j)$~\cite{dong2021influence}.
     The relative position of the student may matter since instructors in TI mode, for example, may be dependent on the row $i$ since usually students near the front ($i=1$) tend to be more attentive and engaged in discussions than those in the last row ($i=L$).
     To futher simplify for TI, we fix $\rho_{\delta i,\delta j}=\rho_{0}$ as the probability of the students to learn from the teacher directly as if during an efficient plenary (or broadcast) lecture throughout the class such that we simply have $P_{i,j} = \lambda_{i,j}\rho_0$.
 
