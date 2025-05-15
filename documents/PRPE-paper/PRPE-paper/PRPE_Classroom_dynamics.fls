@@ -188,31 +188,17 @@ INPUT ./figures/figure-3.png
 INPUT ./figures/figure-3.png
 INPUT ./figures/figure-3.png
 INPUT ./figures/figure-3.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/δλ.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png
-INPUT ./figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/comparison plots/SA.png
-INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
-INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
-INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
-INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
-INPUT ./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png
+INPUT ./figures/figure-4.png
+INPUT ./figures/figure-4.png
+INPUT ./figures/figure-4.png
+INPUT ./figures/figure-4.png
+INPUT ./figures/figure-4.png
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT ./figures/figure-5.png
+INPUT ./figures/figure-5.png
+INPUT ./figures/figure-5.png
+INPUT ./figures/figure-5.png
+INPUT ./figures/figure-5.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png
 INPUT ./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png
@@ -229,6 +215,7 @@ INPUT PRPE_Classroom_dynamics.bbl
 INPUT PRPE_Classroom_dynamics.aux
 INPUT ./PRPE_Classroom_dynamics.out
 INPUT ./PRPE_Classroom_dynamics.out
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -247,6 +234,5 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb

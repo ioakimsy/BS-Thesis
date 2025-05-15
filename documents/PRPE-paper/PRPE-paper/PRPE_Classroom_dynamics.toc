@@ -6,8 +6,9 @@
 \contentsline {section}{\numberline {I}Introduction}{1}{section*.4}%
 \contentsline {section}{\numberline {II}Cellular Automata Method}{3}{section*.5}%
 \contentsline {section}{\numberline {III}Results and Discussion}{3}{section*.6}%
-\contentsline {subsection}{\numberline {III.1}Dynamical Difference between TI and PI}{4}{section*.7}%
-\contentsline {subsection}{\numberline {III.2}Summary of effects of class size $N$, positional learning factor $\rho _0$, and learning rate heterogeneity $\delta \lambda $}{5}{section*.8}%
-\contentsline {subsection}{\numberline {III.3}Existing research data}{6}{section*.9}%
-\contentsline {section}{\numberline {IV}Summary and Conclusion}{7}{section*.10}%
-\contentsline {section}{\numberline {}References}{7}{section*.11}%
+\contentsline {subsection}{\numberline {III.1}Dynamical difference between TI and PI}{4}{section*.7}%
+\contentsline {subsection}{\numberline {III.2}Transmission and heterogeneity}{4}{section*.8}%
+\contentsline {subsection}{\numberline {III.3}Summary of effects of class size $N$, positional learning factor $\rho _0$, and learning rate heterogeneity $\delta \lambda $}{5}{section*.9}%
+\contentsline {section}{\numberline {IV}Realistic simulation results}{6}{section*.10}%
+\contentsline {section}{\numberline {V}Summary and Conclusion}{7}{section*.11}%
+\contentsline {section}{\numberline {}References}{7}{section*.12}%
