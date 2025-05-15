@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  29 APR 2025 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  15 MAY 2025 10:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -341,23 +341,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `PRPE_Classroom_dynamics.toc'.
 
  [1{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figures/PI SAs.png, id=105, 474.135pt x 525.162pt>
+<figures/PI SAs.png, id=106, 474.135pt x 525.162pt>
 File: figures/PI SAs.png Graphic file (type png)
 <use figures/PI SAs.png>
 Package pdftex.def Info: figures/PI SAs.png  used on input line 194.
 (pdftex.def)             Requested size: 153.00156pt x 169.4656pt.
 
-Underfull \hbox (badness 2653) in paragraph at lines 218--221
-[]\OT1/cmr/m/n/10 Other mod-els pro-vide Hake gain ex-pres-sions[] (e.g.
+Underfull \hbox (badness 2653) in paragraph at lines 218--229
+[]\OT1/cmr/m/n/10 Other mod-els pro-vide Hake gain ex-pres-sions (e.g.
  []
 
 
-Underfull \hbox (badness 2134) in paragraph at lines 226--230
+Underfull \hbox (badness 2134) in paragraph at lines 235--239
 []\OT1/cmr/m/n/10 We use a prob-a-bilis-tic cel-lu-lar au-tomata (pCA)
  []
 
 
-Underfull \hbox (badness 2547) in paragraph at lines 226--230
+Underfull \hbox (badness 2547) in paragraph at lines 235--239
 \OT1/cmr/m/n/10 model [[]] (also known as stochas-tic cel-lu-lar au-
  []
 
@@ -365,101 +365,101 @@ Underfull \hbox (badness 2547) in paragraph at lines 226--230
 <figures/2DBPCA Flowchart.png, id=136, 1533.0pt x 671.892pt>
 File: figures/2DBPCA Flowchart.png Graphic file (type png)
 <use figures/2DBPCA Flowchart.png>
-Package pdftex.def Info: figures/2DBPCA Flowchart.png  used on input line 248.
+Package pdftex.def Info: figures/2DBPCA Flowchart.png  used on input line 257.
 (pdftex.def)             Requested size: 229.49844pt x 100.58466pt.
  [3 <./figures/2DBPCA Flowchart.png>]
-<figures/2D-BPCAIH-analysis/comparison plots/size.png, id=163, 766.5pt x 542.025pt>
+<figures/2D-BPCAIH-analysis/comparison plots/size.png, id=164, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/size.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/size.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/size.png  used on input line 366.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/size.png  used on input line 375.
 (pdftex.def)             Requested size: 229.49844pt x 162.2862pt.
-<figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png, id=164, 766.5pt x 542.025pt>
+<figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png, id=165, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png  used on input line 383.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png  used on input line 392.
 (pdftex.def)             Requested size: 229.49844pt x 162.2862pt.
-<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=165, 766.5pt x 542.025pt>
+<figures/2D-BPCAIH-analysis/comparison plots/δλ.png, id=166, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/δλ.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/δλ.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  used on input line 399.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/δλ.png  used on input line 408.
 (pdftex.def)             Requested size: 229.49844pt x 162.2862pt.
-<figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png, id=166, 807.234pt x 410.844pt>
+<figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png, id=167, 807.234pt x 410.844pt>
 File: figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png  used on input line 429.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png  used on input line 438.
 (pdftex.def)             Requested size: 229.49844pt x 116.80338pt.
-<figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=171, 766.5pt x 542.025pt>
+<figures/2D-BPCAIH-analysis/comparison plots/SA.png, id=172, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/comparison plots/SA.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/comparison plots/SA.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/SA.png  used on input line 447.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/comparison plots/SA.png  used on input line 456.
 (pdftex.def)             Requested size: 229.49844pt x 162.2862pt.
  [4 <./figures/2D-BPCAIH-analysis/comparison plots/size.png> <./figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png>]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 460.
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 469.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 461.
+(hyperref)                removing `math shift' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 461.
+(hyperref)                removing `math shift' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 461.
+(hyperref)                removing `math shift' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rho' on input line 461.
+(hyperref)                removing `\rho' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 461.
+(hyperref)                removing `subscript' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 461.
+(hyperref)                removing `math shift' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 461.
+(hyperref)                removing `math shift' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delta' on input line 461.
+(hyperref)                removing `\delta' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 461.
+(hyperref)                removing `\lambda' on input line 470.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 461.
+(hyperref)                removing `math shift' on input line 470.
 
-<figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=188, 1254.6875pt x 887.315pt>
+<figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png, id=190, 1254.6875pt x 887.315pt>
 File: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png  used on input line 474.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png  used on input line 483.
 (pdftex.def)             Requested size: 239.70062pt x 169.51227pt.
 
-Underfull \hbox (badness 5832) in paragraph at lines 483--490
+Underfull \hbox (badness 5832) in paragraph at lines 492--499
 []\OT1/cmr/m/n/10 Comparing our data to Nitta's model (Equa-
  []
 
 [5 <./figures/2D-BPCAIH-analysis/comparison plots/δλ.png> <./figures/2D-BPCAIH-analysis/class evolutions/class_evolution.png> <./figures/2D-BPCAIH-analysis/comparison plots/SA.png>]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 490.
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 499.
 
-<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=204, 766.5pt x 542.025pt>
+<figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png, id=206, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png  used on input line 493.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png  used on input line 502.
 (pdftex.def)             Requested size: 239.70062pt x 169.49818pt.
-<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=205, 766.5pt x 542.025pt>
+<figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png, id=207, 766.5pt x 542.025pt>
 File: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png Graphic file (type png)
 <use figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png>
-Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png  used on input line 494.
+Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png  used on input line 503.
 (pdftex.def)             Requested size: 239.70062pt x 169.49818pt.
 [6 <./figures/2D-BPCAIH-analysis/rho-dl-t plots/32-128 comparison.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png>] (./PRPE_Classroom_dynamics.bbl
 Underfull \hbox (badness 4792) in paragraph at lines 57--58
@@ -510,18 +510,18 @@ Package rerunfilecheck Info: File `PRPE_Classroom_dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: D7EF11639945DFAA4F7CF0BBA9AA7937;2679.
  ) 
 Here is how much of TeX's memory you used:
- 11740 strings out of 474928
- 177956 string characters out of 5763562
- 1947785 words of memory out of 5000000
- 33093 multiletter control sequences out of 15000+600000
+ 11743 strings out of 474928
+ 178012 string characters out of 5763562
+ 1946785 words of memory out of 5000000
+ 33095 multiletter control sequences out of 15000+600000
  566017 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,79p,909b,667s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,909b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PRPE_Classroom_dynamics.pdf (8 pages, 4426546 bytes).
+Output written on PRPE_Classroom_dynamics.pdf (8 pages, 4425797 bytes).
 PDF statistics:
- 358 PDF objects out of 1000 (max. 8388607)
- 282 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
+ 360 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
  139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

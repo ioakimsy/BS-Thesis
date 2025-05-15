@@ -8,3 +8,4 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qdefines the set of rules implemented in the CA with \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q as the mapping of any neighborhood state \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q to a new state \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q of the cell \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qthe probabilistic rule defined by Equation \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
 {"rule":"ARTICLE_ADJECTIVE_OF","sentence":"^\\QWe propose that a probabilistic cellular automata model can be used to study the spatiotemporal of both PI and traditional instruction when incorporating these different aspects into the model.\\E$"}
+{"rule":"LEARN_NNNNS_ON_DO","sentence":"^\\QA mix of TI and PI would be the optimal mode of instruction taking advantage of TI for fast learning in the initial stage and the robust learning curve of PI in the later stages of class learning.\\E$"}
