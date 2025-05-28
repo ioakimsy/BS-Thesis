@@ -97,7 +97,7 @@ begin
     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
     Ρs = collect(0.1:0.1:1.0)
     δλs = collect(0.0:0.1:0.4)
-    n_trials = 5
+    n_trials = 20
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
     valid_SA = ["traditional", "inner_corner"]
@@ -114,18 +114,29 @@ begin
             "random" => "R",
         )
 
-        fig = Figure(size = (1000,900);)
+        fig = Figure(size = (1000,800);)
         ax = Axis3(fig[1, 1], 
-            xlabel="ρ₀", 
-            ylabel = "δλ",
-            zlabel="Time to learn (tₘₐₓ)", 
+            xlabel="Transmission ρ₀", 
+            ylabel = "Heterogeneity δλ",
+            zlabel="Time to learn tₘₐₓ",
+            # xlabel= L"\text{Transmission }\rho_0", 
+            # ylabel = L"\text{Heterogeneity }\delta\lambda",
+            # zlabel= L"\text{Time to learn }(t_{max})",
             # zlabel = [],
-            title="Inhomogenous Classroom Model L=$valid_class_size", 
+            # title="Inhomogenous Classroom Model L=$valid_class_size", 
             # subtitle="class_size = $valid_class_size",
             aspect = (1,1,1),
             # zticklabelsvisible = false,
-            titlesize = 32,
-            zticks = 0 : 100 : maximum(Measurements.value.(subset.ttl))
+            zticks = 0 : 100 : maximum(Measurements.value.(subset.ttl)),
+            xlabelsize = 32,
+            ylabelsize = 32,
+            zlabelsize = 32,
+            xlabeloffset = 60,
+            ylabeloffset = 60,
+            zlabeloffset = 80,
+            xticklabelsize = 28,
+            yticklabelsize = 28,
+            zticklabelsize = 28,
         )
 
         for i in 1:length(SA_subset)
@@ -157,25 +168,25 @@ begin
         # axislegend("Legend", labelsize = 20, titlesize = 20)
         elem_TI = PolyElement(color = ColorSchemes.seaborn_colorblind[1])
         elem_PI = PolyElement(color = ColorSchemes.seaborn_colorblind[2])
-        Legend(fig[2,:],
-            [elem_TI, elem_PI],
-            ["Traditional Instruction", "Inner Corner SA"],
-            "Legend",
-            orientation = :horizontal,
-            titlesize = 20,
-            labelsize = 20
-        )
+        # Legend(fig[2,:],
+        #     [elem_TI, elem_PI],
+        #     ["Traditional Instruction", "Inner Corner SA"],
+        #     "Legend",
+        #     orientation = :horizontal,
+        #     titlesize = 20,
+        #     labelsize = 20
+        # )
         # display(fig)
 
-        #* Animation
-        println("Generating animation: $valid_class_size")
-        start_angle = 1.275 * π
-        n_frames = 300
-        anim_savepath = "./output/2D-Binary-PCA-IH/analysis/plots/rho-dl-t-anim/"
-        anim_filename = "$valid_class_size"
-        record(fig, anim_savepath * anim_filename * ".mp4", 1:n_frames; framerate = 30) do frame
-            ax.azimuth[] = start_angle + 2pi * frame / n_frames
-        end
+        # #* Animation
+        # println("Generating animation: $valid_class_size")
+        # start_angle = 1.275 * π
+        # n_frames = 300
+        # anim_savepath = "./output/2D-Binary-PCA-IH/analysis/plots/rho-dl-t-anim/"
+        # anim_filename = "$valid_class_size"
+        # record(fig, anim_savepath * anim_filename * ".mp4", 1:n_frames; framerate = 30) do frame
+        #     ax.azimuth[] = start_angle + 2pi * frame / n_frames
+        # end
 
         #* Save the plot
         println("Generating plots: $valid_class_size")
