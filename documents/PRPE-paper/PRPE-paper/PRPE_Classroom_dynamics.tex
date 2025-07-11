@@ -330,11 +330,13 @@
 
     \subsection{Dynamical difference between TI and PI}
 
-        Figure~\ref{fig:comparison size}(a) shows the typical monotonic increase in the fraction of learned students in classes starting with an unlearned state (all students in {\it unlearned} state, except for PI with which we start with four initially learned students).
+        Figure~\ref{fig:comparison size} shows the typical monotonic increase in the fraction of learned students in classes starting with an unlearned state (all students in {\it unlearned} state, except for PI with which we start with four initially learned students).
         TI mode shows an early onset of high number of learning students in the first few iterations of lecture.
         The overall learning rate for TI tapers off as the entire class waits for the last few persons to actually learn.
         Due to the required percolation between learned and unlearned states, the PI mode shows a timid initial rise of the number of learned students only to suddenly rise towards the later part.
+        PI mode catches up fastest in the later part of the iterations especially for low class size $N$.
         This observation for the PI is consistent independent of the seating arrangement (SA) considered.
+        Class size does not affect TI mode as expected from the broadcasted mode of learning where each student independently and simultaneously learns from the teacher directly.
         %%
         \begin{figure}[htbp]
         \centering
@@ -346,33 +348,35 @@
         \includegraphics[width=0.45\textwidth]{figures/figure-3.png}
         %%
         \caption{
-        Different monotonic increase of the fraction of students in the learned state over different iteration number.
+        Different monotonic increase of the total fraction of students in the learned state over iteration number.
         The blue colored plots are for TI while other colors are for PI.
-        (a)~Plot for different seating arrangements (SAs).
+        The same color corresponds to the seating arrangement (SA) used.
         Each PI's SA corresponds to a different color: orange (for inner corner), green (outer corner), orange (center), and pink (random).
-        (b)~Plot for different class sizes $N$.
-        The best SA is used for comparison.
         The linewidth is proportional to the $N$ used. Other pertinent parameters fixed: $\rho_0=0.5$ and $\delta\!\lambda=0.2$.
         The bands around each line show the standard deviation of the data after $20$ independent random trials.
         Higher fraction of learned students indicate better overall learning.
-        }
+        (a)~Plot for different class sizes $N$.
+        The best performant SA (Inner Corner) is used for comparison.
+        (b)~Plot for different seating arrangements (SAs).
+                }
         \label{fig:comparison size}
         \end{figure}
         
-        The different SAs for the PI mode perform differently for the same set of parameters.
+        Figure~\ref{fig:comparison size}(b) shows the effect of SAs for the PI mode.
         The inner corner SA outperforms all the other SAs for PI mode since such SA always has the highest rate of and earlest onset of rise in the number of learned students in the class compared to other SAs.
-        The random SA outperforms either the center and outer corner SAs as such arrangement benefit from proximity of initial configuration to the inner corner SA case.
-
-        Figure~\ref{fig:comparison size}(b) shows the same plot as in Fig.~\ref{fig:comparison size}(a) for varying class size $N$ and using the inner corner arrangement as the best SA of the three.
-        The effect of increasing $N$ under PI mode is to delay the onset time for the class to speed up learning.
-        This is consistent for other SAs without affecting their general shape. 
-        This phenomenon is absent in the TI mode expected from the broadcasted mode of learning where each student independently and simultaneously learns from the teacher directly.
+        When the students are randomly arranged, such SA performs as average of the two extreme types.
+        The center and the outer corners perform similarly due to the idealized assumptions of the model (e.g. isotropic co-learning).
 
     \subsection{Transmission and heterogeneity}
 
-        Figure~\ref{fig:comparison rates}(a) shows the same trends as the previous figures but for varying the learning rate factor $\rho_0$.
+        The learning rate $\rho$ is expected to affect the class learning curve.
+        The level of heterogeneity however affects the traditional mode of learning.
+        Figure~\ref{fig:comparison rates}(a) shows that the class learning curves belong to the sigmoidal plots except for characteristic slopes and shifts.
         As one would expect, high $\rho_0$-values increase the initial number of learned students in both modes resulting to a relative shift in the onset of class overall learning.
-        In the PI mode however, the shape of the learning curve is stable for different values of $\rho_0$.
+        Such onset may be measured as the iteration number at which the fraction of learned students has reached $50\%$ of the entire class.
+        Opposed to TI, the shape of the learning curve for PI mode is more stable for different values of $\rho_0$ since only delay is introduced.
+        TI's advantage for quick onset of learning however, is noticeable in all plots for the same $\rho_0$-values.
+
         The effect of varying $\rho_0$ is nonlinear for both models with TI being most significantly affected by the increment towards near-perfect learning transfer $\rho_0={0.9}$.
         For both modes, the difference between a class with $\rho_0=0.1$ versus $0.5$ is greater the difference between those with $\rho_0=0.5$ {versus} $0.9$.
         {\color{red}
@@ -391,9 +395,9 @@
         %%
         \caption{
         The same plot as in Fig.~\ref{fig:comparison size}, but for ranges of values for different chosen parameter.
+        Unless indicated, the parameters are fixed such that $N=64$, $\rho_0=0.5$, $\delta\lambda=0.2$ (fairly homogenous) and an Inner Center SA for PI mode.
         (a)~Plots for varied $\rho_0$-values, introducing varying degrees of shifts along the iteration (time) axis.
         (b)~Plots for varied $\delta\lambda$-values.
-        When not varied, the other parameters are fixed with $N=64$, $\rho_0=0.5$ and $\delta\lambda~=~0.2$ (fairly homogenous).
         (c)~Representative development of classroom spatial configuration ($L=32$, $\rho_0=0.3$) observed for different iteration numbers from $t=2$ (each column doubles the previous $t$) for TI (first row) and PI (second row) modes.
         The learned and unlearned states are differentiated by the color intensity, with $\lambda=0.9$ (darker) and $0.1$ (lighter) shades.
         }
