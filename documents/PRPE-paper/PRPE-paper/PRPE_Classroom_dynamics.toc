@@ -11,4 +11,4 @@
 \contentsline {subsection}{\numberline {III.3}Summary of effects of class size $N$, positional learning factor $\rho _0$, and learning rate heterogeneity $\delta \lambda $}{6}{section*.9}%
 \contentsline {section}{\numberline {IV}Realistic simulation results}{6}{section*.10}%
 \contentsline {section}{\numberline {V}Summary and Conclusion}{7}{section*.11}%
-\contentsline {section}{\numberline {}References}{7}{section*.12}%
+\contentsline {section}{\numberline {}References}{8}{section*.12}%
