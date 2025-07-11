@@ -187,7 +187,6 @@ INPUT ./figures/figure4.png
 INPUT ./figures/figure4.png
 INPUT ./figures/figure4.png
 INPUT ./figures/figure4.png
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT ./figures/figure5.png
 INPUT ./figures/figure5.png
 INPUT ./figures/figure5.png
@@ -209,7 +208,6 @@ INPUT PRPE_Classroom_dynamics.bbl
 INPUT PRPE_Classroom_dynamics.aux
 INPUT ./PRPE_Classroom_dynamics.out
 INPUT ./PRPE_Classroom_dynamics.out
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
