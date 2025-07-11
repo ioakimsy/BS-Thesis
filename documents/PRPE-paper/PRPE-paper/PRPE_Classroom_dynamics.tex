@@ -414,7 +414,7 @@
         From this observation, we can conclude that the combination of both TI and PI benefits from these two phenomenon of innoculation of learning (via broadcast in TI step) and co-learning from peers (via percolation in the PI step).
 
         {\color{red} UNEDITED FROM HEREON.}
-        Figure~\ref{fig:comparison δλ} shows the effect of varying the learning rate heterogeneity $\delta\lambda$.
+        Figure~\ref{fig:comparison rates}(b) shows the effect of varying the learning rate heterogeneity $\delta\lambda$.
         The effect of $\delta\lambda$ is similar to that of $\rho_0$ in its effects on the dynamics of the learning process and the rate at which students learn throughout the simulation.
         As with $\rho_0$, the effect of $\delta\lambda$ is nonlinear --- the difference between $\delta\lambda=0.4$ and $\delta\lambda=0.2$ is greater than that of $\delta\lambda=0.2$ and $\delta\lambda=0.0$.
 
@@ -514,6 +514,16 @@
     For these cases, the time for all students to learn might be longer than the $t_{\rm max}$ value we obtained.
     Nevertheless, these findings suggest that to optimize the learning in the classroom, it would be best to perform TI at the start of the class to take advantage of the fast initial learning stage, then switch to PI where having learned students spread throughout the classroom benefit those who have yet to learn.
     This is consistent with current practices~\cite{mazur1997peer,smith2009peer,lasry2008peer,roxas2010seating}, where the students are expected to have read up on the material in advance and the instructor gives a short lecture before the students engage in peer discussion.
+
+
+    {\color{red} [Edited paragraph moved.]}
+    Spatial configurations of the class over iteration numbers provide insight on how learning spreads to the entire class.
+    Figure~\ref{fig:comparison rates}(c) shows the comparison of such configurations of the two modes over different iteration times.
+    For TI mode, it becomes obvious that the first to learn are those who are fast learners (higher $\lambda$-values) and then spreads over the whole class later as those with lower $\lambda$-values eventually learns.
+    PI mode however, takes a slower pickup since learning is based on its percolation from learned students only.
+    The spread through the slow learners however appears to be uniform resulting to a sudden increase of class learning rate in the later iterations.
+    From this observation, we can conclude that the combination of both TI and PI benefits from these two phenomenon of innoculation of learning (via broadcast in TI step) and co-learning from peers (via percolation in the PI step).
+    
 
     \subsection{Summary of effects of class size $N$, positional learning factor $\rho_0$, and learning rate heterogeneity $\delta\lambda$}
         
