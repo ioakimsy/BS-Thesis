@@ -455,8 +455,12 @@
     Since $f$ can be used as an approximation for the probability $S$ that the evaluation items are answered correctly by any member of the class, the Hake gain $g$ can be used as a measure of how our CA model qualitatively compares well with real-world data.
     Consequently our model determines how $g$ is dependent on $S_1$ by mapping the evaluation score to the fraction of learned students: ${S}\rightarrow{f}$, and that we have $S_2=f_{t}$ for $S_1=f_{t-1}$.
 
+    The Nitta Model can be considered as a recurrence equation of the item-based probability $S$ of evaluation of the PI mode as shown to be in agreement with real-world experimental data~\cite{nitta2019mathematical}.
+    The model being related to the Hake's gain model via ${S}\rightarrow{f}$ as above, can then be used to confirm the consistency of our simulation data with reality.
+    The return map that plots $f_{t}$ against $f_{t-1}$ can be shown to mimic Eq.~\ref{eq:nitta_model} and hint the form of the gain $g(S_1)\approx g(f)$, even for real-world data, not just for numerical simulation.
+
     {\color{red} Modify from hereon.}
-    Comparing our data to Nitta's model (Equation~\ref{eq:nitta_model})~\cite{nitta2019mathematical}, as in Figure~\ref{fig:Return map}, only our data for PI approaches their model --- this is expected since their model is for PI and not TI.
+    Figure~\ref{fig:Return map} shows our data for PI approaches their model --- this is expected since their model is for PI and not TI.
     Furthermore, PI only approaches their model when the conditions are favorable for PI (Figure~\ref{fig:return_map_fav}).
     Considering that their model has been shown to agree with experimental data, it suggests that real world students' behavior and learning dynamics are better represented by the values of high positional learning factor $\rho_0$ and small class sizes $N$.
     It should also be noted that Nitta's model and data tracks individual students' learning while our model tracks the class's learning as a whole.
