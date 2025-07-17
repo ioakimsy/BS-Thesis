@@ -122,7 +122,7 @@ function class_simulation(lengths::Vector{Int}, Ρs::Vector{Float64}, δλs::Vec
    for trial in 1:n_trials
         for ρ₀ in Ρs, class_length in lengths, δλ in δλs#, trial in 1:n_trials
 
-            #println("$seat_config 	$ρ₀ 	$class_size 	$trial")
+            steady_state_tolerance = Int(class_length^2 * 0.2 ÷ 1)
 
             generations, num_generations, λ_grid = simulate_steady_state(class_length, ρ₀, steady_state_tolerance, δλ; λ₀=λ₀)
 
@@ -176,8 +176,9 @@ begin
     #TODO: move list of parameters to external file to be read to sync across the scripts
     lengths = [32,48,64,96,128]
 	Ρs = collect(0.1:0.1:1)
-    δλs = collect(0.0:0.1:0.4)
-	steady_state_tolerance = 20
+    # δλs = collect(0.0:0.1:0.4)
+    δλs = [0.45, 0.49]
+	steady_state_tolerance = 100
 	n_trials = 20
     λ₀ = 0.5
 

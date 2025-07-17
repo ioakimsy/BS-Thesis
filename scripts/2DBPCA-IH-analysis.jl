@@ -16,11 +16,22 @@ begin
     println("Done loading packages")
 end
 
+function param_in_fail_df(fail_df, params)
+    seat_config, ρ₀, class_size, trial, δλ = params
+    any(row -> row.seat_config == seat_config &&
+                row.ρ₀ == ρ₀ &&
+                row.class_size == class_size &&
+                row.trial == trial &&
+                row.δλ == δλ, eachrow(fail_df))
+end
+
 function read_data(sizes, seat_configs, Ρs, δλs,  n_trials; n_learned = 4, λ₀ = 0.5, update = false)
 
     if update == true
         #* Initialize dataframe for the summary of the simulation data
         data = DataFrame(seat_config=String[],class_size=Int[],ρ=Float64[],λ₀=Float64[], δλ = Float64[], m=Measurement{Float64}[],ttl=Measurement{Float64}[])
+
+        fail_df = CSV.read("./output/2D-Binary-PCA-IH/analysis/failures.csv", DataFrame)
 
         #* Reading the data from each simulation
         for seat_config in seat_configs, class_size in sizes, ρ₀ in Ρs, δλ in δλs
@@ -29,6 +40,12 @@ function read_data(sizes, seat_configs, Ρs, δλs,  n_trials; n_learned = 4, λ
             num_generations_list = []
 
             for trial in 1:n_trials
+
+                if param_in_fail_df(fail_df, [seat_config, ρ₀, class_size, trial, δλ])
+                    println("Skipping $(seat_config) $(class_size) $(ρ₀) trial $(trial) δλ=$(δλ)")
+                    continue
+                end
+
                 if seat_config == "random"
                     params_df = CSV.read("./output/2D-Binary-PCA-IH/random-$(class_size)-$(n_learned)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-random-$(class_size)-$(n_learned)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-fit_params.csv", DataFrame)
                 else
@@ -309,9 +326,9 @@ begin
     sizes = [32,48,64,96,128]
 	seat_configs = ["outer_corner", "inner_corner", "center", "random", "traditional"]
 	Ρs = collect(0.1:0.1:1)
-    δλs = collect(0.0:0.1:0.4)
-	steady_state_tolerance = 20
-	n_trials = 5
+    δλs = [0.1, 0.2, 0.3, 0.4, 0.45, 0.49]
+	steady_state_tolerance = 100
+	n_trials = 20
     n_learned = 4
     λ₀ = 0.5
 

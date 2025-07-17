@@ -96,6 +96,7 @@ begin
     sizes = [32, 48, 64, 96, 128]
     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
     Ρs = collect(0.1:0.1:1.0)
+    # δλs = [collect(0.0:0.1:0.4)...; 0.45; 0.49]
     δλs = collect(0.0:0.1:0.4)
     n_trials = 20
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
@@ -103,7 +104,8 @@ begin
     valid_SA = ["traditional", "inner_corner"]
 
     for valid_class_size in sizes
-        subset = data[(data.class_size.==valid_class_size) .& in.(data.seat_config, Ref(valid_SA)), :]
+        subset = data[(data.class_size.==valid_class_size) .& in.(data.seat_config, Ref(valid_SA)) .& in.(data.δλ, Ref(δλs)), :]
+        # print(subset)
         SA_subset = groupby(subset, :seat_config)
 
         SA_label_dict = Dict(
@@ -158,7 +160,7 @@ begin
             surface!(ax, ρ_data, δλ_data, t_data,
                 # alpha = 0.5,
                 color = fill((ColorSchemes.seaborn_colorblind[i], 1), 1:10, 1:5),
-                shading = NoShading
+                shading = FastShading
             )
 
             
@@ -193,7 +195,7 @@ begin
         ax.azimuth = 1.275 * π
         plot_savepath = "./output/2D-Binary-PCA-IH/analysis/plots/rho-dl-t-plots/"
         plot_filename = "$valid_class_size"
-        save(plot_savepath * plot_filename * ".png", fig)
+        save(plot_savepath * plot_filename * "_truncated.png", fig)
     end
 end
 
@@ -202,8 +204,8 @@ begin
     sizes = [32, 48, 64, 96, 128]
     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
     Ρs = collect(0.1:0.1:1.0)
-    δλs = collect(0.0:0.1:0.4)
-    n_trials = 5
+    δλs = [collect(0.0:0.1:0.4)...;[0.45, 0.49]...]
+    n_trials = 20
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
     valid_SA = ["inner_corner", "traditional"]
@@ -294,7 +296,7 @@ begin
     sizes = [32,48,64,96,128]
     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
     Ρs = collect(0.1:0.1:1.0)
-    δλs = collect(0.0:0.1:0.4)
+    δλs = [collect(0.0:0.1:0.4)...; 0.45; 0.49]
     n_trials = 20
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 end
@@ -304,7 +306,7 @@ begin
     sizes = [32,128]
     seat_configs = ["traditional", "inner_corner", "outer_corner", "center", "random"]
     Ρs = collect(0.1:0.1:1.0)
-    δλs = collect(0.0:0.1:0.4)
+    δλs = [collect(0.0:0.1:0.4)...; 0.45; 0.49]
     n_trials = 20
     data = read_data(sizes, seat_configs, Ρs, δλs, n_trials, n_learned=4, update=false)
 
@@ -341,7 +343,7 @@ begin
             aspect = (1,1,1),
             # zticklabelsvisible = false,
             titlesize = 32,
-            zticks = 0 : 100 : maximum(Measurements.value.(_subset.ttl))
+            zticks = 0 : 800 : maximum(Measurements.value.(_subset.ttl))
         )
 
         for i in collect(length(SA_subset):-1:1)

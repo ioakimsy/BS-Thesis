@@ -23,14 +23,27 @@ begin
     println("Done loading packages")
 end
 
+function param_in_fail_df(fail_df, params)
+    seat_config, ρ₀, class_size, trial, δλ = params
+    any(row -> row.seat_config == seat_config &&
+                row.ρ₀ == ρ₀ &&
+                row.class_size == class_size &&
+                row.trial == trial &&
+                row.δλ == δλ, eachrow(fail_df))
+end
 
 function read_time_series_data(class_size, SA, ρ₀, λ₀, δλ; n_learned=4)
 
     learned_raw = []
 
-    # println("Reading data for $(SA) $(class_size) $(ρ₀) $(λ₀) $(δλ)")
+    fail_df = CSV.read("./output/2D-Binary-PCA-IH/analysis/failures.csv", DataFrame)
 
     for trial in 1:20
+        if param_in_fail_df(fail_df, [SA, ρ₀, class_size, trial, δλ])
+            println("Skipping $(SA)-$(class_size)-$(ρ₀)-$(λ₀)-$(δλ) trial $(trial) as it failed")
+            continue
+        end
+
         if SA == "random"
             path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)-$(n_learned)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-$(SA)-$(class_size)-$(n_learned)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
         else
@@ -74,7 +87,15 @@ function read_time_series_data_raw(class_size, SA, ρ₀, λ₀, δλ; n_learned
 
     # println("Reading data for $(SA) $(class_size) $(ρ₀) $(λ₀) $(δλ)")
 
+    fail_df = CSV.read("./output/2D-Binary-PCA-IH/analysis/failures.csv", DataFrame)
+
     for trial in 1:20
+
+        if param_in_fail_df(fail_df, [SA, ρ₀, class_size, trial, δλ])
+            println("Skipping $(SA)-$(class_size)-$(ρ₀)-$(λ₀)-$(δλ) trial $(trial) as it failed")
+            continue
+        end
+
         if SA == "random"
             path = "./output/2D-Binary-PCA-IH/$(SA)-$(class_size)-$(n_learned)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-$(SA)-$(class_size)-$(n_learned)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-"
         else
@@ -154,7 +175,9 @@ function plot_comparison(initial_conditions)
     δλ_ls_dict = Dict(
         0.0 => :dash,
         0.2 => :dashdot,
-        0.4 => :dashdotdot
+        0.4 => (:dashdotdot, :dense),
+        0.45 => :dashdotdot,
+        0.49 => (:dashdotdot, :loose),
     )
 
     rho_alpha_dict = Dict(collect(0.1:0.1:1.0)[i] => collect(range(0.5, stop=1.0, length=10))[i] for i in 1:length(collect(0.1:0.1:1.0)))
@@ -310,7 +333,9 @@ function plot_comparison_paired(comparisons)
     δλ_ls_dict = Dict(
         0.0 => :dash,
         0.2 => :dashdot,
-        0.4 => :dashdotdot
+        0.4 => (:dashdotdot, :dense),
+        0.45 => :dashdotdot,
+        0.49 => (:dashdotdot, :loose),
     )
 
     rho_alpha_dict = Dict(collect(0.1:0.1:1.0)[i] => collect(range(0.5, stop=1.0, length=10))[i] for i in 1:length(collect(0.1:0.1:1.0)))
@@ -331,7 +356,7 @@ function plot_comparison_paired(comparisons)
         sizes = in("size", comparison) ? [32, 64, 128] : [64]
         SAs = in("SA", comparison) ? ["traditional", "inner_corner", "outer_corner", "center", "random"] : [ "traditional", "inner_corner"]
         Ρs = in("ρ₀", comparison) ? [0.1, 0.5, 0.9] : [0.5]
-        δλ = in("δλ", comparison) ? [0.0, 0.2, 0.4] : [0.2]
+        δλ = in("δλ", comparison) ? [0.0, 0.2, 0.4, 0.45, 0.49] : [0.2]
 
         initial_conditions = []
         for class_config in SAs, size in sizes, ρ₀ in Ρs, δλ in δλ
@@ -513,8 +538,8 @@ end
 begin #* Comparing time series traditional with PI
 
     comparison = [
-        "size",
-        # "SA",
+        # "size",
+        "SA",
         # "ρ₀",
         # "δλ",
     ]
@@ -522,7 +547,7 @@ begin #* Comparing time series traditional with PI
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
     SAs = in("SA", comparison) ? ["traditional", "inner_corner", "outer_corner", "center", "random"] : [ "traditional", "inner_corner"]
     Ρs = in("ρ₀", comparison) ? [0.1, 0.5, 0.9] : [0.5]
-    δλ = in("δλ", comparison) ? [0.0, 0.2, 0.4] : [0.2]
+    δλ = in("δλ", comparison) ? [0.0, 0.2, 0.4, 0.45, 0.49] : [0.2]
 
     initial_conditions = []
     for class_config in SAs, size in sizes, ρ₀ in Ρs, δλ in δλ
@@ -543,13 +568,13 @@ end
 begin #* Comparing time series traditional with PI (paired)
 
     comparisons = [
-        # "size",
-        # "SA",
-        "ρ₀",
-        "δλ",
+        "size",
+        "SA",
+        # "ρ₀",
+        # "δλ",
     ]
 
-    comparison_plot = plot_comparison_spaired(comparisons)
+    comparison_plot = plot_comparison_paired(comparisons)
 
     savepath = "./output/2D-Binary-PCA-IH/analysis/plots/trad-PI-learned-t-comparison/"
     filename = join(comparisons, "-")
@@ -570,7 +595,7 @@ begin #! Return map
     sizes = in("size", comparison) ? [32, 64, 128] : [64]
     SAs = in("SA", comparison) ? ["traditional", "inner_corner", "outer_corner", "center", "random"] : [ "traditional", "inner_corner"]
     Ρs = in("ρ₀", comparison) ? [0.1, 0.5, 0.9] : [0.5]
-    δλ = in("δλ", comparison) ? [0.0, 0.2, 0.4] : [0.2]
+    δλ = in("δλ", comparison) ? [0.0, 0.2, 0.4, 0.45, 0.49] : [0.2]
 
     initial_conditions = []
     for size in sizes, ρ₀ in Ρs, δλ in δλ

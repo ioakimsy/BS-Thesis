@@ -157,7 +157,7 @@ function generate_directories(sizes::Vector{Int}, seat_configs::Vector{String},�
         size in sizes,
         ρ in Ρs,
         folder in folders,
-        trial in 1+5:n_trials+5,
+        trial in 1:n_trials,
         δλ in δλs
 
         if seat_config == "random"
@@ -177,10 +177,18 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Ρs::
     
     @. model(x,p) = p[1] * x ^ p[2]
 
-   for trial in 1+5:n_trials+5
+    fail_df = DataFrame(
+        seat_config = String[],
+        ρ₀ = Float64[],
+        class_size = Int[],
+        trial = Int[],
+        δλ = Float64[]
+    )
+
+   for trial in 1:n_trials
         for seat_config in seat_configs, ρ₀ in Ρs, class_size in sizes, δλ in δλs#, trial in 1:n_trials
 
-            #println("$seat_config 	$ρ₀ 	$class_size 	$trial")
+            steady_state_tolerance = Int(class_size^2 * 0.2 ÷ 1)
                 
             ρ = Float64.( Matrix(
             [ 	ρ₀ 		ρ₀ 		ρ₀;
@@ -222,12 +230,16 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Ρs::
             #standard_errors = stderror(fit)
 
             #* Writing parameters to CSV file; 
-            #! Will break if length of generation is longer than length of fit coeffs (2 for power fit) - verly likely not to happen
+            #! Will break if length of generation is shorter than length of fit coeffs (2 for power fit) - verly likely not to happen
             #* power_fit column for the dataframe would be: a, b, σₐ, σᵦ
             fit_params_df = DataFrame(
-                learned_per_gen = learned,
+                learned_per_gen = length(learned) < 2 ? [learned; 0.0] : learned,
                 power_fit = [power_coeffs...; [missing for _ in 1:num_generations-length(power_coeffs)]],
             )
+
+            if length(learned) < 2
+                push!(fail_df, [seat_config, ρ₀, class_size, trial, δλ])
+            end
 
             if seat_config == "random"
                 CSV.write("./output/2D-Binary-PCA-IH/random-$(class_size)-$(n_learned)/$(ρ₀)-$(λ₀)-$(δλ)/trial_$(trial)/data/2DBPCAIH-random-$(class_size)-$(n_learned)-$(ρ₀)-$(λ₀)-$(δλ)-trial_$(trial)-fit_params.csv", fit_params_df)
@@ -239,6 +251,7 @@ function class_simulation(sizes::Vector{Int}, seat_configs::Vector{String},Ρs::
             )
         end
     end
+    CSV.write("./output/2D-Binary-PCA-IH/analysis/failures.csv", fail_df)
 end
 
 #! Main
@@ -246,12 +259,13 @@ begin
 	# List of parameters
     #TODO: move list of parameters to external file to be read to sync across the scripts
 	# List of parameters
-    sizes = [48,96]
+    sizes = [32,48,64,96,128]
 	seat_configs = ["outer_corner", "inner_corner", "center", "random"]
 	Ρs = collect(0.1:0.1:1)
-    δλs = collect(0.0:0.1:0.4)
-	steady_state_tolerance = 20
-	n_trials = 15
+    # δλs = collect(0.0:0.1:0.4)
+    δλs = [0.45, 0.49]
+	steady_state_tolerance = 100
+	n_trials = 20
     n_learned = 4
     λ₀ = 0.5
 
@@ -274,4 +288,15 @@ begin
         n_learned = n_learned,
         λ₀ = λ₀
 	)
+end
+
+#! to use for analysis
+# Helper function to check if a parameter set exists in fail_df
+function param_in_fail_df(fail_df, params)
+    seat_config, ρ₀, class_size, trial, δλ = params
+    any(row -> row.seat_config == seat_config &&
+                row.ρ₀ == ρ₀ &&
+                row.class_size == class_size &&
+                row.trial == trial &&
+                row.δλ == δλ, eachrow(fail_df))
 end
