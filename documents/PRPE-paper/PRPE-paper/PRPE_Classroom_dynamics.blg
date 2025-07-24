@@ -13,6 +13,7 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: PRPE_Classroom_dynamicsNotes.bib
 Database file #2: biblio.bib
+Warning--I didn't find a database entry for "eq:pritchard_connectedness_gain"
 control{REVTEX42Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
 control{apsrev42Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{0}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
 Warning--jnrlst (dependency: not reversed) set 1
@@ -26,45 +27,45 @@ Control: production of article title (0) allowed
 Control: page (0) single
 Control: year (1) truncated
 Control: production of eprint (0) enabled
-You've used 27 entries,
+You've used 28 entries,
             6079 wiz_defined-function locations,
-            1831 strings with 20514 characters,
-and the built_in function-call counts, 27412 in all, are:
-= -- 1950
+            1835 strings with 20720 characters,
+and the built_in function-call counts, 27676 in all, are:
+= -- 1982
 > -- 629
 < -- 163
-+ -- 202
++ -- 204
 - -- 156
-* -- 4053
-:= -- 2599
-add.period$ -- 25
-call.type$ -- 27
-change.case$ -- 129
-chr.to.int$ -- 37
-cite$ -- 27
-duplicate$ -- 2634
-empty$ -- 2016
+* -- 4086
+:= -- 2632
+add.period$ -- 26
+call.type$ -- 28
+change.case$ -- 134
+chr.to.int$ -- 38
+cite$ -- 28
+duplicate$ -- 2652
+empty$ -- 2032
 format.name$ -- 350
-if$ -- 5538
+if$ -- 5587
 int.to.chr$ -- 1
-int.to.str$ -- 34
-missing$ -- 405
-newline$ -- 127
+int.to.str$ -- 35
+missing$ -- 406
+newline$ -- 130
 num.names$ -- 76
-pop$ -- 1083
+pop$ -- 1093
 preamble$ -- 1
-purify$ -- 125
+purify$ -- 129
 quote$ -- 0
-skip$ -- 1149
+skip$ -- 1160
 stack$ -- 0
-substring$ -- 662
-swap$ -- 2413
+substring$ -- 676
+swap$ -- 2426
 text.length$ -- 75
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 353
+type$ -- 364
 warning$ -- 1
 while$ -- 89
 width$ -- 0
-write$ -- 273
-(There was 1 warning)
+write$ -- 277
+(There were 2 warnings)
