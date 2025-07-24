@@ -470,11 +470,13 @@
     %%%
     \begin{figure}[htbp]
         \centering
-        \subfigure[$L=128,\space\rho_0=0.1,\space\lambda=0.5\pm0.4$]{\label{fig:return_map_unfav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4.png}}
-        \subfigure[$L=32,\space\rho_0=0.9,\space\lambda=0.5\pm0.0$]{\label{fig:return_map_fav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0.png}}
+        \subfigure[$L=128,\space\rho_0=0.1,\space\lambda=0.5\pm0.4$]{\label{fig:return_map_unfav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4-data.png}}
+        \subfigure[$L=32,\space\rho_0=0.9,\space\lambda=0.5\pm0.0$]{\label{fig:return_map_fav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png}}
         \caption{Return map for selected parameter sets for both TI and PI.
         Blue circles represent the data points for TI and orange squares represent the data points for PI.
         The corresponding best-fit quadratic function obtained using the Levenberg-Marquardt algorithm for each set of data points are shown in blue and orange dashed lines respectively.
+        For Figure \ref{fig:return_map_unfav}, the fit for TI is $f_t = 0.97 f_{t-1} + 0.029$ and for PI is $f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$.
+        For Figure \ref{fig:return_map_fav}, the fit for TI is $f_t = 0.548 f_{t-1} + 0.452$ and for PI is $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$.
         The green line represents Nitta's theoretical model (Equation~\ref{eq:nitta_model}) and the gray line represents $y=x$.}
         \label{fig:Return map}
     \end{figure}
