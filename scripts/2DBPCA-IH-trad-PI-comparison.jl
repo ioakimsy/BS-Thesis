@@ -434,7 +434,7 @@ function plot_comparison_paired(comparisons)
     return fig
 end
 
-function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
+function return_map(return_map_params, input_data, output_data) #* Comparing f(t) vs f(t-1)
     # return_map_params = [64, "traditional", 0.5, 0.5, 0.2]
     color = ColorSchemes.seaborn_colorblind.colors
 
@@ -525,11 +525,18 @@ function return_map(return_map_params) #* Comparing f(t) vs f(t-1)
         color = ColorSchemes.seaborn_colorblind[8],
         linestyle = :solid
     )
+
+    scatter!(ax, input_data, output_data,
+        label = "Experimental data",
+        color = (ColorSchemes.seaborn_colorblind[5], 0.3),
+        marker = :diamond,
+        markersize = 16,
+    )
     
-    # axislegend(ax, position = :rb, labelsize = 24, background_color = :transparent, framevisible = false)
+    axislegend(ax, position = :rb, labelsize = 24, background_color = :transparent, framevisible = false)
     fig
 
-    savepath = "./output/2D-Binary-PCA-IH/analysis/plots/return-map/"
+    savepath = "./output/2D-Binary-PCA-IH/analysis/plots/return-map-legends/"
     filename = "return-map-$(return_map_params[1])-$(return_map_params[3])-$(return_map_params[4])-$(return_map_params[5])"
 
     save(savepath * filename * ".png", fig)
@@ -604,8 +611,50 @@ begin #! Return map
 
     initial_conditions
 
+    #* Experimental data
+    input_data = []
+    output_data = []
+
+    for i in 1:14
+        push!(
+            input_data,
+            readdlm("./output/2D-Binary-PCA-IH/analysis/PI experiment data/in_8_$(i).txt", '\n')...
+        )
+
+        push!(
+            output_data,
+            readdlm("./output/2D-Binary-PCA-IH/analysis/PI experiment data/out_8_$(i).txt", '\n')...
+        )
+    end
+
     for i in eachindex(initial_conditions)
-        return_map(initial_conditions[i])
+        return_map(initial_conditions[i], input_data, output_data)
     end
 end
 
+begin
+    input_data = []
+    output_data = []
+
+    for i in 1:14
+        push!(
+            input_data,
+            readdlm("./output/2D-Binary-PCA-IH/analysis/PI experiment data/in_8_$(i).txt", '\n')...
+        )
+
+        push!(
+            output_data,
+            readdlm("./output/2D-Binary-PCA-IH/analysis/PI experiment data/out_8_$(i).txt", '\n')...
+        )
+    end
+
+    scatter(input_data, output_data,
+        label = "Experimental data",
+        color = (ColorSchemes.seaborn_colorblind[5], 0.3),
+        marker = :diamond,
+        markersize = 16,
+    )
+
+    save("./output/2D-Binary-PCA-IH/analysis/plots/return-map/experimental-data.png", current_figure())
+    current_figure()
+end
