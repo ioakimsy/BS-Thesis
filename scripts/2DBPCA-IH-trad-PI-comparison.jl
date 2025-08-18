@@ -434,7 +434,7 @@ function plot_comparison_paired(comparisons)
     return fig
 end
 
-function return_map(return_map_params, input_data, output_data) #* Comparing f(t) vs f(t-1)
+function return_map(return_map_params, input_data, output_data, exp_fit_params) #* Comparing f(t) vs f(t-1)
     # return_map_params = [64, "traditional", 0.5, 0.5, 0.2]
     color = ColorSchemes.seaborn_colorblind.colors
 
@@ -497,7 +497,8 @@ function return_map(return_map_params, input_data, output_data) #* Comparing f(t
             lines!(ax, 0:0.01:1, fit_y, 
             label = fit_label, 
             color = ColorSchemes.seaborn_colorblind[j],
-            linestyle = :dash
+            linestyle = :dash,
+            linewidth = 3
             )
 
         elseif j == 2
@@ -512,7 +513,8 @@ function return_map(return_map_params, input_data, output_data) #* Comparing f(t
             lines!(ax, 0:0.01:1, fit_y, 
             label = fit_label, 
             color = ColorSchemes.seaborn_colorblind[j],
-            linestyle = :dash
+            linestyle = :dash,
+            linewidth = 3
             )
         end        
     end
@@ -521,24 +523,34 @@ function return_map(return_map_params, input_data, output_data) #* Comparing f(t
     lines!(ax, 0:0.01:1, logistic_model(0:0.01:1),
         # label = L"f_t=f_{t-1}+f_{t-1}\dot(1-f_{t-1})",
         color = ColorSchemes.seaborn_colorblind[3],
-        linestyle = :solid
+        linestyle = :solid,
+        linewidth = 3,
     )
     
     lines!(ax, 0:0.01:1, 0:0.01:1,
         # label = L"y=x",
         color = ColorSchemes.seaborn_colorblind[8],
-        linestyle = :solid
+        linestyle = :solid,
+        linewidth = 3,
     )
 
+    
     scatter!(ax, input_data, output_data,
-        label = "Experimental data",
-        color = (ColorSchemes.seaborn_colorblind[5], 0.3),
-        marker = :diamond,
-        markersize = 16,
+    label = "Experimental data",
+    color = (ColorSchemes.seaborn_colorblind[5], 0.3),
+    marker = :diamond,
+    markersize = 16,
+    )
+    
+    lines!(ax, 0:0.01:1, quad_model(0:0.01:1, exp_fit_params),
+        # label = L"f_t=%$(round(quad_fit_params[1], digits=2))f_{t-1}^2+%$(round(quad_fit_params[2], digits=2))f_{t-1}+%$(round(quad_fit_params[3], digits=2))",
+        color = ColorSchemes.seaborn_colorblind[5],
+        linestyle = :dash,
+        linewidth = 3,
     )
 
     traditional_legend_elem_line = [
-        LineElement(color = ColorSchemes.seaborn_colorblind[1], linestyle = :dash, linewidth = 2),
+        LineElement(color = ColorSchemes.seaborn_colorblind[1], linestyle = :dash, linewidth = 3),
     ]
 
     traditional_legend_elem_marker = [
@@ -546,7 +558,7 @@ function return_map(return_map_params, input_data, output_data) #* Comparing f(t
     ]
 
     inner_corner_legend_elem_line = [
-        LineElement(color = ColorSchemes.seaborn_colorblind[2], linestyle = :dash, linewidth = 2),
+        LineElement(color = ColorSchemes.seaborn_colorblind[2], linestyle = :dash, linewidth = 3),
     ]
 
     inner_corner_legend_elem_marker = [
@@ -558,20 +570,20 @@ function return_map(return_map_params, input_data, output_data) #* Comparing f(t
     ]
 
     theoretical_legend_elem = [
-        LineElement(color = ColorSchemes.seaborn_colorblind[3], linestyle = :solid, linewidth = 2),
+        LineElement(color = ColorSchemes.seaborn_colorblind[3], linestyle = :solid, linewidth = 3),
     ]
 
-    Legend(fig[0,1], 
-        [traditional_legend_elem_marker, traditional_legend_elem_line, inner_corner_legend_elem_marker, inner_corner_legend_elem_line, theoretical_legend_elem, experiment_legend_elem],
-        ["Traditional", trad_fit_eq, "Inner corner",inner_fit_eq, "Theoretical model (Nitta)", "Experimental data", ],
-        labelsize = 24,
-        # tellwidth = true,
-        orientation = :horizontal,
-        halign = :center, valign = :center,
-        nbanks = 2,
-    )
+    # Legend(fig[0,1], 
+    #     [traditional_legend_elem_marker, traditional_legend_elem_line, inner_corner_legend_elem_marker, inner_corner_legend_elem_line, theoretical_legend_elem, experiment_legend_elem],
+    #     ["Traditional", trad_fit_eq, "Inner corner",inner_fit_eq, "Theoretical model (Nitta)", "Experimental data", ],
+    #     labelsize = 24,
+    #     # tellwidth = true,
+    #     orientation = :horizontal,
+    #     halign = :center, valign = :center,
+    #     nbanks = 2,
+    # )
     # axislegend(ax, position = :rb, labelsize = 24, background_color = :transparent, framevisible = false)
-    fig
+    # fig
 
     savepath = "./output/2D-Binary-PCA-IH/analysis/plots/return-map/"
     filename = "return-map-$(return_map_params[1])-$(return_map_params[3])-$(return_map_params[4])-$(return_map_params[5])"
@@ -667,8 +679,12 @@ begin #! Return map
         )
     end
 
+    @. quad_model(x,p) = p[1] * x^2 + p[2] * x + p[3]
+    quad_fit = curve_fit(quad_model, input_data, output_data, [0.0, 1.0, 0.0])
+    quad_fit_params = quad_fit.param
+
     for i in eachindex(initial_conditions)
-        return_map(initial_conditions[i], input_data, output_data)
+        return_map(initial_conditions[i], input_data, output_data, quad_fit_params)
     end
 end
 
@@ -688,6 +704,14 @@ begin
         )
     end
 
+    @. quad_model(x,p) = p[1] * x^2 + p[2] * x + p[3]
+    quad_fit = curve_fit(quad_model, input_data, output_data, [0.0, 1.0, 0.0])
+    quad_fit_params = quad_fit.param
+
+    @. lin_model(x,p) = p[1] * x + p[2]
+    lin_fit = curve_fit(lin_model, input_data, output_data, [1.0, 0.0])
+    lin_fit_params = lin_fit.param
+
     scatter(input_data, output_data,
         label = "Experimental data",
         color = (ColorSchemes.seaborn_colorblind[5], 0.3),
@@ -695,6 +719,27 @@ begin
         markersize = 16,
     )
 
-    save("./output/2D-Binary-PCA-IH/analysis/plots/return-map/experimental-data.png", current_figure())
+    lines!(0:0.01:1, quad_model(0:0.01:1, quad_fit_params),
+        label = L"f_t=%$(round(quad_fit_params[1], digits=2))f_{t-1}^2+%$(round(quad_fit_params[2], digits=2))f_{t-1}+%$(round(quad_fit_params[3], digits=2))",
+        color = ColorSchemes.seaborn_colorblind[2],
+        linestyle = :dash
+    )
+
+    lines!(0:0.01:1, lin_model(0:0.01:1, lin_fit_params),
+        label = L"f_t=%$(round(lin_fit_params[1], digits=2))f_{t-1}+%$(round(lin_fit_params[2], digits=2))",
+        color = ColorSchemes.seaborn_colorblind[1],
+        linestyle = :dash
+    )
+
+    axislegend(
+        position = :rb,
+        labelsize = 24,
+        background_color = :transparent,
+        framevisible = false
+    )
+
     current_figure()
+
+    # save("./output/2D-Binary-PCA-IH/analysis/plots/return-map/experimental-data.png", current_figure())
+    # current_figure()
 end
