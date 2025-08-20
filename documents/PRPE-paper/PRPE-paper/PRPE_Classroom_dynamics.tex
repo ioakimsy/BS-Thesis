@@ -474,23 +474,28 @@
         \subfigure[$L=32,\space\rho_0=0.9,\space\lambda=0.5\pm0.0$]{\label{fig:return_map_fav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png}}
         \caption{Return map for selected parameter sets for both TI and PI.
         Blue circles represent the data points for TI and orange squares represent the data points for PI.
-        The corresponding best-fit quadratic function obtained using the Levenberg-Marquardt algorithm for each set of data points are shown in blue and orange dashed lines respectively.
-        \textcolor{red}{Pink diamonds represent data points from Roxas' work~\cite{roxas2010seating} for comparison.
+        Pink diamonds represent data points from Roxas' work~\cite{roxas2010seating} for comparison.
         The darker data points mean that more points overlap on those coordinates.
-        The corresponding best-fit quadratic function for Roxas' data are shown in pink dashed lines with equation $f_t = 0.14 f_{t-1}^2 + 0.68 f_{t-1} + 0.13$.
-        For Figure \ref{fig:return_map_unfav}, the fit for TI is $f_t = 0.97 f_{t-1} + 0.029$ and for PI is $f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$.
-        For Figure \ref{fig:return_map_fav}, the fit for TI is $f_t = 0.548 f_{t-1} + 0.452$ and for PI is $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$.}
+        The corresponding best-fit quadratic function obtained using the Levenberg-Marquardt algorithm for each set of data points are shown in dashed lines in their corresponding color and are discussed in the text.
         The green line represents Nitta's theoretical model (Equation~\ref{eq:nitta_model}) and the gray line represents $y=x$.}
         \label{fig:Return map}
     \end{figure}
     %%
     Figure~\ref{fig:Return map} shows the $h(f)$ that fits our simulation data for PI of smaller class sizes (Figure~\ref{fig:return_map_fav}) approaching the expectations of the model of Nitta.
-    We find that a quadratic function fits the return map for PI mode such that
+    We find that a quadratic function fits 
+    \footnote{
+        $f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$ in Figure~\ref{fig:return_map_unfav}. $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$ in Figure~\ref{fig:return_map_fav}
+    }
+    the return map for PI mode such that
     \begin{equation}
         h(f) = a_0 + [1 - (a_0+a_2)]f + a_2f^2 \;{\rm [PI \; mode]}
     \end{equation}
     for some parameters $a_i$ ($i=1,2$) with the condition that $h(1)=1$.
-    The TI mode for both cases always result to a linear trend in $h(f)$ such that
+    The TI mode for both cases always result to a linear trend 
+    \footnote{
+        $f_t = 0.97 f_{t-1} + 0.029$ for Figure~\ref{fig:return_map_unfav} and $f_t = 0.548 f_{t-1} + 0.452$ for Figure~\ref{fig:return_map_fav}
+    } 
+    in $h(f)$ such that
     \begin{equation}
         h(f) = a_0 + (1-a_0)f \;{\rm [TI \;mode]}
     \end{equation}
@@ -512,19 +517,16 @@
     TI mode gain also declined from $m=0.45$ to $0.029$ with the same increase in class size.
     These results are consistent with the overall assessment based on other dynamical parameters presented above.
 
-    \textcolor{red}{
-    Furthermore, our simulation results exhibit consistency with the empirical data reported by Roxas~\cite{roxas2010seating}, as illustrated in Figure~\ref{fig:Return map}.
-    Roxas' dataset, consisting of pre- and post-test scores from fourteen PI classrooms, spans a broad range of values.
-    The variety in the data can be attributed to many factors that affect classroom learning dynamics such as instructional strategies which may affect the dominance of the effects of PI and TI.
-    The timing of pre- and post-tests and the nature of the assessment items can also influence the observed outcomes.
-    We note, however, that Roxas' dataset includes instances of score decreases from pre- to post-test---a realistic effect not captured by our model.
-    }
-
-    \textcolor{red}{
-    A quantitative comparison highlights this trend.
-    We obtain curvature coefficients for $f_{t-1}^2$ of $a_2 = 0.14$ for Roxas, $a_2 = -0.033$ for our unfavorable case, $a_2 = -0.605$ for our favorable case, and $a_2 = -1$ for Nitta.
+    Our results are consistent with the empirical data reported by Roxas~\cite{roxas2010seating}.
+    Roxas' dataset, consists of pre- and post-test scores from fourteen PI classrooms and spans a broad range of values.
+    Figure~\ref{fig:Return map} plots the pre-test scores plotted as $f_{t-1}$ and post-test scores plotted as $f_{t}$.
+    The variety in the data can be attributed to many factors that affect classroom learning dynamics such as instructional strategies which may affect the dominance of the effects of TI over PI.
+    The timing of pre- and post-tests and the level of precision of the assessment method can also influence the observed outcomes.
+    Roxas' dataset includes instances of score decreases from pre- to post-test---a realistic effect not captured by our model.
+    We obtain coefficients of the quadratic terms---$a_2 = 0.14$ for Roxas \footnote{
+        $f_t = 0.14 f_{t-1}^2 + 0.68 f_{t-1} + 0.13$
+    }, $a_2 = -0.033$ for our unfavorable case, $a_2 = -0.605$ for our favorable case, and $a_2 = -1$ for Nitta.
     Taken together, these results indicate that while our PI model does not reproduce all empirical features, it provides a close approximation to the observed classroom dynamics shown in Nitta's model and Roxas' data.
-    }
 
     %! 1. Combination of many factors
     %! 2. May be dominated by TI
