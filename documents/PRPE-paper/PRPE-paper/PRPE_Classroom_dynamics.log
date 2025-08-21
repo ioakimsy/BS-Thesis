@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.8.4)  20 AUG 2025 09:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.8.20)  21 AUG 2025 10:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -6,7 +6,7 @@ entering extended mode
 **/Users/johnrob/Documents/GitHub/prpe-2025/BS-Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex
 (/Users/johnrob/Documents/GitHub/prpe-2025/BS-Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-07-20>
+L3 programming layer <2025-08-13>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/revtex/revtex4-2.cls
 Document Class: revtex4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
  Copyright (c) 2019 American Physical Society.
@@ -392,17 +392,7 @@ File: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png
 <use figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png>
 Package pdftex.def Info: figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png  used on input line 474.
 (pdftex.def)             Requested size: 239.70062pt x 169.45682pt.
-[6 <./figures/figure5.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4-data.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png>]
-Underfull \hbox (badness 1748) in paragraph at lines 518--519
-[][]\OT1/cmr/m/n/10 Furthermore, our sim-u-la-tion re-sults ex-hibit close
- []
-
-
-Underfull \hbox (badness 6825) in paragraph at lines 518--519
-\OT1/cmr/m/n/10 agree-ment with the em-pir-i-cal data re-ported by
- []
-
-(./PRPE_Classroom_dynamics.bbl
+[6 <./figures/figure5.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4-data.png> <./figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png>] (./PRPE_Classroom_dynamics.bbl
 Underfull \hbox (badness 4792) in paragraph at lines 57--58
  []\OT1/cmr/m/n/9 E. Mazur and M. D. Somers, Peer In-struc-tion:
  []
@@ -449,24 +439,24 @@ Package natbib Warning: There were undefined citations.
 [8] (./PRPE_Classroom_dynamics.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-07-20>
+L3 programming layer <2025-08-13>
  ***********
 Package rerunfilecheck Info: File `PRPE_Classroom_dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: 7392942AC37F619D1F54C3CFD6DDE887;2482.
  ) 
 Here is how much of TeX's memory you used:
- 11786 strings out of 467801
- 178309 string characters out of 5431911
- 626019 words of memory out of 5000000
- 40239 multiletter control sequences out of 15000+600000
+ 11799 strings out of 467800
+ 178463 string characters out of 5431882
+ 625788 words of memory out of 5000000
+ 40250 multiletter control sequences out of 15000+600000
  635081 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1262b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1068b,646s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PRPE_Classroom_dynamics.pdf (8 pages, 4067588 bytes).
+Output written on PRPE_Classroom_dynamics.pdf (8 pages, 4068223 bytes).
 PDF statistics:
- 377 PDF objects out of 1000 (max. 8388607)
- 298 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
+ 385 PDF objects out of 1000 (max. 8388607)
+ 307 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
  132 words of extra memory for PDF output out of 10000 (max. 10000000)
 

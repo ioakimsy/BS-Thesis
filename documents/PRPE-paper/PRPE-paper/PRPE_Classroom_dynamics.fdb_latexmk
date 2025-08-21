@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex PRPE_Classroom_dynamics"] 1755654573.64494 "PRPE_Classroom_dynamics.aux" "PRPE_Classroom_dynamics.bbl" "PRPE_Classroom_dynamics" 1755654578.00924 0
-  "./PRPE_Classroom_dynamicsNotes.bib" 1755654577.72697 308 684bf5f60067ac143994ed5355d4cce5 ""
+["bibtex PRPE_Classroom_dynamics"] 1755743951.96487 "PRPE_Classroom_dynamics.aux" "PRPE_Classroom_dynamics.bbl" "PRPE_Classroom_dynamics" 1755743956.56188 0
+  "./PRPE_Classroom_dynamicsNotes.bib" 1755743956.26763 771 6c9e2d6963b6d22f1a809994d269632e ""
   "./biblio.bib" 1752212169.54449 15800 0e22b4da8757f68d928025969989d91d ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1601932770 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "PRPE_Classroom_dynamics.aux" 1755654577.72592 14272 69c335fdd5bc08fb21c2d9519cd301f2 "pdflatex"
+  "PRPE_Classroom_dynamics.aux" 1755743956.26657 13716 8a661956281e178759e49e3c2636efec "pdflatex"
   (generated)
   "PRPE_Classroom_dynamics.bbl"
   "PRPE_Classroom_dynamics.blg"
   (rewritten before read)
-["pdflatex"] 1755654573.72393 "/Users/johnrob/Documents/GitHub/prpe-2025/BS-Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" "PRPE_Classroom_dynamics.pdf" "PRPE_Classroom_dynamics" 1755654578.0094 0
-  "/Users/johnrob/Documents/GitHub/prpe-2025/BS-Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" 1755654568.81607 47257 fb1891dfe4cb61fff152ae8201b88157 ""
+["pdflatex"] 1755743952.05235 "/Users/johnrob/Documents/GitHub/prpe-2025/BS-Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" "PRPE_Classroom_dynamics.pdf" "PRPE_Classroom_dynamics" 1755743956.56206 0
+  "/Users/johnrob/Documents/GitHub/prpe-2025/BS-Thesis/documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.tex" 1755743942.09717 47282 83e95a3ded8a3b288d2e94468d795080 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -109,14 +109,14 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty" 1727642399 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1749313668 42213 4e2ca030e8e2640502016e9e45868dcb ""
-  "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1755097662 5528033 0c358b2aae4aa21399659c485f38b4ac ""
-  "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1754321912 3605701 150055e320d3c84d9b60d6e9e5b46436 ""
+  "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1755702873 5528033 0c358b2aae4aa21399659c485f38b4ac ""
+  "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1755702919 3605823 572bc0ec2a12b4c28224602263221983 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "PRPE_Classroom_dynamics.aux" 1755654577.72592 14272 69c335fdd5bc08fb21c2d9519cd301f2 "pdflatex"
-  "PRPE_Classroom_dynamics.bbl" 1755654573.7222 19385 056cdb2b0f22ed5194a66d8d403f7076 "bibtex PRPE_Classroom_dynamics"
-  "PRPE_Classroom_dynamics.out" 1755654577.72683 2482 7392942ac37f619d1f54c3cfd6dde887 "pdflatex"
-  "PRPE_Classroom_dynamics.tex" 1755654568.81607 47257 fb1891dfe4cb61fff152ae8201b88157 ""
-  "PRPE_Classroom_dynamics.toc" 1755654577.727 1064 477016b088572aa278c4403b972d8a33 "pdflatex"
+  "PRPE_Classroom_dynamics.aux" 1755743956.26657 13716 8a661956281e178759e49e3c2636efec "pdflatex"
+  "PRPE_Classroom_dynamics.bbl" 1755743952.05053 19992 2bd1258e67e612dd017bc291ec53ed02 "bibtex PRPE_Classroom_dynamics"
+  "PRPE_Classroom_dynamics.out" 1755743956.26748 2482 7392942ac37f619d1f54c3cfd6dde887 "pdflatex"
+  "PRPE_Classroom_dynamics.tex" 1755743942.09717 47282 83e95a3ded8a3b288d2e94468d795080 ""
+  "PRPE_Classroom_dynamics.toc" 1755743956.26766 1064 477016b088572aa278c4403b972d8a33 "pdflatex"
   "figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4-data.png" 1755654568.81898 618609 3dc629a60743892b8969c3cb08aeb3cb ""
   "figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png" 1755654568.82097 559916 3c5bdfe815cc40b027016b135eb8cad0 ""
   "figures/2DBPCA Flowchart.png" 1743734570.3863 724160 682e23eee59b757cf9bdeeaf6e80bbf2 ""
