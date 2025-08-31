@@ -49,19 +49,19 @@
 \begin{abstract}
     Peer instruction (PI) has become {one of the popular means} of classroom instruction in Physics Education.
     Such instruction method is vastly different from how classes are traditionally handled where the instructor conducts a lecture for the entire duration of the class.
-    In this study, we model the {learning} within classes of students as a probabilistic cellular automata model 
+    In this study, we model classroom learning as a probabilistic cellular automata model 
     and investigate the effects of different factors such as seating arrangements, class size $N$, average learning rate ${\lambda}$, and heterogeneity $\delta{\lambda}$ on the overall class learning efficiency.
     The learning efficiency of the class is measured in terms of the class learning curve {using the total learning time $t_{\rm max}$}.
-    PI mode appears to be more applicable with heterogeneous classes (in-class high learning rate max difference $\delta{\lambda}$).
+    PI mode appears to be more applicable with heterogeneous classes (high in-class learning rate difference $\delta{\lambda}$).
     As commonly known, TI mode is shown to be more advantageous for large $N$ and homogenous class aptitude (low $\delta{\lambda}$).
     % High learning rate of students benefits both TI and PI but in different ways.
     We show that the class learning curves of highly heterogeneous classes with TI mode have two stages of learning: a fast initial stage and a slow final stage.
-    The slow final state class learning rate is due to the late learners with lower $\lambda$-values and have general shape dependent on other model parameters as well.
-    Such curves are absent with PI that instead consistently shifts uniformly depending on the other factors.
+    The slow final stage class learning rate is due to the late learners with lower $\lambda$-values.
+    Such curves are absent with PI that instead consistently shifts uniformly.
     Our simplified model shows that PI mode {performs better than, or at least similar to,} traditional instruction.
     A mix of TI and PI would be the optimal mode of instruction taking advantage of TI for fast learning in the initial stage and the robust learning curve of PI in the later stages of class learning.
     Despite these simplifications, our model is able to provide general insights that are in agreement with previous studies and existing practices.
-    We also introduce a class-level estimation of the Hake gain $g$ based on a fitting recurrence functino of the simulation data return map.
+    We also introduce a class-level estimation of the Hake gain $g$ based on a fitting recurrence function of the simulation data return map.
     Our approach gives consistent results with real-world observations for PI modes and provides opportunities for empirical determination of class-level gains.
 \end{abstract}
 
@@ -122,8 +122,8 @@
 %    They also found the PI greatly reduced the number of students who dropped the course.
 %    An older paper by Tobias~\cite{tobias1990they} suggests that this could be because of the shift of focus of PI from competition and skill performance to cooperative learning and conceptual understanding.
 
-    The dynamics of the learning process involved during PI is complex resulting from the forced interaction during the peer discussion stage.
-    Existing mathematical models for this are either predictive such as with the case of the artificial neural network (ANN) models~\cite{roxas2010seating} or lack the spatial aspect of the process such as utilizing differential equations~\cite{pritchard2008mathematical,nitta2019mathematical}.
+    The dynamics of the learning process involved during PI is complex resulting from the interaction during the peer discussion stage.
+    Existing mathematical models for this are either predictive such as with the case of the artificial neural network (ANN) models~\cite{roxas2010seating,monterola2009} or lack the spatial aspect of the process such as utilizing differential equations~\cite{pritchard2008mathematical,nitta2019mathematical}.
     Somewhat in between these is a generalized Ising model by Bordogna and Albano~\cite{bordogna2001theoretical,bordogna2003simulation} that considers three sources of information for the student to learn from: teacher instruction, peer interaction, and bibliographic materials (books, lecture notes, etc.).
     Their model shows that students learn more when they engage discussions with their peers than those who only listen to lectures.
     They also show that group structure affects student learning, and that low aptitude students may learn at the expense of high aptitude peers---a transmissionist view of PI.
@@ -180,7 +180,7 @@
         g \equiv (S_2 - S_1) / (1 - S_1)
     \end{equation}
     %%
-    where $S_1$ and $S_2$ are scores for respectively first and second assessment.
+    where $S_1$ and $S_2$ are scores for the first and second assessment, respectively.
     They also used the output/input ratio ($O/I = S_2/S_1$) to gauge student improvement.
     Class improvement is the average of any of the scores.
     The results of their study show that the outer corner seating arrangement (SA) performed the best using both the Hake gain and the $O/I$, followed by inner corner, then random, then center.
@@ -201,7 +201,7 @@
         \label{fig:PI-SAs}
     \end{figure}
 
-    Hake gain predicts the following expression for the expected score $S_2$ during the assessment after the first such that when done iteratively, every next assessment $S_2$ is dependent on the first assessment score $S_1$ as follows.
+    Hake gain predicts the following expression for the expected score $S_2$ during the assessment after the first such that when done iteratively, every next assessment $S_2$ is dependent on the first assessment score $S_1$ as follows:
     %%
     \begin{equation}
         S_2 = S_1 + g\cdot(1-S_1)
@@ -209,7 +209,7 @@
     \end{equation}
     %%
     where $g$ may be a function of $S_1$.
-    \citet{nitta2019mathematical} presented a model of PI learning that relates the probabilities that the students answers the MCQ correctly (effectively, post- and pre-test).
+    \citet{nitta2019mathematical} presented a model of PI learning that relates the probabilities that the students answer the MCQ correctly (effectively, post- and pre-test).
     Such probabilities would then imply that the Nitta Model predicts that the gain is dependent on the previous score such that:
     %%
     \begin{equation}
@@ -217,7 +217,7 @@
         \label{eq:nitta_gain}
     \end{equation}
     %%
-    Other models provide Hake gain expressions (e.g. \citet{pritchard2008mathematical,eq:pritchard_connectedness_gain})resulting to more complex formulation for the function $g(S_1)$.
+    Other models provide Hake gain expressions (e.g. \citet{pritchard2008mathematical}) resulting to more complex formulation for the function $g(S_1)$.
     This model considers other factors that may affect the learning process such as knowledge before instruction and learning retention.
     Despite the diversity of the models that we found, current models of PI lack some aspects that we would like to incorporate together like seating arrangements, students' learning rate, and aptitude heterogeneity with which the introduction of PI from TI are typically founded on.
     
@@ -268,9 +268,9 @@
     %%%%%PEER INSTRUCTION%%%%%%
 
     Different from TI, the peer instruction mode (PI) involves some learning during interaction with peers.
-    Such interaction happens with the nearest neighbor unless specific instructions say different.
+    Such interaction happens with the nearest neighbor unless specific instructions say differently.
     We consider the simple case such that the probability $P_{i,j}$ is dependent also on the states of the nearest neighbor.
-    In this case, we have a compounded probabilities resulting to
+    In this case, we have compounded probabilities resulting to
     % the probability of a student to learn in each time step for PI is additionally dependent on the student's neighbors and their states. The probability of a student to learn in each time step ($P_{i,j}$) is given by:
     %%
     \begin{equation} 
@@ -322,10 +322,10 @@
 
     \subsection{Dynamical difference between TI and PI}
 
-        Figure~\ref{fig:comparison size} shows the typical monotonic increase in the fraction of learned students in classes starting with an unlearned state (all students in {\it unlearned} state, except for PI with which we start with four initially learned students).
+        Fig.~\ref{fig:comparison size} shows the typical monotonic increase in the fraction of learned students in classes starting with an unlearned state (all students in {\it unlearned} state, except for PI with which we start with four initially learned students).
         TI mode shows an early onset of high number of learning students in the first few iterations of lecture.
         The overall learning rate for TI tapers off as the entire class waits for the last few persons to actually learn.
-        Due to the required percolation between learned and unlearned states, the PI mode shows a timid initial rise of the number of learned students only to suddenly rise towards the later part.
+        Due to the required percolation between learned and unlearned states, the PI mode exhibits a gradual initial increase in the number of learned students, followed by a sudden sharp rise in the later stage.
         PI mode catches up fastest in the later part of the iterations especially for low class size $N$.
         This observation for the PI is consistent independent of the seating arrangement (SA) considered.
         Class size does not affect TI mode as expected from the broadcasted mode of learning where each student independently and simultaneously learns from the teacher directly.
@@ -344,7 +344,7 @@
         The blue colored plots are for TI while other colors are for PI.
         The same color corresponds to the seating arrangement (SA) used.
         Each PI's SA corresponds to a different color: orange (for inner corner), green (outer corner), orange (center), and pink (random).
-        The linewidth is proportional to the $N$ used. Other pertinent parameters fixed: $\rho_0=0.5$ and $\delta\!\lambda=0.2$.
+        The line width is proportional to the $N$ used. Other pertinent parameters fixed: $\rho_0=0.5$ and $\delta\!\lambda=0.2$.
         The bands around each line show the standard deviation of the data after $20$ independent random trials.
         Higher fraction of learned students indicate better overall learning.
         (a)~Plot for different class sizes $N$.
@@ -355,7 +355,7 @@
         \end{figure}
         
         Figure~\ref{fig:comparison size}(b) shows the effect of SAs for the PI mode.
-        The inner corner SA outperforms all the other SAs for PI mode since such SA always has the highest rate of and earlest onset of rise in the number of learned students in the class compared to other SAs.
+        The inner corner SA outperforms all the other SAs for PI mode since such SA always has the highest rate of and earliest onset of rise in the number of learned students in the class compared to other SAs.
         When the students are randomly arranged, such SA performs as average of the two extreme types.
         The center and the outer corners perform similarly due to the idealized assumptions of the model (e.g. isotropic co-learning).
 
@@ -373,7 +373,7 @@
         For both modes, a change of students' average learning rate from $\rho_0=0.1$ to $0.5$ translates to a greater shift in the class learning curve, as opposed the same shift due to the change from $\rho_0=0.5$ to $0.9$.
         Class-level improvements can therefore be affected by the initial average class performance.
         %%
-        \begin{figure}[htbp]
+        \begin{figure}[htbp!]
         \centering
         %%
         % \includegraphics[width=0.45\textwidth]{figures/2D-BPCAIH-analysis/comparison plots/ρ₀.png}
@@ -383,8 +383,9 @@
         \includegraphics[width=0.45\textwidth]{figures/figure4.png}
         %%
         \caption{
-        The same plot as in Fig.~\ref{fig:comparison size}, but for ranges of values for different chosen parameter.
-        Unless indicated, the parameters are fixed such that $N=64$, $\rho_0=0.5$, $\delta\lambda=0.2$ (fairly homogenous) and an Inner Center SA for PI mode.
+        Different monotonic increase of the total fraction of students in the learned state over iteration number.
+        The blue line represents the TI mode while the orange line represents the PI mode.
+        Unless indicated, the parameters are fixed such that $N=64$, $\rho_0=0.5$, $\delta\lambda=0.2$ (fairly homogenous) and an Inner Corner SA for PI mode.
         (a)~Plots for varied $\rho_0$-values, introducing varying degrees of shifts along the iteration (time) axis.
         (b)~Plots for varied $\delta\lambda$-values.
         (c)~Representative development of classroom spatial configuration ($L=32$, $\rho_0=0.3$) observed for different iteration numbers from $t=2$ (each column doubles the previous $t$) for TI (first row) and PI (second row) modes.
@@ -395,9 +396,9 @@
 
         The effect of class heterogeneity for both modes can be shown using a simple model with mixed student learning rates $\lambda$ such that some are low ($\lambda-\delta\!\lambda$) and others are high ($\lambda+\delta\!\lambda$).
         Figure~\ref{fig:comparison rates}(b) shows how this level of heterogeneity $\delta\!\lambda$ affects the resulting class learning curves.
-        For the TI mode, the high level of heterogeity at $\delta\!\lambda=0.4$ (students have either $\lambda=0.1$ or $\lambda=0.9$ within the class) introduces a significant slow down midpoint of the initial rise of class learning curve.
+        For the TI mode, the high level of heterogeneity at $\delta\!\lambda=0.4$ (students have either $\lambda=0.1$ or $\lambda=0.9$ within the class) introduces a significant slow down midpoint of the initial rise of class learning curve.
         Such slow down is not significant for low heterogeneity.
-        This two-stage phenomenon of class learning is attributed to the early switching of the fast learners (Stage 1) leaving the slow learners struggling until the later lecture iterations (Stage 2).
+        This two-stage learning phenomenon arises from the early transition of fast learners in Stage 1, which leaves the slower learners to catch up only during the later lecture iterations in Stage 2.
         The PI mode is robust to heterogeneity showing only slight uniform delay in class learning curve.
         
         Spatial configurations of the class over iteration numbers provide insight on how learning spreads to the entire class.
@@ -406,7 +407,7 @@
         A slow pickup in the learning curve is observable with PI mode.
         This phenomenon is due to the percolation-based spread of learned states within the class.
         The spread through all learners however appears to average out resulting to a sudden increase of class learning rate in the later iterations due to larger number of learning sites analogous to increased active sites in percolation phenomenon such as those in other CA-based models\cite{Beauchemin2005}.
-        From this observations, we can also conclude that a mode using a combination of both TI and PI will benefit from these two phenomenon of innoculation of learning (via broadcast in TI step) and co-learning from peers (via percolation in the PI step).
+        From these observations, we can also conclude that a mode using a combination of both TI and PI will benefit from these two phenomenon of inoculation of learning (via broadcast in TI step) and co-learning from peers (via percolation in the PI step).
         Current practices~\cite{mazur1997peer,smith2009peer,lasry2008peer,roxas2010seating} indeed also employ reading materials in advance and the instructor gives a short lecture (TI mode) before the students engage in peer discussion (PI mode).
         
     \subsection{Combined effects}
@@ -417,9 +418,9 @@
 
         Both Figures~\ref{fig:Params effect summary t}(a) and \ref{fig:Params effect summary t}(b) show that as the level of heterogeneity increases, the traditional approach (TI) require longer $t_{\rm max}$ than the peer instruction (PI) especially for small classes.
         The difference becomes smaller for higher $\rho_0$ or for higher average class aptitude (fast learners).
-        For large classes, this difference can actually reversed, but only for cases of homogenous, fast learning, large classes.
+        For large classes, this difference can actually reverse, but only for cases of homogenous, fast learning, large classes.
         Classically, the utilization of class grouping (``sections'' based on aptitude such as honors class) is thus best suited for TI.
-        Instructional strategies would actually prefer PI only for cases of inhomogenous class.
+        Instructional strategies would actually prefer PI only for cases of inhomogeneous class.
         %%
         \begin{figure}[htbp!]
             \centering
@@ -427,7 +428,7 @@
             %%
             \includegraphics[width=0.45\textwidth]{figures/figure5.png}
             %%
-            \caption{Time to learn $t_{\rm max}$ as a function of positional learning factor $\rho_0$ and heterogeneity $\delta\lambda$ of PI (inner corner SA) and TI for two different class sizes $N=L^2$ ($L=32$ and $128$).
+            \caption{Time to learn $t_{\rm max}$ as a function of positional learning factor $\rho_0$ and heterogeneity $\delta\lambda$ of PI (inner corner SA) and TI for two different class sizes $N=L^2$ ((a)$L=32$ and (b)$L=128$).
             The blue surface represent TI and the orange surface represents PI.
             Lower time to learn indicates better learning.}
             \label{fig:Params effect summary t}
@@ -441,7 +442,7 @@
 
 \section{Comparison with available data}
 
-    Compared to Roxas' work~\cite{roxas2010seating} which found the outer corner SA to perform the best, we found the inner corner SA to perform the best.
+    Compared to Roxas' work~\cite{roxas2010seating,monterola2009} which found the outer corner SA to perform the best, we found the inner corner SA to perform the best.
     This difference can be attributed to the simplifications made in our model.
     We were not able to consider the aptitude similarity effect that happens where students of similar aptitude learn better when grouped together regardless of their actual aptitude level~\cite{smith2009peer}.
     The implementation of this phenomenon is better suited for a continuous-state model rather than a binary-state model.
@@ -451,15 +452,15 @@
     Our simulation design in its simplicity approximates well other qualities of classroom learning by comparing our results with real-world data as follows.
     Class-level learning process is usually assessed via the Hake gain $g$ and consider it related to the recurrence relation between successive evaluations $S_1$ and $S_2$ (cf. Equation~\ref{eq:nitta_model}).
     Since $f$ can be used as an approximation for the probability $S$ that the evaluation items are answered correctly by any member of the class, the Hake gain $g$ can be used as a measure of how our CA model compares well with real-world data.
-    Consequently our model determines how $g$ is dependent on $S_1$ by mapping the evaluation score to the fraction of learned students: ${S}\rightarrow{f}$, and that we have $S_2=f_{t}$ for $S_1=f_{t-1}$.
+    Consequently, our model determines how $g$ is dependent on $S_1$ by mapping the evaluation score to the fraction of learned students: ${S}\rightarrow{f}$, and that we have $S_2=f_{t}$ for $S_1=f_{t-1}$.
 
     The Nitta Model can be considered as a recurrence equation of the item-based probability $S$ of evaluation of the PI mode as shown to be in agreement with real-world experimental data~\cite{nitta2019mathematical}.
     The model being related to the Hake's gain model via ${S}\rightarrow{f}$ as above, can then be used to confirm the consistency of our simulation data with reality.
     
-    Nitta's model have been shown to agree with empirical data suggesting that a student who is likely to answer an evaluation item correctly is more likely to answer any other item in the next evalution.
+    Nitta's model have been shown to agree with empirical data suggesting that a student who is likely to answer an evaluation item correctly is more likely to answer any other item in the next evaluation.
     The gain function $g$ can be approximated by the resulting function that fits the return map following Eq.~\ref{eq:nitta_model}.
     The return map that plots $f_{t}$ against $f_{t-1}$ can be shown to mimic Eq.~\ref{eq:nitta_model} following the form of the recurrence equation $f_{t} = h(f_{t-1})$.
-    The gain $g(S_1)\approx g(f)$ can then be approximated from real-worl data (or simulation data) using
+    The gain $g(S_1)\approx g(f)$ can then be approximated from real-world data (or simulation data) using
     %%
     \begin{equation}\label{eq:gain-from-return-map}
     g(f) = \frac{h(f) - f}{1 - f}
@@ -470,8 +471,7 @@
     %%%
     \begin{figure}[htbp]
         \centering
-        \subfigure[$L=128,\space\rho_0=0.1,\space\lambda=0.5\pm0.4$]{\label{fig:return_map_unfav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-128-0.1-0.5-0.4-data.png}}
-        \subfigure[$L=32,\space\rho_0=0.9,\space\lambda=0.5\pm0.0$]{\label{fig:return_map_fav}\includegraphics[width=0.47\textwidth]{figures/2D-BPCAIH-analysis/return plots/return-map-32-0.9-0.5-0.0-data.png}}
+        \includegraphics[width=0.47\textwidth]{figures/figure6.png}
         \caption{Return map for selected parameter sets for both TI and PI.
         Blue circles represent the data points for TI and orange squares represent the data points for PI.
         Pink diamonds represent data points from Roxas' work~\cite{roxas2010seating} for comparison.
@@ -481,19 +481,19 @@
         \label{fig:Return map}
     \end{figure}
     %%
-    Figure~\ref{fig:Return map} shows the $h(f)$ that fits our simulation data for PI of smaller class sizes (Figure~\ref{fig:return_map_fav}) approaching the expectations of the model of Nitta.
+    Figure~\ref{fig:Return map} shows the $h(f)$ that fits our simulation data for PI of smaller class sizes (Figure~\ref{fig:Return map}(b)) approaching the expectations of the model of Nitta.
     We find that a quadratic function fits 
     \footnote{
-        $f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$ in Figure~\ref{fig:return_map_unfav}. $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$ in Figure~\ref{fig:return_map_fav}
+        $f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$ in Figure~\ref{fig:Return map}(a). $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$ in Figure~\ref{fig:Return map}(b)
     }
     the return map for PI mode such that
     \begin{equation}
         h(f) = a_0 + [1 - (a_0+a_2)]f + a_2f^2 \;{\rm [PI \; mode]}
     \end{equation}
     for some parameters $a_i$ ($i=1,2$) with the condition that $h(1)=1$.
-    The TI mode for both cases always result to a linear trend 
+    The TI mode for both cases always results to a linear trend 
     \footnote{
-        $f_t = 0.97 f_{t-1} + 0.029$ for Figure~\ref{fig:return_map_unfav} and $f_t = 0.548 f_{t-1} + 0.452$ for Figure~\ref{fig:return_map_fav}
+        $f_t = 0.97 f_{t-1} + 0.029$ for Figure~\ref{fig:Return map}(a) and $f_t = 0.548 f_{t-1} + 0.452$ for Figure~\ref{fig:Return map}(b)
     } 
     in $h(f)$ such that
     \begin{equation}
@@ -535,7 +535,7 @@
 
 \section{Summary and Conclusion}
     We propose a probabilistic cellular automata model as a new way of investigating learning dynamics in the classroom.
-    Through this model, investigated how different factors affecting classroom learning dynamics for both traditional instruction (TI) and peer instruction (PI).
+    Through this model, we investigated how different factors affecting classroom learning dynamics for both traditional instruction (TI) and peer instruction (PI).
 
     We found that TI performs better in larger classes and when the students have low learning rate heterogeneity.
     On the other hand, PI performs better in smaller classes and when the students have high learning rate heterogeneity.
