@@ -169,8 +169,8 @@
 %     \end{equation}
 
 %     Comparing their equations to data, they concluded that these metrics and equations roughly agree with the data and could give us insights on the learning dynamics of the classroom.
-
-    Actual assessment results by \citet{roxas2010seating,monterola2009} is used to train their ANN to predict expected second assessment scores of students depending on seating arrangements.
+    Complementing these frameworks, actual classroom assessment results have also been used to model learning under PI. \citet{roxas2010seating} and \citet{monterola2009}, for instance, trained ANN models to predict students’ second assessment scores based on seating arrangements.
+    % Actual assessment results by \citet{roxas2010seating,monterola2009} is used to train their ANN to predict expected second assessment scores of students depending on seating arrangements.
 % The artificial neural network (ANN) model by \citet{roxas2010seating} used actual assessment results to train a neural network to map student interactions in PI classrooms. 
     Using this neural network, they were also able to characterize students' learning and investigate the effects of group homogeneity. 
     The study revealed that an optimal seating arrangement exists for students under PI methods based on their final aptitude.
@@ -354,7 +354,7 @@
         \label{fig:comparison size}
         \end{figure}
         
-        Figure~\ref{fig:comparison size}(b) shows the effect of SAs for the PI mode.
+        Fig. ~\ref{fig:comparison size}(b) shows the effect of SAs for the PI mode.
         The inner corner SA outperforms all the other SAs for PI mode since such SA always has the highest rate of and earliest onset of rise in the number of learned students in the class compared to other SAs.
         When the students are randomly arranged, such SA performs as average of the two extreme types.
         The center and the outer corners perform similarly due to the idealized assumptions of the model (e.g. isotropic co-learning).
@@ -363,7 +363,7 @@
 
         The learning rate $\rho$ is expected to affect the class learning curve.
         The level of heterogeneity however affects the traditional mode of learning.
-        Figure~\ref{fig:comparison rates}(a) shows that the class learning curves belong to the sigmoidal plots except for characteristic slopes and shifts.
+        Fig. ~\ref{fig:comparison rates}(a) shows that the class learning curves belong to the sigmoidal plots except for characteristic slopes and shifts.
         As one would expect, high $\rho_0$-values increase the initial number of learned students in both modes resulting to a relative shift in the onset of class overall learning.
         Such onset may be measured as the iteration number at which the fraction of learned students has reached $50\%$ of the entire class.
         Opposed to TI, the shape of the learning curve for PI mode is more stable for different values of $\rho_0$ since only delay is introduced.
@@ -395,14 +395,14 @@
         \end{figure}
 
         The effect of class heterogeneity for both modes can be shown using a simple model with mixed student learning rates $\lambda$ such that some are low ($\lambda-\delta\!\lambda$) and others are high ($\lambda+\delta\!\lambda$).
-        Figure~\ref{fig:comparison rates}(b) shows how this level of heterogeneity $\delta\!\lambda$ affects the resulting class learning curves.
+        Fig. ~\ref{fig:comparison rates}(b) shows how this level of heterogeneity $\delta\!\lambda$ affects the resulting class learning curves.
         For the TI mode, the high level of heterogeneity at $\delta\!\lambda=0.4$ (students have either $\lambda=0.1$ or $\lambda=0.9$ within the class) introduces a significant slow down midpoint of the initial rise of class learning curve.
         Such slow down is not significant for low heterogeneity.
         This two-stage learning phenomenon arises from the early transition of fast learners in Stage 1, which leaves the slower learners to catch up only during the later lecture iterations in Stage 2.
         The PI mode is robust to heterogeneity showing only slight uniform delay in class learning curve.
         
         Spatial configurations of the class over iteration numbers provide insight on how learning spreads to the entire class.
-        Figure~\ref{fig:comparison rates}(c) shows the comparison of such configurations of the two modes over different iteration times but for smaller class size $N=32$ for brevity.
+        Fig. ~\ref{fig:comparison rates}(c) shows the comparison of such configurations of the two modes over different iteration times but for smaller class size $N=32$ for brevity.
         The first to learn with the TI mode are those who are fast learners (dark pixels with higher $\lambda$-values) and then spreads over the whole class later when those with lower $\lambda$-values eventually learns.
         A slow pickup in the learning curve is observable with PI mode.
         This phenomenon is due to the percolation-based spread of learned states within the class.
@@ -411,12 +411,12 @@
         Current practices~\cite{mazur1997peer,smith2009peer,lasry2008peer,roxas2010seating} indeed also employ reading materials in advance and the instructor gives a short lecture (TI mode) before the students engage in peer discussion (PI mode).
         
     \subsection{Combined effects}
-        The combined effects of average transmission probability (learning rate) $\rho_0$ and of the level of heterogeneity $\delta\!\lambda$ is shown in Figure~\ref{fig:Params effect summary t} for two class sizes $N=32^2$ (small) and $128^2$ (large).
+        The combined effects of average transmission probability (learning rate) $\rho_0$ and of the level of heterogeneity $\delta\!\lambda$ is shown in Fig. ~\ref{fig:Params effect summary t} for two class sizes $N=32^2$ (small) and $128^2$ (large).
         The plots show the total time to learn $t_{\rm max}$ for the entire class.
         This time $t_{\rm max}$ is computed as the total number of iterations before the last cell (student) in the model has switched to learned state, or when the system does not change after about $20$ rounds of random updates.
         For this plot, higher $t_{\rm max}$ is disadvantageous since it takes more iterations (hence time) before the entire class is expected to have learned.
 
-        Both Figures~\ref{fig:Params effect summary t}(a) and \ref{fig:Params effect summary t}(b) show that as the level of heterogeneity increases, the traditional approach (TI) require longer $t_{\rm max}$ than the peer instruction (PI) especially for small classes.
+        Both Fig. ~\ref{fig:Params effect summary t}(a) and Fig. ~\ref{fig:Params effect summary t}(b) show that as the level of heterogeneity increases, the traditional approach (TI) require longer $t_{\rm max}$ than the peer instruction (PI) especially for small classes.
         The difference becomes smaller for higher $\rho_0$ or for higher average class aptitude (fast learners).
         For large classes, this difference can actually reverse, but only for cases of homogenous, fast learning, large classes.
         Classically, the utilization of class grouping (``sections'' based on aptitude such as honors class) is thus best suited for TI.
@@ -481,10 +481,10 @@
         \label{fig:Return map}
     \end{figure}
     %%
-    Figure~\ref{fig:Return map} shows the $h(f)$ that fits our simulation data for PI of smaller class sizes (Figure~\ref{fig:Return map}(b)) approaching the expectations of the model of Nitta.
+    Fig. ~\ref{fig:Return map} shows the $h(f)$ that fits our simulation data for PI of smaller class sizes (Fig. ~\ref{fig:Return map}(b)) approaching the expectations of the model of Nitta.
     We find that a quadratic function fits 
     \footnote{
-        $f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$ in Figure~\ref{fig:Return map}(a). $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$ in Figure~\ref{fig:Return map}(b)
+        $f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$ in Fig. ~\ref{fig:Return map}(a). $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$ in Fig. ~\ref{fig:Return map}(b)
     }
     the return map for PI mode such that
     \begin{equation}
@@ -493,7 +493,7 @@
     for some parameters $a_i$ ($i=1,2$) with the condition that $h(1)=1$.
     The TI mode for both cases always results to a linear trend 
     \footnote{
-        $f_t = 0.97 f_{t-1} + 0.029$ for Figure~\ref{fig:Return map}(a) and $f_t = 0.548 f_{t-1} + 0.452$ for Figure~\ref{fig:Return map}(b)
+        $f_t = 0.97 f_{t-1} + 0.029$ for Fig. ~\ref{fig:Return map}(a) and $f_t = 0.548 f_{t-1} + 0.452$ for Fig. ~\ref{fig:Return map}(b)
     } 
     in $h(f)$ such that
     \begin{equation}
@@ -513,13 +513,13 @@
     Based on our model, PI mode results to a linear Hake gain consistent with their results but predicts a relatively constant  gain for TI mode.
     The efficiency (Nitta) of the PI can also be related to the constant $|a_2|$.
 
-    In our simulation results (cf. Figure~\ref{fig:Return map}), we find that the PI mode efficiency is lost to high class size giving $|a_2|=0.60$ for $N=32^2$ to $0.03$ for $N=128^2$.
+    In our simulation results (cf. Fig. ~\ref{fig:Return map}), we find that the PI mode efficiency is lost to high class size giving $|a_2|=0.60$ for $N=32^2$ to $0.03$ for $N=128^2$.
     TI mode gain also declined from $m=0.45$ to $0.029$ with the same increase in class size.
     These results are consistent with the overall assessment based on other dynamical parameters presented above.
 
     Our results are consistent with the empirical data reported by Roxas~\cite{roxas2010seating}.
     Roxas' dataset, consists of pre- and post-test scores from fourteen PI classrooms and spans a broad range of values.
-    Figure~\ref{fig:Return map} plots the pre-test scores plotted as $f_{t-1}$ and post-test scores plotted as $f_{t}$.
+    Fig. ~\ref{fig:Return map} plots the pre-test scores plotted as $f_{t-1}$ and post-test scores plotted as $f_{t}$.
     The variety in the data can be attributed to many factors that affect classroom learning dynamics such as instructional strategies which may affect the dominance of the effects of TI over PI.
     The timing of pre- and post-tests and the level of precision of the assessment method can also influence the observed outcomes.
     Roxas' dataset includes instances of score decreases from pre- to post-test---a realistic effect not captured by our model.

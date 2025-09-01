@@ -129,10 +129,10 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Beauchemin}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Samuel}},\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Tuszynski}},\ }\bibfield  {title} {\bibinfo {title} {A simple cellular automaton model for influenza a viral infections},\ }\href {https://doi.org/10.1016/j.jtbi.2004.08.001} {\bibfield  {journal} {\bibinfo  {journal} {Journal of Theoretical Biology}\ }\textbf {\bibinfo {volume} {232}},\ \bibinfo {pages} {223} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
 \bibitem [{Note1()}]{Note1}%
   \BibitemOpen
-  \bibinfo {note} {$f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$ in Figure~\ref {fig:Return map}(a). $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$ in Figure~\ref {fig:Return map}(b)}\BibitemShut {NoStop}%
+  \bibinfo {note} {$f_t = -0.033 f^2_{t-1} + 1.033 f_{t-1}$ in Fig. ~\ref {fig:Return map}(a). $f_t = -0.605 f^2_{t-1} + 1.595 f_{t-1} + 0.019$ in Fig. ~\ref {fig:Return map}(b)}\BibitemShut {NoStop}%
 \bibitem [{Note2()}]{Note2}%
   \BibitemOpen
-  \bibinfo {note} {$f_t = 0.97 f_{t-1} + 0.029$ for Figure~\ref {fig:Return map}(a) and $f_t = 0.548 f_{t-1} + 0.452$ for Figure~\ref {fig:Return map}(b)}\BibitemShut {NoStop}%
+  \bibinfo {note} {$f_t = 0.97 f_{t-1} + 0.029$ for Fig. ~\ref {fig:Return map}(a) and $f_t = 0.548 f_{t-1} + 0.452$ for Fig. ~\ref {fig:Return map}(b)}\BibitemShut {NoStop}%
 \bibitem [{Note3()}]{Note3}%
   \BibitemOpen
   \bibinfo {note} {For any polynomial function of degree $N$ fitting the return map, the Hake gain takes the general form $g(f)=a_0 - \sum _{n=2}^{N-2}a_n f\cdot \sum _{m=0}^{n-2}f^m$.}\BibitemShut {Stop}%
