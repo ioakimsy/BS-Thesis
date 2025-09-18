@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  1 SEP 2025 22:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.4)  18 SEP 2025 10:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -396,68 +396,8 @@ File: figures/figure6.png Graphic file (type png)
 <use figures/figure6.png>
 Package pdftex.def Info: figures/figure6.png  used on input line 475.
 (pdftex.def)             Requested size: 239.70062pt x 337.27045pt.
-[6 <./figures/figure5.png> <./figures/figure6.png>] (./PRPE_Classroom_dynamics.bbl
-Underfull \hbox (badness 4792) in paragraph at lines 57--58
- []\OT1/cmr/m/n/9 E. Mazur and M. D. Somers, Peer In-struc-tion:
- []
-
-
-Underfull \hbox (badness 6910) in paragraph at lines 57--58
- \OT1/cmr/m/n/9 A User's Man-ual, [][]Amer-i-can Jour-nal of Physics
- []
-
-[7]
-Underfull \hbox (badness 7722) in paragraph at lines 87--88
- []\OT1/cmr/m/n/9 C. Mon-terola, R. M. Roxas, and S. Carreon-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
- \OT1/cmr/m/n/9 Monterola, Char-ac-ter-iz-ing the ef-fect of seat-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
- \OT1/cmr/m/n/9 ing ar-range-ment on class-room learn-ing us-ing
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
- \OT1/cmr/m/n/9 neu-ral net-works, [][]Com-plex-ity \OT1/cmr/bx/n/9 14\OT1/cmr/m/n/9 , 26 (2009)[][],
- []
-
-
-Overfull \hbox (16.58438pt too wide) in paragraph at lines 87--88
- [][]\OT1/cmr/m/n/9 https://onlinelibrary.wiley.com/doi/pdf/10.1002/cplx.20237[][]. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
- []\OT1/cmr/m/n/9 R. R. Hake, Interactive-engagement ver-sus tra-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
- \OT1/cmr/m/n/9 di-tional meth-ods: A six-thousand-student sur-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
- \OT1/cmr/m/n/9 vey of me-chan-ics test data for in-tro-duc-tory
- []
-
-
-Underfull \hbox (badness 3000) in paragraph at lines 102--103
- \OT1/cmr/m/n/9 physics courses, [][]Amer-i-can Jour-nal of Physics \OT1/cmr/bx/n/9 66\OT1/cmr/m/n/9 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
- \OT1/cmr/m/n/9 64 (1998)[][], [][]https://pubs.aip.org/aapt/ajp/article-
- []
-
-
-Underfull \hbox (badness 1533) in paragraph at lines 111--112
+[6 <./figures/figure5.png> <./figures/figure6.png>] (./PRPE_Classroom_dynamics.bbl [7]
+Underfull \hbox (badness 1533) in paragraph at lines 108--109
  \OT1/cmr/m/n/9 C. Mon-terola, Kinks, log-a-rith-mic tails, and super-
  []
 
@@ -470,18 +410,18 @@ Package rerunfilecheck Info: File `PRPE_Classroom_dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: 7392942AC37F619D1F54C3CFD6DDE887;2482.
  ) 
 Here is how much of TeX's memory you used:
- 11730 strings out of 474928
- 175294 string characters out of 5763562
- 1955785 words of memory out of 5000000
- 33080 multiletter control sequences out of 15000+600000
+ 11724 strings out of 474928
+ 175162 string characters out of 5763562
+ 1952785 words of memory out of 5000000
+ 33075 multiletter control sequences out of 15000+600000
  566017 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1126b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1126b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on PRPE_Classroom_dynamics.pdf (8 pages, 5454285 bytes).
+Output written on PRPE_Classroom_dynamics.pdf (8 pages, 5453590 bytes).
 PDF statistics:
- 368 PDF objects out of 1000 (max. 8388607)
- 300 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
+ 393 PDF objects out of 1000 (max. 8388607)
+ 324 compressed objects within 4 object streams
+ 65 named destinations out of 1000 (max. 500000)
  127 words of extra memory for PDF output out of 10000 (max. 10000000)
 
