@@ -1,0 +1,148 @@
+\begin{thebibliography}{23}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Arciaga et~al.(2009)Arciaga, Pastor, Batac, Bantang and Monterola}]{arciaga2009experimental}
+\bibinfo{author}{Arciaga, M.}, \bibinfo{author}{Pastor, M.}, \bibinfo{author}{Batac, R.}, \bibinfo{author}{Bantang, J.}, \bibinfo{author}{Monterola, C.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Experimental observation and empirical model of enhanced heap stability resulting from mixing of granular materials}.
+\newblock \bibinfo{journal}{Journal of Statistical Mechanics: Theory and Experiment} \bibinfo{volume}{2009}, \bibinfo{pages}{P07040}.
+\newblock \DOIprefix\doi{10.1088/1742-5468/2009/07/P07040}.
+%Type = Article
+\bibitem[{Batac et~al.(2009)Batac, Pastor, Arciaga, Bantang and Monterola}]{Batac2009}
+\bibinfo{author}{Batac, R.}, \bibinfo{author}{Pastor, M.}, \bibinfo{author}{Arciaga, M.}, \bibinfo{author}{Bantang, J.}, \bibinfo{author}{Monterola, C.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Kinks, logarithmic tails, and super-stability in bi-disperse granular media}.
+\newblock \bibinfo{journal}{Physica A: Statistical Mechanics and its Applications} \bibinfo{volume}{388}, \bibinfo{pages}{3072--3082}.
+\newblock \URLprefix \url{https://www.sciencedirect.com/science/article/pii/S0378437109002866}, \DOIprefix\doi{10.1016/j.physa.2009.04.001}.
+%Type = Article
+\bibitem[{Beauchemin et~al.(2005)Beauchemin, Samuel and Tuszynski}]{Beauchemin2005}
+\bibinfo{author}{Beauchemin, C.}, \bibinfo{author}{Samuel, J.}, \bibinfo{author}{Tuszynski, J.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{A simple cellular automaton model for influenza a viral infections}.
+\newblock \bibinfo{journal}{Journal of Theoretical Biology} \bibinfo{volume}{232}, \bibinfo{pages}{223--234}.
+\newblock \URLprefix \url{https://linkinghub.elsevier.com/retrieve/pii/S0022519304003819}, \DOIprefix\doi{10.1016/j.jtbi.2004.08.001}.
+%Type = Article
+\bibitem[{Bordogna and Albano(2001)}]{bordogna2001theoretical}
+\bibinfo{author}{Bordogna, C.M.}, \bibinfo{author}{Albano, E.V.}, \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{Theoretical description of teaching-learning processes: A multidisciplinary approach}.
+\newblock \bibinfo{journal}{Phys. Rev. Lett.} \bibinfo{volume}{87}, \bibinfo{pages}{118701}.
+\newblock \URLprefix \url{https://link.aps.org/doi/10.1103/PhysRevLett.87.118701}, \DOIprefix\doi{10.1103/PhysRevLett.87.118701}.
+%Type = Article
+\bibitem[{Bordogna and Albano(2003)}]{bordogna2003simulation}
+\bibinfo{author}{Bordogna, C.M.}, \bibinfo{author}{Albano, E.V.}, \bibinfo{year}{2003}.
+\newblock \bibinfo{title}{Simulation of social processes: application to social learning}.
+\newblock \bibinfo{journal}{Physica A: Statistical Mechanics and its Applications} \bibinfo{volume}{329}, \bibinfo{pages}{281--286}.
+\newblock \URLprefix \url{https://www.sciencedirect.com/science/article/pii/S0378437103006010}, \DOIprefix\doi{10.1016/S0378-4371(03)00601-0}.
+%Type = Article
+\bibitem[{Brown and Robinson(2006)}]{brown2006effects}
+\bibinfo{author}{Brown, D.G.}, \bibinfo{author}{Robinson, D.T.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{Effects of heterogeneity in residential preferences on an agent-based model of urban sprawl}.
+\newblock \bibinfo{journal}{Ecology and Society} \bibinfo{volume}{11}.
+\newblock \URLprefix \url{http://www.jstor.org/stable/26267798}.
+%Type = Article
+\bibitem[{Castellano et~al.(2009)Castellano, Fortunato and Loreto}]{castellano2009statistical}
+\bibinfo{author}{Castellano, C.}, \bibinfo{author}{Fortunato, S.}, \bibinfo{author}{Loreto, V.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Statistical physics of social dynamics}.
+\newblock \bibinfo{journal}{Reviews of modern physics} \bibinfo{volume}{81}, \bibinfo{pages}{591--646}.
+%Type = Article
+\bibitem[{Dong et~al.(2021)Dong, Liu and Zheng}]{dong2021influence}
+\bibinfo{author}{Dong, Z.}, \bibinfo{author}{Liu, H.}, \bibinfo{author}{Zheng, X.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{The influence of teacher-student proximity, teacher feedback, and near-seated peer groups on classroom engagement: An agent-based modeling approach}.
+\newblock \bibinfo{journal}{PLOS ONE} \bibinfo{volume}{16}, \bibinfo{pages}{1--19}.
+\newblock \URLprefix \url{https://doi.org/10.1371/journal.pone.0244935}, \DOIprefix\doi{10.1371/journal.pone.0244935}.
+%Type = Inbook
+\bibitem[{Fern{\'a}ndez et~al.(2018)Fern{\'a}ndez, Louis and Nardi}]{Fernandez2018}
+\bibinfo{author}{Fern{\'a}ndez, R.}, \bibinfo{author}{Louis, P.Y.}, \bibinfo{author}{Nardi, F.R.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Overview: PCA Models and Issues}. \bibinfo{publisher}{Springer International Publishing}, \bibinfo{address}{Cham}.
+\newblock pp. \bibinfo{pages}{1--30}.
+\newblock \URLprefix \url{https://doi.org/10.1007/978-3-319-65558-1_1}, \DOIprefix\doi{10.1007/978-3-319-65558-1_1}.
+%Type = Article
+\bibitem[{Hake(1998)}]{hake1998}
+\bibinfo{author}{Hake, R.R.}, \bibinfo{year}{1998}.
+\newblock \bibinfo{title}{Interactive-engagement versus traditional methods: A six-thousand-student survey of mechanics test data for introductory physics courses}.
+\newblock \bibinfo{journal}{American Journal of Physics} \bibinfo{volume}{66}, \bibinfo{pages}{64--74}.
+\newblock \URLprefix \url{https://doi.org/10.1119/1.18809}, \DOIprefix\doi{10.1119/1.18809}.
+%Type = Article
+\bibitem[{Jiao and Torquato(2011)}]{jiao2011emergent}
+\bibinfo{author}{Jiao, Y.}, \bibinfo{author}{Torquato, S.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Emergent behaviors from a cellular automaton model for invasive tumor growth in heterogeneous microenvironments}.
+\newblock \bibinfo{journal}{PLoS computational biology} \bibinfo{volume}{7}, \bibinfo{pages}{e1002314}.
+%Type = Article
+\bibitem[{Kari(2005)}]{kari2005catheory}
+\bibinfo{author}{Kari, J.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{Theory of cellular automata: A survey}.
+\newblock \bibinfo{journal}{Theoretical Computer Science} \bibinfo{volume}{334}, \bibinfo{pages}{3--33}.
+\newblock \URLprefix \url{https://www.sciencedirect.com/science/article/pii/S030439750500054X}, \DOIprefix\doi{10.1016/j.tcs.2004.11.021}.
+%Type = Article
+\bibitem[{Lasry et~al.(2008)Lasry, Mazur and Watkins}]{lasry2008peer}
+\bibinfo{author}{Lasry, N.}, \bibinfo{author}{Mazur, E.}, \bibinfo{author}{Watkins, J.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Peer instruction: From harvard to the two-year college}.
+\newblock \bibinfo{journal}{American Journal of Physics} \bibinfo{volume}{76}, \bibinfo{pages}{1066--1069}.
+\newblock \URLprefix \url{https://doi.org/10.1119/1.2978182}, \DOIprefix\doi{10.1119/1.2978182}.
+%Type = Article
+\bibitem[{L{\'o}pez et~al.(2014)L{\'o}pez, Burguerner and Giovanini}]{lopez2014addressing}
+\bibinfo{author}{L{\'o}pez, L.}, \bibinfo{author}{Burguerner, G.}, \bibinfo{author}{Giovanini, L.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Addressing population heterogeneity and distribution in epidemics models using a cellular automata approach}.
+\newblock \bibinfo{journal}{BMC research notes} \bibinfo{volume}{7}, \bibinfo{pages}{234}.
+%Type = Book
+\bibitem[{Louis and Nardi(2018)}]{louis2018probabilistic}
+\bibinfo{author}{Louis, P.Y.}, \bibinfo{author}{Nardi, F.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Probabilistic Cellular Automata : Theory, Applications and Future Perspectives}.
+\newblock \DOIprefix\doi{10.1007/978-3-319-65558-1}.
+%Type = Article
+\bibitem[{Mazur and Hilborn(1997)}]{mazur1997peer}
+\bibinfo{author}{Mazur, E.}, \bibinfo{author}{Hilborn, R.C.}, \bibinfo{year}{1997}.
+\newblock \bibinfo{title}{Peer instruction: A user's manual}.
+\newblock \bibinfo{journal}{Physics Today} \bibinfo{volume}{50}, \bibinfo{pages}{68--69}.
+\newblock \URLprefix \url{https://doi.org/10.1063/1.881735}, \DOIprefix\doi{10.1063/1.881735}.
+%Type = Article
+\bibitem[{Monterola et~al.(2009)Monterola, Roxas and Carreon-Monterola}]{monterola2009}
+\bibinfo{author}{Monterola, C.}, \bibinfo{author}{Roxas, R.M.}, \bibinfo{author}{Carreon-Monterola, S.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Characterizing the effect of seating arrangement on classroom learning using neural networks}.
+\newblock \bibinfo{journal}{Complexity} \bibinfo{volume}{14}, \bibinfo{pages}{26--33}.
+\newblock \URLprefix \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20237}, \DOIprefix\doi{10.1002/cplx.20237}.
+%Type = Inbook
+\bibitem[{Nitta(2019)}]{nitta2019mathematical}
+\bibinfo{author}{Nitta, H.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{A Mathematical Model of Peer Instruction and Its Applications}. \bibinfo{publisher}{Springer International Publishing}, \bibinfo{address}{Cham}.
+\newblock pp. \bibinfo{pages}{87--98}.
+\newblock \URLprefix \url{https://doi.org/10.1007/978-3-319-96163-7_5}, \DOIprefix\doi{10.1007/978-3-319-96163-7_5}.
+%Type = Article
+\bibitem[{Pritchard et~al.(2008)Pritchard, Lee and Bao}]{pritchard2008mathematical}
+\bibinfo{author}{Pritchard, D.E.}, \bibinfo{author}{Lee, Y.J.}, \bibinfo{author}{Bao, L.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Mathematical learning models that depend on prior knowledge and instructional strategies}.
+\newblock \bibinfo{journal}{Phys. Rev. ST Phys. Educ. Res.} \bibinfo{volume}{4}, \bibinfo{pages}{010109}.
+\newblock \URLprefix \url{https://link.aps.org/doi/10.1103/PhysRevSTPER.4.010109}, \DOIprefix\doi{10.1103/PhysRevSTPER.4.010109}.
+%Type = Article
+\bibitem[{Roxas et~al.(2010)Roxas, Carreon‐Monterola and Monterola}]{roxas2010seating}
+\bibinfo{author}{Roxas, R.M.}, \bibinfo{author}{Carreon‐Monterola, S.L.}, \bibinfo{author}{Monterola, C.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Seating arrangement, group composition and competition‐driven interaction: Effects on students' performance in physics}.
+\newblock \bibinfo{journal}{AIP Conference Proceedings} \bibinfo{volume}{1263}, \bibinfo{pages}{155--158}.
+\newblock \URLprefix \url{https://doi.org/10.1063/1.3479856}, \DOIprefix\doi{10.1063/1.3479856}.
+%Type = Article
+\bibitem[{Smith et~al.(2009)Smith, Wood, Adams, Wieman, Knight, Guild and Su}]{smith2009peer}
+\bibinfo{author}{Smith, M.K.}, \bibinfo{author}{Wood, W.B.}, \bibinfo{author}{Adams, W.K.}, \bibinfo{author}{Wieman, C.}, \bibinfo{author}{Knight, J.K.}, \bibinfo{author}{Guild, N.}, \bibinfo{author}{Su, T.T.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Why peer discussion improves student performance on in-class concept questions}.
+\newblock \bibinfo{journal}{Science} \bibinfo{volume}{323}, \bibinfo{pages}{122--124}.
+\newblock \URLprefix \url{https://www.science.org/doi/abs/10.1126/science.1165919}, \DOIprefix\doi{10.1126/science.1165919}.
+%Type = Inproceedings
+\bibitem[{Sy et~al.(2024)Sy, Ramos and Bantang}]{SelfSPP}
+\bibinfo{author}{Sy, C.I.T.}, \bibinfo{author}{Ramos, R.X.A.}, \bibinfo{author}{Bantang, J.Y.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Learning dynamics in a cellular automata model of classroom peer-to-peer interactions}, in: \bibinfo{booktitle}{Proceedings of the Samahang Pisika ng Pilipinas}, pp. \bibinfo{pages}{SPP--2024--1E--04}.
+\newblock \URLprefix \url{https://proceedings.spp-online.org/article/view/SPP-2024-1E-04}.
+%Type = Article
+\bibitem[{Zaitsev(2017)}]{zaitsev2017generalized}
+\bibinfo{author}{Zaitsev, D.A.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{A generalized neighborhood for cellular automata}.
+\newblock \bibinfo{journal}{Theoretical Computer Science} \bibinfo{volume}{666}, \bibinfo{pages}{21--35}.
+\newblock \URLprefix \url{https://www.sciencedirect.com/science/article/pii/S0304397516305916}, \DOIprefix\doi{10.1016/j.tcs.2016.11.002}.
+
+\end{thebibliography}
