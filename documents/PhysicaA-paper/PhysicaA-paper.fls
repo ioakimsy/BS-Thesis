@@ -369,16 +369,16 @@ INPUT ./figs/PI SAs.png
 INPUT ./figs/PI SAs.png
 INPUT ./figs/PI SAs.png
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/stix/t1-stixgeneral-bold.tfm
-INPUT ./figs/figure-3.png
-INPUT ./figs/figure-3.png
-INPUT ./figs/figure-3.png
-INPUT ./figs/figure-3.png
-INPUT ./figs/figure-3.png
-INPUT ./figs/figure4.png
-INPUT ./figs/figure4.png
-INPUT ./figs/figure4.png
-INPUT ./figs/figure4.png
-INPUT ./figs/figure4.png
+INPUT ./figs/Picture4.png
+INPUT ./figs/Picture4.png
+INPUT ./figs/Picture4.png
+INPUT ./figs/Picture4.png
+INPUT ./figs/Picture4.png
+INPUT ./figs/Picture1.png
+INPUT ./figs/Picture1.png
+INPUT ./figs/Picture1.png
+INPUT ./figs/Picture1.png
+INPUT ./figs/Picture1.png
 INPUT ./figs/figure5.png
 INPUT ./figs/figure5.png
 INPUT ./figs/figure5.png

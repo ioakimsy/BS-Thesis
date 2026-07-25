@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.1.29)  23 APR 2026 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.1.29)  25 JUL 2026 20:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -558,42 +558,42 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count340
 )
-LaTeX Font Info:    Trying to load font information for T1+stix on input line 44.
+LaTeX Font Info:    Trying to load font information for T1+stix on input line 61.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 ) (./PhysicaA-paper.aux)
 \openout1 = `PhysicaA-paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 44.
-LaTeX Font Info:    Trying to load font information for LS1+stix on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 61.
+LaTeX Font Info:    Trying to load font information for LS1+stix on input line 61.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 44.
-LaTeX Font Info:    Trying to load font information for LS2+stix on input line 44.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 61.
+LaTeX Font Info:    Trying to load font information for LS2+stix on input line 61.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    ... okay on input line 61.
  (c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count341
@@ -619,9 +619,9 @@ Package grfext Info: Graphics extension search list:
  (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Command `\dddot' is already robust on input line 44.
-LaTeX Info: Command `\ddddot' is already robust on input line 44.
-Package hyperref Info: Link coloring ON on input line 44.
+LaTeX Info: Command `\dddot' is already robust on input line 61.
+LaTeX Info: Command `\ddddot' is already robust on input line 61.
+Package hyperref Info: Link coloring ON on input line 61.
  (./PhysicaA-paper.out) (./PhysicaA-paper.out)
 \@outlinefile=\write3
 \openout3 = `PhysicaA-paper.out'.
@@ -665,11 +665,11 @@ Package hyperref Info: Link coloring ON on input line 44.
 \openout4 = `PhysicaA-paper.abs'.
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 118--118
+Underfull \hbox (badness 1442) in paragraph at lines 139--139
 []\T1/stix/b/n/12 Learning dy-nam-ics as a het-ero-ge-neous cel-lu-lar au-toma-ton: com-par-ing broad-cast and
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+stix on input line 118.
+LaTeX Font Info:    Trying to load font information for TS1+stix on input line 139.
 (c:/texlive/2025/texmf-dist/tex/latex/stix/ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
@@ -677,144 +677,155 @@ File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 [0
 
 {c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-ts1.enc}]
-LaTeX Font Info:    Trying to load font information for LS1+stixscr on input line 132.
+LaTeX Font Info:    Trying to load font information for LS1+stixscr on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixex on input line 132.
+LaTeX Font Info:    Trying to load font information for LS2+stixex on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 132.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 132.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input line 132.
+LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixbb on input line 132.
+LaTeX Font Info:    Trying to load font information for LS1+stixbb on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixcal on input line 132.
+LaTeX Font Info:    Trying to load font information for LS2+stixcal on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixsf on input line 132.
+LaTeX Font Info:    Trying to load font information for LS1+stixsf on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixtt on input line 132.
+LaTeX Font Info:    Trying to load font information for LS2+stixtt on input line 153.
  (c:/texlive/2025/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 )
-Overfull \hbox (117.0831pt too wide) detected at line 132
+Overfull \hbox (117.0831pt too wide) detected at line 153
 []
  []
 
 (./PhysicaA-paper.abs)
 
-Package hyperref Warning: Ignoring empty anchor on input line 132.
+Package hyperref Warning: Ignoring empty anchor on input line 153.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 132.
+Package hyperref Warning: Ignoring empty anchor on input line 153.
 
 <thumbnails/cas-email.jpeg, id=12, 225.84375pt x 225.84375pt>
 File: thumbnails/cas-email.jpeg Graphic file (type jpg)
 <use thumbnails/cas-email.jpeg>
-Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 132.
+Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 153.
 (pdftex.def)             Requested size: 7.99838pt x 8.0pt.
 
-Package hyperref Warning: Ignoring empty anchor on input line 132.
+Package hyperref Warning: Ignoring empty anchor on input line 153.
 
 
 
 [1{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./thumbnails/cas-email.jpeg>]
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `') on input line 186.
-
-<figs/2DBPCA Flowchart.png, id=93, 1533.0pt x 671.892pt>
-File: figs/2DBPCA Flowchart.png Graphic file (type png)
-<use figs/2DBPCA Flowchart.png>
-Package pdftex.def Info: figs/2DBPCA Flowchart.png  used on input line 188.
-(pdftex.def)             Requested size: 468.3324pt x 205.25995pt.
-
-
 [2]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `') on input line 225.
+               Default added (so using `') on input line 212.
 
-<figs/PI SAs.png, id=125, 474.135pt x 525.162pt>
-File: figs/PI SAs.png Graphic file (type png)
-<use figs/PI SAs.png>
-Package pdftex.def Info: figs/PI SAs.png  used on input line 227.
-(pdftex.def)             Requested size: 234.1662pt x 259.36702pt.
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `') on input line 252.
-
-<figs/figure-3.png, id=131, 406.683pt x 542.025pt>
-File: figs/figure-3.png Graphic file (type png)
-<use figs/figure-3.png>
-Package pdftex.def Info: figs/figure-3.png  used on input line 254.
-(pdftex.def)             Requested size: 281.00229pt x 374.53523pt.
+<figs/2DBPCA Flowchart.png, id=121, 1533.0pt x 671.892pt>
+File: figs/2DBPCA Flowchart.png Graphic file (type png)
+<use figs/2DBPCA Flowchart.png>
+Package pdftex.def Info: figs/2DBPCA Flowchart.png  used on input line 214.
+(pdftex.def)             Requested size: 468.3324pt x 205.25995pt.
 
 
 [3]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `') on input line 297.
+               Default added (so using `') on input line 272.
 
-<figs/figure4.png, id=157, 383.031pt x 740.439pt>
-File: figs/figure4.png Graphic file (type png)
-<use figs/figure4.png>
-Package pdftex.def Info: figs/figure4.png  used on input line 299.
-(pdftex.def)             Requested size: 234.1662pt x 452.68398pt.
+<figs/PI SAs.png, id=143, 474.135pt x 525.162pt>
+File: figs/PI SAs.png Graphic file (type png)
+<use figs/PI SAs.png>
+Package pdftex.def Info: figs/PI SAs.png  used on input line 274.
+(pdftex.def)             Requested size: 234.1662pt x 259.36702pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `') on input line 326.
+               Default added (so using `') on input line 299.
 
-<figs/figure5.png, id=161, 677.586pt x 1027.548pt>
-File: figs/figure5.png Graphic file (type png)
-<use figs/figure5.png>
-Package pdftex.def Info: figs/figure5.png  used on input line 328.
-(pdftex.def)             Requested size: 281.00229pt x 426.14226pt.
+<figs/Picture4.png, id=149, 722.7pt x 542.025pt>
+File: figs/Picture4.png Graphic file (type png)
+<use figs/Picture4.png>
+Package pdftex.def Info: figs/Picture4.png  used on input line 301.
+(pdftex.def)             Requested size: 374.66734pt x 281.00275pt.
 
 
 [4]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `') on input line 378.
+               Default added (so using `') on input line 362.
 
-<figs/figure6.png, id=185, 766.719pt x 1078.794pt>
+<figs/Picture1.png, id=177, 777.669pt x 372.081pt>
+File: figs/Picture1.png Graphic file (type png)
+<use figs/Picture1.png>
+Package pdftex.def Info: figs/Picture1.png  used on input line 364.
+(pdftex.def)             Requested size: 421.49629pt x 201.67017pt.
+
+
+[5]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `') on input line 385.
+
+<figs/figure5.png, id=192, 1057.989pt x 505.671pt>
+File: figs/figure5.png Graphic file (type png)
+<use figs/figure5.png>
+Package pdftex.def Info: figs/figure5.png  used on input line 387.
+(pdftex.def)             Requested size: 374.66734pt x 179.0708pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `') on input line 438.
+
+<figs/figure6.png, id=208, 1453.941pt x 542.025pt>
 File: figs/figure6.png Graphic file (type png)
 <use figs/figure6.png>
-Package pdftex.def Info: figs/figure6.png  used on input line 380.
-(pdftex.def)             Requested size: 281.00229pt x 395.37796pt.
+Package pdftex.def Info: figs/figure6.png  used on input line 440.
+(pdftex.def)             Requested size: 421.49629pt x 157.13359pt.
 
 
-[5] (./PhysicaA-paper.bbl
-
-[6])
+[6]
 
 [7]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [8 <./figs/2DBPCA Flowchart.png> <./figs/PI SAs.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[9 <./figs/figure-3.png>]
 
-[10 <./figs/figure4.png>]
 
-[11 <./figs/figure5.png>]
+[9 <./figs/Picture4.png> <./figs/Picture1.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[12 <./figs/figure6.png>] (./PhysicaA-paper.aux)
+
+
+[10 <./figs/figure5.png> <./figs/figure6.png>] (./PhysicaA-paper.bbl
+
+[11
+
+])
+
+[12] (./PhysicaA-paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -823,18 +834,18 @@ Package rerunfilecheck Info: File `PhysicaA-paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16648 strings out of 473190
- 248837 string characters out of 5719979
- 666760 words of memory out of 5000000
- 39573 multiletter control sequences out of 15000+600000
+ 16658 strings out of 473190
+ 249051 string characters out of 5719979
+ 667397 words of memory out of 5000000
+ 39581 multiletter control sequences out of 15000+600000
  659372 words of font info for 158 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,9n,93p,1804b,600s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,11n,93p,1803b,559s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/stix-mathcal.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on PhysicaA-paper.pdf (13 pages, 5468491 bytes).
+Output written on PhysicaA-paper.pdf (13 pages, 4018167 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 303 compressed objects within 4 object streams
- 63 named destinations out of 1000 (max. 500000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 322 compressed objects within 4 object streams
+ 65 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

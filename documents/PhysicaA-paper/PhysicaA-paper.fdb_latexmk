@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex PhysicaA-paper"] 1776927741.72834 "PhysicaA-paper.aux" "PhysicaA-paper.bbl" "PhysicaA-paper" 1776927747.6748 0
+["bibtex PhysicaA-paper"] 1784982558.77822 "PhysicaA-paper.aux" "PhysicaA-paper.bbl" "PhysicaA-paper" 1784982564.38728 0
   "./cas-model2-names.bst" 1776756861 31802 28b630660245c09f173aac55be552b29 ""
   "./cas-refs.bib" 1776762064 31257 20ad8bb7e2ff6ca3be20deec6559b54b ""
-  "PhysicaA-paper.aux" 1776927746 12467 3f03166a6cff8f9d7a746f7b945b6215 "pdflatex"
+  "PhysicaA-paper.aux" 1784982563 14245 dae24ebe0bf06a42207b20212ab9b718 "pdflatex"
   (generated)
   "PhysicaA-paper.bbl"
   "PhysicaA-paper.blg"
   (rewritten before read)
-["pdflatex"] 1776927742.04816 "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" "PhysicaA-paper.pdf" "PhysicaA-paper" 1776927747.67532 0
-  "PhysicaA-paper.abs" 1776927742 1705 a6aee3538b202006dc1a50e588b6d5a9 "pdflatex"
-  "PhysicaA-paper.aux" 1776927746 12467 3f03166a6cff8f9d7a746f7b945b6215 "pdflatex"
-  "PhysicaA-paper.bbl" 1776927742 12063 cf5b821b0df58caed8274973269b1a6e "bibtex PhysicaA-paper"
-  "PhysicaA-paper.out" 1776927742 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "PhysicaA-paper.tex" 1776927735 37022 11ab8df797f1d3e0d607cb1d28a11d33 ""
-  "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" 1776927735 37022 11ab8df797f1d3e0d607cb1d28a11d33 ""
+["pdflatex"] 1784982559.06935 "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" "PhysicaA-paper.pdf" "PhysicaA-paper" 1784982564.3877 0
+  "PhysicaA-paper.abs" 1784982559 1704 21dcb6ae8099ae9541e5ddd4f45c07a5 "pdflatex"
+  "PhysicaA-paper.aux" 1784982563 14245 dae24ebe0bf06a42207b20212ab9b718 "pdflatex"
+  "PhysicaA-paper.bbl" 1784982559 12063 cf5b821b0df58caed8274973269b1a6e "bibtex PhysicaA-paper"
+  "PhysicaA-paper.out" 1784982559 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "PhysicaA-paper.tex" 1784982552 48208 044fa2b46917f868bf0ff45aed2372e4 ""
+  "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" 1784982552 48208 044fa2b46917f868bf0ff45aed2372e4 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1769695426 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc" 1769696701 7013 c55cc8669071ac14036c4a0c96c16202 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-ts1.enc" 1769696701 2836 154e6b0061f9b8cb549144b55b268339 ""
@@ -157,10 +157,10 @@
   "cas-sc.cls" 1776756861 4410 65b518b1d7581e9c4ebe84b81471ee59 ""
   "figs/2DBPCA Flowchart.png" 1743733321 724160 29fc4a48054f6295a695451ecad63dd4 ""
   "figs/PI SAs.png" 1715907867 121723 881d3305891e6715c3a058db0d610b85 ""
-  "figs/figure-3.png" 1756642509 371955 75682f3914f3015ab2d352ed4d72b4c1 ""
-  "figs/figure4.png" 1756642528 2157025 547856d6ecb14bc103f86d37a183c903 ""
-  "figs/figure5.png" 1756642628 1140142 204a949d278ad24bd9b55cc42c6501cb ""
-  "figs/figure6.png" 1756635693 1226931 02c5b9f24fa3944df66e49f11f13eb85 ""
+  "figs/Picture1.png" 1784980393 392293 f55be29ea2f4f2cac7769c0c3dfdd9ca ""
+  "figs/Picture4.png" 1784980457 726094 ca24aab8c2e9f541a98bc4a69aae463d ""
+  "figs/figure5.png" 1784980525 1063743 eca384336477138a9eb6c8e57dd60d42 ""
+  "figs/figure6.png" 1784979893 1191619 96651e6f2b0982c87ebbc307009eb9d6 ""
   "thumbnails/cas-email.jpeg" 1776756862 8764 ae276cc9956197082d008c18ae4cbb28 ""
   (generated)
   "PhysicaA-paper.abs"
