@@ -17,3 +17,8 @@ documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.out
 documents/PRPE-paper/PRPE-paper/PRPE_Classroom_dynamics.toc
 output/2D-Binary-PCA-IH/traditional-96
 output/2D-Binary-PCA-IH/traditional-128
+
+# Raw per-trial simulation output (regenerable from scripts/, too large to track).
+# output/*/analysis/** (summary CSVs + final figures used by the papers) stays tracked.
+output/2D-Binary-PCA/**/trial_*/
+output/2D-Binary-PCA-IH/**/trial_*/
