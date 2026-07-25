@@ -22,3 +22,6 @@ output/2D-Binary-PCA-IH/traditional-128
 # output/*/analysis/** (summary CSVs + final figures used by the papers) stays tracked.
 output/2D-Binary-PCA/**/trial_*/
 output/2D-Binary-PCA-IH/**/trial_*/
+CLAUDE.md
+*.log
+scripts/rerun-log-stopping-rule.md
