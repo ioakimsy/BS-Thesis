@@ -407,7 +407,7 @@ All quantities presented are averages over twenty independent randomized runs, w
 
     Equation~\eqref{eq:gain-from-return-map} is singular at $f=1$, so the fitting function $h(f)$ must satisfy $h(1)=1$ for $g(f)$ to remain finite. For the simulation data this holds exactly: $f=1$ (all agents learned) is the absorbing state of the model, so $f_t=1$ maps to $f_{t+1}=1$ by construction. We therefore fit the simulation return maps with functional forms that impose $h(1)=1$ identically, which makes the singularity in Eq.~\eqref{eq:gain-from-return-map} removable: the limit as $f\to1$ is finite and recovers the analytic gains reported below ($g=a_0$ for the broadcast regime; $g(1)=a_0-a_2$ for the nearest-neighbor regime). The empirical data are treated differently: real classes can exhibit score decreases from $f_{t-1}=1$ (a student answering correctly on the first assessment may answer incorrectly on the second), so there is no structural guarantee that $h(1)=1$. We therefore fit the empirical return map with a free (unconstrained) quadratic and do not evaluate the empirical gain at $f=1$.
 
-    Fig.~\ref{fig:Return map} shows the return maps obtained from simulation data for both regimes across selected parameter sets, alongside empirical classroom data provided by Roxas (co-author).
+    Fig.~\ref{fig:Return map} shows the return maps obtained from simulation data for both regimes across selected parameter sets, alongside empirical classroom data provided by Roxas \citep{monterola2009}.
     The broadcast regime consistently produces a linear return map, well described by
     %%
     \begin{equation}

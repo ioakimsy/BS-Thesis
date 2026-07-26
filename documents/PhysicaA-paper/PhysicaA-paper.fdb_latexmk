@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex PhysicaA-paper"] 1784982558.77822 "PhysicaA-paper.aux" "PhysicaA-paper.bbl" "PhysicaA-paper" 1784982564.38728 0
+["bibtex PhysicaA-paper"] 1785065269.88831 "PhysicaA-paper.aux" "PhysicaA-paper.bbl" "PhysicaA-paper" 1785065324.65041 0
   "./cas-model2-names.bst" 1776756861 31802 28b630660245c09f173aac55be552b29 ""
   "./cas-refs.bib" 1776762064 31257 20ad8bb7e2ff6ca3be20deec6559b54b ""
-  "PhysicaA-paper.aux" 1784982563 14245 dae24ebe0bf06a42207b20212ab9b718 "pdflatex"
+  "PhysicaA-paper.aux" 1785065323 14270 e0f67cdc3bdb0008f62abb006debf26a "pdflatex"
   (generated)
   "PhysicaA-paper.bbl"
   "PhysicaA-paper.blg"
   (rewritten before read)
-["pdflatex"] 1784982559.06935 "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" "PhysicaA-paper.pdf" "PhysicaA-paper" 1784982564.3877 0
-  "PhysicaA-paper.abs" 1784982559 1704 21dcb6ae8099ae9541e5ddd4f45c07a5 "pdflatex"
-  "PhysicaA-paper.aux" 1784982563 14245 dae24ebe0bf06a42207b20212ab9b718 "pdflatex"
-  "PhysicaA-paper.bbl" 1784982559 12063 cf5b821b0df58caed8274973269b1a6e "bibtex PhysicaA-paper"
-  "PhysicaA-paper.out" 1784982559 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "PhysicaA-paper.tex" 1784982552 48208 044fa2b46917f868bf0ff45aed2372e4 ""
-  "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" 1784982552 48208 044fa2b46917f868bf0ff45aed2372e4 ""
+["pdflatex"] 1785065319.07651 "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" "PhysicaA-paper.pdf" "PhysicaA-paper" 1785065324.65086 0
+  "PhysicaA-paper.abs" 1785065319 1704 21dcb6ae8099ae9541e5ddd4f45c07a5 "pdflatex"
+  "PhysicaA-paper.aux" 1785065323 14270 e0f67cdc3bdb0008f62abb006debf26a "pdflatex"
+  "PhysicaA-paper.bbl" 1785065270 12063 cf5b821b0df58caed8274973269b1a6e "bibtex PhysicaA-paper"
+  "PhysicaA-paper.out" 1785065319 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "PhysicaA-paper.tex" 1785065318 48218 0831e7eab7f425650ff4c0260f50d29e ""
+  "c:/School/BS Thesis/documents/PhysicaA-paper/PhysicaA-paper.tex" 1785065318 48218 0831e7eab7f425650ff4c0260f50d29e ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1769695426 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc" 1769696701 7013 c55cc8669071ac14036c4a0c96c16202 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-ts1.enc" 1769696701 2836 154e6b0061f9b8cb549144b55b268339 ""
