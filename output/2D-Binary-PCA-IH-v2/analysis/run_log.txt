@@ -1,0 +1,10 @@
+---
+sweep start   2026-10-14T22:24:54.439
+sweep end     2026-10-14T22:27:17.310
+elapsed       2 minutes, 22 seconds, 871 milliseconds
+threads       16
+julia         1.11.0
+git commit    4060223 (scripts/ has uncommitted changes)
+rows          5040 (5040 simulated, 0 reloaded from existing raw files)
+runs          100800; hit MAX_STEPS: 0
+sim time      1254.1 s summed over simulated runs (excludes file I/O)

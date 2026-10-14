@@ -25,3 +25,6 @@ output/2D-Binary-PCA-IH/**/trial_*/
 CLAUDE.md
 *.log
 scripts/rerun-log-stopping-rule.md
+
+# v2 raw per-run learning-time grids (regenerable from parameter_combinations.csv seeds)
+output/2D-Binary-PCA-IH-v2/raw/
