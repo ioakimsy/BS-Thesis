@@ -173,6 +173,19 @@ function learned_fraction(T::AbstractMatrix, t_end = maximum(T))
     return cumsum(counts) ./ length(T)
 end
 
+#* Learned fraction of one λ class (1 = fast, 2 = slow) at steps 0..t_end, normalized by that
+#* class's size (seeds included).
+function learned_fraction_by_class(T::AbstractMatrix, λ_class::AbstractMatrix, class, t_end = maximum(T))
+    counts = zeros(Int, t_end + 1)
+    n = 0
+    for (τ, c) in zip(T, λ_class)
+        c == class || continue
+        n += 1
+        τ >= 0 && (counts[τ + 1] += 1)
+    end
+    return cumsum(counts) ./ max(n, 1)
+end
+
 #* First step at which the learned fraction reaches `q` (-1 if never).
 function time_to_fraction(T::AbstractMatrix, q)
     f = learned_fraction(T)
