@@ -191,14 +191,14 @@ Everything is rerun with the corrected rule, **run to full absorption** (no stop
 | 1 | Stopping criterion | Remove the stopping window and run every trial to absorption (f = 1), which every run reaches with probability 1 since λ₋ > 0. Keep a safety step cap; any capped run is flagged and reported. Tables 1–2 become a single statement that all runs absorbed. Overlay R3's analytical F(t) on the TI curves (log-t axis) to show the multi-stage structure is the two-rate mixture, not a stopping or plotting artifact. Consider reporting t₉₅ alongside t_max, since at high δλ t_max is set by the slowest agent (roughly ln N / ρ₀λ₋ for TI). | Rerun + analysis + text |
 | 2 | "Optimal" mixed strategy | Reframe as a hypothesis or future work in the Results, Conclusion, and abstract. | Text |
 | 3 | Empirical / Hake gain | Soften "validation" and "qualitative agreement." List explicitly what is and isn't reproduced: the sign of a₂, the scatter (R² ≈ 0.63), and the seating-arrangement result that disagrees with Roxas (inner vs. outer corner). Answer the step-vs-assessment-interval point: if one interval spans k steps, the TI map composed k times is still linear with constant gain 1 − (1 − a₀)ᵏ, and the PI map stays concave. The shape class is therefore independent of the unknown mapping; only the coefficients depend on it. | Text |
-| 4 | Return-map size confound | Fig. 6 actually compares the fastest corner (L=32, ρ₀=0.9, δλ=0) against the slowest (L=128, ρ₀=0.1, δλ=0.4) of the δλ ≤ 0.4 sweep. Relabel it **best vs. worst case** rather than small vs. large, in the caption, the text, and Table 3. Existing plots at fixed (ρ₀, δλ) across L (`output/2D-Binary-PCA-IH/analysis/plots/return-map/`, 45 combinations) show nearly identical shapes across sizes. Add a sentence or supplementary table saying return-map shape is governed by ρ₀ and δλ, not L. Also fix the panel label "δλ = 0.5 ± 0.4" (should be λ) and the panel order. | Text + regenerate figure |
+| 4 | Return-map size confound | The reviewers are right that Fig. 6/Table 3 mix L with ρ₀ and δλ: they compare the fastest corner (L=32, ρ₀=0.9, δλ=0) against the slowest (L=128, ρ₀=0.1, δλ=0.4). The **fixed-parameter comparison (v2, 2026-10-15) shows a genuine size effect, but only for PI.** TI a₀ is independent of L (log-log slope 0.00 everywhere; = ρ₀λ₀ at δλ=0). PI curvature a₂ scales roughly like L^−0.6…−0.9 and the intercept a₀ roughly like L^−1.2…−2, i.e. the PI map approaches the diagonal as the class grows, because only agents at the learning front can learn and front length / class size ∝ 1/L. Response: replace the confounded comparison with this fixed-parameter one (supplementary table/plot), and keep Fig. 6 as best vs worst case with that label. ~~Earlier note that "shape is governed by ρ₀ and δλ, not L" was wrong for PI (eyeballed from two plots).~~ Also fix the panel label "δλ = 0.5 ± 0.4" (should be λ) and the panel order. | Analysis + text + figure |
 | 5 | Implementation details | State: **synchronous** update; λ-class assignment is **independent Bernoulli(½) per agent**, fixed within a run and redrawn for each trial; **open boundaries** (the grid is padded with permanently unlearned cells); exact seed placement rule for each seating arrangement (see "Implementation (v2)" below). Fixed per-run seeds via StableRNGs.jl. Public code and data repository (Zenodo DOI) deferred until after curation, but the rerun code is written with this in mind (shared config, seeds). | Text + code |
 | 6 | Flowchart | Show the per-regime initial condition (TI: 4 learned to match PI, see §9; PI: 4 seeds). Replace "steady state achieved" with "all agents learned (absorbed)." | Figure |
 | 7 | Percolation | Adopt "percolation-like spreading" / "local propagation dynamics." No new percolation analysis. | Text |
 | 8 | Classroom framing | Frame conclusions as model dynamics. Distinguish lattice side L from population N = L². Remove "small class" and "safe choice." | Text |
 | 9 | Fairness of comparison | Concede the word "controlled" and redefine it: same λ distribution, ρ₀, lattice, and initial learned set. **TI now starts with the same 4 learned agents as PI.** Every TI run is a **twin** of a PI run: it shares the same RNG seed, so seed positions and λ-class grid are identical and only the update rule differs. The difference in exposure mechanism is intentional and is what distinguishes the two pedagogies. Argue this explicitly: in the code the two regimes differ by a single line (`probability_table`), and a PI agent with one learned neighbor has exactly the TI probability ρ₀λᵢⱼ. | Rerun (folded in) + text |
 | 10 | Seed density | A **second full run set** at a **fixed initial learned fraction** 4/32², so n = 4, 9, 16, 36, 64 for L = 32 … 128. It covers **every seating arrangement** and both regimes as TI/PI twins. Seeds fill outward from each arrangement's anchor points, nearest cell first, with random tie-breaking; this is the same scheme as `grid_order` in the Classroom Dynamics Research repo. L = 32 (n = 4) is shared with the main set. An early test hint (PI, random seating, L=128, ρ₀=0.1, δλ=0, with an earlier seed draw) showed t_max dropping from ~374 to ~129 with 64 seeds, so the effect on t_max is **not** negligible. What R1 asks is whether the *scaling with L* changes, which this run set answers. | New run set |
-| 11 | Broadcast return map (R3) | Use R3's F(t). For δλ = 0 it reduces to 1 − (1 − p)ᵗ, whose return map is **exactly** h(f) = f + p(1 − f) with p = ρ₀λ₀. The existing fit a₀ = 0.4454 vs. 0.9 × 0.5 = 0.45 confirms this. For δλ > 0 the effective gain decays from ρ₀λ₀ toward ρ₀λ₋ as fast learners are depleted. State that Eq. 6 is exact at δλ = 0 and an effective average otherwise, and show F(t) overlays and residuals or normalized increments. | Analysis + text |
+| 11 | Broadcast return map (R3) | **Analysis done (see Next).** Use R3's F(t). For δλ = 0 it reduces to 1 − (1 − p)ᵗ, whose return map is **exactly** h(f) = f + p(1 − f) with p = ρ₀λ₀. The existing fit a₀ = 0.4454 vs. 0.9 × 0.5 = 0.45 confirms this. For δλ > 0 the effective gain decays from ρ₀λ₀ toward ρ₀λ₋ as fast learners are depleted. State that Eq. 6 is exact at δλ = 0 and an effective average otherwise, and show F(t) overlays and residuals or normalized increments. | Analysis + text |
 | 12 | PI quadratic | Call it a fitted description, not an evolution equation. Also soften the highlight "Return map yields analytic Hake gain expressions." | Text |
 | 13 | Statistics | Replace min–max bands with **mean ± SD** for learning curves. For t_max use **median + IQR**, since high-δλ distributions will be skewed. Return-map coefficient uncertainty: **fit each of the 20 trials separately** and report mean ± SE across trials, because trials are independent and points within a trajectory are not. | Analysis |
 | 14 | λ₀ in abstract | Remove the λ₀ dependence claim from the abstract and text, and point to future work. | Text |
@@ -360,7 +360,52 @@ All figures live under `output/2D-Binary-PCA-IH-v2/analysis/plots/`. They are ge
 - [ ] Rewire analysis and plotting to read `run_summary.csv` and the Parquet grids. This includes the per-trial return-map fits (§13), F(t) overlays (§1, §11), and mean ± SD / median + IQR bands.
 - [x] Regenerate Figs. 3 and 5 from v2 data, plus clean copies at v1 dimensions for PowerPoint re-labeling.
 - [ ] Re-label the clean Figs. 3 and 5 in PowerPoint (manual). PI δλ=0.49 in Fig. 3(d) now ends further right; the Fig. 5 z-ranges are taller.
-- [ ] Return map (Fig. 6, Table 3): per-trial refits on v2 data, best/worst-case relabeling (§4), R3's F(t) comparison (§11). Not checked yet.
+- [~] Return map (Fig. 6, Table 3): per-trial fits done (`scripts/2DBPCA-IH-return-map-v2.jl` → `analysis/return-map-{per-trial,summary}.csv`; 1,800 fits over L {32,64,128} × ρ₀ {0.1,0.5,0.9} × δλ {0,0.2,0.4,0.45,0.49}, TI + PI inner corner). Report **mean ± SE** in Table 3 with SD alongside; use SD for comparisons with individual empirical classes. Findings: (i) the v1 pooled-fit errors were unreliable in **both** directions: 2–3× too small for some coefficients (correlated points), up to ~20× too large for others (pooled misfit). (ii) TI a₀ is L-independent and equals ρ₀λ₀ at δλ=0. (iii) PI coefficients scale with L (see §4 row). (iv) The PI quadratic breaks down at δλ=0.49 (a₂ → 0 or flips sign; it cannot represent two-stage relaxation), so do not report it there. Fig. 6 regenerated (two options + clean panels, below) and the R3 F(t) comparison done (next item). Still to do: coefficient-vs-L supplementary plot (§4).
+- [x] **R3 §11: TI constant gain vs the exact heterogeneous result** (`scripts/2DBPCA-IH-ti-gain-v2.jl` → `analysis/ti-gain-drift.csv`,
+  `plots/return-map/ti-gain-vs-exact.png`). Text + response letter still to write.
+  - Exact per-step TI gain: g(t) = 1 − u(t+1)/u(t), with u(t) = (1 − s₀)[w(1−p₊)ᵗ + (1−w)(1−p₋)ᵗ], i.e. the unlearned-pool average of
+    p₊ and p₋. It starts at ρ₀λ₀ and decays to p₋ = ρ₀(λ₀ − δλ); start/end = λ₀/(λ₀ − δλ), independent of ρ₀.
+  - Figure: per-step gain / ρ₀λ₀ vs f (L = 128; δλ ∈ {0, 0.2, 0.4, 0.49}; ρ₀ ∈ {0.1, 0.5, 0.9}). Simulation = 20 runs binned by f
+    (Σ newly learned / Σ unlearned); exact curve; fitted constant a₀. Residual panel: simulation − exact within ±0.02 ρ₀λ₀, no trend.
+  - Normalized curves nearly collapse across ρ₀: the drift is set by δλ/λ₀.
+  - Validity of Eq. 6 (L = 128; all L in the CSV):
+
+    | δλ | a₀/ρ₀λ₀ | gain start/end | max deviation of exact gain from a₀ | f-range within ±10% of a₀ |
+    |---|---|---|---|---|
+    | 0 | 1.00 | 1 | < 0.2% | all |
+    | 0.2 | 0.92–0.93 | 1.7 | 35% | 0 to ~0.5–0.65 |
+    | 0.4 | 0.53–0.59 | 5 | 70–90% | ~0.35–0.5 |
+    | 0.45 | 0.32–0.37 | 10 | ~2× | ~0.45–0.5 |
+    | 0.49 | 0.08–0.09 | 50 | ~11× | a point near 0.5 |
+
+  - Fitted TI a₀ varies ≤ 3% across L = 32/64/128.
+  - Wording for the text: Eq. 6 is exact for a homogeneous class (a₀ = ρ₀λ₀; short derivation from u(t+1) = (1−p)u(t)); a fair
+    approximation for mild heterogeneity (δλ ≲ 0.2); for δλ ≥ 0.4 only an effective average. Give the exact gain and cite R3.
+  - Side point for §3.4: heterogeneous TI gain **falls** with f (pool fills with slow learners); PI's fitted gain **rises** with f
+    (more learned neighbors). The trend's sign separates the mechanisms, and the Roxas classes show the rising (PI) trend.
+- [~] **Empirical comparison (§3, §3.4): resolved data meaning; two figure options made** (`analysis/plots/return-map/`).
+  - Data: `in_8_<k>`/`out_8_<k>` are the first and second assessment scores of the 64 students of 8×8 class k (k = 1..14), i.e.
+    standard pre/post data. The published fit is student-level; the model's f is class-level.
+  - **Option 1** (`figure6-option1-student-level.png`): Fig. 6 as a 2×2 grid. Rows are unfavorable (ρ₀=0.1, λ=0.5±0.4) and favorable
+    (ρ₀=0.9, λ=0.5±0) conditions; columns are L = 32 and 128. Includes the student-level Roxas cloud as published. Dashed sim lines are
+    the constrained per-run-mean fits (v1's figure used unconstrained fits that didn't match Table 3). The grid shows the PI size effect
+    directly; TI is unchanged across L. Clean panels: `plots/clean/figure6-<L>-<ρ₀>-0.5-<δλ>-clean.png` (4000×2828, v1 size).
+  - **Option 2** (`figure6-option2-class-level.png`, caption numbers in `figure6-option2-caption.txt`): class-level. (a) class mean pre → post;
+    (b) class Hake gain vs pre-score against the model *shapes* (TI constant; PI g ∝ a₀ − a₂f), with the amplitude fitted because one
+    simulation step ≠ one assessment interval.
+    - Without class 9: the PI shape gives R² ≈ 0.43–0.45, TI gives 0 (by construction), and corr(pre, g) = 0.80.
+    - With class 9: R² ≈ 0.05 and r = 0.25. **The result depends on the exclusion, so report both.**
+  - **Class 9 exclusion, numerical justification** (record for the text):
+    - Hake g = −0.329 vs −0.014…0.26 for the other 13 classes.
+    - Grubbs test (two-sided, α=0.05, n=14): G = 2.68 > G_crit = 2.51.
+    - Robust z (median/MAD) of its gain = −5.9.
+    - 41/64 students scored lower on the second assessment, vs 6–22 elsewhere (robust z = 3.5).
+    - Its 95% bootstrap interval for g (−0.455, −0.214) is the only one entirely below zero.
+    - Caveats: the exclusion is post hoc, and Grubbs assumes normality (the robust z does not).
+  - Bootstrap intervals were tried as error bars but removed from the panel (too busy). Without class 9, the low-pre classes' intervals
+    include zero and the high-pre classes' are positive but wide, so the trend is largely a low-group vs high-group difference.
+  - **Still open:** why the pre-scores split into two groups (~0.26–0.34 vs 0.52–0.77): different schools/topics/tests would confound the
+    trend. Ask Roxas. Also decide which option(s) go in the paper (current lean: Option 1 as Fig. 6, plus Option 2 kept for now).
 - [ ] Add t₉₅ alongside t_max in the summary analysis and figures (mechanism finding 3).
 - [ ] Decide which exploration figures go into the paper or supplement: seed density (a)+(d) for R1 §10; fast/slow class split for §3.2.
 - [ ] Text rewrites driven by v2:
