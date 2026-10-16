@@ -33,6 +33,10 @@ const COLORS = ColorSchemes.seaborn_colorblind.colors
 const λ₀ = 0.5
 const W = 0.5 #* expected fast share (λ classes are Bernoulli(½))
 
+#* Paper copy of a figure: legends removed (and the empty legend row/column trimmed). The legend
+#* version is kept for reference; series are identified in the caption or by annotation.
+strip_legends!(fig) = (foreach(delete!, filter(c -> c isa Legend, copy(fig.content))); trim!(fig.layout); fig)
+
 #* Exact unlearned fraction and per-step gain at (real) time t
 exact_u(t, ρ₀, δλ, s₀) = (1 - s₀) * (W * (1 - ρ₀ * (λ₀ + δλ))^t + (1 - W) * (1 - ρ₀ * (λ₀ - δλ))^t)
 exact_gain(t, ρ₀, δλ, s₀) = 1 - exact_u(t + 1, ρ₀, δλ, s₀) / exact_u(t, ρ₀, δλ, s₀)
@@ -101,27 +105,27 @@ function exact_gain_at(f, ρ₀, δλ, s₀)
     return exact_gain((lo + hi) / 2, ρ₀, δλ, s₀)
 end
 
-function ti_gain_figure(summary; L = 128, Ρs = [0.1, 0.5, 0.9], δλs = [0.0, 0.2, 0.4, 0.49])
+function ti_gain_figure(summary; L = 128, Ρs = [0.1, 0.5, 0.9], δλs = [0.0, 0.2, 0.4, 0.49], title = true)
     s₀ = 4 / L^2
     fig = Figure(size = (2200, 900))
     markers = (:circle, :rect, :utriangle)
     for (j, δλ) in enumerate(δλs)
         ax = Axis(fig[1, j]; title = "δλ = $(δλ)", titlesize = 26, ylabel = j == 1 ? "Per-step gain / ρ₀λ₀" : "",
             xticklabelsize = 20, yticklabelsize = 20, ylabelsize = 24, limits = (0, 1, 0, 1.12))
-        axr = Axis(fig[2, j]; xlabel = "Learned fraction f(t)", ylabel = j == 1 ? "(simulation − exact) / ρ₀λ₀" : "",
+        axr = Axis(fig[2, j]; xlabel = "Fraction of learned f(t)", ylabel = j == 1 ? "(simulation − exact) / ρ₀λ₀" : "",
             xticklabelsize = 20, yticklabelsize = 20, xlabelsize = 24, ylabelsize = 22, limits = (0, 1, -0.06, 0.06))
         hidexdecorations!(ax; grid = false, ticks = false)
         hlines!(axr, [0]; color = (:black, 0.4))
         for (i, ρ₀) in enumerate(Ρs)
             norm = ρ₀ * λ₀
             ef, eg = exact_curve(ρ₀, δλ, s₀)
-            lines!(ax, ef, eg ./ norm; color = COLORS[i], linewidth = 3, label = "Exact (R3), ρ₀ = $(ρ₀)")
+            lines!(ax, ef, eg ./ norm; color = COLORS[i], linewidth = 3, label = "Exact, ρ₀ = $(ρ₀)")
             a0 = summary[(summary.regime .== "TI") .& (summary.L .== L) .& isapprox.(summary.ρ₀, ρ₀) .& isapprox.(summary.δλ, δλ), :a0_mean][1]
             hlines!(ax, [a0 / norm]; color = COLORS[i], linestyle = :dash, linewidth = 2.5, label = "Fitted constant a₀ (Eq. 6), ρ₀ = $(ρ₀)")
             sf, sg, n = simulated_gain(L, ρ₀, δλ)
             ok = n .>= 20
             scatter!(ax, sf[ok], sg[ok] ./ norm; color = (COLORS[i], 0.7), marker = markers[i], markersize = 12,
-                label = "Simulation (20 runs), ρ₀ = $(ρ₀)")
+                label = "Simulation, ρ₀ = $(ρ₀)")
             scatter!(axr, sf[ok], (sg[ok] .- exact_gain_at.(sf[ok], ρ₀, δλ, s₀)) ./ norm; color = (COLORS[i], 0.7),
                 marker = markers[i], markersize = 12)
         end
@@ -129,7 +133,8 @@ function ti_gain_figure(summary; L = 128, Ρs = [0.1, 0.5, 0.9], δλs = [0.0, 0
     end
     Legend(fig[1:2, length(δλs)+1], leg_ax; merge = true, labelsize = 18, framevisible = false)
     rowsize!(fig.layout, 2, Relative(0.3))
-    Label(fig[0, 1:length(δλs)], "TI per-step gain vs R3's exact broadcast result (L = $L, λ₀ = 0.5)"; fontsize = 28)
+    title && Label(fig[0, 1:length(δλs)], "TI per-step gain vs the exact broadcast result
+L = $L, λ = 0.5 ± δλ, 4 initial seeds (inner corner)"; fontsize = 28)
     return fig
 end
 
@@ -147,4 +152,5 @@ begin
             for g in groupby(drift, [:ρ₀, :δλ])))
     mkpath("$(dir)/plots/return-map")
     save("$(dir)/plots/return-map/ti-gain-vs-exact.png", ti_gain_figure(summary); px_per_unit = 2)
+    save("$(dir)/plots/clean/ti-gain-vs-exact-clean.png", strip_legends!(ti_gain_figure(summary; title = false)); px_per_unit = 2)
 end

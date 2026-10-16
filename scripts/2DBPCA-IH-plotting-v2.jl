@@ -2,7 +2,8 @@
 #=
 2DBPCA-IH v2: paper figures regenerated from the v2 sweep.
   * Fig. 3 — learned-fraction time series (figure3_learned_t below)
-  * Fig. 5 — t_max surfaces over (ρ₀, δλ) for TI vs PI inner corner, L = 32 and 128 (figure5)
+  * Fig. 5 — t_max surfaces over (ρ₀, δλ) for TI vs PI inner corner, L = 32 and 128 (figure5);
+    the same with t₉₅, and t₉₅ vs t_max line plots incl. δλ = 0.45/0.49 (figure_t95_vs_tmax)
 
 Same four panels and visual encoding as the v1 figure (2DBPCA-IH-trad-PI-comparison.jl):
   (a) lattice side L      — TI vs PI inner corner, ρ₀=0.5, δλ=0.2, L ∈ {32, 64, 128}
@@ -25,6 +26,7 @@ begin
     include("2DBPCA-IH-common-v2.jl")
     using CairoMakie, ColorSchemes, Statistics
     import GLMakie #* only for the 3D surfaces (needs real depth sorting)
+    const FileIO = CairoMakie.Makie.FileIO #* stacking the two Fig. 5 rows (FileIO via Makie)
     CairoMakie.activate!() #* importing GLMakie makes it the active backend; keep CairoMakie as default
 end
 
@@ -38,6 +40,10 @@ const L_WIDTH = Dict(32 => 1.5, 48 => 3.0, 64 => 4.5, 96 => 6.0, 128 => 7.5)
 const δλ_STYLE = Dict(0.0 => :dash, 0.2 => :dashdot, 0.4 => (:dashdotdot, :dense), 0.45 => :dashdotdot,
     0.49 => (:dashdotdot, :loose))
 ρ_alpha(ρ₀) = 0.5 + 0.5 * (ρ₀ - 0.1) / 0.9
+
+#* Paper copy of a figure: legends removed (and the empty legend row/column trimmed). The legend
+#* version is kept for reference; series are identified in the caption or by annotation.
+strip_legends!(fig) = (foreach(delete!, filter(c -> c isa Legend, copy(fig.content))); trim!(fig.layout); fig)
 
 #* Mean and SD of f(t) over trials, t = 0..t_end (runs padded with their final value).
 function mean_curve(regime, SA, L, ρ₀, δλ; n_learned = 4, λ₀ = 0.5)
@@ -99,7 +105,7 @@ function figure3()
     label!(ax, "L = 64", 2^4.3, 0.55, "inner_corner")
     label!(ax, "L = 128", 2^5.55, 0.80, "inner_corner")
     #* (b) seating arrangement
-    ax = panel_axis(fig[2, 1]; xlabel = "Iteration number", letter = "(b)")
+    ax = panel_axis(fig[2, 1]; xlabel = "Iteration number t + 1", letter = "(b)")
     μ, σ = mean_curve("TI", "inner_corner", 64, 0.5, 0.2)
     draw_series!(ax, μ, σ; regime = "TI", SA = "inner_corner", L = 64, ρ₀ = 0.5, δλ = 0.2, label = "")
     for SA in ("inner_corner", "center", "outer_corner", "random")
@@ -124,7 +130,7 @@ function figure3()
     label!(ax, "ρ = 0.5", 2^4.55, 0.44, "inner_corner"; ρ₀ = 0.5)
     label!(ax, "ρ = 0.1", 2^6.25, 0.66, "inner_corner"; ρ₀ = 0.1)
     #* (d) heterogeneity
-    ax = panel_axis(fig[2, 2]; xlabel = "Iteration number", letter = "(d)")
+    ax = panel_axis(fig[2, 2]; xlabel = "Iteration number t + 1", letter = "(d)")
     for δλ in (0.0, 0.2, 0.4, 0.45, 0.49), regime in ("TI", "PI")
         μ, σ = mean_curve(regime, "inner_corner", 64, 0.5, δλ)
         draw_series!(ax, μ, σ; regime, SA = "inner_corner", L = 64, ρ₀ = 0.5, δλ, label = "")
@@ -135,7 +141,7 @@ function figure3()
     label!(ax, "δλ = 0.49", 2^8.6, 0.78, "TI")
     label!(ax, "δλ = 0.0, 0.2\n0.4, 0.45", 2^1.25, 0.18, "inner_corner")
     label!(ax, "δλ = 0.49", 2^5.9, 0.52, "inner_corner")
-    Label(fig[:, 0], "Fraction of learned"; fontsize = 32, rotation = π / 2, tellheight = false)
+    Label(fig[:, 0], "Fraction of learned f(t)"; fontsize = 32, rotation = π / 2, tellheight = false)
     return fig
 end
 
@@ -143,7 +149,7 @@ end
 function figure_v1_vs_v2()
     fig = Figure(size = (1600, 650))
     for (j, regime) in enumerate(("PI", "TI"))
-        ax = panel_axis(fig[1, j]; xlabel = "Iteration number", ylabel = j == 1 ? "Fraction learned" : "",
+        ax = panel_axis(fig[1, j]; xlabel = "Iteration number t + 1", ylabel = j == 1 ? "Fraction of learned f(t)" : "",
             letter = regime == "PI" ? "PI (inner corner)" : "TI")
         for (k, δλ) in enumerate((0.0, 0.4, 0.45, 0.49))
             c = Makie.wong_colors()[k]
@@ -170,17 +176,18 @@ end
 #* Fig. 5: mean t_max over (ρ₀, δλ) for TI (blue) and PI inner corner (orange), L = 32 and 128.
 #* δλ ≤ 0.4 as in the published figure (pass δλs to include 0.45/0.49). Rendered with GLMakie
 #* because the two surfaces intersect and CairoMakie does not depth-sort between plots.
-function figure5(; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0.1:1.0); digits = 1))
+function figure5(; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0.1:1.0); digits = 1), stat = :t_max,
+        zlabel = "Time to learn tₘₐₓ", letters = ("(a)", "(b)"), legend = true, what = "")
     GLMakie.activate!(; scalefactor = 1) #* ignore OS display scaling so the layout matches the requested size
     sm = CSV.read(SUMMARY_PATH, DataFrame)
     sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner"), :]
-    g = combine(groupby(sm, [:regime, :L, :ρ₀, :δλ]), :t_max => mean => :t)
+    g = combine(groupby(sm, [:regime, :L, :ρ₀, :δλ]), stat => mean => :t)
     tgrid(regime, L) = [only(g[(g.regime .== regime) .& (g.L .== L) .& isapprox.(g.ρ₀, ρ) .& isapprox.(g.δλ, δ), :t])
         for ρ in Ρs, δ in δλs]
 
     fig = Figure(size = (1900, 950), figure_padding = (20, 20, 20, 20))
-    for (j, (L, letter)) in enumerate(((32, "(a)"), (128, "(b)")))
-        ax = Axis3(fig[1, j]; xlabel = "Transmission ρ₀", ylabel = "Heterogeneity δλ", zlabel = "Time to learn tₘₐₓ",
+    for (j, (L, letter)) in enumerate(zip((32, 128), letters))
+        ax = Axis3(fig[1, j]; xlabel = "Transmission ρ₀", ylabel = "Heterogeneity δλ", zlabel,
             aspect = (1, 1, 1), azimuth = 1.275π, viewmode = :fit, xlabelsize = 30, ylabelsize = 30, zlabelsize = 30,
             xticklabelsize = 22, yticklabelsize = 22, zticklabelsize = 22, xlabeloffset = 55, ylabeloffset = 55,
             zlabeloffset = 70)
@@ -188,13 +195,36 @@ function figure5(; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0
             surface!(ax, Ρs, δλs, tgrid(regime, L); color = fill(COLORS[SA_COLOR[regime == "TI" ? "TI" : "inner_corner"]], length(Ρs), length(δλs)),
                 shading = MultiLightShading)
         end
-        Label(fig[1, j, Top()], "$letter L = $L"; fontsize = 40, halign = :left, padding = (40, 0, 0, 0))
+        Label(fig[1, j, Top()], "$letter L = $L" * (isempty(what) ? "" : ", $what"); fontsize = 40, halign = :left,
+            padding = (40, 0, 0, 0))
     end
-    Legend(fig[1, 1], [PolyElement(color = COLORS[1]), PolyElement(color = COLORS[2])],
+    legend && Legend(fig[1, 1], [PolyElement(color = COLORS[1]), PolyElement(color = COLORS[2])],
         [rich("Traditional"; color = COLORS[1], font = :bold), rich("Peer"; color = COLORS[2], font = :bold)];
         tellwidth = false, tellheight = false, halign = :right, valign = :top, margin = (0, 40, 0, 60),
         labelsize = 34, patchsize = (55, 55), rowgap = 30, framevisible = false)
     return fig
+end
+
+#* Fig. 5 extended (revision): t_max row above a t₉₅ row. A single 2×2 GLMakie figure is taller than the
+#* screen and renders squashed, so the two rows are rendered separately and stacked.
+#* With legend = true, a horizontal legend strip is stacked above the panels (inside panel (a) it overlapped
+#* the axes); with legend = false, the result is the clean copy for labeling in PowerPoint.
+function save_figure5_with_t95(path; legend = true)
+    top = figure5(; what = "last agent learned", legend = false)
+    bottom = figure5(; stat = :t_95, zlabel = "Time to 95% learned t₉₅", letters = ("(c)", "(d)"), legend = false,
+        what = "95% of agents learned")
+    figs = Any[top, bottom]
+    if legend
+        strip = Figure(size = (1900, 90))
+        Legend(strip[1, 1], [PolyElement(color = COLORS[1]), PolyElement(color = COLORS[2])],
+            [rich("Traditional"; color = COLORS[1], font = :bold), rich("Peer"; color = COLORS[2], font = :bold)];
+            orientation = :horizontal, labelsize = 34, patchsize = (55, 55), colgap = 60, framevisible = false)
+        pushfirst!(figs, strip)
+    end
+    tmp = [tempname() * ".png" for _ in figs]
+    foreach(((f, t),) -> GLMakie.save(t, f; px_per_unit = 2), zip(figs, tmp))
+    FileIO.save(path, reduce(vcat, FileIO.load.(tmp)))
+    foreach(rm, tmp)
 end
 
 #* ---------------------------------------------------------------------------
@@ -211,9 +241,9 @@ function figure3_clean()
         yticks = 0:0.5:1)
     letter!(ax, s) = text!(ax, 0.02, 0.98; text = s, align = (:left, :top), space = :relative, fontsize = 40)
     axa = Axis(fig[1, 1]; ax_kw..., xticksvisible = false, xticklabelsvisible = false)
-    axb = Axis(fig[2, 1]; ax_kw..., xlabel = "Iteration number")
+    axb = Axis(fig[2, 1]; ax_kw..., xlabel = "Iteration number t + 1")
     axc = Axis(fig[1, 2]; ax_kw..., xticksvisible = false, xticklabelsvisible = false)
-    axd = Axis(fig[2, 2]; ax_kw..., xlabel = "Iteration number")
+    axd = Axis(fig[2, 2]; ax_kw..., xlabel = "Iteration number t + 1")
     for L in (32, 64, 128), regime in ("TI", "PI")
         μ, σ = mean_curve(regime, "inner_corner", L, 0.5, 0.2)
         draw_series!(axa, μ, σ; regime, SA = "inner_corner", L, ρ₀ = 0.5, δλ = 0.2, label = "")
@@ -235,20 +265,21 @@ function figure3_clean()
     foreach(((ax, s),) -> letter!(ax, s), zip((axa, axb, axc, axd), ("(a)", "(b)", "(c)", "(d)")))
     linkxaxes!(axa, axb)
     linkxaxes!(axc, axd)
-    Label(fig[:, 0], "Fraction of learned"; fontsize = 40, rotation = π / 2, tellheight = false)
+    Label(fig[:, 0], "Fraction of learned f(t)"; fontsize = 40, rotation = π / 2, tellheight = false)
     return fig
 end
 
 #* One Fig. 5 panel as v1's {L}_truncated.png: 1000×800 at 2.5 px/unit, same Axis3 settings,
 #* no title or legend. GLMakie (depth sorting); call with GLMakie active.
-function figure5_panel(L; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0.1:1.0); digits = 1))
+function figure5_panel(L; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0.1:1.0); digits = 1), stat = :t_max,
+        zlabel = "Time to learn tₘₐₓ")
     sm = CSV.read(SUMMARY_PATH, DataFrame)
     sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner") .& (sm.L .== L), :]
-    g = combine(groupby(sm, [:regime, :ρ₀, :δλ]), :t_max => mean => :t)
+    g = combine(groupby(sm, [:regime, :ρ₀, :δλ]), stat => mean => :t)
     tgrid(regime) = [only(g[(g.regime .== regime) .& isapprox.(g.ρ₀, ρ) .& isapprox.(g.δλ, δ), :t]) for ρ in Ρs, δ in δλs]
     t_top = maximum(maximum(tgrid(r)) for r in ("TI", "PI"))
     fig = Figure(size = (1000, 800))
-    ax = Axis3(fig[1, 1]; xlabel = "Transmission ρ₀", ylabel = "Heterogeneity δλ", zlabel = "Time to learn tₘₐₓ",
+    ax = Axis3(fig[1, 1]; xlabel = "Transmission ρ₀", ylabel = "Heterogeneity δλ", zlabel,
         aspect = (1, 1, 1), zticks = 0:(t_top > 1000 ? 200 : 100):t_top, xlabelsize = 32, ylabelsize = 32,
         zlabelsize = 32, xlabeloffset = 60, ylabeloffset = 60, zlabeloffset = 80, xticklabelsize = 28,
         yticklabelsize = 28, zticklabelsize = 28, viewmode = :fit, azimuth = 1.275π)
@@ -267,8 +298,14 @@ function save_clean_figures()
     GLMakie.activate!(; scalefactor = 1)
     for L in (32, 128)
         GLMakie.save("$(dir)/figure5-$(L)-clean.png", figure5_panel(L); px_per_unit = 2.5)
+        GLMakie.save("$(dir)/figure5-t95-$(L)-clean.png",
+            figure5_panel(L; stat = :t_95, zlabel = "Time to 95% learned t₉₅"); px_per_unit = 2.5)
     end
     CairoMakie.activate!()
+    #* exploration / supplementary figures: legend-free copies (same size as the legend versions)
+    save("$(dir)/t95-vs-tmax-clean.png", strip_legends!(figure_t95_vs_tmax(; title = false)); px_per_unit = 2)
+    save("$(dir)/seed-density-comparison-clean.png", strip_legends!(figure_seed_density()); px_per_unit = 2)
+    save("$(dir)/class-split-learning-curves-clean.png", strip_legends!(figure_class_split(; title = false)); px_per_unit = 2)
     println("Clean figures saved to $(dir)")
 end
 
@@ -291,8 +328,8 @@ function figure_seed_density()
 
     fig = Figure(size = (1600, 1250))
     for (j, (ρ, δ)) in enumerate(((0.5, 0.2), (0.1, 0.4)))
-        ax = Axis(fig[1, j]; xscale = log2, yscale = log10, xticks = (Ls, string.(Ls)), xlabel = "Lattice side L",
-            ylabel = j == 1 ? "t_max (mean ± SD, 20 runs)" : "", title = "($('a' + j - 1)) PI t_max vs L, ρ₀ = $ρ, δλ = $δ",
+        ax = Axis(fig[1, j]; xscale = log2, yscale = log10, xticks = (Ls, string.(Ls)), xlabel = "Lattice side length L",
+            ylabel = j == 1 ? "Time to learn tₘₐₓ" : "", title = "($('a' + j - 1)) PI tₘₐₓ vs L, ρ₀ = $ρ, δλ = $δ",
             titlesize = 22, xlabelsize = 22, ylabelsize = 22, xticklabelsize = 18, yticklabelsize = 18)
         for frac in (false, true)
             ts = first.(series("TI", "inner_corner", ρ, δ, frac))
@@ -305,13 +342,13 @@ function figure_seed_density()
             band!(ax, Ls, max.(t .- s, 1), t .+ s; color = (c, 0.12))
             scatterlines!(ax, Ls, t; color = c, linewidth = 3, linestyle = frac ? :dash : :solid, markersize = 10,
                 marker = frac ? :utriangle : :circle,
-                label = "$(SA_LABEL[SA]), $(frac ? "fixed fraction" : "4 seeds") (slope $(round(loglog_slope(t); digits = 2)))")
+                label = "$(SA_LABEL[SA]), $(frac ? "fixed fraction" : "4 seeds") (γ = $(round(loglog_slope(t); digits = 2)))")
         end
         axislegend(ax; position = :lt, labelsize = 13, framevisible = false, backgroundcolor = :transparent, rowgap = 0)
     end
 
     #* (c) learning curves at L = 128
-    ax = Axis(fig[2, 1]; xscale = log2, xlabel = "Iteration number", ylabel = "Fraction learned", yticks = 0:0.5:1,
+    ax = Axis(fig[2, 1]; xscale = log2, xlabel = "Iteration number t + 1", ylabel = "Fraction of learned f(t)", yticks = 0:0.5:1,
         title = "(c) PI learning curves, L = 128, ρ₀ = 0.5, δλ = 0.2", titlesize = 22, xlabelsize = 22, ylabelsize = 22,
         xticklabelsize = 18, yticklabelsize = 18)
     for SA in SA_ORDER, frac in (false, true)
@@ -324,7 +361,7 @@ function figure_seed_density()
     axislegend(ax; position = :lt, labelsize = 13, framevisible = false, backgroundcolor = :transparent, rowgap = 0)
 
     #* (d) slope with fixed fraction vs slope with 4 seeds, every (ρ₀, δλ)
-    ax = Axis(fig[2, 2]; xlabel = "log–log slope of t_max vs L, 4 seeds", ylabel = "slope, fixed seed fraction",
+    ax = Axis(fig[2, 2]; xlabel = "Slope γ, 4 seeds", ylabel = "Slope γ, fixed seed fraction",
         title = "(d) Size scaling, all ρ₀ × δλ (PI; TI in gray)", titlesize = 22, xlabelsize = 22, ylabelsize = 22,
         xticklabelsize = 18, yticklabelsize = 18, aspect = DataAspect())
     ρs = round.(collect(0.1:0.1:1.0); digits = 1); δs = [0.0, 0.1, 0.2, 0.3, 0.4, 0.45, 0.49]
@@ -346,6 +383,32 @@ end
 #* Classroom evolution: fastest vs slowest run (by t_max) of one parameter set, side by side
 #* ---------------------------------------------------------------------------
 #* Cell categories: 1 unlearned fast, 2 unlearned slow, 3 learned fast, 4 learned slow, 5 seed.
+#* Fig. 4 (paper): lattice snapshots of one TI/PI twin pair (same seeds and λ grid) at fixed times, in the
+#* v1 layout and colors: unlearned, learned slow, learned fast. legend = false gives the clean copy.
+const FIG4_COLORS = [colorant"#d6e6f9", colorant"#2a87f5", colorant"#0a1a33"]
+function figure4_snapshots(; L = 32, ρ₀ = 0.3, δλ = 0.2, ts = (2, 8, 16, 32, 54), trial = 1, labels = true)
+    fig = Figure(size = (1775, 850), figure_padding = (10, 10, 10, 10))
+    for (i, regime) in enumerate(("TI", "PI"))
+        row = (; regime, SA = "inner_corner", L, n_learned = 4, ρ₀, λ₀ = 0.5, δλ)
+        T, cls = read_trial(row, trial)
+        for (j, t) in enumerate(ts)
+            S = [0 <= T[k] <= t ? (cls[k] == 1 ? 3 : 2) : 1 for k in CartesianIndices(T)]
+            ax = Axis(fig[i, j]; aspect = DataAspect(), yreversed = true, title = (labels && i == 1) ? "t = $t" : "",
+                titlesize = 40, titlefont = :regular)
+            hidedecorations!(ax)
+            heatmap!(ax, permutedims(S); colormap = FIG4_COLORS, colorrange = (1, 3))
+        end
+        labels && Label(fig[i, 0], regime == "TI" ? "Traditional" : "Peer"; rotation = π / 2, fontsize = 40, tellheight = false)
+    end
+    if labels
+        Legend(fig[3, 1:5], [PolyElement(color = c, strokecolor = :black, strokewidth = 1) for c in FIG4_COLORS],
+            ["Unlearned", "Learned, slow", "Learned, fast"]; orientation = :horizontal, labelsize = 32, patchsize = (40, 40),
+            colgap = 50, framevisible = false)
+    end
+    colgap!(fig.layout, 8); rowgap!(fig.layout, 8)
+    return fig
+end
+
 const CELL_COLORS = [colorant"#dbe9f6", colorant"#b4b4b4", colorant"#08306b", colorant"#4a90d9", colorant"#e6550d"]
 
 function cell_state(T, cls, t)
@@ -381,7 +444,7 @@ function evolution_figure(regime, SA, L, ρ₀, δλ; n_learned = 4)
     end
     #* Learning curves on a log₂ axis (x = t + 1, as in Fig. 3): whole class (thin), fast learners
     #* (solid), slow learners (dashed), for each run.
-    ax = Axis(fig[2, 1:2]; xscale = log2, xlabel = "Iteration number (t + 1)", ylabel = "Fraction learned", yticks = 0:0.5:1,
+    ax = Axis(fig[2, 1:2]; xscale = log2, xlabel = "Iteration number t + 1", ylabel = "Fraction of learned f(t)", yticks = 0:0.5:1,
         xlabelsize = 20, ylabelsize = 20)
     x = 1:(t_end + 1)
     for (T, c, col, name) in ((Tb, cb, COLORS[3], "fastest"), (Tw, cw, COLORS[4], "slowest"))
@@ -436,11 +499,11 @@ function mean_class_curve(regime, SA, L, ρ₀, δλ, class; n_learned = 4, λ�
     return vec(mean(reduce(hcat, [learned_fraction_by_class(T, c, class, t_end) for (T, c) in runs]); dims = 2))
 end
 
-function figure_class_split(; SA = "inner_corner", L = 64, Ρs = (0.5, 0.1), δλs = (0.2, 0.4, 0.49))
+function figure_class_split(; SA = "inner_corner", L = 128, Ρs = (0.5, 0.1), δλs = (0.2, 0.4, 0.49), title = true)
     fig = Figure(size = (1800, 1000))
     for (i, ρ₀) in enumerate(Ρs), (j, δλ) in enumerate(δλs)
         ax = Axis(fig[i, j]; xscale = log2, yticks = 0:0.5:1, title = "ρ₀ = $ρ₀, δλ = $δλ", titlesize = 22,
-            xlabel = i == length(Ρs) ? "Iteration number" : "", ylabel = j == 1 ? "Fraction learned" : "",
+            xlabel = i == length(Ρs) ? "Iteration number t + 1" : "", ylabel = j == 1 ? "Fraction of learned f(t)" : "",
             xlabelsize = 20, ylabelsize = 20, xticklabelsize = 16, yticklabelsize = 16)
         for regime in ("TI", "PI")
             col = COLORS[SA_COLOR[regime == "TI" ? "TI" : SA]]
@@ -453,8 +516,52 @@ function figure_class_split(; SA = "inner_corner", L = 64, Ρs = (0.5, 0.1), δ�
         end
         axislegend(ax; position = :lt, framevisible = false, labelsize = 13, rowgap = 0)
     end
-    Label(fig[0, :], "Fast vs slow learners: mean of $(N_TRIALS) runs, PI = $(SA_LABEL[SA]), L = $L"; fontsize = 24)
+    title && Label(fig[0, :], "Fast vs slow learners: mean of $(N_TRIALS) runs, PI = $(SA_LABEL[SA]), L = $L"; fontsize = 24)
     return fig
+end
+
+#* ---------------------------------------------------------------------------
+#* t₉₅ alongside t_max (mechanism finding 3). t_max is the time of the last learner, so at high δλ it
+#* is a straggler statistic (the slowest of ~N/2 slow learners); t₉₅ is the time to 95% learned.
+#* ---------------------------------------------------------------------------
+
+#* Mean ± SD of t_max (solid) and t₉₅ (dashed) vs δλ, TI vs PI inner corner, 4 seeds, all δλ incl. 0.45/0.49.
+function figure_t95_vs_tmax(; Ls = (32, 128), Ρs = (0.1, 0.5, 0.9), title = true)
+    sm = CSV.read(SUMMARY_PATH, DataFrame)
+    sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner"), :]
+    g = combine(groupby(sm, [:regime, :L, :ρ₀, :δλ]), :t_max => mean => :tmax, :t_max => std => :tmax_sd,
+        :t_95 => mean => :t95, :t_95 => std => :t95_sd)
+    δλs = sort(unique(g.δλ))
+    fig = Figure(size = (1500, 1500))
+    for (i, ρ₀) in enumerate(Ρs), (j, L) in enumerate(Ls)
+        ax = Axis(fig[i, j]; yscale = log10, xticks = δλs, xticklabelrotation = π / 4,
+            title = "($('a' + 2(i - 1) + j - 1)) L = $L, ρ₀ = $ρ₀", titlesize = 22,
+            xlabel = i == length(Ρs) ? "Heterogeneity δλ  (λ = 0.5 ± δλ)" : "", ylabel = j == 1 ? "Steps" : "",
+            xlabelsize = 22, ylabelsize = 22, xticklabelsize = 16, yticklabelsize = 17)
+        for regime in ("TI", "PI")
+            r = sort(g[(g.regime .== regime) .& (g.L .== L) .& isapprox.(g.ρ₀, ρ₀), :], :δλ)
+            c = COLORS[SA_COLOR[regime == "TI" ? "TI" : "inner_corner"]]
+            name = regime == "TI" ? "Traditional" : "Peer (inner corner)"
+            for (col, sd, ls, mk, lab) in ((:tmax, :tmax_sd, :solid, :circle, "tₘₐₓ (last learner)"),
+                    (:t95, :t95_sd, :dash, :utriangle, "t₉₅ (95% learned)"))
+                band!(ax, r.δλ, max.(r[!, col] .- r[!, sd], 1), r[!, col] .+ r[!, sd]; color = (c, 0.15))
+                scatterlines!(ax, r.δλ, r[!, col]; color = c, linestyle = ls, marker = mk, markersize = 10,
+                    linewidth = 2.5, label = "$name, $lab")
+            end
+        end
+        i == 1 && j == 1 && axislegend(ax; position = :lt, labelsize = 15, framevisible = false, rowgap = 0)
+    end
+    title && Label(fig[0, :], "Time to learn: last learner (tₘₐₓ) vs 95% of the class (t₉₅)
+TI vs PI, inner-corner seating, 4 initial seeds, λ₀ = 0.5"; fontsize = 26)
+    return fig
+end
+
+#* Ratio t_max / t₉₅ over every (L, ρ₀, δλ) — how much of t_max is the straggler tail
+function t95_ratio_table()
+    sm = CSV.read(SUMMARY_PATH, DataFrame)
+    sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner"), :]
+    g = combine(groupby(sm, [:regime, :L, :δλ]), [:t_max, :t_95] => ((a, b) -> mean(a ./ b)) => :tmax_over_t95)
+    return unstack(g, [:regime, :L], :δλ, :tmax_over_t95)
 end
 
 #! Main
@@ -469,6 +576,11 @@ begin
     save("$(PLOT_DIR)/learned-t-v1-vs-v2.png", figc; px_per_unit = 2)
     fig5 = figure5()
     GLMakie.save("$(OUTPUT_DIR)/analysis/plots/figure5-tmax-surface-v2.png", fig5; px_per_unit = 2)
+    fig5b = figure5(; stat = :t_95, zlabel = "Time to 95% learned t₉₅")
+    GLMakie.save("$(OUTPUT_DIR)/analysis/plots/figure5-t95-surface-v2.png", fig5b; px_per_unit = 2)
+    CairoMakie.activate!()
+    save("$(OUTPUT_DIR)/analysis/plots/t95-vs-tmax.png", figure_t95_vs_tmax(); px_per_unit = 2)
+    show(t95_ratio_table(); allrows = true); println()
     CairoMakie.activate!()
     println("Saved to $(PLOT_DIR)")
 end

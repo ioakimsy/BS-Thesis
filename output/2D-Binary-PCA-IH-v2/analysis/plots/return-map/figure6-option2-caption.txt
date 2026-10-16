@@ -7,9 +7,12 @@ sit at the mean gain, so TI's R² is 0 by construction).
 
 Fitted shapes (amplitude fitted; only the shape is compared):
   TI: constant gain: R² = 0.0 without class 9 (0.0 with it)
-  PI: g ∝ a₀ − a₂f (L = 32, ρ₀ = 0.9, λ = 0.5 ± 0.0): R² = 0.43 without class 9 (0.05 with it)
+  PI: g ∝ a₀ − a₂f (L = 32, ρ₀ = 0.1, λ = 0.5 ± 0.4): R² = 0.42 without class 9 (0.05 with it)
   PI: g ∝ a₀ − a₂f (L = 128, ρ₀ = 0.1, λ = 0.5 ± 0.4): R² = 0.45 without class 9 (0.05 with it)
+  PI: g ∝ a₀ − a₂f (L = 32, ρ₀ = 0.9, λ = 0.5 ± 0.0): R² = 0.43 without class 9 (0.05 with it)
+  PI: g ∝ a₀ − a₂f (L = 128, ρ₀ = 0.9, λ = 0.5 ± 0.0): R² = 0.45 without class 9 (0.05 with it)
 Correlation between pre-score and gain: r = 0.8 without class 9, 0.25 with it.
+Class-level free quadratic (panel a, class 9 excluded): a₂ = -0.666 ± 0.336.
 
 Class 9 as an outlier:
   Hake gain -0.329; the other 13 classes range -0.014 to 0.26.

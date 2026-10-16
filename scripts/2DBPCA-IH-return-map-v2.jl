@@ -45,6 +45,10 @@ pi_model(f, p) = f .+ (1 .- f) .* (p[1] .- p[2] .* f)
 
 r_squared(y, ŷ) = 1 - sum((y .- ŷ) .^ 2) / sum((y .- mean(y)) .^ 2)
 
+#* Paper copy of a figure: legends removed (and the empty legend row/column trimmed). The legend
+#* version is kept for reference; series are identified in the caption or by annotation.
+strip_legends!(fig) = (foreach(delete!, filter(c -> c isa Legend, copy(fig.content))); trim!(fig.layout); fig)
+
 #* (f_{t-1}, f_t) pairs from one learning-time grid
 function return_map_pairs(T)
     f = learned_fraction(T)
@@ -141,7 +145,7 @@ function return_map_panel!(ax, L, ρ₀, δλ, summary, emp, emp_p)
     lines!(ax, fs, empirical_model(fs, emp_p); color = COLORS[5], linestyle = :dash, linewidth = 3)
 end
 
-v1_axis(pos; kw...) = Axis(pos; xlabel = L"f(t-1)", ylabel = L"f(t)", xlabelsize = 32, ylabelsize = 32,
+v1_axis(pos; kw...) = Axis(pos; xlabel = "Fraction of learned f(t − 1)", ylabel = "Fraction of learned f(t)", xlabelsize = 32, ylabelsize = 32,
     xticklabelsize = 28, yticklabelsize = 28, kw...)
 
 #* Option 1: Fig. 6 with the student-level empirical cloud (as published), now 2×2: rows are the
@@ -152,7 +156,7 @@ function figure6_option1(summary, emp, emp_p)
     for (i, (case, ρ₀, δλ)) in enumerate(FIG6_ROWS), (j, L) in enumerate(FIG6_LS)
         k = 2(i - 1) + j
         ax = v1_axis(fig[i, j]; title = "($(letters[k])) $case: L = $L, ρ₀ = $ρ₀, λ = 0.5 ± $δλ", titlesize = 28,
-            xlabel = i == 2 ? L"f(t-1)" : "", xticklabelsvisible = i == 2)
+            xlabel = i == 2 ? "Fraction of learned f(t − 1)" : "", xticklabelsvisible = i == 2)
         return_map_panel!(ax, L, ρ₀, δλ, summary, emp, emp_p)
     end
     Legend(fig[3, :], [MarkerElement(color = COLORS[1], marker = :circle, markersize = 16),
@@ -214,6 +218,13 @@ function figure6_option2(summary, emp)
     lines!(ax, fs, nitta(fs); color = COLORS[3], linewidth = 3, label = "Nitta: g(f) = f")
     scatter!(ax, pre[keep], post[keep]; color = COLORS[5], marker_kw..., label = "Class mean (Roxas): 14 classes, 64 students each")
     scatter!(ax, pre[[out]], post[[out]]; open_kw..., marker_kw..., label = "Class $(out): $(n_dec[out]) of its 64 students scored lower")
+    #* free quadratic over the class means (class 9 excluded), drawn over the data range only;
+    #* its f² coefficient a₂ is the class-level analogue of the published student-level fit
+    qfit = curve_fit(empirical_model, pre[keep], post[keep], [0.0, 1.0, 0.0])
+    a2c, a2c_se = qfit.param[1], stderror(qfit)[1]
+    fq = range(minimum(pre[keep]), maximum(pre[keep]); length = 100)
+    lines!(ax, fq, empirical_model(fq, qfit.param); color = COLORS[5], linestyle = :dash, linewidth = 3,
+        label = "Quadratic fit, 13 classes: a₂ = $(round(a2c; digits = 2)) ± $(round(a2c_se; digits = 2))")
     axislegend(ax; position = :lt, labelsize = 20, framevisible = false)
 
     ax = v1_axis(fig[1, 2]; xlabel = "Class mean, first assessment", ylabel = "Class Hake gain g",
@@ -223,7 +234,8 @@ function figure6_option2(summary, emp)
     scatter!(ax, pre[[out]], g[[out]]; open_kw..., marker_kw..., label = "Class $(out): outlier, excluded from fits")
     r2(y, ŷ) = 1 - sum((y .- ŷ) .^ 2) / sum((y .- mean(y)) .^ 2)
     shapes = Any[("TI: constant gain", f -> one(f), COLORS[1], :solid)]
-    for (L, ρ₀, δλ, ls) in ((32, 0.9, 0.0, :dash), (128, 0.1, 0.4, :dot))
+    #* all four Fig. 6 cases (unfavorable/favorable × L = 32/128); the shapes nearly coincide because a₀ ≪ |a₂|
+    for ((L, ρ₀, δλ), ls) in zip(FIG6_CASES, (:dash, :dot, :dashdot, (:dot, :loose)))
         a0, a2 = mean_coefs(summary, "PI", L, ρ₀, δλ)
         push!(shapes, ("PI: g ∝ a₀ − a₂f (L = $L, ρ₀ = $ρ₀, λ = 0.5 ± $δλ)", f -> a0 - a2 * f, COLORS[2], ls))
     end
@@ -249,6 +261,7 @@ function figure6_option2(summary, emp)
     Fitted shapes (amplitude fitted; only the shape is compared):
     $(join(r2_lines, "\n"))
     Correlation between pre-score and gain: r = $(round(cor(pre[keep], g[keep]); digits = 2)) without class $(out), $(round(cor(pre, g); digits = 2)) with it.
+    Class-level free quadratic (panel a, class $(out) excluded): a₂ = $(round(a2c; digits = 3)) ± $(round(a2c_se; digits = 3)).
 
     Class $(out) as an outlier:
       Hake gain $(round(g[out]; digits = 3)); the other 13 classes range $(round(minimum(g[keep]); digits = 3)) to $(round(maximum(g[keep]); digits = 3)).
@@ -268,6 +281,8 @@ function save_return_map_figures(summary)
     save("$(dir)/figure6-option1-student-level.png", figure6_option1(summary, emp, emp_p); px_per_unit = 2)
     fig2, caption = figure6_option2(summary, emp)
     save("$(dir)/figure6-option2-class-level.png", fig2; px_per_unit = 2)
+    save("$(OUTPUT_DIR)/analysis/plots/clean/figure6-option2-class-level-clean.png",
+        strip_legends!(first(figure6_option2(summary, emp))); px_per_unit = 2)
     write("$(dir)/figure6-option2-caption.txt", caption)
     print(caption)
     #* clean panels at the v1 source dimensions (1000×707 at 4 px/unit = 4000×2828)
@@ -278,6 +293,78 @@ function save_return_map_figures(summary)
         save("$(cdir)/figure6-$(L)-$(ρ₀)-0.5-$(δλ)-clean.png", fig; px_per_unit = 4)
     end
     println("Saved return-map figures to $(dir) and clean panels to $(cdir)")
+end
+
+#* ---------------------------------------------------------------------------
+#* Supplementary (reviewers R1, R3, §4): coefficients vs L at fixed (ρ₀, δλ), inner corner, for the
+#* main set (4 seeds) and the seed-density set (fixed initial fraction 4/32², n = round(4L²/32²)).
+#* δλ ≤ 0.4 only: the PI quadratic breaks down at 0.45/0.49.
+#* ---------------------------------------------------------------------------
+const VS_L_LS = [32, 48, 64, 96, 128]
+n_frac(L) = round(Int, 4 * L^2 / 32^2)
+loglog_slope(x, y) = (lx = log.(x); ly = log.(y); cov(lx, ly) / var(lx))
+
+function return_map_vs_L(; Ρs = [0.1, 0.5, 0.9], δλs = [0.0, 0.2, 0.4], λ₀ = 0.5)
+    out = DataFrame()
+    for regime in ("TI", "PI"), seeds in ("4 seeds", "fixed fraction"), L in VS_L_LS, ρ₀ in Ρs, δλ in δλs
+        row = (; regime, SA = "inner_corner", L, n_learned = seeds == "4 seeds" ? 4 : n_frac(L), ρ₀, λ₀, δλ)
+        raw = read_parquet(raw_path(row))
+        coefs = reduce(vcat, permutedims(fit_return_map(regime, return_map_pairs(read_trial(row, tr; raw)[1])...)[1])
+            for tr in 1:N_TRIALS)
+        a2 = regime == "TI" ? fill(NaN, N_TRIALS) : coefs[:, 2]
+        push!(out, (; regime, seeds, L, n_learned = row.n_learned, ρ₀, δλ,
+            a0_mean = mean(coefs[:, 1]), a0_se = std(coefs[:, 1]) / sqrt(N_TRIALS),
+            a2_mean = mean(a2), a2_se = std(a2) / sqrt(N_TRIALS)))
+    end
+    return out
+end
+
+#* Rows = δλ; columns = PI a₀, PI −a₂ (log–log), TI a₀/ρ₀λ₀. Color = ρ₀; solid = 4 seeds, dashed = fixed fraction.
+#* Error bars are ±SE over the 20 per-run fits (mostly smaller than the markers). Returns (fig, slopes).
+function figure_coefs_vs_L(vsL; λ₀ = 0.5, title = true)
+    Ρs = sort(unique(vsL.ρ₀)); δλs = sort(unique(vsL.δλ))
+    sel(regime, seeds, ρ₀, δλ) = sort(vsL[(vsL.regime .== regime) .& (vsL.seeds .== seeds) .& isapprox.(vsL.ρ₀, ρ₀) .&
+        isapprox.(vsL.δλ, δλ), :], :L)
+    slopes = DataFrame()
+    fig = Figure(size = (1700, 1500))
+    cols = (("PI: a₀", r -> r.a0_mean, r -> r.a0_se, true), ("PI: −a₂", r -> -r.a2_mean, r -> r.a2_se, true),
+        ("TI: a₀ / ρ₀λ₀", r -> r.a0_mean ./ (r.ρ₀ .* λ₀), r -> r.a0_se ./ (r.ρ₀ .* λ₀), false))
+    for (i, δλ) in enumerate(δλs), (j, (name, val, err, logy)) in enumerate(cols)
+        ax = Axis(fig[i, j]; xscale = log2, yscale = logy ? log10 : identity, xticks = (VS_L_LS, string.(VS_L_LS)),
+            title = "$name,  δλ = $δλ", titlesize = 22, xlabel = i == length(δλs) ? "Lattice side length L" : "",
+            xlabelsize = 22, xticklabelsize = 17, yticklabelsize = 17)
+        logy || ylims!(ax, 0.4, 1.1)
+        for (k, ρ₀) in enumerate(Ρs), seeds in ("4 seeds", "fixed fraction")
+            r = sel(j == 3 ? "TI" : "PI", seeds, ρ₀, δλ)
+            y = val(r); e = err(r)
+            if logy && any(y .<= 0)
+                @warn "non-positive $(name) at ρ₀ = $ρ₀, δλ = $δλ ($seeds); skipped on log axis"
+                continue
+            end
+            s = logy ? loglog_slope(r.L, y) : NaN
+            logy && push!(slopes, (; coefficient = name, seeds, ρ₀, δλ, loglog_slope = s))
+            errorbars!(ax, r.L, y, e; color = COLORS[k], whiskerwidth = 6)
+            scatterlines!(ax, r.L, y; color = COLORS[k], linewidth = 2.5, linestyle = seeds == "4 seeds" ? :solid : :dash,
+                marker = seeds == "4 seeds" ? :circle : :utriangle, markersize = 11,
+                label = "ρ₀ = $ρ₀, $seeds" * (logy ? " (slope $(round(s; digits = 2)))" : ""))
+        end
+        axislegend(ax; position = j == 3 ? :rb : :lb, labelsize = 13, framevisible = false, rowgap = 0)
+    end
+    title && Label(fig[0, :], "Return-map coefficients vs lattice size at fixed ρ₀ and δλ (λ = 0.5 ± δλ)
+Inner-corner seating; 4 seeds (solid) or fixed seed fraction 4/32² (dashed)";
+        fontsize = 26)
+    return fig, slopes
+end
+
+function save_coefs_vs_L()
+    dir = "$(OUTPUT_DIR)/analysis"
+    vsL = return_map_vs_L()
+    CSV.write("$(dir)/return-map-vs-L.csv", vsL)
+    fig, slopes = figure_coefs_vs_L(vsL)
+    CSV.write("$(dir)/return-map-vs-L-slopes.csv", slopes)
+    save("$(dir)/plots/return-map/coefficients-vs-L.png", fig; px_per_unit = 2)
+    save("$(dir)/plots/clean/coefficients-vs-L-clean.png", strip_legends!(figure_coefs_vs_L(vsL; title = false)[1]); px_per_unit = 2)
+    show(slopes; allrows = true); println()
 end
 
 
@@ -292,4 +379,5 @@ begin
     CSV.write("$(dir)/return-map-summary.csv", summary)
     println("Wrote $(nrow(per_trial)) per-trial fits and $(nrow(summary)) summary rows to $(dir)")
     save_return_map_figures(summary)
+    save_coefs_vs_L()
 end
