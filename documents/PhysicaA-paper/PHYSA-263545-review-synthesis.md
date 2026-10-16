@@ -360,7 +360,7 @@ All figures live under `output/2D-Binary-PCA-IH-v2/analysis/plots/`. They are ge
 - [ ] Rewire analysis and plotting to read `run_summary.csv` and the Parquet grids. This includes the per-trial return-map fits (§13), F(t) overlays (§1, §11), and mean ± SD / median + IQR bands.
 - [x] Regenerate Figs. 3 and 5 from v2 data, plus clean copies at v1 dimensions for PowerPoint re-labeling.
 - [ ] Re-label the clean Figs. 3 and 5 in PowerPoint (manual). PI δλ=0.49 in Fig. 3(d) now ends further right; the Fig. 5 z-ranges are taller.
-- [~] Return map (Fig. 6, Table 3): per-trial fits done (`scripts/2DBPCA-IH-return-map-v2.jl` → `analysis/return-map-{per-trial,summary}.csv`; 1,800 fits over L {32,64,128} × ρ₀ {0.1,0.5,0.9} × δλ {0,0.2,0.4,0.45,0.49}, TI + PI inner corner). Report **mean ± SE** in Table 3 with SD alongside; use SD for comparisons with individual empirical classes. Findings: (i) the v1 pooled-fit errors were unreliable in **both** directions: 2–3× too small for some coefficients (correlated points), up to ~20× too large for others (pooled misfit). (ii) TI a₀ is L-independent and equals ρ₀λ₀ at δλ=0. (iii) PI coefficients scale with L (see §4 row). (iv) The PI quadratic breaks down at δλ=0.49 (a₂ → 0 or flips sign; it cannot represent two-stage relaxation), so do not report it there. Fig. 6 regenerated (two options + clean panels, below) and the R3 F(t) comparison done (next item). Still to do: coefficient-vs-L supplementary plot (§4).
+- [x] Return map (Fig. 6, Table 3): per-trial fits done (`scripts/2DBPCA-IH-return-map-v2.jl` → `analysis/return-map-{per-trial,summary}.csv`; 1,800 fits over L {32,64,128} × ρ₀ {0.1,0.5,0.9} × δλ {0,0.2,0.4,0.45,0.49}, TI + PI inner corner). Report **mean ± SE** in Table 3 with SD alongside; use SD for comparisons with individual empirical classes. Findings: (i) the v1 pooled-fit errors were unreliable in **both** directions: 2–3× too small for some coefficients (correlated points), up to ~20× too large for others (pooled misfit). (ii) TI a₀ is L-independent and equals ρ₀λ₀ at δλ=0. (iii) PI coefficients scale with L (see §4 row). (iv) The PI quadratic breaks down at δλ=0.49 (a₂ → 0 or flips sign; it cannot represent two-stage relaxation), so do not report it there. Fig. 6 regenerated (two options + clean panels, below) and the R3 F(t) comparison done (next item). Coefficient-vs-L supplementary plot done (next-but-one item).
 - [x] **R3 §11: TI constant gain vs the exact heterogeneous result** (`scripts/2DBPCA-IH-ti-gain-v2.jl` → `analysis/ti-gain-drift.csv`,
   `plots/return-map/ti-gain-vs-exact.png`). Text + response letter still to write.
   - Exact per-step TI gain: g(t) = 1 − u(t+1)/u(t), with u(t) = (1 − s₀)[w(1−p₊)ᵗ + (1−w)(1−p₋)ᵗ], i.e. the unlearned-pool average of
@@ -404,15 +404,100 @@ All figures live under `output/2D-Binary-PCA-IH-v2/analysis/plots/`. They are ge
     - Caveats: the exclusion is post hoc, and Grubbs assumes normality (the robust z does not).
   - Bootstrap intervals were tried as error bars but removed from the panel (too busy). Without class 9, the low-pre classes' intervals
     include zero and the high-pre classes' are positive but wide, so the trend is largely a low-group vs high-group difference.
-  - **Still open:** why the pre-scores split into two groups (~0.26–0.34 vs 0.52–0.77): different schools/topics/tests would confound the
-    trend. Ask Roxas. Also decide which option(s) go in the paper (current lean: Option 1 as Fig. 6, plus Option 2 kept for now).
-- [ ] Add t₉₅ alongside t_max in the summary analysis and figures (mechanism finding 3).
-- [ ] Decide which exploration figures go into the paper or supplement: seed density (a)+(d) for R1 §10; fast/slow class split for §3.2.
-- [ ] Text rewrites driven by v2:
-  - §3.2 heterogeneity mechanism and the abstract (finding 4).
-  - Seating-arrangement explanation via coverage (finding 1).
-  - "TI unaffected by L" → t₅₀ unchanged, t_max grows ~ln N.
-  - Asymmetry / "safe choice" (absolute vs ratio).
-  - Four-stage → two-rate F(t).
-  - Bands min–max → ±SD.
-- [ ] Optional: fast-fraction percolation check (finding 5).
+  - Pre-scores split into two groups (~0.26–0.34 vs 0.52–0.77); the class-level trend is mostly a between-group difference.
+    **Decided not to chase** (2026-10-16): irrelevant if Fig. 6 uses Option 1; if Option 2 is used, add one caveat sentence. Also decide which option(s) go in the paper (current lean: Option 1 as Fig. 6, plus Option 2 kept for now).
+- [x] **Return-map coefficients vs L at fixed (ρ₀, δλ) (§4, R1/R3 confound)** (`save_coefs_vs_L` in the return-map script →
+  `analysis/return-map-vs-L.csv`, `return-map-vs-L-slopes.csv`, `plots/return-map/coefficients-vs-L.png`).
+  - Inner corner, L ∈ {32, 48, 64, 96, 128}, ρ₀ ∈ {0.1, 0.5, 0.9}, δλ ∈ {0, 0.2, 0.4} (PI quadratic invalid at 0.45/0.49);
+    4 seeds and fixed seed fraction 4/32²; mean ± SE of per-run fits.
+  - PI coefficients fall as power laws in L at every fixed (ρ₀, δλ): −a₂ ~ L^(−0.5…−0.9) (shallower at high δλ / low ρ₀),
+    a₀ ~ L^(−1.5…−2.1). a₀ is the f → 0 intercept with few points there, so −a₂ is the robust one.
+  - **Not seed dilution:** fixed-fraction −a₂ slopes equal the 4-seed ones within 0.01; a₀ slopes slightly steeper.
+    For clustered seating the PI size dependence is genuine (front crosses a distance ~L).
+  - TI a₀/ρ₀λ₀ flat in L (1.0, ~0.92, ~0.56 for δλ = 0, 0.2, 0.4).
+  - Response to §4: the size effect holds at fixed ρ₀ and δλ and under both seed rules; Fig. 6 option 1 shows it directly.
+- [x] **t₉₅ alongside t_max** (mechanism finding 3) (`figure_t95_vs_tmax`, `figure5(; stat = :t_95)`, `t95_ratio_table` in the
+  plotting script → `plots/t95-vs-tmax.png`, `plots/figure5-t95-surface-v2.png`).
+  - Mean t_max/t₉₅: TI 2.4 (L=32) → 3.3 (L=128) at δλ = 0, up to ~4.1 at δλ = 0.4; PI ≈ 1.25 at δλ = 0, 1.5–1.8 at δλ = 0.4.
+  - **Why TI's gap exists even at δλ = 0:** independent geometric learning times. t₉₅ ≈ ln 20 / p (size-independent);
+    t_max ≈ ln N / p (last of N). Ratio ≈ ln N / ln 20 = 2.3 (N=1,024), 3.2 (N=16,384), matching 2.43 / 3.28. Check at
+    ρ₀ = 0.5, L = 128 (p = 0.25): t₉₅ predicted 10.4 vs ~11 simulated; t_max predicted 34–36 vs ~33. Heterogeneity adds to it
+    (last learner is also slow). PI's front sweeps by distance, so no luck-of-the-draw tail. This is also the derivation behind
+    "TI t_max grows ~ln N".
+  - **The TI vs PI winner depends on the metric.** On t₉₅, TI is faster for large classes at low–moderate heterogeneity
+    (L = 128, δλ = 0: ρ₀ = 0.1 TI ~60 vs PI ~165; ρ₀ = 0.5 TI ~11 vs PI ~47; crossover near δλ ≈ 0.4). PI wins on t₉₅ only at
+    high δλ or in small classes; on t_max PI wins over most of the range. The t₉₅ surface at L = 128 is the reverse of Fig. 5.
+  - **Framing (decided 2026-10-16):** in this simplified model TI is good for mass learning (fast t₉₅), PI is good for making sure
+    everyone catches up (short tail, robust to heterogeneity); that complementarity is why a mixed method may be optimal. Write the
+    mixed strategy as a hypothesis these results motivate (future work), not a finding (§2). Report t₉₅ next to t_max.
+  - Uncertainty display: keep mean ± SD bands. A median + IQR version (sample made, not kept) looks nearly identical because the
+    skew is mild; say so in the response to R1 §13 instead of adding a figure.
+- [x] **Legend-free paper copies of every new figure** in `analysis/plots/clean/` (legend versions kept for reference; same pixel
+  size; no figure-wide title; panel titles, letters and axis labels kept): `t95-vs-tmax`, `figure5-t95-{32,128}`,
+  `coefficients-vs-L`, `ti-gain-vs-exact`, `figure6-option2-class-level`, `seed-density-comparison`, `class-split-learning-curves`
+  (each `-clean.png`). Scripts save both automatically (`strip_legends!`, `title = false`).
+  - Label convention: axis labels name the quantity only ("Steps"); statistics (mean ± SD/SE, 20 runs) go in the caption;
+    fixed parameters (seating, seeds, λ = 0.5 ± δλ) on the figure.
+- [x] Decide which figures go into the paper or supplement. Done in `PhysicaA-paper-v2/` (see "Paper v2 status" below).
+- [x] Text rewrites driven by v2. Done for all 15 concerns (see below); the coverage-based seating explanation (finding 1) was not added.
+- [x] ~~Optional: fast-fraction percolation check (finding 5).~~ Dropped. Final wording is "local propagation (dynamics)", not
+  "percolation-like" (§7, decided 2026-10-16).
+
+---
+
+## Paper v2 status (2026-10-16)
+
+The revised manuscript is `documents/PhysicaA-paper-v2/PhysicaA-paper.tex` (copy of v1 folder; v1 left untouched for latexdiff).
+All 15 concerns were edited one at a time with `\add`/`\del` markup, reviewed by the author, then accepted, so **the v2 text carries
+no markup now** (the macros stay in the preamble). Builds with 0 errors. Sent to the adviser for review on 2026-10-16.
+Author's per-concern notes for the response letter: `documents/PhysicaA-paper/reviwer_response.md` (author-written; Claude only
+fact-checks or edits it on request).
+
+### Where each concern is addressed
+
+| # | Main changes in v2 |
+|---|---|
+| 1 | Stopping rule and old Tables 1–2 removed; t_max = time to absorption (all 100,800 runs absorbed, cap 10⁶); δλ = 0.49 staging explained by F(t) (§3.2). |
+| 2 | "Optimal" mixed strategy → hypothesis (§3.2, §3.3, Conclusion, Future work). |
+| 3 | Regression-to-mean/ceiling paragraph; class-level fit (a₂ = −0.67 ± 0.34, class 9 excluded, Grubbs); k-step gain Eq.; reproduced / not reproduced list; Fig. 9 (class level); "validate" → "compare". |
+| 4 | Fig. 7 = 2×2 return map (rows differ only in L); Table 3 rebuilt (per-run fits); Appendix B (coefficients vs L). TI a₀ L-independent; PI \|a₂\| ∝ L^−β. |
+| 5 | Methods: open boundaries, Bernoulli(½) λ, synchronous update, Table 1 seat rules, run grid, seeds; code/data availability placeholders. |
+| 6 | Fig. 1 flowchart updated by the author; caption states Eq. refs, synchronous update, end condition. |
+| 7 | "Percolation" → "local propagation", defined in §3.1; keyword "local propagation dynamics". |
+| 8 | Lattice side length wording; simplified-model statement in Methods; measured asymmetry replaces "safe choice"; t₉₅ (Eq. tmax-t95, Table 2, Fig. 6 bottom row, Appendix A). |
+| 9 | TI/PI twins (same seeds, λ grid, 4 initial agents); update-rule difference is intended; 4 = minimum for symmetric seeding; Fig. 5 snapshots regenerated. |
+| 10 | Fixed-fraction run set (Methods); γ defined (§3.1); Appendix C with Table 5 and Fig. 12. Clustered: Δγ ≈ −0.03; random: −0.62. |
+| 11 | Eq. 8 exact heterogeneous TI gain in §3.4; Fig. 8 (gain vs exact, L = 128) and Table 4 (validity of constant a₀); Fig. 4 fast/slow class split (L = 128) in §3.2. |
+| 12 | PI quadratic = fitted description (§3.4); highlight, conclusion and "analytic gains" wording fixed. |
+| 13 | Text said min–max, plots were already ±SD; Methods now says bands = SD, coefficient uncertainties = SE (captions say which); per-run fitting rationale in §3.4. |
+| 14 | λ₀ removed from abstract/intro claims (fixed at 0.5); "class size N" → "lattice side length L"; varied λ₀ added to future work. |
+| 15 | Gap paragraph in Introduction (see below); 6 new references. |
+
+**Float numbering in v2:** Fig. 1 flowchart, 2 seating arrangements, 3 learning curves, 4 fast/slow split, 5 snapshots,
+6 t_max/t₉₅ surfaces, 7 return map 2×2, 8 TI gain vs exact, 9 class-level empirical, 10 (App. A) t₉₅ vs t_max,
+11 (App. B) coefficients vs L, 12 (App. C) seed density. Tables: 1 seat rules, 2 t_max/t₉₅ ratio, 3 return-map fits,
+4 TI gain validity, 5 seed-density γ.
+
+### Research gap literature check (§15, 2026-10-16)
+
+- **Closest prior work: Ormazábal, Borotto & Astudillo, Physica A 565 (2021) 125563** (suggested referee). Read via the author's
+  thesis PDF (repositorio.udec.cl): per-agent attention parameter (heterogeneous), teacher lecture + random groups of 3, compares
+  lectures vs lectures + group work over time, N = 96. Not spatial; group work supplements the lecture.
+- Bordogna & Albano (2001–2003): heterogeneous prior achievement (HA/LA), small groups of 3–6, no lattice; outcome = knowledge level.
+- Velásquez-Rojas & Laguna, NDPLS 25 (2021): aptitude/motivation from surveys, randomly formed clusters, final grade.
+- Roxas et al. 2010 (AIP Conf. Proc.): experiments + neural network mapping one pre/post PI session on 8×8 seating; heterogeneous aptitude.
+- Fukś & Boccara (arXiv adap-org/9704002): local vs mean-field innovation diffusion, identical agents.
+- Koponen 2017, Singh 2009 (both suggested referees) cited generally; only abstracts read. Cirillo 2024 (suggested referee) cited for PCA.
+- No model found that compares broadcast vs local coupling with heterogeneous learners on a lattice. The only search hit for that
+  combination was our own v1 preprint on SSRN (abstract_id 7417970, public, still says "percolation-driven").
+
+### Remaining (after adviser review)
+
+- [ ] Adviser feedback.
+- [ ] Response letter (from `reviwer_response.md`).
+- [ ] latexdiff v1 → v2 for the marked-up submission copy.
+- [ ] Code repository + Zenodo DOIs; fill the two "[... to be added]" placeholders (Code/Data availability).
+- [ ] PowerPoint labels for the clean figures (Figs. 3, 4, 6, 8 at least); replace the files in `PhysicaA-paper-v2/figs/`.
+- [ ] Remove unused files from `PhysicaA-paper-v2/figs/` (Picture1, Picture4, figure5, figure6) and the markup macros from the preamble.
+- [ ] Check the accent in "Fukś" in the reference list.
+- [ ] Code cleanup (scripts are working versions).
