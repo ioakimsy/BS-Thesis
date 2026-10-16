@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: PhysicaA-paper.aux
+The style file: cas-model2-names.bst
+Database file #1: cas-refs.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--can't use both author and editor fields in Fernandez2018
+Warning--empty chapter and pages in Fernandez2018
+Warning--can't use both author and editor fields in nitta2019mathematical
+Warning--empty chapter and pages in nitta2019mathematical
+You've used 29 entries,
+            2990 wiz_defined-function locations,
+            965 strings with 13160 characters,
+and the built_in function-call counts, 19732 in all, are:
+= -- 1592
+> -- 690
+< -- 15
++ -- 280
+- -- 237
+* -- 2199
+:= -- 2846
+add.period$ -- 109
+call.type$ -- 29
+change.case$ -- 221
+chr.to.int$ -- 29
+cite$ -- 33
+duplicate$ -- 1462
+empty$ -- 1456
+format.name$ -- 332
+if$ -- 3738
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 279
+newline$ -- 182
+num.names$ -- 116
+pop$ -- 455
+preamble$ -- 1
+purify$ -- 195
+quote$ -- 0
+skip$ -- 437
+stack$ -- 0
+substring$ -- 864
+swap$ -- 1073
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 252
+warning$ -- 4
+while$ -- 122
+width$ -- 0
+write$ -- 479
+(There were 4 warnings)
