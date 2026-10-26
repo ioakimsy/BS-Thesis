@@ -57,8 +57,22 @@ raw_path(row) = "$(OUTPUT_DIR)/raw/$(param_key(row)).parquet"
 
 seed_col(trial) = Symbol("seed_$(trial)")
 
+#* A parameter row as used by raw_path / read_trial (the analysis scripts mostly use the inner corner).
+param_row(regime, SA, L, ρ₀, δλ; n_learned = 4, λ₀ = 0.5) = (; regime, SA, L, n_learned, ρ₀, λ₀, δλ)
+
+#* Rows of `df` whose columns match every keyword; floating-point values are compared with isapprox.
+#* Example: rows_where(summary; regime = "TI", L = 128, ρ₀ = 0.5)
+function rows_where(df; conditions...)
+    keep = trues(nrow(df))
+    for (col, value) in conditions
+        keep .&= value isa AbstractFloat ? isapprox.(df[!, col], value) : (df[!, col] .== value)
+    end
+    return df[keep, :]
+end
+
 function read_parameter_combinations(path = PARAMETER_COMBINATIONS_PATH)
-    return CSV.read(path, DataFrame;
+    #* read the bytes first: a memory-mapped file stays locked on Windows, so it could not be rewritten
+    return CSV.read(read(path), DataFrame;
         types = Dict(
             :regime => String, :SA => String, :L => Int, :n_learned => Int,
             :ρ₀ => Float64, :λ₀ => Float64, :δλ => Float64,
@@ -132,13 +146,16 @@ function simulate_run(regime, SA, L, n_learned, ρ₀, λ₀, δλ, seed; max_st
     k = zeros(Int8, L, L) #* learned Moore neighbors of each agent
     cart = CartesianIndices((L, L))
 
+    #* Marks agent i as learned at step t and adds 1 to the learned-neighbor count of each neighbor.
     function mark_learned!(i, t)
         T[i] = t
-        c = cart[i]
+        row, col = Tuple(cart[i])
         for dc in -1:1, dr in -1:1
             (dr == 0 && dc == 0) && continue
-            r2, c2 = c[1] + dr, c[2] + dc
-            (1 <= r2 <= L && 1 <= c2 <= L) && (k[r2, c2] += Int8(1))
+            r, c = row + dr, col + dc
+            if 1 <= r <= L && 1 <= c <= L
+                k[r, c] += Int8(1)
+            end
         end
     end
 
@@ -153,7 +170,10 @@ function simulate_run(regime, SA, L, n_learned, ρ₀, λ₀, δλ, seed; max_st
         empty!(newly)
         for i in unlearned
             p = ptable[λ_class[i], k[i] + 1]
-            p > 0 && rand(rng) < p && push!(newly, i)
+            #* agents with p = 0 draw no random number (this fixes the RNG stream, so keep the order)
+            if p > 0 && rand(rng) < p
+                push!(newly, i)
+            end
         end
         if !isempty(newly)
             foreach(i -> mark_learned!(i, t), newly)
@@ -197,6 +217,9 @@ end
 #* Raw-output I/O (Parquet via DuckDB, same approach as the Classroom Dynamics Research repo)
 #* ---------------------------------------------------------------------------
 
+#* A path as a quoted SQL string literal.
+sql_string(path) = "'" * replace(path, "'" => "''") * "'"
+
 #* One in-memory DuckDB per write; .tmp then rename, so a crash never leaves a
 #* truncated Parquet under the final name.
 function write_parquet(df::DataFrame, path::AbstractString)
@@ -206,7 +229,7 @@ function write_parquet(df::DataFrame, path::AbstractString)
     con = DBInterface.connect(db)
     try
         DuckDB.register_data_frame(con, df, "tbl")
-        DBInterface.execute(con, "COPY tbl TO '$(replace(tmp, "'" => "''"))' (FORMAT PARQUET, COMPRESSION ZSTD)")
+        DBInterface.execute(con, "COPY tbl TO $(sql_string(tmp)) (FORMAT PARQUET, COMPRESSION ZSTD)")
     finally
         DBInterface.close!(con)
         DBInterface.close!(db) #* release the file handle now (Windows can't move/delete open files)
@@ -219,7 +242,7 @@ function read_parquet(path::AbstractString)
     db = DuckDB.DB()
     con = DBInterface.connect(db)
     df = try
-        DataFrame(DBInterface.execute(con, "SELECT * FROM read_parquet('$(replace(path, "'" => "''"))')"))
+        DataFrame(DBInterface.execute(con, "SELECT * FROM read_parquet($(sql_string(path)))"))
     finally
         DBInterface.close!(con)
         DBInterface.close!(db)
@@ -229,7 +252,13 @@ end
 
 #* Learning-time grid and λ-class grid of one trial from a parameter row's raw file.
 function read_trial(row, trial; raw = read_parquet(raw_path(row)))
-    L = row.L
-    return reshape(Vector{Int32}(raw[!, "T_$(trial)"]), L, L),
-           reshape(Vector{Int8}(raw[!, "class_$(trial)"]), L, L)
+    T = reshape(Vector{Int32}(raw[!, "T_$(trial)"]), row.L, row.L)
+    λ_class = reshape(Vector{Int8}(raw[!, "class_$(trial)"]), row.L, row.L)
+    return T, λ_class
+end
+
+#* (T, λ_class) of every trial of a parameter row, reading its raw file once.
+function read_trials(row)
+    raw = read_parquet(raw_path(row))
+    return [read_trial(row, trial; raw) for trial in 1:N_TRIALS]
 end

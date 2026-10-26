@@ -26,6 +26,19 @@ end
 
 const OVERWRITE = false
 
+#* One row of run_summary.csv.
+function summary_row(row, trial, T, absorbed, runtime_s)
+    return (;
+        regime = row.regime, SA = row.SA, L = row.L, n_learned = row.n_learned,
+        ρ₀ = row.ρ₀, λ₀ = row.λ₀, δλ = row.δλ, trial, seed = row[seed_col(trial)], absorbed,
+        t_max = absorbed ? Int(maximum(T)) : -1,
+        t_50 = time_to_fraction(T, 0.50),
+        t_90 = time_to_fraction(T, 0.90),
+        t_95 = time_to_fraction(T, 0.95),
+        runtime_s,
+    )
+end
+
 #* Runs all trials of one parameter row and writes its raw file. Returns its summary rows.
 function run_parameter_row(row)
     raw = DataFrame()
@@ -36,15 +49,7 @@ function run_parameter_row(row)
             row.n_learned, row.ρ₀, row.λ₀, row.δλ, seed)
         raw[!, "T_$(trial)"] = vec(T)
         raw[!, "class_$(trial)"] = vec(λ_class)
-        push!(summary, (;
-            regime = row.regime, SA = row.SA, L = row.L, n_learned = row.n_learned,
-            ρ₀ = row.ρ₀, λ₀ = row.λ₀, δλ = row.δλ, trial, seed, absorbed,
-            t_max = absorbed ? Int(maximum(T)) : -1,
-            t_50 = time_to_fraction(T, 0.50),
-            t_90 = time_to_fraction(T, 0.90),
-            t_95 = time_to_fraction(T, 0.95),
-            runtime_s,
-        ))
+        push!(summary, summary_row(row, trial, T, absorbed, runtime_s))
     end
     write_parquet(raw, raw_path(row))
     return summary
@@ -52,26 +57,23 @@ end
 
 #* Recomputes a row's summary from its existing raw file (used for skipped rows).
 function summarize_existing_row(row)
-    raw = read_parquet(raw_path(row))
-    return [begin
-        T, _ = read_trial(row, trial; raw)
-        absorbed = all(>=(0), T)
-        (; regime = row.regime, SA = row.SA, L = row.L, n_learned = row.n_learned,
-            ρ₀ = row.ρ₀, λ₀ = row.λ₀, δλ = row.δλ, trial, seed = row[seed_col(trial)], absorbed,
-            t_max = absorbed ? Int(maximum(T)) : -1,
-            t_50 = time_to_fraction(T, 0.50),
-            t_90 = time_to_fraction(T, 0.90),
-            t_95 = time_to_fraction(T, 0.95),
-            runtime_s = NaN)
-    end for trial in 1:N_TRIALS]
+    summary = NamedTuple[]
+    for (trial, (T, _)) in enumerate(read_trials(row))
+        push!(summary, summary_row(row, trial, T, all(>=(0), T), NaN))
+    end
+    return summary
 end
 
 const RUN_LOG_PATH = "$(OUTPUT_DIR)/analysis/run_log.txt"
 
+#* Git commit of the code, for the run log ("unknown" outside a git repository).
+git_commit() = try strip(read(`git rev-parse --short HEAD`, String)) catch; "unknown" end
+scripts_modified() = try !isempty(strip(read(`git status --porcelain -- scripts`, String))) catch; false end
+
 function run_sweep(param_sets; overwrite = OVERWRITE)
     t_start = now()
-    commit = try strip(read(`git rev-parse --short HEAD`, String)) catch; "unknown" end
-    dirty = try !isempty(strip(read(`git status --porcelain -- scripts`, String))) catch; false end
+    commit = git_commit()
+    dirty = scripts_modified()
     println("Sweep started $(t_start) — $(nrow(param_sets)) rows × $(N_TRIALS) trials, $(Threads.nthreads()) threads")
 
     results = Vector{Vector{NamedTuple}}(undef, nrow(param_sets))

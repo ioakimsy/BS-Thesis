@@ -77,22 +77,22 @@ function check_twins()
     T2, _, _ = simulate_run("PI", "random", 64, 16, 0.3, 0.5, 0.4, 7)
     ok &= findall(==(0), vec(T1)) == findall(==(0), vec(T2))
     #* And the parameter table actually pairs them.
-    ps = read_parameter_combinations()
-    g = groupby(ps, [:SA, :L, :n_learned, :ρ₀, :λ₀, :δλ])
-    ok_table = all(nrow(sg) == 2 && sg[1, :seed_1] == sg[2, :seed_1] && sg[1, :seed_20] == sg[2, :seed_20] for sg in g)
+    params = read_parameter_combinations()
+    twin_groups = groupby(params, [:SA, :L, :n_learned, :ρ₀, :λ₀, :δλ])
+    ok_table = all(nrow(sg) == 2 && sg[1, :seed_1] == sg[2, :seed_1] && sg[1, :seed_20] == sg[2, :seed_20] for sg in twin_groups)
     report("TI/PI twins share seed positions and λ grid", ok) & report("parameter table pairs every TI row with its PI twin", ok_table)
 end
 
 #* --- 3. Reproducibility -------------------------------------------------------
 function check_reproducibility()
-    a = simulate_run("PI", "random", 64, 16, 0.3, 0.5, 0.4, 12345)
-    b = simulate_run("PI", "random", 64, 16, 0.3, 0.5, 0.4, 12345)
-    ok1 = a == b
-    res = Vector{Any}(undef, 4 * Threads.nthreads())
-    Threads.@threads for j in eachindex(res)
-        res[j] = simulate_run(isodd(j) ? "TI" : "PI", "center", 64, 4, 0.3, 0.5, 0.4, 999)
+    run1 = simulate_run("PI", "random", 64, 16, 0.3, 0.5, 0.4, 12345)
+    run2 = simulate_run("PI", "random", 64, 16, 0.3, 0.5, 0.4, 12345)
+    ok1 = run1 == run2
+    runs = Vector{Any}(undef, 4 * Threads.nthreads())
+    Threads.@threads for j in eachindex(runs)
+        runs[j] = simulate_run(isodd(j) ? "TI" : "PI", "center", 64, 4, 0.3, 0.5, 0.4, 999)
     end
-    ok2 = all(res[j] == res[isodd(j) ? 1 : 2] for j in eachindex(res))
+    ok2 = all(runs[j] == runs[isodd(j) ? 1 : 2] for j in eachindex(runs))
 
     dir = "$(OUTPUT_DIR)/validation"
     row = (; regime = "PI", SA = "random", L = 48, n_learned = 9, ρ₀ = 0.3, λ₀ = 0.5, δλ = 0.4)
@@ -113,6 +113,9 @@ end
 #* --- 4. Engine vs. literal Eq. 4 --------------------------------------------
 #* Same RNG consumption order as simulate_run: seeds, λ classes, then per step one draw per
 #* unlearned agent with P > 0, in increasing linear index.
+#* Lattice sites around (r, c), excluding (r, c) itself and sites off the lattice
+moore_neighbors(r, c, L) = [(r2, c2) for r2 in max(1, r - 1):min(L, r + 1), c2 in max(1, c - 1):min(L, c + 1) if (r2, c2) != (r, c)]
+
 function naive_run(regime, SA, L, n, ρ₀, λ₀, δλ, seed)
     rng = StableRNG(seed)
     seeds = initial_seeds(SA, L, n, rng)
@@ -129,7 +132,7 @@ function naive_run(regime, SA, L, n, ρ₀, λ₀, δλ, seed)
             P = if regime == "TI"
                 ρ₀ * λ[i]
             else
-                1 - prod((1 - λ[i] * ρ₀ * s[r2, c2]) for r2 in max(1, r - 1):min(L, r + 1), c2 in max(1, c - 1):min(L, c + 1) if (r2, c2) != (r, c); init = 1.0)
+                1 - prod((1 - λ[i] * ρ₀ * s[r2, c2]) for (r2, c2) in moore_neighbors(r, c, L); init = 1.0)
             end
             if P > 0 && rand(rng) < P
                 next[i] = 1; T[i] = t
@@ -194,6 +197,10 @@ v1_path(SA, L, ρ, tr) = "./output/2D-Binary-PCA-IH/$SA-$L/$ρ-0.5-0.0/trial_$tr
 
 function check_vs_v1()
     ok = true
+    if !isfile(v1_path("center", 64, 0.3, 1)) #* v1 output is not part of this repository
+        println("SKIP  PI at δλ = 0 agrees with v1 data  — v1 output not available")
+        return true
+    end
     for (SA, L, ρ) in [("center", 64, 0.3), ("outer_corner", 128, 0.1), ("inner_corner", 32, 0.9), ("center", 128, 0.5), ("inner_corner", 96, 0.2)]
         isfile(v1_path(SA, L, ρ, 1)) || (println("      (v1 data missing for $SA-$L ρ₀=$ρ, skipped)"); continue)
         old = [CSV.read(v1_path(SA, L, ρ, tr), DataFrame).learned_per_gen for tr in 1:20]

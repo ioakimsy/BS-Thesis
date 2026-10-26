@@ -55,6 +55,9 @@ function return_map_pairs(T)
     return f[1:end-1], f[2:end]
 end
 
+#* Return-map pairs of every trial of a parameter row
+trial_pairs(row) = [return_map_pairs(T) for (T, _) in read_trials(row)]
+
 function fit_return_map(regime, x, y)
     model, p0 = regime == "TI" ? (ti_model, [0.5]) : (pi_model, [0.0, 1.0])
     fit = curve_fit(model, x, y, p0)
@@ -69,39 +72,40 @@ function return_map_fits(; Ls = [32, 64, 128], Ρs = [0.1, 0.5, 0.9], δλs = [0
     per_trial = DataFrame()
     summary = DataFrame()
     for regime in ("TI", "PI"), L in Ls, ρ₀ in Ρs, δλ in δλs
-        row = (; regime, SA, L, n_learned = 4, ρ₀, λ₀, δλ)
-        raw = read_parquet(raw_path(row))
-        pairs = [return_map_pairs(read_trial(row, tr; raw)[1]) for tr in 1:N_TRIALS]
-        names_ = coef_names(regime)
+        pairs = trial_pairs(param_row(regime, SA, L, ρ₀, δλ; λ₀))
+        n_coefs = length(coef_names(regime))
 
         #* per-trial fits
-        coefs = Matrix{Float64}(undef, N_TRIALS, length(names_))
+        coefs = Matrix{Float64}(undef, N_TRIALS, n_coefs)
         r2s = zeros(N_TRIALS)
         for (tr, (x, y)) in enumerate(pairs)
             p, _, r2 = fit_return_map(regime, x, y)
             coefs[tr, :] = p
             r2s[tr] = r2
-            push!(per_trial, merge((; regime, SA, L, ρ₀, δλ, trial = tr, n_points = length(x), r_squared = r2),
-                NamedTuple{Tuple(Symbol.(names_))}(Tuple(p)), NamedTuple{(:a2,)}((regime == "TI" ? NaN : p[2],))); cols = :union)
+            a2 = regime == "TI" ? NaN : p[2]
+            push!(per_trial, (; regime, SA, L, ρ₀, δλ, trial = tr, n_points = length(x), r_squared = r2, a0 = p[1], a2);
+                cols = :union)
         end
 
         #* pooled fit (v1 method) for comparison
-        xp = reduce(vcat, first.(pairs)); yp = reduce(vcat, last.(pairs))
-        pp, sep, r2p = fit_return_map(regime, xp, yp)
+        pooled_x = reduce(vcat, first.(pairs)); pooled_y = reduce(vcat, last.(pairs))
+        pooled_coefs, pooled_se, pooled_r2 = fit_return_map(regime, pooled_x, pooled_y)
 
-        s = Dict{Symbol, Any}(:regime => regime, :SA => SA, :L => L, :ρ₀ => ρ₀, :δλ => δλ, :n_trials => N_TRIALS,
-            :mean_r_squared => mean(r2s), :pooled_n_points => length(xp), :pooled_r_squared => r2p)
-        for (k, nm) in enumerate(["a0", "a2"])
-            if k <= length(names_)
-                c = coefs[:, k]
-                s[Symbol("$(nm)_mean")] = mean(c); s[Symbol("$(nm)_sd")] = std(c)
-                s[Symbol("$(nm)_se")] = std(c) / sqrt(N_TRIALS); s[Symbol("$(nm)_median")] = median(c)
-                s[Symbol("$(nm)_pooled")] = pp[k]; s[Symbol("$(nm)_pooled_naive_se")] = sep[k]
+        summary_row = Dict{Symbol, Any}(:regime => regime, :SA => SA, :L => L, :ρ₀ => ρ₀, :δλ => δλ, :n_trials => N_TRIALS,
+            :mean_r_squared => mean(r2s), :pooled_n_points => length(pooled_x), :pooled_r_squared => pooled_r2)
+        for (k, name) in enumerate(["a0", "a2"])
+            #* TI has no a₂: its a2 columns are NaN
+            stats = if k <= n_coefs
+                trial_coefs = coefs[:, k]
+                (mean(trial_coefs), std(trial_coefs), std(trial_coefs) / sqrt(N_TRIALS), median(trial_coefs), pooled_coefs[k], pooled_se[k])
             else
-                for suf in ("mean", "sd", "se", "median", "pooled", "pooled_naive_se"); s[Symbol("$(nm)_$(suf)")] = NaN; end
+                ntuple(_ -> NaN, 6)
+            end
+            for (suffix, value) in zip(("mean", "sd", "se", "median", "pooled", "pooled_naive_se"), stats)
+                summary_row[Symbol("$(name)_$(suffix)")] = value
             end
         end
-        push!(summary, s; cols = :union)
+        push!(summary, summary_row; cols = :union)
     end
     return per_trial, summary
 end
@@ -110,20 +114,27 @@ end
 #* Plots
 #* ---------------------------------------------------------------------------
 const COLORS = ColorSchemes.seaborn_colorblind.colors
-const EMP_DIR = "./output/2D-Binary-PCA-IH/analysis/PI experiment data"
+const EMP_DIR = "./output/2D-Binary-PCA-IH/analysis/PI experiment data" #* in the published code repository: ./data/empirical (optional)
 #* Fig. 6 grid: rows = unfavorable / favorable conditions (slowest / fastest corner of the δλ ≤ 0.4 sweep), columns = L.
 const FIG6_LS = (32, 128)
 const FIG6_ROWS = (("Unfavorable conditions", 0.1, 0.4), ("Favorable conditions", 0.9, 0.0))
 const FIG6_CASES = Tuple((L, ρ₀, δλ) for (_, ρ₀, δλ) in FIG6_ROWS for L in FIG6_LS)
 
-read_empirical() = [(parse.(Float64, filter(!isempty, strip.(readlines("$(EMP_DIR)/in_8_$(k).txt")))),
-                     parse.(Float64, filter(!isempty, strip.(readlines("$(EMP_DIR)/out_8_$(k).txt"))))) for k in 1:14]
+#* One score per line (blank lines skipped)
+read_scores(path) = parse.(Float64, filter(!isempty, strip.(readlines(path))))
+
+#* (first assessment, second assessment) scores of each of the 14 classes; empty if the data are absent
+function read_empirical()
+    isfile("$(EMP_DIR)/in_8_1.txt") || return Tuple{Vector{Float64}, Vector{Float64}}[]
+    return [(read_scores("$(EMP_DIR)/in_8_$(k).txt"), read_scores("$(EMP_DIR)/out_8_$(k).txt")) for k in 1:14]
+end
+
 empirical_model(f, p) = p[1] .* f .^ 2 .+ p[2] .* f .+ p[3]
 nitta(f) = f .+ f .* (1 .- f) #* Nitta (2019): g(f) = f
 
 function mean_coefs(summary, regime, L, ρ₀, δλ)
-    r = summary[(summary.regime .== regime) .& (summary.L .== L) .& isapprox.(summary.ρ₀, ρ₀) .& isapprox.(summary.δλ, δλ), :]
-    return regime == "TI" ? [r.a0_mean[1]] : [r.a0_mean[1], r.a2_mean[1]]
+    rows = rows_where(summary; regime, L, ρ₀, δλ)
+    return regime == "TI" ? [rows.a0_mean[1]] : [rows.a0_mean[1], rows.a2_mean[1]]
 end
 
 #* One Fig. 6 panel (v1 style: 1000×707 canvas). Simulation points pooled over the 20 runs for
@@ -131,16 +142,15 @@ end
 function return_map_panel!(ax, L, ρ₀, δλ, summary, emp, emp_p)
     fs = 0:0.01:1
     for (j, regime) in enumerate(("TI", "PI"))
-        row = (; regime, SA = "inner_corner", L, n_learned = 4, ρ₀, λ₀ = 0.5, δλ)
-        raw = read_parquet(raw_path(row))
-        pairs = [return_map_pairs(read_trial(row, tr; raw)[1]) for tr in 1:N_TRIALS]
+        pairs = trial_pairs(param_row(regime, "inner_corner", L, ρ₀, δλ))
         scatter!(ax, reduce(vcat, first.(pairs)), reduce(vcat, last.(pairs)); color = (COLORS[j], 0.5),
             marker = j == 1 ? :circle : :rect, markersize = 16)
-        p = mean_coefs(summary, regime, L, ρ₀, δλ)
-        lines!(ax, fs, (regime == "TI" ? ti_model : pi_model)(fs, p); color = COLORS[j], linestyle = :dash, linewidth = 3)
+        coefs = mean_coefs(summary, regime, L, ρ₀, δλ)
+        lines!(ax, fs, (regime == "TI" ? ti_model : pi_model)(fs, coefs); color = COLORS[j], linestyle = :dash, linewidth = 3)
     end
     lines!(ax, fs, nitta(fs); color = COLORS[3], linewidth = 3)
     lines!(ax, fs, fs; color = COLORS[8], linewidth = 3)
+    isempty(emp) && return
     scatter!(ax, reduce(vcat, first.(emp)), reduce(vcat, last.(emp)); color = (COLORS[5], 0.3), marker = :diamond, markersize = 16)
     lines!(ax, fs, empirical_model(fs, emp_p); color = COLORS[5], linestyle = :dash, linewidth = 3)
 end
@@ -232,20 +242,21 @@ function figure6_option2(summary, emp)
     hlines!(ax, [0]; color = (:black, 0.3))
     scatter!(ax, pre[keep], g[keep]; color = COLORS[5], marker_kw..., label = "Class mean (Roxas): Hake g of each class")
     scatter!(ax, pre[[out]], g[[out]]; open_kw..., marker_kw..., label = "Class $(out): outlier, excluded from fits")
-    r2(y, ŷ) = 1 - sum((y .- ŷ) .^ 2) / sum((y .- mean(y)) .^ 2)
     shapes = Any[("TI: constant gain", f -> one(f), COLORS[1], :solid)]
     #* all four Fig. 6 cases (unfavorable/favorable × L = 32/128); the shapes nearly coincide because a₀ ≪ |a₂|
     for ((L, ρ₀, δλ), ls) in zip(FIG6_CASES, (:dash, :dot, :dashdot, (:dot, :loose)))
         a0, a2 = mean_coefs(summary, "PI", L, ρ₀, δλ)
         push!(shapes, ("PI: g ∝ a₀ − a₂f (L = $L, ρ₀ = $ρ₀, λ = 0.5 ± $δλ)", f -> a0 - a2 * f, COLORS[2], ls))
     end
+    #* least-squares amplitude c of the model c · shape(f) through the origin
+    amplitude(y, shape) = sum(y .* shape) / sum(shape .^ 2)
     r2_lines = String[]
     for (name, s, col, ls) in shapes
-        sx = s.(pre[keep]); c = sum(g[keep] .* sx) / sum(sx .^ 2)
-        lines!(ax, fs, c .* s.(fs); color = col, linestyle = ls, linewidth = 3, label = name)
-        sa = s.(pre); ca = sum(g .* sa) / sum(sa .^ 2)
-        push!(r2_lines, "  $name: R² = $(round(r2(g[keep], c .* sx); digits = 2)) without class $(out) " *
-            "($(round(r2(g, ca .* sa); digits = 2)) with it)")
+        shape_kept = s.(pre[keep]); amplitude_kept = amplitude(g[keep], shape_kept)
+        lines!(ax, fs, amplitude_kept .* s.(fs); color = col, linestyle = ls, linewidth = 3, label = name)
+        shape_all = s.(pre); amplitude_all = amplitude(g, shape_all)
+        push!(r2_lines, "  $name: R² = $(round(r_squared(g[keep], amplitude_kept .* shape_kept); digits = 2)) without class $(out) " *
+            "($(round(r_squared(g, amplitude_all .* shape_all); digits = 2)) with it)")
     end
     axislegend(ax; position = :lt, labelsize = 18, framevisible = false)
 
@@ -276,15 +287,24 @@ end
 
 function save_return_map_figures(summary)
     emp = read_empirical()
-    emp_p = curve_fit(empirical_model, reduce(vcat, first.(emp)), reduce(vcat, last.(emp)), [0.0, 1.0, 0.0]).param
+    emp_p = nothing #* student-level free quadratic
+    if isempty(emp)
+        @info "Empirical data not found in $(EMP_DIR); plotting simulations only"
+    else
+        pre, post = reduce(vcat, first.(emp)), reduce(vcat, last.(emp))
+        emp_p = curve_fit(empirical_model, pre, post, [0.0, 1.0, 0.0]).param
+    end
     dir = "$(OUTPUT_DIR)/analysis/plots/return-map"; mkpath(dir)
     save("$(dir)/figure6-option1-student-level.png", figure6_option1(summary, emp, emp_p); px_per_unit = 2)
-    fig2, caption = figure6_option2(summary, emp)
-    save("$(dir)/figure6-option2-class-level.png", fig2; px_per_unit = 2)
-    save("$(OUTPUT_DIR)/analysis/plots/clean/figure6-option2-class-level-clean.png",
-        strip_legends!(first(figure6_option2(summary, emp))); px_per_unit = 2)
-    write("$(dir)/figure6-option2-caption.txt", caption)
-    print(caption)
+    if !isempty(emp) #* class-level empirical figure (paper Fig. 9)
+        fig2, caption = figure6_option2(summary, emp)
+        save("$(dir)/figure6-option2-class-level.png", fig2; px_per_unit = 2)
+        mkpath("$(OUTPUT_DIR)/analysis/plots/clean")
+        save("$(OUTPUT_DIR)/analysis/plots/clean/figure6-option2-class-level-clean.png",
+            strip_legends!(first(figure6_option2(summary, emp))); px_per_unit = 2)
+        write("$(dir)/figure6-option2-caption.txt", caption)
+        print(caption)
+    end
     #* clean panels at the v1 source dimensions (1000×707 at 4 px/unit = 4000×2828)
     cdir = "$(OUTPUT_DIR)/analysis/plots/clean"; mkpath(cdir)
     for (L, ρ₀, δλ) in FIG6_CASES #* all four panels of the 2×2 option-1 grid
@@ -307,10 +327,10 @@ loglog_slope(x, y) = (lx = log.(x); ly = log.(y); cov(lx, ly) / var(lx))
 function return_map_vs_L(; Ρs = [0.1, 0.5, 0.9], δλs = [0.0, 0.2, 0.4], λ₀ = 0.5)
     out = DataFrame()
     for regime in ("TI", "PI"), seeds in ("4 seeds", "fixed fraction"), L in VS_L_LS, ρ₀ in Ρs, δλ in δλs
-        row = (; regime, SA = "inner_corner", L, n_learned = seeds == "4 seeds" ? 4 : n_frac(L), ρ₀, λ₀, δλ)
-        raw = read_parquet(raw_path(row))
-        coefs = reduce(vcat, permutedims(fit_return_map(regime, return_map_pairs(read_trial(row, tr; raw)[1])...)[1])
-            for tr in 1:N_TRIALS)
+        n_learned = seeds == "4 seeds" ? 4 : n_frac(L)
+        row = param_row(regime, "inner_corner", L, ρ₀, δλ; n_learned, λ₀)
+        #* one row of fitted coefficients per trial
+        coefs = reduce(vcat, [permutedims(first(fit_return_map(regime, x, y))) for (x, y) in trial_pairs(row)])
         a2 = regime == "TI" ? fill(NaN, N_TRIALS) : coefs[:, 2]
         push!(out, (; regime, seeds, L, n_learned = row.n_learned, ρ₀, δλ,
             a0_mean = mean(coefs[:, 1]), a0_se = std(coefs[:, 1]) / sqrt(N_TRIALS),
@@ -323,28 +343,27 @@ end
 #* Error bars are ±SE over the 20 per-run fits (mostly smaller than the markers). Returns (fig, slopes).
 function figure_coefs_vs_L(vsL; λ₀ = 0.5, title = true)
     Ρs = sort(unique(vsL.ρ₀)); δλs = sort(unique(vsL.δλ))
-    sel(regime, seeds, ρ₀, δλ) = sort(vsL[(vsL.regime .== regime) .& (vsL.seeds .== seeds) .& isapprox.(vsL.ρ₀, ρ₀) .&
-        isapprox.(vsL.δλ, δλ), :], :L)
+    sel(regime, seeds, ρ₀, δλ) = sort(rows_where(vsL; regime, seeds, ρ₀, δλ), :L)
     slopes = DataFrame()
     fig = Figure(size = (1700, 1500))
-    cols = (("PI: a₀", r -> r.a0_mean, r -> r.a0_se, true), ("PI: −a₂", r -> -r.a2_mean, r -> r.a2_se, true),
-        ("TI: a₀ / ρ₀λ₀", r -> r.a0_mean ./ (r.ρ₀ .* λ₀), r -> r.a0_se ./ (r.ρ₀ .* λ₀), false))
+    cols = (("PI: a₀", rows -> rows.a0_mean, rows -> rows.a0_se, true), ("PI: −a₂", rows -> -rows.a2_mean, rows -> rows.a2_se, true),
+        ("TI: a₀ / ρ₀λ₀", rows -> rows.a0_mean ./ (rows.ρ₀ .* λ₀), rows -> rows.a0_se ./ (rows.ρ₀ .* λ₀), false))
     for (i, δλ) in enumerate(δλs), (j, (name, val, err, logy)) in enumerate(cols)
         ax = Axis(fig[i, j]; xscale = log2, yscale = logy ? log10 : identity, xticks = (VS_L_LS, string.(VS_L_LS)),
             title = "$name,  δλ = $δλ", titlesize = 22, xlabel = i == length(δλs) ? "Lattice side length L" : "",
             xlabelsize = 22, xticklabelsize = 17, yticklabelsize = 17)
         logy || ylims!(ax, 0.4, 1.1)
         for (k, ρ₀) in enumerate(Ρs), seeds in ("4 seeds", "fixed fraction")
-            r = sel(j == 3 ? "TI" : "PI", seeds, ρ₀, δλ)
-            y = val(r); e = err(r)
+            rows = sel(j == 3 ? "TI" : "PI", seeds, ρ₀, δλ)
+            y = val(rows); errors = err(rows)
             if logy && any(y .<= 0)
                 @warn "non-positive $(name) at ρ₀ = $ρ₀, δλ = $δλ ($seeds); skipped on log axis"
                 continue
             end
-            s = logy ? loglog_slope(r.L, y) : NaN
+            s = logy ? loglog_slope(rows.L, y) : NaN
             logy && push!(slopes, (; coefficient = name, seeds, ρ₀, δλ, loglog_slope = s))
-            errorbars!(ax, r.L, y, e; color = COLORS[k], whiskerwidth = 6)
-            scatterlines!(ax, r.L, y; color = COLORS[k], linewidth = 2.5, linestyle = seeds == "4 seeds" ? :solid : :dash,
+            errorbars!(ax, rows.L, y, errors; color = COLORS[k], whiskerwidth = 6)
+            scatterlines!(ax, rows.L, y; color = COLORS[k], linewidth = 2.5, linestyle = seeds == "4 seeds" ? :solid : :dash,
                 marker = seeds == "4 seeds" ? :circle : :utriangle, markersize = 11,
                 label = "ρ₀ = $ρ₀, $seeds" * (logy ? " (slope $(round(s; digits = 2)))" : ""))
         end

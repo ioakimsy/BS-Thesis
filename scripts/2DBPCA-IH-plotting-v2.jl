@@ -16,8 +16,9 @@ the 20 trials; bands are ±1 SD. Runs are padded with f = 1 after absorption.
 The x axis is iteration t+1 on a log₂ scale, so 2⁰ is the initial state (as in v1).
 TI now starts from the same 4 seeds as PI, so its curves start at 4/N rather than 0.
 
-Also writes a v1-vs-v2 comparison for the panels the revision changes most: (d), plus
-panel (a) at δλ = 0.4.
+Also writes a v1-vs-v2 comparison for the panels the revision changes most (figure_v1_vs_v2), and has
+exploration tools for single runs (evolution_figure, animate_evolution); neither is in the published code.
+
 =#
 
 begin
@@ -41,33 +42,37 @@ const δλ_STYLE = Dict(0.0 => :dash, 0.2 => :dashdot, 0.4 => (:dashdotdot, :den
     0.49 => (:dashdotdot, :loose))
 ρ_alpha(ρ₀) = 0.5 + 0.5 * (ρ₀ - 0.1) / 0.9
 
+#* Series color: one color for TI, one per seating arrangement for PI
+regime_color(regime, SA = "inner_corner") = COLORS[SA_COLOR[regime == "TI" ? "TI" : SA]]
+
 #* Paper copy of a figure: legends removed (and the empty legend row/column trimmed). The legend
 #* version is kept for reference; series are identified in the caption or by annotation.
 strip_legends!(fig) = (foreach(delete!, filter(c -> c isa Legend, copy(fig.content))); trim!(fig.layout); fig)
 
 #* Mean and SD of f(t) over trials, t = 0..t_end (runs padded with their final value).
 function mean_curve(regime, SA, L, ρ₀, δλ; n_learned = 4, λ₀ = 0.5)
-    row = (; regime, SA, L, n_learned, ρ₀, λ₀, δλ)
-    raw = read_parquet(raw_path(row))
-    Ts = [read_trial(row, trial; raw)[1] for trial in 1:N_TRIALS]
+    Ts = [T for (T, _) in read_trials(param_row(regime, SA, L, ρ₀, δλ; n_learned, λ₀))]
     t_end = maximum(maximum.(Ts))
     F = reduce(hcat, [learned_fraction(T, t_end) for T in Ts])
     return vec(mean(F; dims = 2)), vec(std(F; dims = 2))
 end
 
-#* v1 curves from the old per-trial fit_params.csv (learned_per_gen), padded with 1.
-function mean_curve_v1(SA, L, ρ₀, δλ)
-    dir = SA == "TI" ? "traditional-$(L)" : "$(SA)-$(L)"
-    file = SA == "TI" ? "2DBPCAIH-traditional-$(L)" : "2DBPCAIH-$(SA)-$(L)"
-    runs = [CSV.read("./output/2D-Binary-PCA-IH/$(dir)/$(ρ₀)-0.5-$(δλ)/trial_$(tr)/data/$(file)-$(ρ₀)-0.5-$(δλ)-trial_$(tr)-fit_params.csv",
-        DataFrame).learned_per_gen for tr in 1:N_TRIALS]
-    n = maximum(length.(runs))
-    F = reduce(hcat, [[r; fill(r[end], n - length(r))] for r in runs])
-    return vec(mean(F; dims = 2)), vec(std(F; dims = 2))
+#* Mean t_max or t₉₅ over the 20 runs, per (regime, L, ρ₀, δλ); inner corner, 4 initial seeds
+function mean_times(stat)
+    runs = CSV.read(SUMMARY_PATH, DataFrame)
+    runs = runs[(runs.n_learned .== 4) .& (runs.SA .== "inner_corner"), :]
+    return combine(groupby(runs, [:regime, :L, :ρ₀, :δλ]), stat => mean => :t)
 end
 
+#* Matrix of mean times over (ρ₀, δλ) for one regime and lattice side, for the surface plots
+surface_grid(g, regime, L, Ρs, δλs) = [only(rows_where(g; regime, L, ρ₀, δλ).t) for ρ₀ in Ρs, δλ in δλs]
+
+#* Legend entries for the surface plots
+regime_legend_entries() = ([PolyElement(color = COLORS[1]), PolyElement(color = COLORS[2])],
+    [rich("Traditional"; color = COLORS[1], font = :bold), rich("Peer"; color = COLORS[2], font = :bold)])
+
 function draw_series!(ax, μ, σ; regime, SA, L, ρ₀, δλ, label, solid = false)
-    c = COLORS[SA_COLOR[regime == "TI" ? "TI" : SA]]
+    c = regime_color(regime, SA)
     x = 1:length(μ)
     band!(ax, x, clamp.(μ .- σ, 0, 1), clamp.(μ .+ σ, 0, 1); color = (c, ρ_alpha(ρ₀) / 4))
     lines!(ax, x, μ; color = (c, ρ_alpha(ρ₀)), linewidth = L_WIDTH[L],
@@ -92,49 +97,70 @@ label!(ax, txt, x, y, key; ρ₀ = 0.5, rotation = 0.0, align = (:left, :center)
     text!(ax, x, y; text = txt, color = (COLORS[SA_COLOR[key]], ρ_alpha(ρ₀)), font = :bold,
         fontsize, rotation, align)
 
+#* The four Fig. 3 panels. Series are drawn in the given order (later series on top).
+#* Mean ± SD learned-fraction curve of one series, drawn with the encoding of draw_series!
+function draw_mean_curve!(ax, regime, L, ρ₀, δλ; SA = "inner_corner")
+    μ, σ = mean_curve(regime, SA, L, ρ₀, δλ)
+    draw_series!(ax, μ, σ; regime, SA, L, ρ₀, δλ, label = "")
+end
+
+#* (a) lattice side length; ρ₀ = 0.5, δλ = 0.2
+function draw_size_panel!(ax)
+    for L in (32, 64, 128), regime in ("TI", "PI")
+        draw_mean_curve!(ax, regime, L, 0.5, 0.2)
+    end
+end
+
+#* (b) seating arrangement; L = 64, ρ₀ = 0.5, δλ = 0.2
+function draw_seating_panel!(ax, SAs)
+    draw_mean_curve!(ax, "TI", 64, 0.5, 0.2)
+    for SA in SAs
+        draw_mean_curve!(ax, "PI", 64, 0.5, 0.2; SA)
+    end
+end
+
+#* (c) coupling strength; L = 64, δλ = 0.2
+function draw_coupling_panel!(ax, ρs)
+    for ρ₀ in ρs, regime in ("TI", "PI")
+        draw_mean_curve!(ax, regime, 64, ρ₀, 0.2)
+    end
+end
+
+#* (d) heterogeneity; L = 64, ρ₀ = 0.5
+function draw_heterogeneity_panel!(ax)
+    for δλ in (0.0, 0.2, 0.4, 0.45, 0.49), regime in ("TI", "PI")
+        draw_mean_curve!(ax, regime, 64, 0.5, δλ)
+    end
+end
+
 function figure3()
     fig = Figure(size = (1650, 1250))
-    #* (a) lattice size
     ax = panel_axis(fig[1, 1]; letter = "(a)")
-    for L in (32, 64, 128), regime in ("TI", "PI")
-        μ, σ = mean_curve(regime, "inner_corner", L, 0.5, 0.2)
-        draw_series!(ax, μ, σ; regime, SA = "inner_corner", L, ρ₀ = 0.5, δλ = 0.2, label = "")
-    end
+    draw_size_panel!(ax)
     label!(ax, "L = 32, 64, 128", 2^0.5, 0.66, "TI")
     label!(ax, "L = 32", 2^2.2, 0.48, "inner_corner")
     label!(ax, "L = 64", 2^4.3, 0.55, "inner_corner")
     label!(ax, "L = 128", 2^5.55, 0.80, "inner_corner")
-    #* (b) seating arrangement
+
     ax = panel_axis(fig[2, 1]; xlabel = "Iteration number t + 1", letter = "(b)")
-    μ, σ = mean_curve("TI", "inner_corner", 64, 0.5, 0.2)
-    draw_series!(ax, μ, σ; regime = "TI", SA = "inner_corner", L = 64, ρ₀ = 0.5, δλ = 0.2, label = "")
-    for SA in ("inner_corner", "center", "outer_corner", "random")
-        μ, σ = mean_curve("PI", SA, 64, 0.5, 0.2)
-        draw_series!(ax, μ, σ; regime = "PI", SA, L = 64, ρ₀ = 0.5, δλ = 0.2, label = "")
-    end
+    draw_seating_panel!(ax, ("inner_corner", "center", "outer_corner", "random"))
     label!(ax, "Traditional", 2^1.0, 0.66, "TI")
     label!(ax, "Inner Corner", 2^2.1, 0.29, "inner_corner")
     label!(ax, "Random", 2^5.6, 0.77, "random")
     label!(ax, "Center", 2^5.3, 0.46, "center")
     label!(ax, "Outer Corner", 2^4.6, 0.14, "outer_corner")
-    #* (c) coupling
+
     ax = panel_axis(fig[1, 2]; letter = "(c)")
-    for ρ₀ in (0.9, 0.5, 0.1), regime in ("TI", "PI")
-        μ, σ = mean_curve(regime, "inner_corner", 64, ρ₀, 0.2)
-        draw_series!(ax, μ, σ; regime, SA = "inner_corner", L = 64, ρ₀, δλ = 0.2, label = "")
-    end
+    draw_coupling_panel!(ax, (0.9, 0.5, 0.1))
     label!(ax, "ρ = 0.9", 2^0.05, 0.68, "TI"; ρ₀ = 0.9)
     label!(ax, "ρ = 0.5", 2^2.05, 0.47, "TI"; ρ₀ = 0.5)
     label!(ax, "ρ = 0.1", 2^1.2, 0.21, "TI"; ρ₀ = 0.1)
     label!(ax, "ρ = 0.9", 2^2.6, 0.69, "inner_corner"; ρ₀ = 0.9)
     label!(ax, "ρ = 0.5", 2^4.55, 0.44, "inner_corner"; ρ₀ = 0.5)
     label!(ax, "ρ = 0.1", 2^6.25, 0.66, "inner_corner"; ρ₀ = 0.1)
-    #* (d) heterogeneity
+
     ax = panel_axis(fig[2, 2]; xlabel = "Iteration number t + 1", letter = "(d)")
-    for δλ in (0.0, 0.2, 0.4, 0.45, 0.49), regime in ("TI", "PI")
-        μ, σ = mean_curve(regime, "inner_corner", 64, 0.5, δλ)
-        draw_series!(ax, μ, σ; regime, SA = "inner_corner", L = 64, ρ₀ = 0.5, δλ, label = "")
-    end
+    draw_heterogeneity_panel!(ax)
     label!(ax, "δλ = 0.0, 0.2", 2^0.55, 0.90, "TI"; fontsize = 20)
     label!(ax, "δλ = 0.4", 2^2.85, 0.645, "TI"; rotation = 0.6, fontsize = 18)
     label!(ax, "δλ = 0.45", 2^3.2, 0.575, "TI"; rotation = 0.45, fontsize = 18)
@@ -145,6 +171,21 @@ function figure3()
     return fig
 end
 
+#* ---------------------------------------------------------------------------
+#* v1 vs v2 (thesis repository only: needs the v1 output in output/2D-Binary-PCA-IH/)
+#* ---------------------------------------------------------------------------
+
+#* v1 curves from the old per-trial fit_params.csv (learned_per_gen), padded with 1.
+function mean_curve_v1(SA, L, ρ₀, δλ)
+    dir = SA == "TI" ? "traditional-$(L)" : "$(SA)-$(L)"
+    file = SA == "TI" ? "2DBPCAIH-traditional-$(L)" : "2DBPCAIH-$(SA)-$(L)"
+    trial_path(trial) = "./output/2D-Binary-PCA-IH/$(dir)/$(ρ₀)-0.5-$(δλ)/trial_$(trial)/data/$(file)-$(ρ₀)-0.5-$(δλ)-trial_$(trial)-fit_params.csv"
+    runs = [CSV.read(trial_path(trial), DataFrame).learned_per_gen for trial in 1:N_TRIALS]
+    n = maximum(length.(runs))
+    F = reduce(hcat, [[run; fill(run[end], n - length(run))] for run in runs])
+    return vec(mean(F; dims = 2)), vec(std(F; dims = 2))
+end
+
 #* v1 (thin, faded) vs v2 (thick) for PI and TI at the δλ values the revision changes most.
 function figure_v1_vs_v2()
     fig = Figure(size = (1600, 650))
@@ -152,18 +193,19 @@ function figure_v1_vs_v2()
         ax = panel_axis(fig[1, j]; xlabel = "Iteration number t + 1", ylabel = j == 1 ? "Fraction of learned f(t)" : "",
             letter = regime == "PI" ? "PI (inner corner)" : "TI")
         for (k, δλ) in enumerate((0.0, 0.4, 0.45, 0.49))
-            c = Makie.wong_colors()[k]
-            μ1, _ = mean_curve_v1(regime == "TI" ? "TI" : "inner_corner", 64, 0.5, δλ)
-            μ2, σ2 = mean_curve(regime, "inner_corner", 64, 0.5, δλ)
-            lines!(ax, 1:length(μ1), μ1; color = (c, 0.6), linewidth = 2, linestyle = :dash, label = "v1 δλ=$δλ")
-            band!(ax, 1:length(μ2), clamp.(μ2 .- σ2, 0, 1), clamp.(μ2 .+ σ2, 0, 1); color = (c, 0.15))
-            lines!(ax, 1:length(μ2), μ2; color = c, linewidth = 3.5, label = "v2 δλ=$δλ")
+            col = Makie.wong_colors()[k]
+            μ_v1, _ = mean_curve_v1(regime == "TI" ? "TI" : "inner_corner", 64, 0.5, δλ)
+            μ_v2, σ_v2 = mean_curve(regime, "inner_corner", 64, 0.5, δλ)
+            lines!(ax, 1:length(μ_v1), μ_v1; color = (col, 0.6), linewidth = 2, linestyle = :dash, label = "v1 δλ=$δλ")
+            band!(ax, 1:length(μ_v2), clamp.(μ_v2 .- σ_v2, 0, 1), clamp.(μ_v2 .+ σ_v2, 0, 1); color = (col, 0.15))
+            lines!(ax, 1:length(μ_v2), μ_v2; color = col, linewidth = 3.5, label = "v2 δλ=$δλ")
         end
         if regime == "TI" #* R3's analytical F(t) at δλ = 0.49 (dotted black)
-            s0 = 4 / 64^2; p₊, p₋ = 0.5 * 0.99, 0.5 * 0.01
+            s₀ = 4 / 64^2
+            p₊, p₋ = 0.5 * 0.99, 0.5 * 0.01
             t = 0:2^11
-            lines!(ax, t .+ 1, s0 .+ (1 - s0) .* (1 .- 0.5 .* (1 - p₊) .^ t .- 0.5 .* (1 - p₋) .^ t);
-                color = :black, linestyle = :dot, linewidth = 2, label = "F(t), δλ=0.49")
+            F = s₀ .+ (1 - s₀) .* (1 .- 0.5 .* (1 - p₊) .^ t .- 0.5 .* (1 - p₋) .^ t)
+            lines!(ax, t .+ 1, F; color = :black, linestyle = :dot, linewidth = 2, label = "F(t), δλ=0.49")
         end
         add_legend!(ax)
     end
@@ -172,18 +214,10 @@ function figure_v1_vs_v2()
     return fig
 end
 
-
-#* Fig. 5: mean t_max over (ρ₀, δλ) for TI (blue) and PI inner corner (orange), L = 32 and 128.
-#* δλ ≤ 0.4 as in the published figure (pass δλs to include 0.45/0.49). Rendered with GLMakie
-#* because the two surfaces intersect and CairoMakie does not depth-sort between plots.
 function figure5(; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0.1:1.0); digits = 1), stat = :t_max,
         zlabel = "Time to learn tₘₐₓ", letters = ("(a)", "(b)"), legend = true, what = "")
     GLMakie.activate!(; scalefactor = 1) #* ignore OS display scaling so the layout matches the requested size
-    sm = CSV.read(SUMMARY_PATH, DataFrame)
-    sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner"), :]
-    g = combine(groupby(sm, [:regime, :L, :ρ₀, :δλ]), stat => mean => :t)
-    tgrid(regime, L) = [only(g[(g.regime .== regime) .& (g.L .== L) .& isapprox.(g.ρ₀, ρ) .& isapprox.(g.δλ, δ), :t])
-        for ρ in Ρs, δ in δλs]
+    mean_t = mean_times(stat)
 
     fig = Figure(size = (1900, 950), figure_padding = (20, 20, 20, 20))
     for (j, (L, letter)) in enumerate(zip((32, 128), letters))
@@ -192,14 +226,13 @@ function figure5(; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0
             xticklabelsize = 22, yticklabelsize = 22, zticklabelsize = 22, xlabeloffset = 55, ylabeloffset = 55,
             zlabeloffset = 70)
         for regime in ("TI", "PI")
-            surface!(ax, Ρs, δλs, tgrid(regime, L); color = fill(COLORS[SA_COLOR[regime == "TI" ? "TI" : "inner_corner"]], length(Ρs), length(δλs)),
-                shading = MultiLightShading)
+            surface!(ax, Ρs, δλs, surface_grid(mean_t, regime, L, Ρs, δλs);
+                color = fill(regime_color(regime), length(Ρs), length(δλs)), shading = MultiLightShading)
         end
         Label(fig[1, j, Top()], "$letter L = $L" * (isempty(what) ? "" : ", $what"); fontsize = 40, halign = :left,
             padding = (40, 0, 0, 0))
     end
-    legend && Legend(fig[1, 1], [PolyElement(color = COLORS[1]), PolyElement(color = COLORS[2])],
-        [rich("Traditional"; color = COLORS[1], font = :bold), rich("Peer"; color = COLORS[2], font = :bold)];
+    legend && Legend(fig[1, 1], regime_legend_entries()...;
         tellwidth = false, tellheight = false, halign = :right, valign = :top, margin = (0, 40, 0, 60),
         labelsize = 34, patchsize = (55, 55), rowgap = 30, framevisible = false)
     return fig
@@ -216,13 +249,15 @@ function save_figure5_with_t95(path; legend = true)
     figs = Any[top, bottom]
     if legend
         strip = Figure(size = (1900, 90))
-        Legend(strip[1, 1], [PolyElement(color = COLORS[1]), PolyElement(color = COLORS[2])],
-            [rich("Traditional"; color = COLORS[1], font = :bold), rich("Peer"; color = COLORS[2], font = :bold)];
+        Legend(strip[1, 1], regime_legend_entries()...;
             orientation = :horizontal, labelsize = 34, patchsize = (55, 55), colgap = 60, framevisible = false)
         pushfirst!(figs, strip)
     end
+    #* render each part to a temporary PNG, then stack the images vertically
     tmp = [tempname() * ".png" for _ in figs]
-    foreach(((f, t),) -> GLMakie.save(t, f; px_per_unit = 2), zip(figs, tmp))
+    for (fig, file) in zip(figs, tmp)
+        GLMakie.save(file, fig; px_per_unit = 2)
+    end
     FileIO.save(path, reduce(vcat, FileIO.load.(tmp)))
     foreach(rm, tmp)
 end
@@ -244,25 +279,13 @@ function figure3_clean()
     axb = Axis(fig[2, 1]; ax_kw..., xlabel = "Iteration number t + 1")
     axc = Axis(fig[1, 2]; ax_kw..., xticksvisible = false, xticklabelsvisible = false)
     axd = Axis(fig[2, 2]; ax_kw..., xlabel = "Iteration number t + 1")
-    for L in (32, 64, 128), regime in ("TI", "PI")
-        μ, σ = mean_curve(regime, "inner_corner", L, 0.5, 0.2)
-        draw_series!(axa, μ, σ; regime, SA = "inner_corner", L, ρ₀ = 0.5, δλ = 0.2, label = "")
+    draw_size_panel!(axa)
+    draw_seating_panel!(axb, ("inner_corner", "outer_corner", "center", "random"))
+    draw_coupling_panel!(axc, (0.1, 0.5, 0.9))
+    draw_heterogeneity_panel!(axd)
+    for (ax, letter) in zip((axa, axb, axc, axd), ("(a)", "(b)", "(c)", "(d)"))
+        letter!(ax, letter)
     end
-    μ, σ = mean_curve("TI", "inner_corner", 64, 0.5, 0.2)
-    draw_series!(axb, μ, σ; regime = "TI", SA = "inner_corner", L = 64, ρ₀ = 0.5, δλ = 0.2, label = "")
-    for SA in ("inner_corner", "outer_corner", "center", "random")
-        μ, σ = mean_curve("PI", SA, 64, 0.5, 0.2)
-        draw_series!(axb, μ, σ; regime = "PI", SA, L = 64, ρ₀ = 0.5, δλ = 0.2, label = "")
-    end
-    for ρ₀ in (0.1, 0.5, 0.9), regime in ("TI", "PI")
-        μ, σ = mean_curve(regime, "inner_corner", 64, ρ₀, 0.2)
-        draw_series!(axc, μ, σ; regime, SA = "inner_corner", L = 64, ρ₀, δλ = 0.2, label = "")
-    end
-    for δλ in (0.0, 0.2, 0.4, 0.45, 0.49), regime in ("TI", "PI")
-        μ, σ = mean_curve(regime, "inner_corner", 64, 0.5, δλ)
-        draw_series!(axd, μ, σ; regime, SA = "inner_corner", L = 64, ρ₀ = 0.5, δλ, label = "")
-    end
-    foreach(((ax, s),) -> letter!(ax, s), zip((axa, axb, axc, axd), ("(a)", "(b)", "(c)", "(d)")))
     linkxaxes!(axa, axb)
     linkxaxes!(axc, axd)
     Label(fig[:, 0], "Fraction of learned f(t)"; fontsize = 40, rotation = π / 2, tellheight = false)
@@ -273,19 +296,17 @@ end
 #* no title or legend. GLMakie (depth sorting); call with GLMakie active.
 function figure5_panel(L; δλs = [0.0, 0.1, 0.2, 0.3, 0.4], Ρs = round.(collect(0.1:0.1:1.0); digits = 1), stat = :t_max,
         zlabel = "Time to learn tₘₐₓ")
-    sm = CSV.read(SUMMARY_PATH, DataFrame)
-    sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner") .& (sm.L .== L), :]
-    g = combine(groupby(sm, [:regime, :ρ₀, :δλ]), stat => mean => :t)
-    tgrid(regime) = [only(g[(g.regime .== regime) .& isapprox.(g.ρ₀, ρ) .& isapprox.(g.δλ, δ), :t]) for ρ in Ρs, δ in δλs]
-    t_top = maximum(maximum(tgrid(r)) for r in ("TI", "PI"))
+    mean_t = mean_times(stat)
+    grids = Dict(regime => surface_grid(mean_t, regime, L, Ρs, δλs) for regime in ("TI", "PI"))
+    t_top = maximum(maximum, values(grids))
     fig = Figure(size = (1000, 800))
     ax = Axis3(fig[1, 1]; xlabel = "Transmission ρ₀", ylabel = "Heterogeneity δλ", zlabel,
         aspect = (1, 1, 1), zticks = 0:(t_top > 1000 ? 200 : 100):t_top, xlabelsize = 32, ylabelsize = 32,
         zlabelsize = 32, xlabeloffset = 60, ylabeloffset = 60, zlabeloffset = 80, xticklabelsize = 28,
         yticklabelsize = 28, zticklabelsize = 28, viewmode = :fit, azimuth = 1.275π)
     for regime in ("TI", "PI")
-        surface!(ax, Ρs, δλs, tgrid(regime); color = fill(COLORS[SA_COLOR[regime == "TI" ? "TI" : "inner_corner"]],
-            length(Ρs), length(δλs)), shading = FastShading)
+        surface!(ax, Ρs, δλs, grids[regime]; color = fill(regime_color(regime), length(Ρs), length(δλs)),
+            shading = FastShading)
     end
     return fig
 end
@@ -320,11 +341,15 @@ const SA_ORDER = ("inner_corner", "center", "outer_corner", "random")
 loglog_slope(t) = (x = log.(Ls); y = log.(t); cov(x, y) / var(x))
 
 function figure_seed_density()
-    sm = CSV.read(SUMMARY_PATH, DataFrame)
-    g = combine(groupby(sm, [:regime, :SA, :L, :n_learned, :ρ₀, :δλ]), :t_max => mean => :t, :t_max => std => :s)
-    stat(regime, SA, L, n, ρ, δ) = (r = g[(g.regime .== regime) .& (g.SA .== SA) .& (g.L .== L) .& (g.n_learned .== n) .&
-        isapprox.(g.ρ₀, ρ) .& isapprox.(g.δλ, δ), :]; (r.t[1], r.s[1]))
-    series(regime, SA, ρ, δ, frac) = [stat(regime, SA, L, frac ? n_frac(L) : 4, ρ, δ) for L in Ls]
+    runs = CSV.read(SUMMARY_PATH, DataFrame)
+    tmax_stats = combine(groupby(runs, [:regime, :SA, :L, :n_learned, :ρ₀, :δλ]), :t_max => mean => :t, :t_max => std => :s)
+    #* (mean, SD) of t_max at one lattice side
+    function stat(regime, SA, L, n_learned, ρ₀, δλ)
+        match = rows_where(tmax_stats; regime, SA, L, n_learned, ρ₀, δλ)
+        return match.t[1], match.s[1]
+    end
+    #* (mean, SD) for every L, with 4 initial seeds or with the fixed initial fraction
+    series(regime, SA, ρ₀, δλ, frac) = [stat(regime, SA, L, frac ? n_frac(L) : 4, ρ₀, δλ) for L in Ls]
 
     fig = Figure(size = (1600, 1250))
     for (j, (ρ, δ)) in enumerate(((0.5, 0.2), (0.1, 0.4)))
@@ -332,17 +357,18 @@ function figure_seed_density()
             ylabel = j == 1 ? "Time to learn tₘₐₓ" : "", title = "($('a' + j - 1)) PI tₘₐₓ vs L, ρ₀ = $ρ, δλ = $δ",
             titlesize = 22, xlabelsize = 22, ylabelsize = 22, xticklabelsize = 18, yticklabelsize = 18)
         for frac in (false, true)
-            ts = first.(series("TI", "inner_corner", ρ, δ, frac))
-            lines!(ax, Ls, ts; color = (:gray40, 0.8), linewidth = 2, linestyle = frac ? :dash : :solid,
+            ti_tmax = first.(series("TI", "inner_corner", ρ, δ, frac))
+            lines!(ax, Ls, ti_tmax; color = (:gray40, 0.8), linewidth = 2, linestyle = frac ? :dash : :solid,
                 label = frac ? "TI, fixed fraction" : "TI, 4 seeds")
         end
         for SA in SA_ORDER, frac in (false, true)
-            st = series("PI", SA, ρ, δ, frac); t = first.(st); s = last.(st)
-            c = COLORS[SA_COLOR[SA]]
-            band!(ax, Ls, max.(t .- s, 1), t .+ s; color = (c, 0.12))
-            scatterlines!(ax, Ls, t; color = c, linewidth = 3, linestyle = frac ? :dash : :solid, markersize = 10,
+            pi_stats = series("PI", SA, ρ, δ, frac)
+            tmax_mean, tmax_sd = first.(pi_stats), last.(pi_stats)
+            col = COLORS[SA_COLOR[SA]]
+            band!(ax, Ls, max.(tmax_mean .- tmax_sd, 1), tmax_mean .+ tmax_sd; color = (col, 0.12))
+            scatterlines!(ax, Ls, tmax_mean; color = col, linewidth = 3, linestyle = frac ? :dash : :solid, markersize = 10,
                 marker = frac ? :utriangle : :circle,
-                label = "$(SA_LABEL[SA]), $(frac ? "fixed fraction" : "4 seeds") (γ = $(round(loglog_slope(t); digits = 2)))")
+                label = "$(SA_LABEL[SA]), $(frac ? "fixed fraction" : "4 seeds") (γ = $(round(loglog_slope(tmax_mean); digits = 2)))")
         end
         axislegend(ax; position = :lt, labelsize = 13, framevisible = false, backgroundcolor = :transparent, rowgap = 0)
     end
@@ -353,9 +379,9 @@ function figure_seed_density()
         xticklabelsize = 18, yticklabelsize = 18)
     for SA in SA_ORDER, frac in (false, true)
         μ, σ = mean_curve("PI", SA, 128, 0.5, 0.2; n_learned = frac ? n_frac(128) : 4)
-        c = COLORS[SA_COLOR[SA]]
-        band!(ax, 1:length(μ), clamp.(μ .- σ, 0, 1), clamp.(μ .+ σ, 0, 1); color = (c, 0.12))
-        lines!(ax, 1:length(μ), μ; color = c, linewidth = 3, linestyle = frac ? :dash : :solid,
+        col = COLORS[SA_COLOR[SA]]
+        band!(ax, 1:length(μ), clamp.(μ .- σ, 0, 1), clamp.(μ .+ σ, 0, 1); color = (col, 0.12))
+        lines!(ax, 1:length(μ), μ; color = col, linewidth = 3, linestyle = frac ? :dash : :solid,
             label = "$(SA_LABEL[SA]), $(frac ? "$(n_frac(128)) seeds" : "4 seeds")")
     end
     axislegend(ax; position = :lt, labelsize = 13, framevisible = false, backgroundcolor = :transparent, rowgap = 0)
@@ -367,8 +393,8 @@ function figure_seed_density()
     ρs = round.(collect(0.1:0.1:1.0); digits = 1); δs = [0.0, 0.1, 0.2, 0.3, 0.4, 0.45, 0.49]
     slopes(regime, SA) = [(loglog_slope(first.(series(regime, SA, ρ, δ, false))), loglog_slope(first.(series(regime, SA, ρ, δ, true))))
         for ρ in ρs, δ in δs] |> vec
-    sTI = slopes("TI", "inner_corner")
-    scatter!(ax, first.(sTI), last.(sTI); color = (:gray40, 0.6), markersize = 8, label = "TI")
+    ti_slopes = slopes("TI", "inner_corner")
+    scatter!(ax, first.(ti_slopes), last.(ti_slopes); color = (:gray40, 0.6), markersize = 8, label = "TI")
     for SA in SA_ORDER
         s = slopes("PI", SA)
         scatter!(ax, first.(s), last.(s); color = (COLORS[SA_COLOR[SA]], 0.75), markersize = 10, label = SA_LABEL[SA])
@@ -380,19 +406,24 @@ function figure_seed_density()
 end
 
 #* ---------------------------------------------------------------------------
-#* Classroom evolution: fastest vs slowest run (by t_max) of one parameter set, side by side
+#* Lattice snapshots
 #* ---------------------------------------------------------------------------
-#* Cell categories: 1 unlearned fast, 2 unlearned slow, 3 learned fast, 4 learned slow, 5 seed.
-#* Fig. 4 (paper): lattice snapshots of one TI/PI twin pair (same seeds and λ grid) at fixed times, in the
-#* v1 layout and colors: unlearned, learned slow, learned fast. legend = false gives the clean copy.
+#* Paper Fig. 5: lattice snapshots of one TI/PI twin pair (same seeds and λ grid) at fixed times, in the
+#* v1 layout and colors: unlearned, learned slow, learned fast. labels = false gives the clean copy.
 const FIG4_COLORS = [colorant"#d6e6f9", colorant"#2a87f5", colorant"#0a1a33"]
+
+#* Snapshot category of an agent at step t (index into FIG4_COLORS)
+function snapshot_state(learning_time, λ_class, t)
+    0 <= learning_time <= t || return 1    #* unlearned
+    return λ_class == 1 ? 3 : 2            #* learned fast / learned slow
+end
+
 function figure4_snapshots(; L = 32, ρ₀ = 0.3, δλ = 0.2, ts = (2, 8, 16, 32, 54), trial = 1, labels = true)
     fig = Figure(size = (1775, 850), figure_padding = (10, 10, 10, 10))
     for (i, regime) in enumerate(("TI", "PI"))
-        row = (; regime, SA = "inner_corner", L, n_learned = 4, ρ₀, λ₀ = 0.5, δλ)
-        T, cls = read_trial(row, trial)
+        T, cls = read_trial(param_row(regime, "inner_corner", L, ρ₀, δλ), trial)
         for (j, t) in enumerate(ts)
-            S = [0 <= T[k] <= t ? (cls[k] == 1 ? 3 : 2) : 1 for k in CartesianIndices(T)]
+            S = snapshot_state.(T, cls, t)
             ax = Axis(fig[i, j]; aspect = DataAspect(), yreversed = true, title = (labels && i == 1) ? "t = $t" : "",
                 titlesize = 40, titlefont = :regular)
             hidedecorations!(ax)
@@ -409,36 +440,48 @@ function figure4_snapshots(; L = 32, ρ₀ = 0.3, δλ = 0.2, ts = (2, 8, 16, 32
     return fig
 end
 
+#* ---------------------------------------------------------------------------
+#* Exploration (not used for the paper): fastest vs slowest run (by t_max) of one parameter set,
+#* side by side, as a figure, an animation, and a strip of still frames
+#* ---------------------------------------------------------------------------
+#* Cell categories: 1 unlearned fast, 2 unlearned slow, 3 learned fast, 4 learned slow, 5 seed.
 const CELL_COLORS = [colorant"#dbe9f6", colorant"#b4b4b4", colorant"#08306b", colorant"#4a90d9", colorant"#e6550d"]
+
+function cell_category(learning_time, λ_class, t)
+    learning_time == 0 && return 5
+    fast = λ_class == 1
+    if 0 < learning_time <= t
+        return fast ? 3 : 4
+    end
+    return fast ? 1 : 2
+end
 
 function cell_state(T, cls, t)
     S = similar(T, Int8)
     for i in eachindex(T)
-        S[i] = T[i] == 0 ? 5 : (0 < T[i] <= t ? (cls[i] == 1 ? 3 : 4) : (cls[i] == 1 ? 1 : 2))
+        S[i] = cell_category(T[i], cls[i], t)
     end
     return S
 end
 
 function best_worst_runs(regime, SA, L, ρ₀, δλ; n_learned = 4, λ₀ = 0.5)
-    row = (; regime, SA, L, n_learned, ρ₀, λ₀, δλ)
-    raw = read_parquet(raw_path(row))
-    runs = [read_trial(row, tr; raw) for tr in 1:N_TRIALS]
-    tmax = [maximum(r[1]) for r in runs]
-    ib, iw = argmin(tmax), argmax(tmax)
-    return runs[ib], runs[iw], (ib, iw), tmax
+    runs = read_trials(param_row(regime, SA, L, ρ₀, δλ; n_learned, λ₀))
+    tmax = [maximum(T) for (T, _) in runs]
+    fastest, slowest = argmin(tmax), argmax(tmax)
+    return runs[fastest], runs[slowest], (fastest, slowest), tmax
 end
 
 #* Builds the figure for an observable time t; returns (fig, t_obs, t_end).
 function evolution_figure(regime, SA, L, ρ₀, δλ; n_learned = 4)
-    (Tb, cb), (Tw, cw), (ib, iw), tmax = best_worst_runs(regime, SA, L, ρ₀, δλ; n_learned)
-    t_end = Int(maximum(Tw))
+    (T_fast, c_fast), (T_slow, c_slow), (i_fast, i_slow), tmax = best_worst_runs(regime, SA, L, ρ₀, δλ; n_learned)
+    t_end = Int(maximum(T_slow))
     t = Observable(0)
     fig = Figure(size = (1400, 1000))
     Label(fig[0, 1:2], "$regime, $(SA_LABEL[SA]), L = $L, n = $n_learned, ρ₀ = $ρ₀, δλ = $δλ — fastest vs slowest of $(N_TRIALS) runs " *
         "(t_max range $(minimum(tmax))–$(maximum(tmax)), median $(Int(round(median(tmax)))))"; fontsize = 20)
-    for (j, (T, c, tr, name)) in enumerate(((Tb, cb, ib, "Fastest"), (Tw, cw, iw, "Slowest")))
-        ax = Axis(fig[1, j]; aspect = DataAspect(), yreversed = true, title = @lift("$name run (trial $tr, t_max = $(maximum(T)))   t = $($t)"),
-            titlesize = 20)
+    for (j, (T, c, trial, name)) in enumerate(((T_fast, c_fast, i_fast, "Fastest"), (T_slow, c_slow, i_slow, "Slowest")))
+        ax = Axis(fig[1, j]; aspect = DataAspect(), yreversed = true,
+            title = @lift("$name run (trial $trial, t_max = $(maximum(T)))   t = $($t)"), titlesize = 20)
         hidedecorations!(ax)
         heatmap!(ax, @lift(cell_state(T, c, $t)); colormap = CELL_COLORS, colorrange = (1, 5))
     end
@@ -447,7 +490,7 @@ function evolution_figure(regime, SA, L, ρ₀, δλ; n_learned = 4)
     ax = Axis(fig[2, 1:2]; xscale = log2, xlabel = "Iteration number t + 1", ylabel = "Fraction of learned f(t)", yticks = 0:0.5:1,
         xlabelsize = 20, ylabelsize = 20)
     x = 1:(t_end + 1)
-    for (T, c, col, name) in ((Tb, cb, COLORS[3], "fastest"), (Tw, cw, COLORS[4], "slowest"))
+    for (T, c, col, name) in ((T_fast, c_fast, COLORS[3], "fastest"), (T_slow, c_slow, COLORS[4], "slowest"))
         f = learned_fraction(T, t_end)
         f₊ = learned_fraction_by_class(T, c, 1, t_end)
         f₋ = learned_fraction_by_class(T, c, 2, t_end)
@@ -477,9 +520,9 @@ function animate_evolution(regime, SA, L, ρ₀, δλ; n_learned = 4, framerate 
     #* Still strip of selected frames (for quick viewing without a video player)
     times = strip_times === nothing ? round.(Int, range(0, t_end; length = 6)) : strip_times
     strip = Figure(size = (300 * length(times), 640))
-    (Tb, cb), (Tw, cw), _, _ = best_worst_runs(regime, SA, L, ρ₀, δλ; n_learned)
-    for (k, τ) in enumerate(times), (j, (T, c, nm)) in enumerate(((Tb, cb, "fastest"), (Tw, cw, "slowest")))
-        ax = Axis(strip[j, k]; aspect = DataAspect(), yreversed = true, title = "$nm, t = $τ", titlesize = 16)
+    (T_fast, c_fast), (T_slow, c_slow), _, _ = best_worst_runs(regime, SA, L, ρ₀, δλ; n_learned)
+    for (k, τ) in enumerate(times), (j, (T, c, run_name)) in enumerate(((T_fast, c_fast, "fastest"), (T_slow, c_slow, "slowest")))
+        ax = Axis(strip[j, k]; aspect = DataAspect(), yreversed = true, title = "$run_name, t = $τ", titlesize = 16)
         hidedecorations!(ax)
         heatmap!(ax, cell_state(T, c, τ); colormap = CELL_COLORS, colorrange = (1, 5))
     end
@@ -488,15 +531,14 @@ function animate_evolution(regime, SA, L, ρ₀, δλ; n_learned = 4, framerate 
 end
 
 #* ---------------------------------------------------------------------------
-#* Fast vs slow learners: mean learned fraction per λ class, TI vs PI (exploration)
+#* Fast vs slow learners (paper Fig. 4): mean learned fraction per λ class, TI vs PI
 #* ---------------------------------------------------------------------------
 #* Mean over trials of the per-class learned fraction (runs padded with their final value).
 function mean_class_curve(regime, SA, L, ρ₀, δλ, class; n_learned = 4, λ₀ = 0.5)
-    row = (; regime, SA, L, n_learned, ρ₀, λ₀, δλ)
-    raw = read_parquet(raw_path(row))
-    runs = [read_trial(row, tr; raw) for tr in 1:N_TRIALS]
-    t_end = maximum(maximum(r[1]) for r in runs)
-    return vec(mean(reduce(hcat, [learned_fraction_by_class(T, c, class, t_end) for (T, c) in runs]); dims = 2))
+    runs = read_trials(param_row(regime, SA, L, ρ₀, δλ; n_learned, λ₀))
+    t_end = maximum(maximum(T) for (T, _) in runs)
+    F = reduce(hcat, [learned_fraction_by_class(T, c, class, t_end) for (T, c) in runs])
+    return vec(mean(F; dims = 2))
 end
 
 function figure_class_split(; SA = "inner_corner", L = 128, Ρs = (0.5, 0.1), δλs = (0.2, 0.4, 0.49), title = true)
@@ -506,7 +548,7 @@ function figure_class_split(; SA = "inner_corner", L = 128, Ρs = (0.5, 0.1), δ
             xlabel = i == length(Ρs) ? "Iteration number t + 1" : "", ylabel = j == 1 ? "Fraction of learned f(t)" : "",
             xlabelsize = 20, ylabelsize = 20, xticklabelsize = 16, yticklabelsize = 16)
         for regime in ("TI", "PI")
-            col = COLORS[SA_COLOR[regime == "TI" ? "TI" : SA]]
+            col = regime_color(regime, SA)
             μ, _ = mean_curve(regime, SA, L, ρ₀, δλ)
             f₊ = mean_class_curve(regime, SA, L, ρ₀, δλ, 1)
             f₋ = mean_class_curve(regime, SA, L, ρ₀, δλ, 2)
@@ -527,11 +569,11 @@ end
 
 #* Mean ± SD of t_max (solid) and t₉₅ (dashed) vs δλ, TI vs PI inner corner, 4 seeds, all δλ incl. 0.45/0.49.
 function figure_t95_vs_tmax(; Ls = (32, 128), Ρs = (0.1, 0.5, 0.9), title = true)
-    sm = CSV.read(SUMMARY_PATH, DataFrame)
-    sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner"), :]
-    g = combine(groupby(sm, [:regime, :L, :ρ₀, :δλ]), :t_max => mean => :tmax, :t_max => std => :tmax_sd,
+    runs = CSV.read(SUMMARY_PATH, DataFrame)
+    runs = runs[(runs.n_learned .== 4) .& (runs.SA .== "inner_corner"), :]
+    times = combine(groupby(runs, [:regime, :L, :ρ₀, :δλ]), :t_max => mean => :tmax, :t_max => std => :tmax_sd,
         :t_95 => mean => :t95, :t_95 => std => :t95_sd)
-    δλs = sort(unique(g.δλ))
+    δλs = sort(unique(times.δλ))
     fig = Figure(size = (1500, 1500))
     for (i, ρ₀) in enumerate(Ρs), (j, L) in enumerate(Ls)
         ax = Axis(fig[i, j]; yscale = log10, xticks = δλs, xticklabelrotation = π / 4,
@@ -539,13 +581,13 @@ function figure_t95_vs_tmax(; Ls = (32, 128), Ρs = (0.1, 0.5, 0.9), title = tru
             xlabel = i == length(Ρs) ? "Heterogeneity δλ  (λ = 0.5 ± δλ)" : "", ylabel = j == 1 ? "Steps" : "",
             xlabelsize = 22, ylabelsize = 22, xticklabelsize = 16, yticklabelsize = 17)
         for regime in ("TI", "PI")
-            r = sort(g[(g.regime .== regime) .& (g.L .== L) .& isapprox.(g.ρ₀, ρ₀), :], :δλ)
-            c = COLORS[SA_COLOR[regime == "TI" ? "TI" : "inner_corner"]]
+            rows = sort(rows_where(times; regime, L, ρ₀), :δλ)
+            series_color = regime_color(regime)
             name = regime == "TI" ? "Traditional" : "Peer (inner corner)"
             for (col, sd, ls, mk, lab) in ((:tmax, :tmax_sd, :solid, :circle, "tₘₐₓ (last learner)"),
                     (:t95, :t95_sd, :dash, :utriangle, "t₉₅ (95% learned)"))
-                band!(ax, r.δλ, max.(r[!, col] .- r[!, sd], 1), r[!, col] .+ r[!, sd]; color = (c, 0.15))
-                scatterlines!(ax, r.δλ, r[!, col]; color = c, linestyle = ls, marker = mk, markersize = 10,
+                band!(ax, rows.δλ, max.(rows[!, col] .- rows[!, sd], 1), rows[!, col] .+ rows[!, sd]; color = (series_color, 0.15))
+                scatterlines!(ax, rows.δλ, rows[!, col]; color = series_color, linestyle = ls, marker = mk, markersize = 10,
                     linewidth = 2.5, label = "$name, $lab")
             end
         end
@@ -558,10 +600,10 @@ end
 
 #* Ratio t_max / t₉₅ over every (L, ρ₀, δλ) — how much of t_max is the straggler tail
 function t95_ratio_table()
-    sm = CSV.read(SUMMARY_PATH, DataFrame)
-    sm = sm[(sm.n_learned .== 4) .& (sm.SA .== "inner_corner"), :]
-    g = combine(groupby(sm, [:regime, :L, :δλ]), [:t_max, :t_95] => ((a, b) -> mean(a ./ b)) => :tmax_over_t95)
-    return unstack(g, [:regime, :L], :δλ, :tmax_over_t95)
+    runs = CSV.read(SUMMARY_PATH, DataFrame)
+    runs = runs[(runs.n_learned .== 4) .& (runs.SA .== "inner_corner"), :]
+    ratios = combine(groupby(runs, [:regime, :L, :δλ]), [:t_max, :t_95] => ((a, b) -> mean(a ./ b)) => :tmax_over_t95)
+    return unstack(ratios, [:regime, :L], :δλ, :tmax_over_t95)
 end
 
 #! Main
@@ -572,14 +614,19 @@ begin
     save_clean_figures()
     fig3 = figure3()
     save("$(PLOT_DIR)/figure3-learned-t-v2.png", fig3; px_per_unit = 2)
-    figc = figure_v1_vs_v2()
-    save("$(PLOT_DIR)/learned-t-v1-vs-v2.png", figc; px_per_unit = 2)
+    save("$(PLOT_DIR)/learned-t-v1-vs-v2.png", figure_v1_vs_v2(); px_per_unit = 2)
     fig5 = figure5()
     GLMakie.save("$(OUTPUT_DIR)/analysis/plots/figure5-tmax-surface-v2.png", fig5; px_per_unit = 2)
     fig5b = figure5(; stat = :t_95, zlabel = "Time to 95% learned t₉₅")
     GLMakie.save("$(OUTPUT_DIR)/analysis/plots/figure5-t95-surface-v2.png", fig5b; px_per_unit = 2)
+    #* paper Fig. 6: t_max (top) and t₉₅ (bottom) surfaces, rendered row by row and stacked
+    save_figure5_with_t95("$(OUTPUT_DIR)/analysis/plots/figure5-tmax-t95-surface-v2.png")
+    save_figure5_with_t95("$(OUTPUT_DIR)/analysis/plots/clean/figure5-tmax-t95-clean.png"; legend = false)
     CairoMakie.activate!()
     save("$(OUTPUT_DIR)/analysis/plots/t95-vs-tmax.png", figure_t95_vs_tmax(); px_per_unit = 2)
+    #* paper Fig. 5: snapshots of one TI/PI twin pair
+    save("$(OUTPUT_DIR)/analysis/plots/figure4-snapshots-v2.png", figure4_snapshots(); px_per_unit = 2)
+    save("$(OUTPUT_DIR)/analysis/plots/clean/figure4-snapshots-clean.png", figure4_snapshots(; labels = false); px_per_unit = 2)
     show(t95_ratio_table(); allrows = true); println()
     CairoMakie.activate!()
     println("Saved to $(PLOT_DIR)")
