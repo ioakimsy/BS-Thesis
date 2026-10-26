@@ -1,19 +1,18 @@
 # Fdb version 4
-["bibtex PhysicaA-paper"] 1792161867.55164 "PhysicaA-paper.aux" "PhysicaA-paper.bbl" "PhysicaA-paper" 1792161878.70336 0
+["bibtex PhysicaA-paper"] 1793018585.55716 "PhysicaA-paper.aux" "PhysicaA-paper.bbl" "PhysicaA-paper" 1793019065.59513 0
   "./cas-model2-names.bst" 1792115018 31802 28b630660245c09f173aac55be552b29 ""
   "./cas-refs.bib" 1792161612 33136 3c61fe21466c373356483bb6cb830ae7 ""
-  "PhysicaA-paper.aux" 1792161877 30755 d66f2f9cbfa0e4c1bc3ce473fc4df3f1 "pdflatex"
+  "PhysicaA-paper.aux" 1793019064 30755 b266666ace6cb4c9336e8c80b94c152f "pdflatex"
   (generated)
   "PhysicaA-paper.bbl"
   "PhysicaA-paper.blg"
   (rewritten before read)
-["pdflatex"] 1792161867.89562 "c:/School/BS Thesis/documents/PhysicaA-paper-v2/PhysicaA-paper.tex" "PhysicaA-paper.pdf" "PhysicaA-paper" 1792161878.70386 0
-  "PhysicaA-paper.abs" 1792161868 2199 803cb3d721a56ff18286005ba1fa3675 "pdflatex"
-  "PhysicaA-paper.aux" 1792161877 30755 d66f2f9cbfa0e4c1bc3ce473fc4df3f1 "pdflatex"
-  "PhysicaA-paper.bbl" 1792161867 14798 cad9d01030da52d853310621f488179a "bibtex PhysicaA-paper"
-  "PhysicaA-paper.out" 1792161868 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "PhysicaA-paper.tex" 1792161856 78692 2ac922d6c72a3315f236fc417079ee2a ""
-  "c:/School/BS Thesis/documents/PhysicaA-paper-v2/PhysicaA-paper.tex" 1792161856 78692 2ac922d6c72a3315f236fc417079ee2a ""
+["pdflatex"] 1793019054.52131 "PhysicaA-paper.tex" "PhysicaA-paper.pdf" "PhysicaA-paper" 1793019065.59584 0
+  "PhysicaA-paper.abs" 1793019055 2287 f71921c80c12d0251e8ea9adaf3ad7f7 "pdflatex"
+  "PhysicaA-paper.aux" 1793019064 30755 b266666ace6cb4c9336e8c80b94c152f "pdflatex"
+  "PhysicaA-paper.bbl" 1793018585 15042 e35a76b4eb2f6497e0a59caf2e93642b "bibtex PhysicaA-paper"
+  "PhysicaA-paper.out" 1793019055 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "PhysicaA-paper.tex" 1793019053 79503 7f825089bc8cbd4aca835a2d2b196624 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1769695426 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc" 1769696701 7013 c55cc8669071ac14036c4a0c96c16202 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/stix/stix-ts1.enc" 1769696701 2836 154e6b0061f9b8cb549144b55b268339 ""

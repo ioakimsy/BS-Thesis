@@ -1,8 +1,8 @@
-PWD c:/School/BS Thesis/documents/PhysicaA-paper-v2
+PWD C:/School/BS Thesis/documents/PhysicaA-paper-v2
 INPUT c:/texlive/2025/texmf.cnf
 INPUT c:/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/School/BS Thesis/documents/PhysicaA-paper-v2/PhysicaA-paper.tex
+INPUT PhysicaA-paper.tex
 OUTPUT PhysicaA-paper.log
 INPUT ./cas-sc.cls
 INPUT cas-sc.cls
