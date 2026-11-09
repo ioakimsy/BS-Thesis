@@ -80,6 +80,7 @@ The classroom pre- and post-test scores used in Section 3.4 (Figs. 7 and 9, and 
 ## Contents
 
 ```
+LICENSE                            MIT license
 Project.toml, Manifest.toml        Julia environment
 scripts/
   2DBPCA-IH-common-v2.jl           model, parameters, file layout (included by every script)
@@ -98,4 +99,4 @@ data/empirical/                    (not included; see above)
 
 ## License and citation
 
-[License to be chosen.] If you use this code, please cite the paper above [and the Zenodo DOI, to be added].
+The code and data are released under the [MIT License](LICENSE). If you use this code, please cite the paper above.
